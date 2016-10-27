@@ -15,3 +15,6 @@ class Person(models.Model):
     email = models.EmailField(verbose_name='Correo electrónico', blank=True, default='')
     comment = models.TextField(verbose_name='Observaciones', blank=True, default='')
     health_warnings = models.TextField(verbose_name='Observaciones médicas', blank=True, default='')
+
+    def __str__(self):
+        return '{} {}'.format(self.name.capitalize(), self.surname.upper())
