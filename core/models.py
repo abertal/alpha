@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.template.defaultfilters import timesince
 
 class Person(models.Model):
     class Meta:
@@ -18,6 +18,10 @@ class Person(models.Model):
     email = models.EmailField(verbose_name='Correo electrónico', blank=True, default='')
     comment = models.TextField(verbose_name='Observaciones', blank=True, default='')
     health_warnings = models.TextField(verbose_name='Observaciones médicas', blank=True, default='')
+
+    @property
+    def age(self):
+        return timesince(self.birthday)
 
     def __str__(self):
         return '{} {}'.format(self.name.capitalize(), self.surname.upper())
