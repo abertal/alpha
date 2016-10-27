@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Person(models.Model):
+    class Meta:
+        verbose_name = 'Persona'
+
     name = models.TextField(verbose_name='Nombre')
     surname = models.TextField(verbose_name='Apellidos')
     birthday = models.DateField(verbose_name='Fecha de nacimiento', blank=True, null=True)
