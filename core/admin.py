@@ -3,4 +3,10 @@ from django.contrib import admin
 from . import models
 
 
-admin.site.register(models.Person)
+@admin.register(models.Person)
+class Person(admin.ModelAdmin):
+    list_display = ('id',
+                    'name',
+                    'surname',
+                    'phone_number',
+                    'birthday',)
