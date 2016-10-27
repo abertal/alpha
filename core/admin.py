@@ -5,6 +5,8 @@ from . import models
 
 @admin.register(models.Person)
 class Person(admin.ModelAdmin):
+    search_fields = ['name', 'surname']
+
     list_display = ('id',
                     'name',
                     'surname',
