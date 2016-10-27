@@ -37,4 +37,8 @@ Instrucciones instalación en Windows
 
 .. code::
 
-    ...
+    PS > cd alpha
+    PS > python3 -m venv .venv 
+    PS > .venv\Scripts\Activate.PS1
+    (.venv) PS > pip install --upgrade pip setuptools wheel
+    (.venv) PS > pip install --requirement requirements.txt
