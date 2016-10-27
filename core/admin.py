@@ -11,4 +11,5 @@ class Person(admin.ModelAdmin):
                     'name',
                     'surname',
                     'phone_number',
-                    'birthday',)
+                    'birthday',
+                    'age')
