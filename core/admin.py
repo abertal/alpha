@@ -13,3 +13,9 @@ class Person(admin.ModelAdmin):
                     'phone_number',
                     'birthday',
                     'age')
+                    
+@admin.register(models.Group)
+class Group(admin.ModelAdmin):
+    search_fields = ['group_name']
+
+    list_display = ('id', 'group_name')
