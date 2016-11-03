@@ -25,3 +25,10 @@ class Person(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.name.capitalize(), self.surname.upper())
+
+class Group(models.Model):
+    class Meta:
+        verbose_name:'Grupo'
+
+        group_name = models.TextField(verbose_name= 'Nombre del grupo')
+        
