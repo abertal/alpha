@@ -23,6 +23,6 @@ class Group(admin.ModelAdmin):
 
 @admin.register(models.PersonGroup)
 class PersonGroup(admin.ModelAdmin):
-    search_fields = ['id_group', 'id_person']
+    search_fields = ['group', 'person']
 
-    list_display = ('id_group', 'id_person')
+    list_display = ('group', 'person')
