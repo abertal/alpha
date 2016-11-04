@@ -20,3 +20,9 @@ class Group(admin.ModelAdmin):
     search_fields = ['group_name']
 
     list_display = ('id', 'group_name')
+
+@admin.register(models.PersonGroup)
+class PersonGroup(admin.ModelAdmin):
+    search_fields = ['id_group', 'id_person']
+
+    list_display = ('id_group', 'id_person')
