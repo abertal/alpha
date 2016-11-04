@@ -39,5 +39,5 @@ class Group(models.Model):
 
 
 class PersonGroup(models.Model):
-    person_id = models.ForeignKey(Person)
-    group_id = models.ForeignKey(Group)
+    person = models.ForeignKey(Person)
+    group = models.ForeignKey(Group)
