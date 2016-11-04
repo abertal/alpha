@@ -37,5 +37,5 @@ class Group(models.Model):
         return self.group_name
 
 class PersonGroup(models.Model):
-    person_id = models.ForeignKey(Person)
-    group_id = models.ForeignKey(Group)
+    person = models.ForeignKey(Person)
+    group = models.ForeignKey(Group)
