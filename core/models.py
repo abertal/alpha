@@ -35,3 +35,7 @@ class Group(models.Model):
 
     def __str__(self):
         return self.group_name
+
+class PersonGroup(models.Model):
+    person_id = models.ForeignKey(Person)
+    group_id = models.ForeignKey(Group)
