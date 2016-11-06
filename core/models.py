@@ -46,3 +46,5 @@ class Enrolment(models.Model):
 
     person = models.ForeignKey(Person)
     group = models.ForeignKey(Group)
+
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de inscripción')

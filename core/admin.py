@@ -26,4 +26,4 @@ class Group(admin.ModelAdmin):
 class Enrolment(admin.ModelAdmin):
     search_fields = ['group', 'person']
 
-    list_display = ('group', 'person')
+    list_display = ('group', 'person', 'created')
