@@ -57,4 +57,14 @@ recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
 
 Si hay algún error debe corregirse antes.
 
+También hay que comprobar que no hay errores en los tests. Para ejecutar los
+tests simplmente hay que ejecutar el comando `pytest`.
+
+.. code::
+
+    $ pytest
+
+Al igual que con la comprobación anterior, no se puede subir código que no pase
+los tests.
+
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
