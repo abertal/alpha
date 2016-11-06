@@ -14,3 +14,4 @@ install:
 # Estos son los tests que se ejecutarán
 script:
     - flake8
+    - pytest
