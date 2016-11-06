@@ -1,0 +1,16 @@
+# Archivo con la configuración de Travis CI, sistema
+#   de integración continua
+
+# Sólo se ejecuta con Python 3.5
+language: python
+python:
+  - "3.5"
+
+# Hay que instalar las dependencias
+install:
+  - pip install -r requirements.txt
+  - pip install -r dev-requirements.txt
+
+# Estos son los tests que se ejecutarán
+script:
+    - flake8
