@@ -44,3 +44,17 @@ Instrucciones instalación en Windows
     (.venv) PS > pip install --upgrade pip setuptools wheel
     (.venv) PS > pip install --requirement requirements.txt
     (.venv) PS > pip install --requirement dev-requirements.txt
+
+Tests y calidad de código
+-------------------------
+
+Antes de enviar un cambio hay que comprobar que el código sigue las
+recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
+
+.. code::
+
+    $ flake8
+
+Si hay algún error debe corregirse antes.
+
+.. _PEP8: https://www.python.org/dev/peps/pep-0008/
