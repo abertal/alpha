@@ -38,6 +38,10 @@ class Group(models.Model):
         return self.group_name
 
 
-class PersonGroup(models.Model):
+class Enrolment(models.Model):
+    class Meta:
+        verbose_name = 'Inscripción'
+        verbose_name_plural = 'Inscripciones'
+
     person = models.ForeignKey(Person)
     group = models.ForeignKey(Group)
