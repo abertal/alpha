@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import timesince
 
+
 class Person(models.Model):
     class Meta:
         verbose_name = 'Persona'
