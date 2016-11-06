@@ -42,6 +42,7 @@ class Enrolment(models.Model):
     class Meta:
         verbose_name = 'Inscripción'
         verbose_name_plural = 'Inscripciones'
+        unique_together = (('person', 'group'),)
 
     person = models.ForeignKey(Person)
     group = models.ForeignKey(Group)
