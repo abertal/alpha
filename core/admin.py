@@ -21,6 +21,7 @@ class Group(admin.ModelAdmin):
 
     list_display = ('id', 'group_name')
 
+
 @admin.register(models.PersonGroup)
 class PersonGroup(admin.ModelAdmin):
     search_fields = ['group', 'person']
