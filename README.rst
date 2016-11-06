@@ -31,6 +31,7 @@ Instrucciones instalación en Mac/Linux
     $ source .venv/bin/activate
     $ pip install --upgrade pip setuptools wheel
     $ pip install --requirement requirements.txt
+    $ pip install --requirement dev-requirements.txt
 
 Instrucciones instalación en Windows
 ------------------------------------
@@ -38,7 +39,8 @@ Instrucciones instalación en Windows
 .. code::
 
     PS > cd alpha
-    PS > python3 -m venv .venv 
+    PS > python3 -m venv .venv
     PS > .venv\Scripts\Activate.PS1
     (.venv) PS > pip install --upgrade pip setuptools wheel
     (.venv) PS > pip install --requirement requirements.txt
+    (.venv) PS > pip install --requirement dev-requirements.txt
