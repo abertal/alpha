@@ -45,6 +45,46 @@ Instrucciones instalación en Windows
     (.venv) PS > pip install --requirement requirements.txt
     (.venv) PS > pip install --requirement dev-requirements.txt
 
+Clonación del repositorio
+-------------------------
+
+Hay que crear una carpeta, donde clonaremos el repositorio.
+Desde el bash de git, nos ubicamos en la carpeta que acabamos de crear.
+
+..code::
+
+    git clone https://github.com/TuUsuarioGitHub/alpha.git
+
+Comprobamos que no haya modificaciones pendientes
+
+..code::
+
+    git status
+
+Para crear un repositorio vacio o reinicializar uno existente
+.. code::
+    git init
+
+Para trabajar , creamos un rama para no modificar el repositorio original
+.. code::
+    git branch NombreDeLaRama
+
+Nos cambiamos a la rama creada
+.. code::
+    git checkout ramauno
+
+Para añadir cambios a la rama
+.. code::
+    git add FicherosModificados
+
+Para guardar los cambios en la rama
+.. code::
+    git commit
+
+Para subir los cambios a la rama
+.. code::
+    git push origin NombreDeLaRama
+
 Tests y calidad de código
 -------------------------
 
