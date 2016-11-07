@@ -53,7 +53,7 @@ recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
 
 .. code::
 
-    PS > flake8
+    (.venv) PS > flake8
 
 Si hay algún error debe corregirse antes.
 
@@ -62,7 +62,7 @@ tests simplmente hay que ejecutar el comando `pytest`.
 
 .. code::
 
-    PS > pytest
+    (.venv) PS > pytest
 
 Al igual que con la comprobación anterior, no se puede subir código que no pase
 los tests.
