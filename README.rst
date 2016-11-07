@@ -51,13 +51,13 @@ Clonación del repositorio
 Hay que crear una carpeta, donde clonaremos el repositorio.
 Desde el bash de git, nos ubicamos en la carpeta que acabamos de crear.
 
-..code::
+.. code::
 
     git clone https://github.com/TuUsuarioGitHub/alpha.git
 
 Comprobamos que no haya modificaciones pendientes
 
-..code::
+.. code::
 
     git status
 
