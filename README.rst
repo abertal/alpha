@@ -29,9 +29,9 @@ Instrucciones instalación en Mac/Linux
     $ cd alpha
     $ python3 -m venv .venv
     $ source .venv/bin/activate
-    $ pip install --upgrade pip setuptools wheel
-    $ pip install --requirement requirements.txt
-    $ pip install --requirement dev-requirements.txt
+    (.venv) $ pip install --upgrade pip setuptools wheel
+    (.venv) $ pip install --requirement requirements.txt
+    (.venv) $ pip install --requirement dev-requirements.txt
 
 Instrucciones instalación en Windows
 ------------------------------------
@@ -53,7 +53,7 @@ recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
 
 .. code::
 
-    $ flake8
+    PS > flake8
 
 Si hay algún error debe corregirse antes.
 
@@ -62,7 +62,7 @@ tests simplmente hay que ejecutar el comando `pytest`.
 
 .. code::
 
-    $ pytest
+    PS > pytest
 
 Al igual que con la comprobación anterior, no se puede subir código que no pase
 los tests.
