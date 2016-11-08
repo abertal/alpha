@@ -68,3 +68,25 @@ Al igual que con la comprobación anterior, no se puede subir código que no pas
 los tests.
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
+
+Comunícate con nosotros
+-----------------------
+
+Hemos creado un grupo en Telegram, si lo deseais, teneis alguna idea o duda, no
+dudeis en instalarlo y preguntar
+
+Se puede hacer de varias maneras:
+
+- Si lo queréis en el móvil, solo debereis descargar la aplicación Telegram 
+(Tanto en iOs como en Android)
+- Si lo queréis en el ordenador, aquí os dejo el enlace de descarga: https://telegram.org/
+donde podréis descargar la versión que necesiteis (ya sea PC, Linux, Mac...)
+
+Una vez descargado, tendreis que poner vuestro número de teléfono para darse de alta, y poneros 
+un alias.
+
+Cuando termineis con la configuración, solo deberéis buscar el grupo alpha_desarrollo o hacer
+click en el siguiente enlace https://telegram.me/joinchat/Ch6vgAmZkCdB1v0_VB3uQA y ya podréis
+poneros en contacto con nosotros.
+
+Os esperamos!
