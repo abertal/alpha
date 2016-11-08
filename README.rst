@@ -61,27 +61,28 @@ Comprobamos que no haya modificaciones pendientes
 
     git status
 
-Para crear un repositorio vacio o reinicializar uno existente
-.. code::
-    git init
-
 Para trabajar , creamos un rama para no modificar el repositorio original
+
 .. code::
     git branch NombreDeLaRama
 
 Nos cambiamos a la rama creada
+
 .. code::
     git checkout ramauno
 
 Para añadir cambios a la rama
+
 .. code::
     git add FicherosModificados
 
 Para guardar los cambios en la rama
+
 .. code::
     git commit
 
 Para subir los cambios a la rama
+
 .. code::
     git push origin NombreDeLaRama
 
