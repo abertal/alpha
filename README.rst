@@ -91,6 +91,47 @@ Para subir los cambios a la rama
 
     git push origin NombreDeLaRama
 
+
+Borrado de ramas
+----------------
+Nos ubicamos en la rama master
+
+.. code::
+
+    git checkout master
+
+Para, poder borrar cualquier rama,nuestro master debe
+tener todos los cambios actualizados.
+
+.. code::
+
+    git fetch abertal
+
+Ahora ponemos al dia los cambios descargados.
+
+.. code::
+
+    git merge --ff-only abertal/master
+
+Ahora podemos borrar con seguridad la rama
+
+.. code::
+
+    git branch --delete NombreDeLaRama
+
+Ademas de la rama , borramos el remoto asociado.
+
+.. code::
+
+    git push origin --delete  NombreDeLaRama
+
+Para finalizar el proceso,actualizamos el fork en remoto
+
+.. code::
+
+    git push origin master
+
+
 Tests y calidad de código
 -------------------------
 
