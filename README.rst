@@ -91,6 +91,49 @@ Para subir los cambios a la rama
 
     git push origin NombreDeLaRama
 
+
+Borrado de ramas y su remote
+----------------------------
+
+Volvemos a la rama master,tras hacer pullrequest, en caso de que no lo estemos:
+
+.. code::
+
+    $ git checkout master
+
+Traemos los cambios del repositorio original:
+
+.. code::
+
+    $ git fetch abertal
+
+y ponemos al día nuestro master:
+
+.. code::
+
+    $ git merge --ff-only abertal/master
+
+Una vez el master esta actualizado, procedemos a borrar la rama:
+
+.. code::
+
+    $ git branch --delete nombre_de_la_rama
+
+Además hay que borrar la rama en el remoto:
+
+.. code::
+
+    $ git push origin --delete nombre_de_la_rama
+   
+
+Finalmente, actualizamos nuestro fork en el remoto (nuestro fork en el pc está actualizado desde el git merge anterior):
+
+.. code::
+
+    $ git push origin master
+
+
+
 Tests y calidad de código
 -------------------------
 
