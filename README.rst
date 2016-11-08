@@ -95,6 +95,7 @@ Para subir los cambios a la rama
 Borrado de ramas y su remote
 ----------------------------
 
+
 Volvemos a la rama master,tras hacer pullrequest, en caso de que no lo estemos:
 
 .. code::
