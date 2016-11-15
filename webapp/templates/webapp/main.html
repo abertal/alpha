@@ -1,10 +1,85 @@
 <html>
-<h1>Lista de grupos</h1>
-<ul>
-    {% for group in object_list %}
-    <li>{{ group.group_name }}</li>
-    {% empty %}
-    <li>No hay grupos</li>
-    {% endfor %}
-</ul>
+    <head>
+        
+       <style>
+#cajon{
+
+    width:98%;
+    height:700px;
+    margin:0 auto;
+    background-color:orange;
+}
+
+#cajaTitulo{
+
+    width:60%;
+    height:150;
+    background-color:black;
+    color:white;
+    margin: 0 auto;
+}
+#titulo{
+
+    text-align:center;
+    padding-top:50px;
+}
+.letraTitulo{
+    font-size:20pt;
+    font-wright:bolder;
+}
+#cajaLista{
+    width:80%;
+    height:500;
+    background-color:white;
+    border:2px solid black;
+    color:black;
+    margin: 0 auto;
+    border-radius:15px;
+
+}
+.lista{
+    width:48%;
+    float:left;
+    text-align:center;
+    margin:15px auto;
+    padding:0;
+}
+#lista{
+    text-align:center;
+    margin:0;
+    padding:0;
+}
+
+       </style>
+    </head>
+    <body>
+        <h1>Lista de grupos</h1>
+        <div id="cajon">
+            <div id="cajaTitulo">
+                <div id="titulo">
+                    <span class="letraTitulo">
+                        Lista de Usuarios por Grupo
+                    </span>
+                </div>
+            </div>
+            <div id="cajaLista">
+                <div id="lista">
+                    <ul class="lista">
+                        {% for group in object_list %}
+                        {{ group.group_name }}
+                        {% empty %}
+                        No hay grupos
+                        {% endfor %}
+                    </ul>
+                    <ul class="lista">
+                        {% for group in object_list %}
+                        {{ group.group_name }}
+                        {% empty %}
+                        No hay grupos
+                        {% endfor %}
+                    </ul>
+                </div>    
+            </div>
+        </div>
+    </body>
 </html>
