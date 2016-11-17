@@ -1,7 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
-        
+        <title>AbertalWebapp</title>
+        <meta charset="UTF-8">
        <style>
+
+.center{
+
+    text-align:center;
+}           
 #cajon{
 
     width:98%;
@@ -21,7 +28,8 @@
 #titulo{
 
     text-align:center;
-    padding-top:50px;
+    padding-top:40px;
+    padding-bottom:20px;
 }
 .letraTitulo{
     font-size:20pt;
@@ -29,8 +37,8 @@
 }
 #cajaLista{
     width:80%;
-    height:500;
-    background-color:white;
+    height:500px;
+    background-color:black;
     border:2px solid black;
     color:black;
     margin: 0 auto;
@@ -38,11 +46,14 @@
 
 }
 .lista{
-    width:48%;
+    width:50%;
     float:left;
     text-align:center;
-    margin:15px auto;
+    margin:20px auto;
     padding:0;
+    height:20px;
+    background-color:white;
+    border-radius:5px;
 }
 #lista{
     text-align:center;
@@ -53,7 +64,7 @@
        </style>
     </head>
     <body>
-        <h1>Lista de grupos</h1>
+        <h1 class="center">Lista de grupos</h1>
         <div id="cajon">
             <div id="cajaTitulo">
                 <div id="titulo">
@@ -65,18 +76,22 @@
             <div id="cajaLista">
                 <div id="lista">
                     <ul class="lista">
-                        {% for group in object_list %}
-                        {{ group.group_name }}
-                        {% empty %}
-                        No hay grupos
-                        {% endfor %}
+                       <li> 
+                            {% for group in object_list %}
+                            {{ group.group_name }}
+                            {% empty %}
+                            No hay grupos
+                            {% endfor %}
+                        </li>
                     </ul>
                     <ul class="lista">
-                        {% for group in object_list %}
-                        {{ group.group_name }}
-                        {% empty %}
-                        No hay grupos
-                        {% endfor %}
+                        <li>
+                            {% for group in object_list %}
+                            {{ group.group_name }}
+                            {% empty %}
+                            No hay grupos
+                            {% endfor %}
+                        </li>
                     </ul>
                 </div>    
             </div>
