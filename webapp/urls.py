@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.group_list),
-    #url(r'^$', views.contact_page)
+#url(r'^$', views.contact_page)
 ]

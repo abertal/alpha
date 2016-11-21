@@ -9,4 +9,4 @@ def group_list(request):
     return render(request, 'webapp/main.html', context=context)
 
 #def contact_page(request):
-    #return render(request, include('webapp/contact.html'))
+#return render(request, include('webapp/contact.html'))
