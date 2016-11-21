@@ -37,8 +37,7 @@
 }
 #cajaLista{
     width:80%;
-    height:500px;
-    background-color:black;
+    height:543px;
     border:2px solid black;
     color:black;
     margin: 0 auto;
@@ -59,6 +58,38 @@
     text-align:center;
     margin:0;
     padding:0;
+    background-color:red;
+    width:100%;
+    height:500px;
+    border-radius:14px;
+}
+
+.label{
+
+    color:white;
+    font-weight:bold;
+    font-size:14pt;
+}
+.cajaInput{
+
+width:20%;
+float:left;
+margin: 10px 20px;
+
+}
+
+.clearFix{
+
+clear:both;
+
+}
+.botones{
+height:50px;
+width:50%;
+margin:0 auto;
+float:left;
+text-align:center;
+
 }
 
        </style>
@@ -74,6 +105,18 @@
                 </div>
             </div>
             <div id="cajaLista">
+                <form>
+                    <div class="cajaInput">
+                        <label class="label" for="nome">Nome</label> <input class="input" name="nome" type="text" placeholder="Nome" ></div>
+                    <div class="cajaInput">
+                        <label class="label" for="apelidos">Correo</label> <input class="input" name="apelidos" type="text" placeholder="Apelidos" ></div>
+                    <div class="cajaInput">
+                        <label class="label" for="grupo">Grupo</label><input class="input" name="grupo" type="text" placeholder="Grupo"></div>
+                    <div class="cajaInput">
+                         <label class="label" for="rol">Rol</label><input class="input" name="rol" type="text" placeholder="Rol">
+                    </div>
+                </form>
+                <div class="clearFix"></div>
                 <div id="lista">
                     <ul class="lista">
                        <li> 
@@ -94,6 +137,10 @@
                         </li>
                     </ul>
                 </div>    
+            </div>
+            <div >
+                <div class="botones"><input type="button" value="gardar"></div>
+                <div class="botones"><input type="button" value="engadir"></div>
             </div>
         </div>
     </body>
