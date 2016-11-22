@@ -1,10 +1,27 @@
 <html>
-<h1>Lista de grupos</h1>
-<ul>
-    {% for group in object_list %}
-    <li>{{ group.group_name }}</li>
-    {% empty %}
-    <li>No hay grupos</li>
-    {% endfor %}
-</ul>
+    <head>
+        <title>Abertal WebApp</title>
+        <meta charset="UTF-8">
+        <style>
+                #cajaLista{
+
+                    width:95%;
+                    height:600px;
+                    border:black solid 2px;
+
+                }
+        </style>
+    </head>
+    <body>
+        <h1>Lista de grupos</h1>
+        <div id="cajaLista">
+            <ul>
+                {% for group in object_list %}
+                <li><a href="#">{{ group.group_name }}</a></li>
+                {% empty %}
+                <li>No hay grupos</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
 </html>
