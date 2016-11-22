@@ -1,147 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>AbertalWebapp</title>
-        <meta charset="UTF-8">
-       <style>
 
-.center{
+<head>
+	<title>AbertalWebapp</title>
+	<meta charset="UTF-8">
+	<style>
+		.center {
+			text-align: center;
+		}
+		
+		#cajon {
+			width: 98%;
+			height: 700px;
+			margin: 0 auto;
+			background-color: orange;
+		}
+		
+		#cajaTitulo {
+			width: 60%;
+			height: 150;
+			background-color: black;
+			color: white;
+			margin: 0 auto;
+		}
+		
+		#titulo {
+			text-align: center;
+			padding-top: 40px;
+			padding-bottom: 20px;
+		}
+		
+		.letraTitulo {
+			font-size: 20pt;
+			font-weight: bolder;
+		}
+		
+		#cajaLista {
+			width: 80%;
+			height: 543px;
+			border: 2px solid black;
+			color: black;
+			margin: 0 auto;
+			border-radius: 15px;
+		}
+		
+		.lista {
+			width: 50%;
+			float: left;
+			text-align: center;
+			margin: 20px auto;
+			padding: 0;
+			height: 20px;
+			background-color: white;
+			border-radius: 5px;
+		}
+		
+		#lista {
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			background-color: red;
+			width: 100%;
+			height: 500px;
+			border-radius: 14px;
+		}
+		
+		.label {
+			color: white;
+			font-weight: bold;
+			font-size: 14pt;
+		}
+		
+		.cajaInput {
+			width: 20%;
+			float: left;
+			margin: 10px 20px;
+		}
+		
+		.clearFix {
+			clear: both;
+		}
+		
+		.botones {
+			height: 50px;
+			width: 50%;
+			margin: 0 auto;
+			float: left;
+			text-align: center;
+		}
+	</style>
+</head>
 
-    text-align:center;
-}           
-#cajon{
-
-    width:98%;
-    height:700px;
-    margin:0 auto;
-    background-color:orange;
-}
-
-#cajaTitulo{
-
-    width:60%;
-    height:150;
-    background-color:black;
-    color:white;
-    margin: 0 auto;
-}
-#titulo{
-
-    text-align:center;
-    padding-top:40px;
-    padding-bottom:20px;
-}
-.letraTitulo{
-    font-size:20pt;
-    font-wright:bolder;
-}
-#cajaLista{
-    width:80%;
-    height:543px;
-    border:2px solid black;
-    color:black;
-    margin: 0 auto;
-    border-radius:15px;
-
-}
-.lista{
-    width:50%;
-    float:left;
-    text-align:center;
-    margin:20px auto;
-    padding:0;
-    height:20px;
-    background-color:white;
-    border-radius:5px;
-}
-#lista{
-    text-align:center;
-    margin:0;
-    padding:0;
-    background-color:red;
-    width:100%;
-    height:500px;
-    border-radius:14px;
-}
-
-.label{
-
-    color:white;
-    font-weight:bold;
-    font-size:14pt;
-}
-.cajaInput{
-
-width:20%;
-float:left;
-margin: 10px 20px;
-
-}
-
-.clearFix{
-
-clear:both;
-
-}
-.botones{
-height:50px;
-width:50%;
-margin:0 auto;
-float:left;
-text-align:center;
-
-}
-
-       </style>
-    </head>
-    <body>
-        <h1 class="center">Lista de grupos</h1>
-        <div id="cajon">
-            <div id="cajaTitulo">
-                <div id="titulo">
-                    <span class="letraTitulo">
+<body>
+	<h1 class="center">Lista de grupos</h1>
+	<div id="cajon">
+		<div id="cajaTitulo">
+			<div id="titulo">
+				<span class="letraTitulo">
                         Lista de Usuarios por Grupo
                     </span>
-                </div>
-            </div>
-            <div id="cajaLista">
-                <form>
-                    <div class="cajaInput">
-                        <label class="label" for="nome">Nome</label> <input class="input" name="nome" type="text" placeholder="Nome" ></div>
-                    <div class="cajaInput">
-                        <label class="label" for="apelidos">Correo</label> <input class="input" name="apelidos" type="text" placeholder="Apelidos" ></div>
-                    <div class="cajaInput">
-                        <label class="label" for="grupo">Grupo</label><input class="input" name="grupo" type="text" placeholder="Grupo"></div>
-                    <div class="cajaInput">
-                         <label class="label" for="rol">Rol</label><input class="input" name="rol" type="text" placeholder="Rol">
-                    </div>
-                </form>
-                <div class="clearFix"></div>
-                <div id="lista">
-                    <ul class="lista">
-                       <li> 
-                            {% for group in object_list %}
-                            {{ group.group_name }}
-                            {% empty %}
-                            No hay grupos
-                            {% endfor %}
-                        </li>
-                    </ul>
-                    <ul class="lista">
-                        <li>
-                            {% for group in object_list %}
-                            {{ group.group_name }}
-                            {% empty %}
-                            No hay grupos
-                            {% endfor %}
-                        </li>
-                    </ul>
-                </div>    
-            </div>
-            <div>
-                <div class="botones"><input type="button" value="gardar"></div>
-                <div class="botones"><input type="button" value="engadir"></div>
-            </div>
-        </div>
-    </body>
+			</div>
+		</div>
+		<div id="cajaLista">
+			<form>
+				<div class="cajaInput">
+					<label class="label" for="nome">Nome</label> <input class="input" name="nome" type="text" placeholder="Nome"></div>
+				<div class="cajaInput">
+					<label class="label" for="apelidos">Correo</label> <input class="input" name="apelidos" type="text" placeholder="Apelidos"></div>
+				<div class="cajaInput">
+					<label class="label" for="grupo">Grupo</label><input class="input" name="grupo" type="text" placeholder="Grupo"></div>
+				<div class="cajaInput">
+					<label class="label" for="rol">Rol</label><input class="input" name="rol" type="text" placeholder="Rol">
+				</div>
+			</form>
+			<div class="clearFix"></div>
+			<div id="lista">
+				<ul class="lista">
+					<li>
+						{% for group in object_list %} {{ group.group_name }} {% empty %} No hay grupos {% endfor %}
+					</li>
+				</ul>
+				<ul class="lista">
+					<li>
+						{% for group in object_list %} {{ group.group_name }} {% empty %} No hay grupos {% endfor %}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<div class="botones"><input type="button" value="gardar"></div>
+			<div class="botones"><input type="button" value="engadir"></div>
+		</div>
+	</div>
+</body>
+
 </html>
