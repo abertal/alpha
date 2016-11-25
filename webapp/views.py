@@ -8,6 +8,7 @@ def group_list(request):
     context = {'object_list': object_list}
     return render(request, 'webapp/main.html', context=context)
 
+
 def group_detail(request, pk):
     object = models.Group.objects.get(pk=pk)
     context = {'object': object}
@@ -19,7 +20,9 @@ def person_list(request):
     context = {'object_list': object_list}
     return render(request, 'webapp/person_list.html', context=context)
 
+
 def person_detail(request, pk):
     object = model.Person.objects.get(pk=pk)
     context = {'object': object}
     return render(request, 'webapp/person_detail.html', context=context)
+    
