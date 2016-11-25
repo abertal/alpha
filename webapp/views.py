@@ -25,4 +25,3 @@ def person_detail(request, pk):
     object = models.Person.objects.get(pk=pk)
     context = {'object': object}
     return render(request, 'webapp/person_detail.html', context=context)
-
