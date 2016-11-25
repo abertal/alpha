@@ -16,11 +16,9 @@
     <h1>Lista de grupos</h1>
     <div id="cajaLista">
         <ul>
-            {% for group in object_list %}
-            <li><a href="{% url 'group_detail' pk=group.pk %}">{{ group.group_name }}</a></li>
-            {% empty %}
-            <li>No hay grupos</li>
-            {% endfor %}
+
+            <li><a >{{ Person.name}}</a></li>
+            
         </ul>
     </div>
 </body>
