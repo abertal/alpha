@@ -10,8 +10,9 @@ def group_list(request):
 
 
 def group_detail(request, pk):
-    object = models.Group.objects.get(pk=pk)
-    context = {'object': object}
+    obj = models.Group.objects.get(pk=pk)
+    people = models.Person.objects.filter(enrolment__group=obj)
+    context = {'object': obj, 'people': people}
     return render(request, 'webapp/detail.html', context=context)
 
 

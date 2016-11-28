@@ -17,7 +17,12 @@
     <div id="cajaLista">
         <ul>
 
-            <li><a>{{ group.group_name }}</a></li>
+            <li><a>{{ object.group_name }}</a></li>
+
+            <pre>{% for person in people %}
+                {{ forloop.counter }},{{ person.name }} {{ person.age }}
+                {% endfor %}
+            </pre>
 
         </ul>
     </div>
