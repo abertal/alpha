@@ -20,7 +20,7 @@
             <li><a>{{ object.group_name }}</a></li>
 
             <pre>{% for person in people %}
-                {{ forloop.counter }},{{ person.name }} {{ person.age }}
+                {{ forloop.counter }} - {{ person.name }}{{person.surname}} {{ person.age }}, {{person.email}}, {{person.phone_number}}
                 {% endfor %}
             </pre>
 
