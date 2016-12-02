@@ -22,7 +22,7 @@ class Person(models.Model):
 
     @property
     def age(self):
-        return timesince(self.birthday)
+        return timesince(self.birthday) if self.birthday else None
 
     def __str__(self):
         return '{} {}'.format(self.name.capitalize(), self.surname.upper())
