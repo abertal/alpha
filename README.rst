@@ -2,6 +2,9 @@
 alpha project
 =============
 
+.. image:: https://travis-ci.org/abertal/alpha.svg?branch=master
+    :target: https://travis-ci.org/abertal/alpha
+
 .. image:: https://codecov.io/gh/abertal/alpha/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/abertal/alpha
 
