@@ -14,7 +14,7 @@ install:
 # Estos son los tests que se ejecutarán
 script:
     - flake8
-    - pytest
+    - pytest --cov=./ --cov-report=xml
 
 # Lanza página para medir cobertura
 # Se puede ver en https://codecov.io/gh/abertal/alpha
