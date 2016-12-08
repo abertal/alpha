@@ -2,6 +2,9 @@
 alpha project
 =============
 
+.. image:: https://codecov.io/gh/abertal/alpha/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/abertal/alpha
+
 **alpha project** is proof of concept of a web application to manage an
 association day-to-day operations.
 
@@ -125,7 +128,7 @@ Además hay que borrar la rama en el remoto:
 .. code::
 
     $ git push origin --delete nombre_de_la_rama
-   
+
 
 Finalmente, actualizamos nuestro fork en el remoto (nuestro fork en el pc está actualizado desde el git merge anterior):
 
