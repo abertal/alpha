@@ -91,3 +91,6 @@ ENV/
 
 #Database file
 *.sqlite3
+
+#ExcelDataFile
+Master.xls
