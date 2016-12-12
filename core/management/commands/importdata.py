@@ -35,10 +35,13 @@ class Command(BaseCommand):
                 'surname': data['Apelidos'],
                 'phone_number': data['Telefono movil'],
             }
-            person = models.Person.objects.update_or_create(
+            person, created = models.Person.objects.update_or_create(
                 id=data['IdUsuario'],
                 defaults=defaults,
             )
+            action = 'Creada' if created else 'Actualizada'
+            msg = '{} persona con UID {}'.format(action, person.id)
+            self.stdout.write(self.style.SUCCESS(msg))
 
     def handle(self, *args, **options):
         fp = options['filename']
