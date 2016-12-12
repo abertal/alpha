@@ -2,6 +2,8 @@ import argparse
 
 from django.core.management.base import BaseCommand
 
+from core import models
+
 from openpyxl import load_workbook
 
 
@@ -26,6 +28,17 @@ class Command(BaseCommand):
             values = [cell.value for cell in row]
             data = dict(zip(header, values))
             self.print_row_details(row_number, data)
+
+            # Create or update
+            defaults = {
+                'name': data['Nome'],
+                'surname': data['Apelidos'],
+                'phone_number': data['Telefono movil'],
+            }
+            person = models.Person.objects.update_or_create(
+                id=data['IdUsuario'],
+                defaults=defaults,
+            )
 
     def handle(self, *args, **options):
         fp = options['filename']
