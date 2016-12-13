@@ -31,11 +31,25 @@ class Command(BaseCommand):
 
             # Create or update
             defaults = {
-                'name': data['Nome'],
-                'surname': data['Apelidos'],
-                'phone_number': data['Telefono movil'],
+		'uid': data['IdUsuario'],
+		'uuid': data['IdFamilia'],
+        'name': data['Nome'],
+        'surname': data['Apelidos'],
+		'role': data['Rol'],
+		'group': data['Grupo'],
+        'phone_number': data['Telefono fixo'],
+		'mobile_number': data['Telefono movil'],
+		'email': data['Email'],
+		'id_card': data['DNI autorizado'],
+		'ss_card': data['Tarjeta sanitaria'],
+		'photo': data['Foto'],
+		'DPA': data['LOPD'],
+		'membership_fee': data['Cuota socio'],
+		'membership_payment': data['Pago'],
+		'done_idmembership': data['Carnet para entregar'],
+		'delivered_idmembership': data['Carnet entregado'],
             }
-            person = models.Person.objects.update_or_create(
+             membership = models.Membership.objects.update_or_create(
                 id=data['IdUsuario'],
                 defaults=defaults,
             )
