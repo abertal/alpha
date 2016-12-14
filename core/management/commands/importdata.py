@@ -31,33 +31,36 @@ class Command(BaseCommand):
 
             # Create or update
             defaults = {
-                'uid': data['IdUsuario'],
-		              'uuid': data['IdFamilia'],
+                'uuid': data['IdFamilia'],
                 'name': data['Nome'],
                 'surname': data['Apelidos'],
-		              'role': data['Rol'],
-		              'group': data['Grupo'],
+                'role': data['Rol'],
+                'group': data['Grupo'],
                 'phone_number': data['Telefono fixo'],
-		              'mobile_number': data['Telefono movil'],
-		              'email': data['Email'],
-		              'id_card': data['DNI autorizado'],
-		              'ss_card': data['Tarjeta sanitaria'],
-		              'photo': data['Foto'],
-		              'DPA': data['LOPD'],
-		              'membership_fee': data['Cuota socio'],
-		              'membership_payment': data['Pago'],
-		              'done_idmembership': data['Carnet para entregar'],
-		              'delivered_idmembership': data['Carnet entregado'],
+                'mobile_number': data['Telefono movil'],
+                'email': data['Email'],
+                'id_card': data['DNI autorizado'],
+                'ss_card': data['Tarjeta sanitaria'],
+                'photo': data['Foto'],
+                'DPA': data['LOPD'],
+                'membership_fee': data['Cuota socio'],
+                'membership_payment': data['Pago'],
+                'done_idmembership': data['Carnet para entregar'],
+                'delivered_idmembership': data['Carnet entregado'],
             }
-            membership = models.Membership.objects.update_or_create(
+
+            membership, created = models.Membership.object.update_or_create(
                 id=data['IdUsuario'],
                 defaults=defaults,
             )
+            action = 'Creada' if created else 'Actualizada'
+            msg = '{} persona con UID {}'.format(action, membership.id)
+            self.stdout.write(self.style.SUCCESS(msg))
 
     def handle(self, *args, **options):
         fp = options['filename']
         wb = load_workbook(fp, read_only=True)
-        ws = wb['Hoja1']
+        ws = wb['usuarios']
         self.process_worksheet(ws)
-        self.stdout.write(self.style.SUCCESS('Importación finalizada con éxito.'))
-        
+        self.stdout.write(self.style.SUCCESS(
+            'Importación finalizada con éxito.'))
