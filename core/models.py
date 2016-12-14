@@ -73,7 +73,7 @@ class Membership(models.Model):
     class Meta:
         verbose_name = 'Membresia'
 
-    id = models.UUIDField(primary_key=True, default='', editable=False)
+    id = models.TextField(primary_key=True, default='', editable=False)
 
     uuid = models.TextField(verbose_name='id Membresia', blank=True, default='')
     name = models.TextField(verbose_name='Nombre', blank=True, default='')
