@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.template.defaultfilters import timesince
 
@@ -5,6 +7,8 @@ from django.template.defaultfilters import timesince
 class Person(models.Model):
     class Meta:
         verbose_name = 'Persona'
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     name = models.TextField(verbose_name='Nombre')
     surname = models.TextField(verbose_name='Apellidos')
