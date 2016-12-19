@@ -73,6 +73,8 @@ class Membership(models.Model):
     class Meta:
         verbose_name = 'Membresia'
 
+    person = models.ForeignKey(Person)
+    
     type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
     # Documentation
