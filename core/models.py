@@ -85,7 +85,7 @@ class Membership(models.Model):
     email = models.TextField(verbose_name='email', blank=True, default='')
     id_card = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
     ss_card = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
-    photo = models.TextField(verbose_name='Foto', blank='True', default='')
+    photo = models.TextField(verbose_name='Foto', blank=True, default='')
     DPA = models.TextField(verbose_name='LOPD', blank=True, default='')
     membership_fee = models.TextField(verbose_name='Cuota de membresia', blank=True, default='')
     membership_payment = models.TextField(verbose_name='Pago de membresia', blank=True, default='')
