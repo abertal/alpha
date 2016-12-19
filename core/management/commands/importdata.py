@@ -1,10 +1,9 @@
 import argparse
 
 from django.core.management.base import BaseCommand
+from openpyxl import load_workbook
 
 from core import models
-
-from openpyxl import load_workbook
 
 
 class Command(BaseCommand):
