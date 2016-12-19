@@ -70,6 +70,7 @@ class Enrolment(models.Model):
     created = models.DateTimeField(
         auto_now_add=True, verbose_name='Fecha de inscripción')
 
+
 class Membership(models.Model):
 
     class Meta:
@@ -84,8 +85,12 @@ class Membership(models.Model):
     ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
     photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
     dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
-
-    membership_fee = models.DecimalField(verbose_name='Cuota de membresia', decimal_places=2, max_digits=6)
     payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
+
+    membership_fee = models.DecimalField(
+        verbose_name='Cuota de membresia',
+        decimal_places=2,
+        max_digits=6,
+    )
 
     card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
