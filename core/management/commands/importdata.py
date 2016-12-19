@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('filename', type=argparse.FileType('rb'))
-
+        
     def print_row_details(self, row_number, data):
         print('-- Línea {row_number}'.format(row_number=row_number))
         for key, value in data.items():
@@ -26,7 +26,11 @@ class Command(BaseCommand):
                 header = [cell.value for cell in row]
                 continue
             values = [cell.value for cell in row]
+            print('cadena values')
+            print(values)
             data = dict(zip(header, values))
+            print('cadena len')
+            print(len(data))
             self.print_row_details(row_number, data)
 
             # Create or update
@@ -59,6 +63,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         fp = options['filename']
+        print('cadena fp')
+        print(fp)
         wb = load_workbook(fp, read_only=True)
         ws = wb['usuarios']
         self.process_worksheet(ws)
