@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='membership',
             name='person',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='core.Person'),
+            field=models.ForeignKey(default='3c8ce552-47ba-42cc-be9a-6625117072ab', on_delete=django.db.models.deletion.CASCADE, to='core.Person'),
             preserve_default=False,
         ),
     ]
