@@ -27,3 +27,18 @@ class Enrolment(admin.ModelAdmin):
     search_fields = ['group', 'person']
 
     list_display = ('group', 'person', 'created')
+
+
+@admin.register(models.Membership)
+class Membership(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'person',
+        'id_card_status',
+        'ss_card_status',
+        'photo_status',
+        'dpa_status',
+        'membership_fee',
+        'payment_status',
+        'card_status',
+    )
