@@ -24,29 +24,31 @@ class Command(BaseCommand):
             # Row 1 to 3 are empty
             if row_number in [1, 2, 3]:
                 continue
-            
+
             # First row contains the headers
             if not header:
                 header = [cell.value for cell in row]
+                print('Leída cabecera: ', header)
                 continue
+            
+            # Regular row
             values = [cell.value for cell in row]
-            print('cadena values')
-            print(values)
+            print('Leída fila: ', values)
             data = dict(zip(header, values))
-            print('cadena len')
-            print(len(data))
             self.print_row_details(row_number, data)
 
             # Create or update
-            defaults = {
-                'uuid': data['IdFamilia'],
+            person_data = {
                 'name': data['Nome'],
                 'surname': data['Apelidos'],
-                'role': data['Rol'],
-                'group': data['Grupo'],
+                # 'role': data['Rol'],
+                # 'group': data['Grupo'],
                 'phone_number': data['Telefono fixo'],
                 'mobile_number': data['Telefono movil'],
                 'email': data['Email'],
+            }
+            membership_data = {
+                #'uuid': data['IdFamilia'],
                 'id_card': data['DNI autorizado'],
                 'ss_card': data['Tarjeta sanitaria'],
                 'photo': data['Foto'],
@@ -56,19 +58,20 @@ class Command(BaseCommand):
                 'done_idmembership': data['Carnet para entregar'],
                 'delivered_idmembership': data['Carnet entregado'],
             }
-
-            membership, created = models.Membership.object.update_or_create(
+            person, created = models.Person.objects.update_or_create(
                 id=data['IdUsuario'],
-                defaults=defaults,
+                defaults=person_data,
             )
             action = 'Creada' if created else 'Actualizada'
-            msg = '{} persona con UID {}'.format(action, membership.id)
+            msg = '{} persona con UID {}'.format(action, person.id)
             self.stdout.write(self.style.SUCCESS(msg))
+
+            membership, created = models.Membership.objects.update_or_create(
+                ...
+            )
 
     def handle(self, *args, **options):
         fp = options['filename']
-        print('cadena fp')
-        print(fp)
         wb = load_workbook(fp, read_only=True)
         ws = wb['usuarios']
         self.process_worksheet(ws)
