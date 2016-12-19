@@ -49,14 +49,14 @@ class Command(BaseCommand):
             }
             membership_data = {
                 #'uuid': data['IdFamilia'],
-                'id_card': data['DNI autorizado'],
-                'ss_card': data['Tarjeta sanitaria'],
-                'photo': data['Foto'],
-                'DPA': data['LOPD'],
-                'membership_fee': data['Cuota socio'],
-                'membership_payment': data['Pago'],
-                'done_idmembership': data['Carnet para entregar'],
-                'delivered_idmembership': data['Carnet entregado'],
+                'id_card_status': data['DNI autorizado'] or '',
+                'ss_card_status': data['Tarjeta sanitaria'] or '',
+                'photo_status': data['Foto'] or '',
+                'dpa_status': data['LOPD'] or '',
+                'membership_fee': data['Cuota socio'] or '',
+                'payment_status': data['Pago'] or '',
+                #'done_idmembership': data['Carnet para entregar'] or '',
+                #'delivered_idmembership': data['Carnet entregado'] or '',
             }
             person, created = models.Person.objects.update_or_create(
                 id=data['IdUsuario'],
@@ -66,9 +66,14 @@ class Command(BaseCommand):
             msg = '{} persona con UID {}'.format(action, person.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
+            print('Membership defaults: ', membership_data)
             membership, created = models.Membership.objects.update_or_create(
-                ...
+                person=person,
+                defaults=membership_data,
             )
+            action = 'Creada' if created else 'Actualizada'
+            msg = '{} membresía con ID {}'.format(action, membership.id)
+            self.stdout.write(self.style.SUCCESS(msg))
 
     def handle(self, *args, **options):
         fp = options['filename']
