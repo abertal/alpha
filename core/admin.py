@@ -33,6 +33,7 @@ class Enrolment(admin.ModelAdmin):
 class Membership(admin.ModelAdmin):
     list_display = (
         'id',
+        'person',
         'id_card_status',
         'ss_card_status',
         'photo_status',
