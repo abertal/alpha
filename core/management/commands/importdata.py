@@ -55,9 +55,19 @@ class Command(BaseCommand):
                 'dpa_status': data['LOPD'] or '',
                 'membership_fee': data['Cuota socio'] or '',
                 'payment_status': data['Pago'] or '',
-                #'done_idmembership': data['Carnet para entregar'] or '',
-                #'delivered_idmembership': data['Carnet entregado'] or '',
             }
+
+            # `card_status´
+            por_entregar  = data['Carnet para entregar'] == 'si'
+            entregado = data['Carnet entregado'] == 'si'
+            if entregado:
+                card_status = 'Entregado'
+            elif por_entregar:
+                card_status = 'Por entregar'
+            else:
+                card_status = 'Falta documentación'
+            membership_data['card_status'] = card_status
+
             person, created = models.Person.objects.update_or_create(
                 id=data['IdUsuario'],
                 defaults=person_data,
