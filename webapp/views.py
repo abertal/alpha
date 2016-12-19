@@ -26,3 +26,9 @@ def person_detail(request, pk):
     object = models.Person.objects.get(pk=pk)
     context = {'object': object}
     return render(request, 'webapp/person_detail.html', context=context)
+
+
+def missing_doc(request):
+    object_list = models.Membership.objects.exclude(id_card_status='si')
+    context = {'object_list': object_list}
+    return render(request, 'webapp/missing_doc.html', context=context)

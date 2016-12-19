@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Abertal WebApp</title>
+    <meta charset="UTF-8">
+    <style>
+        #cajaLista {
+            width: 95%;
+            height: 600px;
+            border: black solid 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lista de grupos</h1>
+    <div id="cajaLista">
+        <ul>
+            {% for membership in object_list %}
+            <li>
+                {{ membership.person.name }}
+                DNI: {{ membership.id_card_status}}
+            </li>
+            {% empty %}
+            <li>Nada</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
