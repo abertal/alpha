@@ -6,6 +6,7 @@ class Person(models.Model):
     class Meta:
         verbose_name = 'Persona'
 
+    #id_user = models.TextField(verbose_name='IdUsuario')
     name = models.TextField(verbose_name='Nombre')
     surname = models.TextField(verbose_name='Apellidos')
     birthday = models.DateField(verbose_name='Fecha de nacimiento', blank=True, null=True)

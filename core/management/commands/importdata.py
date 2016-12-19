@@ -31,10 +31,11 @@ class Command(BaseCommand):
             defaults = {
                 'name' : data['Nome'],
                 'surname' : data['Apelidos'],
-                'phone_number' : data['Telefono movil']
+                'phone_number' : data['Telefono movil'],
+                'email' : data['Email'],
             }
             person, created = models.Person.objects.update_or_create(
-                id=data['IdUsuariol'],
+                id=data['IdUsuario'],
                 defaults=defaults,
             )
             action = 'Creada' if created else 'Actualizada'
@@ -44,6 +45,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         fp = options['filename']
         wb = load_workbook(fp, read_only=True)
-        ws = wb['Hoja1']
+        ws = wb['usuarios']
         self.process_worksheet(ws)
         self.stdout.write(self.style.SUCCESS('Importación finalizada con éxito.'))
