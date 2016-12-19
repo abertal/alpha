@@ -29,6 +29,8 @@ class Person(models.Model):
         verbose_name='País', blank=True, default='')
     phone_number = models.TextField(
         verbose_name='Teléfono', blank=True, default='')
+    mobile_number = models.TextField(
+        verbose_name='Teléfono móvil', blank=True, default='')
     email = models.EmailField(
         verbose_name='Correo electrónico', blank=True, default='')
     comment = models.TextField(
@@ -74,7 +76,7 @@ class Membership(models.Model):
         verbose_name = 'Membresia'
 
     person = models.ForeignKey(Person)
-    
+
     type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
     # Documentation
