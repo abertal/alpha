@@ -31,6 +31,13 @@ class Enrolment(admin.ModelAdmin):
 
 @admin.register(models.Membership)
 class Membership(admin.ModelAdmin):
-    list_display = ('id', 'uuid', 'name', 'surname', 'role', 'group', 'phone_number',
-                    'mobile_number', 'email', 'id_card', 'ss_card', 'photo', 'DPA', 'membership_fee',
-                    'membership_payment', 'done_idmembership', 'delivered_idmembership')
+    list_display = (
+        'id',
+        'id_card_status',
+        'ss_card_status',
+        'photo_status',
+        'dpa_status',
+        'membership_fee',
+        'payment_status',
+        'card_status',
+    )

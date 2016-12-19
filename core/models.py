@@ -73,21 +73,15 @@ class Membership(models.Model):
     class Meta:
         verbose_name = 'Membresia'
 
-    id = models.TextField(primary_key=True, default='', editable=False)
+    type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
-    uuid = models.TextField(verbose_name='id Membresia', blank=True, default='')
-    name = models.TextField(verbose_name='Nombre', blank=True, default='')
-    surname = models.TextField(verbose_name='Apellidos', blank=True, default='')
-    role = models.TextField(verbose_name='Rol', blank=True, default='')
-    group = models.TextField(verbose_name='Grupo', blank=True, default='')
-    phone_number = models.TextField(verbose_name='Teléfono', blank=True, default='')
-    mobile_number = models.TextField(verbose_name='Movil', blank=True, default='')
-    email = models.TextField(verbose_name='email', blank=True, default='')
-    id_card = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
-    ss_card = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
-    photo = models.TextField(verbose_name='Foto', blank=True, default='')
-    DPA = models.TextField(verbose_name='LOPD', blank=True, default='')
-    membership_fee = models.TextField(verbose_name='Cuota de membresia', blank=True, default='')
-    membership_payment = models.TextField(verbose_name='Pago de membresia', blank=True, default='')
-    done_idmembership = models.TextField(verbose_name='Carnet para entregar', blank=True, default='')
-    delivered_idmembership = models.TextField(verbose_name='Carnet entragado', blank=True, default='')
+    # Documentation
+    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
+    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
+    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
+    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
+
+    membership_fee = models.DecimalField(verbose_name='Cuota de membresia', decimal_places=2, max_digits=6)
+    payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
+
+    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
