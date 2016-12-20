@@ -19,10 +19,14 @@ class Command(BaseCommand):
     def process_worksheet(self, ws):
         header = None
         for row_number, row in enumerate(ws.rows, 1):
+            #Row 1 to 3 are empty
+            if row_number in [1, 2, 3]:
+                continue
             # First row contains the headers
             if not header:
                 header = [cell.value for cell in row]
                 continue
+            #Regular row
             values = [cell.value for cell in row]
             data = dict(zip(header, values))
             self.print_row_details(row_number, data)
