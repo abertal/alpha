@@ -9,6 +9,12 @@
             height: 600px;
             border: black solid 2px;
         }
+        .camposDatos{
+
+           
+            width:4%;
+
+        }
     </style>
 </head>
 
@@ -18,8 +24,17 @@
         <ul>
             {% for membership in object_list %}
             <li>
-                {{ membership.person.name }}
-                DNI: {{ membership.id_card_status}}
+               <table>
+                    <tr>
+                        <td class="camposDatos">{{ membership.person.name }}{{membership.person.surname}}</td>
+                        <td class="camposDatos">DNI:{{ membership.id_card_status}}</td>
+                        <td class="camposDatos">SS:{{membership.ss_card_status}}</td>
+                        <td class="camposDatos">LOPD:{{membership.dpa_status}}</td>
+                        <td class="camposDatos">PAGO:{{membership.membership_fee}}</td>
+                        <td class="camposDatos">CUOTA:{{membership.payment_status}}</td>
+                        <td class="camposDatos">CARNET:{{membership.card_status}}</td>
+                    </tr>
+                </table>
             </li>
             {% empty %}
             <li>Nada</li>
