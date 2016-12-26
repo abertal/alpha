@@ -3,36 +3,79 @@
 <head>
     <title>Abertal WebApp</title>
     <meta charset="UTF-8">
+    
     <style>
         #cajaLista {
-            width: 95%;
+            width: 90%;
             height: 600px;
             border: black solid 2px;
+            overflow: scroll;
+            margin:2px auto;
         }
         .camposDatos{
-
-           
-            width:4%;
-
+            width:12%;
         }
-    </style>
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+    }
+
+        table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+        th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    margin:1px auto;
+}
+
+tr:hover{
+    background-color:#df9f6a
+    }
+    .tituloTabla{
+
+        background-color:darkorange;
+
+    }
+
+ </style>
 </head>
 
 <body>
-    <h1>Lista de grupos</h1>
+    <h1>Documentación pendiente</h1>
     <div id="cajaLista">
+        <div>
+            <table>
+                <tr class="tituloTabla">
+                    <th class="camposDatos">NOME</th>
+                    <th class="camposDatos">DNI</th>
+                    <th class="camposDatos">SS</th>
+                    <th class="camposDatos">LOPD</th>
+                    <th class="camposDatos">FOTO</th>
+                    <th class="camposDatos">CUOTA</th>
+                    <th class="camposDatos">PAGO</th>
+                    <th class="camposDatos">CARNET</th>
+                </tr>
+            </table>
+        <div>
         <ul>
             {% for membership in object_list %}
             <li>
                <table>
+                   
                     <tr>
-                        <td class="camposDatos">{{ membership.person.name }}{{membership.person.surname}}</td>
-                        <td class="camposDatos">DNI:{{ membership.id_card_status}}</td>
-                        <td class="camposDatos">SS:{{membership.ss_card_status}}</td>
-                        <td class="camposDatos">LOPD:{{membership.dpa_status}}</td>
-                        <td class="camposDatos">PAGO:{{membership.membership_fee}}</td>
-                        <td class="camposDatos">CUOTA:{{membership.payment_status}}</td>
-                        <td class="camposDatos">CARNET:{{membership.card_status}}</td>
+                        <td class="camposDatos">{{ membership.person.name }}&thinsp;{{membership.person.surname}}</td>
+                        <td class="camposDatos">{{ membership.id_card_status}}</td>
+                        <td class="camposDatos">{{membership.ss_card_status}}</td>
+                        <td class="camposDatos">{{membership.dpa_status}}</td>
+                        <td class="camposDatos">{{membership.photo_status}}</td>
+                        <td class="camposDatos">{{membership.membership_fee}}</td>
+                        <td class="camposDatos">{{membership.payment_status}}</td>
+                        <td class="camposDatos">{{membership.card_status}}</td>
                     </tr>
                 </table>
             </li>
