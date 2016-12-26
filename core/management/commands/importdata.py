@@ -1,9 +1,10 @@
 import argparse
 
 from django.core.management.base import BaseCommand
-from openpyxl import load_workbook
 
 from core import models
+
+from openpyxl import load_workbook
 
 
 class Command(BaseCommand):
@@ -11,7 +12,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('filename', type=argparse.FileType('rb'))
-
+        
     def print_row_details(self, row_number, data):
         print('-- Línea {row_number}'.format(row_number=row_number))
         for key, value in data.items():
@@ -29,7 +30,7 @@ class Command(BaseCommand):
                 header = [cell.value for cell in row]
                 print('Leída cabecera: ', header)
                 continue
-
+            
             # Regular row
             values = [cell.value for cell in row]
             print('Leída fila: ', values)
@@ -42,23 +43,23 @@ class Command(BaseCommand):
                 'surname': data['Apelidos'],
                 # 'role': data['Rol'],
                 # 'group': data['Grupo'],
-                'phone_number': data['Telefono fixo'],
-                'mobile_number': data['Telefono movil'],
+                'phone_number': data['Teléfono Fixo'] or '',
+                'mobile_number': data['Teléfono Móvil'] or '',
                 'email': data['Email'],
             }
             membership_data = {
-                # 'uuid': data['IdFamilia'],
-                'id_card_status': data['DNI autorizado'] or '',
-                'ss_card_status': data['Tarjeta sanitaria'] or '',
-                'photo_status': data['Foto'] or '',
-                'dpa_status': data['LOPD'] or '',
-                'membership_fee': data['Cuota socio'] or '',
-                'payment_status': data['Pago'] or '',
+                #'uuid': data['IdFamilia'],
+                'id_card_status': data['dni autorizado'] or '',
+                'ss_card_status': data['tarjeta sanitaria'] or '',
+                'photo_status': data['foto'] or '',
+                'dpa_status': data['lopd'] or '',
+                'membership_fee': data['cuota socio'] or 0,
+                'payment_status': data['pago'] or '',
             }
 
             # `card_status´
-            por_entregar = data['Carnet para entregar'] == 'si'
-            entregado = data['Carnet entregado'] == 'si'
+            por_entregar = data['Carnet entregar'] == 'si'
+            entregado = data['carnet entregado'] == 'si'
             if entregado:
                 card_status = 'Entregado'
             elif por_entregar:
