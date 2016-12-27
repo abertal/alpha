@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 header = [cell.value for cell in row]
                 print('Leída cabecera: ', header)
                 continue
-        
+
             # Regular row
             values = [cell.value for cell in row]
             print('Leída fila: ', values)
