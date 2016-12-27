@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('filename', type=argparse.FileType('rb'))
-        
+
     def print_row_details(self, row_number, data):
         print('-- Línea {row_number}'.format(row_number=row_number))
         for key, value in data.items():
@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 header = [cell.value for cell in row]
                 print('Leída cabecera: ', header)
                 continue
-            
+        
             # Regular row
             values = [cell.value for cell in row]
             print('Leída fila: ', values)
@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 'email': data['Email'],
             }
             membership_data = {
-                #'uuid': data['IdFamilia'],
+                # 'uuid': data['IdFamilia'],
                 'id_card_status': data['dni autorizado'] or '',
                 'ss_card_status': data['tarjeta sanitaria'] or '',
                 'photo_status': data['foto'] or '',
