@@ -33,6 +33,11 @@ class Command(BaseCommand):
 
             # Regular row
             values = [cell.value for cell in row]
+
+            if not any(values):
+                print('Fila {row_number} vacía, seguimos'.format(row_number=row_number))
+                continue
+
             print('Leída fila: ', values)
             data = dict(zip(header, values))
             self.print_row_details(row_number, data)
