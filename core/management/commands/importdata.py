@@ -48,23 +48,23 @@ class Command(BaseCommand):
                 'surname': data['Apelidos'],
                 # 'role': data['Rol'],
                 # 'group': data['Grupo'],
-                'phone_number': data['Teléfono Fixo'] or '',
-                'mobile_number': data['Teléfono Móvil'] or '',
+                'phone_number': data['Telefono fixo'] or '',
+                'mobile_number': data['Telefono movil'] or '',
                 'email': data['Email'],
             }
             membership_data = {
                 # 'uuid': data['IdFamilia'],
-                'id_card_status': data['dni autorizado'] or '',
-                'ss_card_status': data['tarjeta sanitaria'] or '',
-                'photo_status': data['foto'] or '',
-                'dpa_status': data['lopd'] or '',
-                'membership_fee': data['cuota socio'] or 0,
-                'payment_status': data['pago'] or '',
+                'id_card_status': data['Dni autorizado'] or '',
+                'ss_card_status': data['Tarjeta sanitaria'] or '',
+                'photo_status': data['Foto'] or '',
+                'dpa_status': data['Lopd'] or '',
+                'membership_fee': data['Cuota socio'] or 0,
+                'payment_status': data['Pago'] or '',
             }
 
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
-            entregado = data['carnet entregado'] == 'si'
+            entregado = data['Carnet entregado'] == 'si'
             if entregado:
                 card_status = 'Entregado'
             elif por_entregar:
