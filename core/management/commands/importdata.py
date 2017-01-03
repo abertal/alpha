@@ -60,7 +60,7 @@ class Command(BaseCommand):
                 'dpa_status': data['LOPD'] or '',
                 'membership_fee': data['Cuota socio'] or 0,
                 'payment_status': data['Pago'] or '',
-                'membership_status': data['Estado'],
+                'membership_status': data['Estado'] or '',
             }
 
             # `card_status´
