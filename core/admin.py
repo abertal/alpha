@@ -41,4 +41,5 @@ class Membership(admin.ModelAdmin):
         'membership_fee',
         'payment_status',
         'card_status',
+        'membership_status',
     )
