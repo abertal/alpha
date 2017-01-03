@@ -94,3 +94,8 @@ class Membership(models.Model):
     )
 
     card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
+    membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
+
+    @property
+    def documentation_correct(self):
+        return 'no' in [self.id_card_status, self.ss_card_status, self.photo_status, self.dpa_status]
