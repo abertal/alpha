@@ -1,2 +1,4 @@
 Django
-openpyxlwaitress
+openpyxl
+waitress
+whitenoise
