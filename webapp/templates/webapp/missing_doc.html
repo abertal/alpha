@@ -3,7 +3,7 @@
 <head>
     <title>Abertal WebApp</title>
     <meta charset="UTF-8">
-    
+
     <style>
         #cajaLista {
             width: 90%;
@@ -66,16 +66,20 @@ tr:hover{
             {% for membership in object_list %}
             <li>
                <table>
-                   
                     <tr>
-                        <td class="camposDatos">{{ membership.person.name }}&thinsp;{{membership.person.surname}}</td>
-                        <td class="camposDatos">{{ membership.id_card_status}}</td>
-                        <td class="camposDatos">{{membership.ss_card_status}}</td>
-                        <td class="camposDatos">{{membership.dpa_status}}</td>
-                        <td class="camposDatos">{{membership.photo_status}}</td>
+                        <td class="camposDatos">{{membership.id}}</td>
                         <td class="camposDatos">{{membership.membership_fee}}</td>
                         <td class="camposDatos">{{membership.payment_status}}</td>
-                        <td class="camposDatos">{{membership.card_status}}</td>
+
+                    {% for personmembership in membership.personmembership %}
+                        <td class="camposDatos">{{ personmembership.id }}</td>
+                        <td class="camposDatos">{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</td>
+                        <td class="camposDatos">{{ personmembership.id_card_status}}</td>
+                        <td class="camposDatos">{{personmembership.ss_card_status}}</td>
+                        <td class="camposDatos">{{personmembership.dpa_status}}</td>
+                        <td class="camposDatos">{{personmembership.photo_status}}</td>
+                        <td class="camposDatos">{{personmembership.card_status}}</td>
+                    {% endfor %}
                     </tr>
                 </table>
             </li>

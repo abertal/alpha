@@ -29,6 +29,7 @@ def person_detail(request, pk):
 
 
 def missing_doc(request):
-    object_list = models.Membership.objects.exclude(id_card_status='si')
+    pending = models.PersonMembership.objects.exclude(id_card_status='si')
+    object_list = models.Membership.objects.filter(personmembership__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
