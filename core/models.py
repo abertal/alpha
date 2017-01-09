@@ -71,30 +71,19 @@ class Enrolment(models.Model):
         auto_now_add=True, verbose_name='Fecha de inscripción')
 
 
-class Membership(models.Model):
+class PersonMembership(models.Model):
 
     class Meta:
-        verbose_name = 'Membresia'
+        verbose_name = 'Datos de socio'
 
     person = models.ForeignKey(Person)
-
-    type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
     # Documentation
     id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
     ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
     photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
     dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
-    payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
-
-    membership_fee = models.DecimalField(
-        verbose_name='Cuota de membresia',
-        decimal_places=2,
-        max_digits=6,
-    )
-
     card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
-    membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
 
     @property
     def documentation_correct(self):

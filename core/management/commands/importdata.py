@@ -58,10 +58,13 @@ class Command(BaseCommand):
                 'ss_card_status': data['Tarjeta sanitaria'] or '',
                 'photo_status': data['Foto'] or '',
                 'dpa_status': data['LOPD'] or '',
-                'membership_fee': data['Cuota socio'] or 0,
-                'payment_status': data['Pago'] or '',
-                'membership_status': data['Estado'] or '',
             }
+
+            # TODO
+            # 'membership_fee': data['Cuota socio'] or 0,
+            # 'payment_status': data['Pago'] or '',
+            # 'membership_status': data['Estado'] or '',
+
 
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
@@ -83,7 +86,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(msg))
 
             print('Membership defaults: ', membership_data)
-            membership, created = models.Membership.objects.update_or_create(
+            membership, created = models.PersonMembership.objects.update_or_create(
                 person=person,
                 defaults=membership_data,
             )
