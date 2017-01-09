@@ -74,17 +74,12 @@ class Enrolment(models.Model):
 class Membership(models.Model):
 
     class Meta:
-        verbose_name = 'Membresia'
+        verbose_name = 'Membresía'
 
-    person = models.ForeignKey(Person)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
-    # Documentation
-    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
-    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
-    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
-    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
     payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
 
     membership_fee = models.DecimalField(
@@ -93,8 +88,23 @@ class Membership(models.Model):
         max_digits=6,
     )
 
-    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
     membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
+
+
+class PersonMembership(models.Model):
+
+    class Meta:
+        verbose_name = 'Datos de socio'
+
+    person = models.ForeignKey(Person)
+    membership = models.ForeignKey(Membership)
+
+    # Documentation
+    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
+    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
+    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
+    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
+    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
 
     @property
     def documentation_correct(self):

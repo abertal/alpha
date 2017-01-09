@@ -33,13 +33,20 @@ class Enrolment(admin.ModelAdmin):
 class Membership(admin.ModelAdmin):
     list_display = (
         'id',
+        'membership_status',
+        'payment_status',
+        'membership_fee',
+    )
+
+
+@admin.register(models.PersonMembership)
+class PersonMembership(admin.ModelAdmin):
+    list_display = (
+        'id',
         'person',
         'id_card_status',
         'ss_card_status',
         'photo_status',
         'dpa_status',
-        'membership_fee',
-        'payment_status',
         'card_status',
-        'membership_status',
     )
