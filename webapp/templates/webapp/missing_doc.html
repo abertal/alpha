@@ -4,7 +4,7 @@
 <head>
     <title>Abertal WebApp</title>
     <meta charset="UTF-8">
-<style type="text/css">
+    <style type="text/css">
 body {
     font-size: 14px;
     padding: 14px;
@@ -34,57 +34,48 @@ body {
   vertical-align: middle;
   text-align: center;
 }
-
+.first--row--membership {
+    border-top: 1px solid black;
+}
 </style>
 </head>
 
 <body>
     <h1>Documentación pendiente</h1>
     <table class="alpha--table">
-        <tr>
-            <th>ID</th>
-            <th>CUOTA</th>
-            <th>PAGO</th>
-            <th>SOCIOS</th>
-        </tr>
-        {% for membership in object_list %}
-        <tr>
-            <td>{{ membership.id }}</td>
-            <td>{{ membership.membership_fee }}</td>
-            <td>{{ membership.payment_status }}</td>
-            <td>
-                <table class="alpha--table">
-                    <tr>
-                        <th>NOME</th>
-                        <th>DNI</th>
-                        <th>SS</th>
-                        <th>LOPD</th>
-                        <th>FOTO</th>
-                        <th>CARNET</th>
-                    </tr>
-                    {% for personmembership in membership.personmembership_set.all %}
-                    <tr>
-                        <td>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</td>
-                        <td>{{ personmembership.id_card_status}}</td>
-                        <td>{{personmembership.ss_card_status}}</td>
-                        <td>{{personmembership.dpa_status}}</td>
-                        <td>{{personmembership.photo_status}}</td>
-                        <td>{{personmembership.card_status}}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="6">Nada</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">Nada</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">CUOTA</th>
+                <th rowspan="2">PAGO</th>
+                <th colspan="6">SOCIOS</th>
+            </tr>
+            <tr>
+                <th>NOME</th>
+                <th>DNI</th>
+                <th>SS</th>
+                <th>LOPD</th>
+                <th>FOTO</th>
+                <th>CARNET</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in object_list %} {% for personmembership in membership.personmembership_set.all %}
+            <tr {% if forloop.first %}class="first--row--membership"{% endif %}>
+                {% if forloop.first %}
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.id }}</td>
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.membership_fee }}</td>
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.payment_status }}</td>
+                {% endif %}
+                <td>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</td>
+                <td>{{ personmembership.id_card_status}}</td>
+                <td>{{personmembership.ss_card_status}}</td>
+                <td>{{personmembership.dpa_status}}</td>
+                <td>{{personmembership.photo_status}}</td>
+                <td>{{personmembership.card_status}}</td>
+            </tr>
+            {% endfor %} {% endfor %}
+        </tbody>
     </table>
 </body>
-
 </html>
