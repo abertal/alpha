@@ -52,19 +52,19 @@ class Command(BaseCommand):
                 'mobile_number': data['Teléfono movil'] or '',
                 'email': data['Email'] or '',
             }
+
             membership_data = {
-                # 'uuid': data['IdFamilia'],
+                'membership_fee': data['Cuota socio'] or 0,
+                'payment_status': data['Pago'] or '',
+                'membership_status': data['Estado'] or '',
+            }
+
+            person_membership_data = {
                 'id_card_status': data['DNI autorizado'] or '',
                 'ss_card_status': data['Tarjeta sanitaria'] or '',
                 'photo_status': data['Foto'] or '',
                 'dpa_status': data['LOPD'] or '',
             }
-
-            # TODO
-            # 'membership_fee': data['Cuota socio'] or 0,
-            # 'payment_status': data['Pago'] or '',
-            # 'membership_status': data['Estado'] or '',
-
 
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
@@ -75,8 +75,9 @@ class Command(BaseCommand):
                 card_status = 'Por entregar'
             else:
                 card_status = 'Falta documentación'
-            membership_data['card_status'] = card_status
+            person_membership_data['card_status'] = card_status
 
+            # Store on database
             person, created = models.Person.objects.update_or_create(
                 id=data['IdUsuario'],
                 defaults=person_data,
@@ -85,13 +86,22 @@ class Command(BaseCommand):
             msg = '{} persona con UID {}'.format(action, person.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
-            print('Membership defaults: ', membership_data)
-            membership, created = models.PersonMembership.objects.update_or_create(
-                person=person,
+            membership, created = models.Membership.objects.update_or_create(
+                id=data['IdFamilia'],
                 defaults=membership_data,
             )
             action = 'Creada' if created else 'Actualizada'
-            msg = '{} membresía con ID {}'.format(action, membership.id)
+            msg = '{} membresía con UID {}'.format(action, membership.id)
+            self.stdout.write(self.style.SUCCESS(msg))
+
+            print('Membership defaults: ', person_membership_data)
+            person_membership, created = models.PersonMembership.objects.update_or_create(
+                person=person,
+                membership=membership,
+                defaults=person_membership_data,
+            )
+            action = 'Creada' if created else 'Actualizada'
+            msg = '{} membresía con ID {}'.format(action, person_membership.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
     def handle(self, *args, **options):
