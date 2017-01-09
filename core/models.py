@@ -71,12 +71,33 @@ class Enrolment(models.Model):
         auto_now_add=True, verbose_name='Fecha de inscripción')
 
 
+class Membership(models.Model):
+
+    class Meta:
+        verbose_name = 'Membresía'
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
+
+    payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
+
+    membership_fee = models.DecimalField(
+        verbose_name='Cuota de membresia',
+        decimal_places=2,
+        max_digits=6,
+    )
+
+    membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
+
+
 class PersonMembership(models.Model):
 
     class Meta:
         verbose_name = 'Datos de socio'
 
     person = models.ForeignKey(Person)
+    membership = models.ForeignKey(Membership)
 
     # Documentation
     id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')

@@ -29,6 +29,16 @@ class Enrolment(admin.ModelAdmin):
     list_display = ('group', 'person', 'created')
 
 
+@admin.register(models.Membership)
+class Membership(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'membership_status',
+        'payment_status',
+        'membership_fee',
+    )
+
+
 @admin.register(models.PersonMembership)
 class PersonMembership(admin.ModelAdmin):
     list_display = (
