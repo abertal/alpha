@@ -1,0 +1,6 @@
+Django
+dj-database-url
+openpyxl
+psycopg2
+waitress
+whitenoise
