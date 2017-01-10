@@ -87,7 +87,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(msg))
 
             membership, created = models.Membership.objects.update_or_create(
-                id=data['IdFamilia'],
+                id=data['UIDMembresia'],
                 defaults=membership_data,
             )
             action = 'Creada' if created else 'Actualizada'
