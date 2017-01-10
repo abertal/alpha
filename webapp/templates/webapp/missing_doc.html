@@ -1,89 +1,81 @@
+<!DOCTYPE html >
 <html>
 
 <head>
     <title>Abertal WebApp</title>
     <meta charset="UTF-8">
-    
-    <style>
-        #cajaLista {
-            width: 90%;
-            height: 600px;
-            border: black solid 2px;
-            overflow: scroll;
-            margin:2px auto;
-        }
-        .camposDatos{
-            width:12%;
-        }
-        ul{
-            list-style: none;
-            padding: 0;
-            margin: 0;
-    }
-
-        table {
+    <style type="text/css">
+body {
+    font-size: 14px;
+    padding: 14px;
+}
+.alpha--table {
+    border: 1px solid black;
     border-collapse: collapse;
-    width: 100%;
+
 }
-
-        th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    margin:1px auto;
+.alpha--table th,
+.alpha--table td {
+  border: solid thin;
+  padding: 0.5rem 2rem;
 }
-
-tr:hover{
-    background-color:#df9f6a
-    }
-    .tituloTabla{
-
-        background-color:darkorange;
-
-    }
-
- </style>
+.alpha--table td {
+  white-space: nowrap;
+}
+.alpha--table th {
+  font-weight: normal;
+}
+.alpha--table td {
+  border-style: none solid;
+  vertical-align: top;
+}
+.alpha--table th {
+  padding: 0.2em;
+  vertical-align: middle;
+  text-align: center;
+}
+.first--row--membership {
+    border-top: 1px solid black;
+}
+</style>
 </head>
 
 <body>
     <h1>Documentación pendiente</h1>
-    <div id="cajaLista">
-        <div>
-            <table>
-                <tr class="tituloTabla">
-                    <th class="camposDatos">NOME</th>
-                    <th class="camposDatos">DNI</th>
-                    <th class="camposDatos">SS</th>
-                    <th class="camposDatos">LOPD</th>
-                    <th class="camposDatos">FOTO</th>
-                    <th class="camposDatos">CUOTA</th>
-                    <th class="camposDatos">PAGO</th>
-                    <th class="camposDatos">CARNET</th>
-                </tr>
-            </table>
-        <div>
-        <ul>
-            {% for membership in object_list %}
-            <li>
-               <table>
-                   
-                    <tr>
-                        <td class="camposDatos">{{ membership.person.name }}&thinsp;{{membership.person.surname}}</td>
-                        <td class="camposDatos">{{ membership.id_card_status}}</td>
-                        <td class="camposDatos">{{membership.ss_card_status}}</td>
-                        <td class="camposDatos">{{membership.dpa_status}}</td>
-                        <td class="camposDatos">{{membership.photo_status}}</td>
-                        <td class="camposDatos">{{membership.membership_fee}}</td>
-                        <td class="camposDatos">{{membership.payment_status}}</td>
-                        <td class="camposDatos">{{membership.card_status}}</td>
-                    </tr>
-                </table>
-            </li>
-            {% empty %}
-            <li>Nada</li>
-            {% endfor %}
-        </ul>
-    </div>
+    <table class="alpha--table">
+        <thead>
+            <tr>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">CUOTA</th>
+                <th rowspan="2">PAGO</th>
+                <th colspan="6">SOCIOS</th>
+            </tr>
+            <tr>
+                <th>NOME</th>
+                <th>DNI</th>
+                <th>SS</th>
+                <th>LOPD</th>
+                <th>FOTO</th>
+                <th>CARNET</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in object_list %} {% for personmembership in membership.personmembership_set.all %}
+            <tr {% if forloop.first %}class="first--row--membership"{% endif %}>
+                {% if forloop.first %}
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.id }}</td>
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.membership_fee }}</td>
+                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.payment_status }}</td>
+                {% endif %}
+                <td>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</td>
+                <td>{{ personmembership.id_card_status}}</td>
+                <td>{{personmembership.ss_card_status}}</td>
+                <td>{{personmembership.dpa_status}}</td>
+                <td>{{personmembership.photo_status}}</td>
+                <td>{{personmembership.card_status}}</td>
+            </tr>
+            {% endfor %} {% endfor %}
+        </tbody>
+    </table>
 </body>
-
 </html>
