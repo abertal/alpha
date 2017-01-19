@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.login),
-    url(r'^home/$', views.home),
+    url(r'^home/$', views.home, name='home'),
 ]
