@@ -14,3 +14,17 @@ def test_list_views(view_name):
     c = Client()
     response = c.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/login/',
+    '/webapp/home/',
+    # '/webapp/new-member/',
+    # '/webapp/new-family/',
+    # '/webapp/list/',
+])
+def test_views_exist(url):
+    c = Client()
+    response = c.get(url)
+    assert response.status_code == 200

@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^person/$', views.person_list, name='person_list'),
     url(r'^person/(?P<pk>[^/]+)/$', views.person_detail, name='person_detail'),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
+
+    url(r'^login/$', views.login),
+    url(r'^home/$', views.home, name='home'),
 ]

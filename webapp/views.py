@@ -33,3 +33,13 @@ def missing_doc(request):
     object_list = models.Membership.objects.filter(personmembership__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
+
+
+def login(request):
+    context = {}
+    return render(request, 'webapp/login.html', context=context)
+
+
+def home(request):
+    context = {}
+    return render(request, 'webapp/home.html', context=context)
