@@ -15,6 +15,7 @@ def test_list_views(view_name):
     response = c.get(url)
     assert response.status_code == 200
 
+
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
