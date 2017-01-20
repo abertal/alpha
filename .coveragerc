@@ -1,5 +1,5 @@
 [run]
-omit = .venv/*, .tox/*
+omit = .venv/*, .tox/*, */apps.py, manage.py, alpha/wsgi.py
 source = .
 
 [report]
