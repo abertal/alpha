@@ -13,6 +13,7 @@ install:
 
 # Estos son los tests que se ejecutarán
 script:
+    - isort --check-only
     - flake8
     - pytest --cov=./ --cov-report=xml
 
