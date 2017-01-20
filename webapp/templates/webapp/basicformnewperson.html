@@ -1,0 +1,12 @@
+{% extends './__base.html' %}{% block body %} HOME
+
+<form>
+    <label for="name">Nombre:</label><input type="text" name="name"><br>
+    <label for="surname">Apellidos:</label><input type="text" name="surname"><br>
+    <label for="phone">Teléfono:</label><input type="text" name="phone"><br>
+    <label for="mail">E-mail:</label><input type="text" name="mail"><br>
+    <label for="adress">Dirección:</label><input type="text" name="adress"><br>
+    <a href="{% url 'home' %}">Guardar nuevo usuario</a>
+</form>
+
+{% endblock %}

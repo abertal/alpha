@@ -1,0 +1,23 @@
+{% extends './__base.html' %}{% block body %} HOME
+
+<form>
+    <label for="name1">Nombre:</label><input type="text" name="name1"><br>
+    <label for="surname1">Apellidos:</label><input type="text" name="surname1"><br>
+    <label for="phone1">Teléfono:</label><input type="text" name="phone1"><br>
+
+    <label for="name2">Nombre:</label><input type="text" name="name2"><br>
+    <label for="surname2">Apellidos:</label><input type="text" name="surname2"><br>
+    <label for="phone2">Teléfono:</label><input type="text" name="phone2"><br>
+
+    <label for="name3">Nombre:</label><input type="text" name="name3"><br>
+    <label for="surname3">Apellidos:</label><input type="text" name="surname3"><br>
+    <label for="phone3">Teléfono:</label><input type="text" name="phone3"><br>
+
+    <a href="">Añadir otro miembro</a><br>
+
+    <label for="adress">Dirección:</label><input type="text" name="adress"><br>
+
+    <a href="{% url 'home' %}">Guardar nuevo usuario</a>
+</form>
+
+{% endblock %}

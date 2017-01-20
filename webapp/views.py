@@ -39,7 +39,14 @@ def login(request):
     context = {}
     return render(request, 'webapp/login.html', context=context)
 
-
 def home(request):
     context = {}
     return render(request, 'webapp/home.html', context=context)
+
+def basicformnewperson(request):
+    context = {}
+    return render(request, 'webapp/basicformnewperson.html', context=context)
+
+def basicformnewfamily(request):
+    context = {}
+    return render(request, 'webapp/basicformnewfamily.html', context=context)

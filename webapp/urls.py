@@ -11,4 +11,6 @@ urlpatterns = [
 
     url(r'^login/$', views.login),
     url(r'^home/$', views.home, name='home'),
+    url(r'^basicformnewperson/$', views.basicformnewperson, name='basicformnewperson'),
+    url(r'^basicformnewfamily/$', views.basicformnewfamily, name='basicformnewfamily'),
 ]

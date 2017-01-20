@@ -1,7 +1,8 @@
-{% extends './__base.html' %}
-
-
-{% block body %}
-LOGIN
-<a href="{% url 'home' %}">Aceptar</a>
+{% extends './__base.html' %} {% block body %}
+<div id="cajaLogin">
+    <h2>LOGIN</h2>
+    <label for="user">Usuario:</label><input type="text" name="user"><br>
+    <label for="password">Contraseña:</label><input type="text" name="password"><br>
+    <a href="{% url 'home' %}">Aceptar</a>
+</div>
 {% endblock %}
