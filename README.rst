@@ -186,3 +186,36 @@ paquetes y librerías estén ordenados y agrupados de manera homogénea en toda 
     (.venv) PS > isort
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
+
+
+Guía de estilo: HTML
+--------------------
+
+1. La indentación es de 2 espacios.
+
+2. Las etiquetas de Django **no** incrementan la indentación (por ejemplo `{% if %}`).
+
+3. Los elementos HTML sí que añaden un nivel de indentación.
+
+4. Excepción: `<html>`, `<head>` y `<body>`
+
+Un ejemplo:
+
+.. code::html
+
+    <html>
+    <body>
+    <ul>
+        {% if condition %}
+        {% for item in menu_item %}
+        <li>{{ item }}</li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    <main>
+        {% block content %}
+        <p>Hello World</p>
+        {% endblock content %}
+    </main>
+    </body>
+    </html>
