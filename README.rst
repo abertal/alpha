@@ -178,4 +178,11 @@ tests simplmente hay que ejecutar el comando `pytest`.
 Al igual que con la comprobación anterior, no se puede subir código que no pase
 los tests.
 
+Por último también es preciso ejecutar la utilidad `isort` para que las importaciones de
+paquetes y librerías estén ordenados y agrupados de manera homogénea en toda la aplicación.
+
+.. code::
+
+    (.venv) PS > isort
+
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
