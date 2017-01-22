@@ -1,14 +1,31 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<h1>Nueva persona</h1>
-<form>
-  <label for="name">Nombre:</label><input type="text" name="name"><br>
-  <label for="surname">Apellidos:</label><input type="text" name="surname"><br>
-  <label for="phone">Teléfono:</label><input type="text" name="phone"><br>
-  <label for="mail">E-mail:</label><input type="text" name="mail"><br>
-  <label for="adress">Dirección:</label><input type="text" name="adress"><br>
-  <a href="{% url 'home' %}">Guardar nuevo usuario</a><br>
-  <a href="{% url 'home' %}">Cancelar</a>
+<h1 class="element">Nueva persona</h1>
+<form class="custom-form element">
+  <div class="alpha-form-row element">
+    <label for="name">Nombre</label>
+    <input type="text" name="name">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="surname">Apellidos</label>
+    <input type="text" name="surname">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="phone">Teléfono</label>
+    <input type="text" name="phone">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="mail">E-mail</label>
+    <input type="text" name="mail">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="adress">Dirección</label>
+    <input type="text" name="adress">
+  </div>
+  <div class="alpha-form-row alpha-form-actions element">
+    <a href="{% url 'home' %}" class="btn">Guardar nuevo usuario</a>
+    <a href="{% url 'home' %}" class="btn btn-return">Cancelar</a>
+  </div>
 </form>
 {% endblock %}

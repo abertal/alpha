@@ -1,20 +1,44 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<h1>Nueva familia</h1>
-<form>
-  <label for="name1">Nombre:</label><input type="text" name="name1"><br>
-  <label for="surname1">Apellidos:</label><input type="text" name="surname1"><br>
-  <label for="phone1">Teléfono:</label><input type="text" name="phone1"><br>
-  <label for="name2">Nombre:</label><input type="text" name="name2"><br>
-  <label for="surname2">Apellidos:</label><input type="text" name="surname2"><br>
-  <label for="phone2">Teléfono:</label><input type="text" name="phone2"><br>
-  <label for="name3">Nombre:</label><input type="text" name="name3"><br>
-  <label for="surname3">Apellidos:</label><input type="text" name="surname3"><br>
-  <label for="phone3">Teléfono:</label><input type="text" name="phone3"><br>
-  <a href="">Añadir otro miembro</a><br>
-  <label for="adress">Dirección:</label><input type="text" name="adress"><br>
-  <a href="{% url 'home' %}">Guardar nueva familia</a><br>
-  <a href="{% url 'home' %}">Cancelar</a>
+<h1 class="element">Nueva familia</h1>
+<form class="element">
+  <div class="alpha-form-row element">
+    <label for="name1">Nombre</label><input type="text" name="name1">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="surname1">Apellidos</label><input type="text" name="surname1">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="phone1">Teléfono</label><input type="text" name="phone1">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="name2">Nombre</label><input type="text" name="name2">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="surname2">Apellidos</label><input type="text" name="surname2">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="phone2">Teléfono</label><input type="text" name="phone2">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="name3">Nombre</label><input type="text" name="name3">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="surname3">Apellidos</label><input type="text" name="surname3">
+  </div>
+  <div class="alpha-form-row element">
+    <label for="phone3">Teléfono</label><input type="text" name="phone3">
+  </div>
+  <div class="alpha-form-row element">
+    <a href="">Añadir otro miembro</a>
+  </div>
+  <div class="alpha-form-row element">
+    <label for="adress">Dirección</label><input type="text" name="adress">
+  </div>
+  <div class="alpha-form-row alpha-form-actions element">
+    <a href="{% url 'home' %}" class="btn">Guardar nueva familia</a>
+    <a href="{% url 'home' %}" class="btn btn-return">Cancelar</a>
+  </div>
 </form>
 {% endblock %}

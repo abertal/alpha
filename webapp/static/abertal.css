@@ -111,10 +111,20 @@ button {
   color: white;
   background-color: rgb(239, 127, 26);
   padding: 10px 12px;
+  margin-right: 10px;
 }
 .btn:hover {
   background-color: rgba(239, 127, 26, 0.5);
 }
+.btn-return {
+  background-color: white;
+  color: darkgray;
+}
+.btn-return:hover {
+  background-color: inherit;
+  text-decoration: underline;
+}
+
  /* Forms */
 .alpha-form {
   display: flex;
