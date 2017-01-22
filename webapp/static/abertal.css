@@ -1,3 +1,182 @@
+/*
+ * Fix
+ * Version 0.1.1
+ * https://github.com/jaydenseric/Fix
+*/
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
 body {
-    font-size: 16px;
+  margin: 0;
+  line-height: 1;
+  font-family: sans-serif;
+}
+iframe {
+  border: 0;
+}
+main {
+  display: block;
+}
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+li {
+  display: block;
+}
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+dd {
+  margin-left: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: inherit;
+}
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+sup {
+  position: relative;
+  top: -.5em;
+  vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+}
+strong {
+  font-weight: bold;
+}
+figure {
+  margin: 0;
+}
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  text-transform: inherit;
+  font: inherit;
+  -webkit-font-smoothing: inherit;
+  letter-spacing: inherit;
+  background: none;
+  cursor: pointer;
+  overflow: visible;
+}
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/*
+ * Custom style
+ */
+
+ /* Base */
+.container,
+.element {
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.btn {
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(239, 127, 26);
+  padding: 10px 12px;
+  margin-right: 10px;
+}
+.btn:hover {
+  background-color: rgba(239, 127, 26, 0.5);
+}
+.btn-return {
+  background-color: white;
+  color: darkgray;
+}
+.btn-return:hover {
+  background-color: inherit;
+  text-decoration: underline;
+}
+
+ /* Forms */
+.alpha-form {
+  display: flex;
+  flex-direction: column;
+}
+.alpha-form-section {
+  display: flex;
+  flex-direction: column;
+}
+.alpha-form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.alpha-form-section > .alpha-form-row {
+  padding-left: -10px;
+  padding-right: -10px;
+}
+.alpha-form-actions {
+  padding-left: 234px;  /* Failback if calc not supported */
+  padding-left: calc(200px + 24px + 10px);  /* label width + label padding + gutter/2*/
+}
+.alpha-form-row > label {
+  display: block;
+  align-self: center;
+  text-align: right;
+  width: 200px;
+  max-width: 200px;
+  padding-right: 24px;
+}
+.alpha-form-row > input {
+  display: block;
+  align-self: center;
+}
+.alpha-form-row > .btn {
+  display: block;
+}
+
+/* Menu of links */
+.alpha-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+.alpha-menu > li {
+  min-width: 200px;
+}
+.alpha-menu > li > a {
+  display: block;
+  border: thin solid black;
+  border-radius: 10px;
+  padding: 44px;
+}
+.alpha-menu > li > a:hover {
+  background: rgba(0, 0, 0, 0.05);
 }

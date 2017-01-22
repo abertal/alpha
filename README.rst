@@ -206,16 +206,18 @@ Un ejemplo:
     <html>
     <body>
     <ul>
-        {% if condition %}
-        {% for item in menu_item %}
-        <li>{{ item }}</li>
-        {% endfor %}
-        {% endif %}
+      {% if condition %}
+      {% for item in menu_item %}
+      <li>{{ item }}</li>
+      {% endfor %}
+      {% endif %}
     </ul>
     <main>
-        {% block content %}
-        <p>Hello World</p>
-        {% endblock content %}
+      {% block content %}
+      <p>Hello World</p>
+      {% endblock content %}
     </main>
     </body>
     </html>
+
+Para el resto de aspectos (atributos, cierre de elementos...) se utiliza como referencia http://codeguide.co/.

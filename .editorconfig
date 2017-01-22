@@ -17,3 +17,7 @@ max_line_length = 110
 # Use 2 spaces for the HTML files
 [*.html]
 indent_size = 2
+
+# Use 2 spaces for the CSS files
+[*.css]
+indent_size = 2

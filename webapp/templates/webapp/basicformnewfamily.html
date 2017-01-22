@@ -1,24 +1,35 @@
-{% extends './__base.html' %}{% block body %} Nueva familia
+{% extends './__base.html' %}
 
-<form>
-    <label for="name1">Nombre:</label><input type="text" name="name1"><br>
-    <label for="surname1">Apellidos:</label><input type="text" name="surname1"><br>
-    <label for="phone1">Teléfono:</label><input type="text" name="phone1"><br>
-
-    <label for="name2">Nombre:</label><input type="text" name="name2"><br>
-    <label for="surname2">Apellidos:</label><input type="text" name="surname2"><br>
-    <label for="phone2">Teléfono:</label><input type="text" name="phone2"><br>
-
-    <label for="name3">Nombre:</label><input type="text" name="name3"><br>
-    <label for="surname3">Apellidos:</label><input type="text" name="surname3"><br>
-    <label for="phone3">Teléfono:</label><input type="text" name="phone3"><br>
-
-    <a href="">Añadir otro miembro</a><br>
-
-    <label for="adress">Dirección:</label><input type="text" name="adress"><br>
-
-    <a href="{% url 'home' %}">Guardar nueva familia</a><br>
-    <a href="{% url 'home' %}">Cancelar</a>
+{% block body %}
+<h1 class="element">Nueva familia</h1>
+<form class="element">
+  {% for i in "1234" %}
+  <section class="alpha-form-section element">
+    <h2 class="element">Miembro {{ i }}</h2>
+    <div class="alpha-form-row element">
+      <label for="name{{ i }}">Nombre</label>
+      <input type="text" id="name{{ i }}" name="name{{ i }}">
+    </div>
+    <div class="alpha-form-row element">
+      <label for="surname{{ i }}">Apellidos</label>
+      <input type="text" id="surname{{ i }}" name="surname{{ i }}">
+    </div>
+    <div class="alpha-form-row element">
+      <label for="phone{{ i }}">Teléfono</label>
+      <input type="text" id="phone{{ i }}" name="phone{{ i }}">
+    </div>
+  </section>
+  {% endfor %}
+  <section class="alpha-form-section element">
+    <h2 class="element">Datos comunes</h2>
+  <div class="alpha-form-row element">
+    <label for="adress">Dirección</label>
+    <input type="text" id="adress" name="adress">
+  </div>
+  </section>
+    <div class="alpha-form-row alpha-form-actions element">
+      <a href="{% url 'home' %}" class="btn">Guardar nueva familia</a>
+      <a href="{% url 'home' %}" class="btn btn-return">Volver sin guardar</a>
+    </div>
 </form>
-
 {% endblock %}
