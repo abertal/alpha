@@ -95,3 +95,52 @@ button {
   border: 0;
   padding: 0;
 }
+/*
+ * Custom style
+ */
+
+ /* Base */
+.container,
+.element {
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.btn {
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(239, 127, 26);
+  padding: 10px 12px;
+}
+.btn:hover {
+  background-color: rgba(239, 127, 26, 0.5);
+}
+ /* Forms */
+.alpha-form {
+  display: flex;
+  flex-direction: column;
+}
+.alpha-form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.alpha-form-actions {
+  padding-left: 234px;  /* Failback if calc not supported */
+  padding-left: calc(200px + 24px + 10px);  /* label width + label padding + gutter/2*/
+}
+.alpha-form-row > label {
+  display: block;
+  align-self: center;
+  text-align: right;
+  width: 200px;
+  max-width: 200px;
+  padding-right: 24px;
+}
+.alpha-form-row > input {
+  display: block;
+  align-self: center;
+}
+.alpha-form-row > .btn {
+  display: block;
+}
