@@ -1,7 +1,7 @@
-import pytest
-
 from django.shortcuts import reverse
 from django.test import Client
+
+import pytest
 
 
 @pytest.mark.django_db
