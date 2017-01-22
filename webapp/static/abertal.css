@@ -130,10 +130,18 @@ button {
   display: flex;
   flex-direction: column;
 }
+.alpha-form-section {
+  display: flex;
+  flex-direction: column;
+}
 .alpha-form-row {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+.alpha-form-section > .alpha-form-row {
+  padding-left: -10px;
+  padding-right: -10px;
 }
 .alpha-form-actions {
   padding-left: 234px;  /* Failback if calc not supported */
