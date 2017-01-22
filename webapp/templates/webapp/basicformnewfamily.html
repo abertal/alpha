@@ -7,20 +7,24 @@
   <section class="alpha-form-section element">
     <h2 class="element">Miembro {{ i }}</h2>
     <div class="alpha-form-row element">
-      <label for="name{{ i }}">Nombre</label><input type="text" name="name{{ i }}">
+      <label for="name{{ i }}">Nombre</label>
+      <input type="text" id="name{{ i }}" name="name{{ i }}">
     </div>
     <div class="alpha-form-row element">
-      <label for="surname{{ i }}">Apellidos</label><input type="text" name="surname{{ i }}">
+      <label for="surname{{ i }}">Apellidos</label>
+      <input type="text" id="surname{{ i }}" name="surname{{ i }}">
     </div>
     <div class="alpha-form-row element">
-      <label for="phone{{ i }}">Teléfono</label><input type="text" name="phone{{ i }}">
+      <label for="phone{{ i }}">Teléfono</label>
+      <input type="text" id="phone{{ i }}" name="phone{{ i }}">
     </div>
   </section>
   {% endfor %}
   <section class="alpha-form-section element">
     <h2 class="element">Datos comunes</h2>
   <div class="alpha-form-row element">
-    <label for="adress">Dirección</label><input type="text" name="adress">
+    <label for="adress">Dirección</label>
+    <input type="text" id="adress" name="adress">
   </div>
   </section>
     <div class="alpha-form-row alpha-form-actions element">
