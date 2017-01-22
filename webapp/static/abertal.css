@@ -162,3 +162,21 @@ button {
 .alpha-form-row > .btn {
   display: block;
 }
+
+/* Menu of links */
+.alpha-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+.alpha-menu > li {
+  min-width: 200px;
+}
+.alpha-menu > li > a {
+  display: block;
+  border: thin solid black;
+  border-radius: 10px;
+  padding: 44px;
+}
+.alpha-menu > li > a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
