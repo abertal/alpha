@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views import generic
 
 from core import models
+
+from . import forms
 
 
 def group_list(request):
@@ -45,11 +48,19 @@ def home(request):
     return render(request, 'webapp/home.html', context=context)
 
 
-def basicformnewperson(request):
-    context = {}
-    return render(request, 'webapp/basicformnewperson.html', context=context)
+class NewIndividualMember(generic.FormView):
+    form_class = forms.NewIndividualMember
+    template_name = 'webapp/basicformnewperson.html'
+
+    def form_valid(self, form):
+        form.execute()
+        return redirect('home')
 
 
-def basicformnewfamily(request):
-    context = {}
-    return render(request, 'webapp/basicformnewfamily.html', context=context)
+class NewFamilyMember(generic.FormView):
+    form_class = forms.NewFamilyMember
+    template_name = 'webapp/basicformnewfamily.html'
+
+    def form_valid(self, form):
+        form.execute()
+        return redirect('home')
