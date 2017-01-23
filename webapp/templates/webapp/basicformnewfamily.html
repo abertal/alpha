@@ -2,7 +2,9 @@
 
 {% block body %}
 <h1 class="element">Nueva familia</h1>
-<form class="element">
+{%if form.errors %}<h2>{{ form.errors }}</h2>{% endif %}
+<form class="custom-form element" action="{% url 'basicformnewfamily' %}" method="post">
+  {% csrf_token %}
   {% for i in "1234" %}
   <section class="alpha-form-section element">
     <h2 class="element">Miembro {{ i }}</h2>
@@ -28,7 +30,7 @@
   </div>
   </section>
     <div class="alpha-form-row alpha-form-actions element">
-      <a href="{% url 'home' %}" class="btn">Guardar nueva familia</a>
+      <input type="submit" class="btn" value="Guardar nueva familia">
       <a href="{% url 'home' %}" class="btn btn-return">Volver sin guardar</a>
     </div>
 </form>
