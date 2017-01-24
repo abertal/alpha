@@ -22,6 +22,7 @@ class NewIndividualMember(forms.Form):
             id_number=cleaned_data['id_number'],
             email=cleaned_data['mail'])
         print(person)
+        return person
 
 
 class NewFamilyMember(forms.Form):
