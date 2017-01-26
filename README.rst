@@ -139,8 +139,8 @@ Finalmente, actualizamos nuestro fork en el remoto (nuestro fork en el pc está 
 
     $ git push origin master
 
-Migraciones de modelos
-----------------------
+Migraciones de modelos (Windows)
+--------------------------------
 
 Primero debemos generar un fichero con los cambios realizados usando PowerShell
 
@@ -154,6 +154,14 @@ Para realizar el cambio de modelo y actualizarlo con el fichero generado antes
 .. code::
 
     > python .\manage.py migrate
+
+Migraciones de modelos (Linux)
+------------------------------
+
+.. code::
+
+    (.venv) PS > python manage.py makemigrations
+    (.venv) PS > python manage.py migrate
 
 
 Tests y calidad de código
