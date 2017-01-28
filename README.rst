@@ -160,8 +160,8 @@ Migraciones de modelos (Linux)
 
 .. code::
 
-    (.venv) PS > python manage.py makemigrations
-    (.venv) PS > python manage.py migrate
+    (.venv) $ python manage.py makemigrations
+    (.venv) $ python manage.py migrate
 
 
 Tests y calidad de código
