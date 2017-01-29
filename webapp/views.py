@@ -71,3 +71,8 @@ class MembershipList(generic.ListView):
 
     def get_queryset(self):
         return models.Membership.objects.all()
+
+
+class MembershipDetail(generic.DetailView):
+    model = models.Membership
+    template_name = 'webapp/membership_detail.html'

@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^basicformnewperson/$', views.NewIndividualMember.as_view(), name='basicformnewperson'),
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),
     url(r'^membership/$', views.MembershipList.as_view(), name='membership-list'),
+    url(r'^membership/(?P<pk>[^/]+)/$', views.MembershipDetail.as_view(), name='membership-detail'),
 ]

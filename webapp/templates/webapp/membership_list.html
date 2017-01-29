@@ -2,20 +2,22 @@
 
 {% block body %}
 <h1 class="element">Lista de miembros</h1>
-{% for membership in object_list %}
-<a href="" class="element">
-  <p>ID membresía: {{ membership.id }}</p>
-  <p>Número de personas: {{ membership.personmembership_set.count }}</p>
-  {% for personmembership in membership.personmembership_set.all %}
-  <p>
-    <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
-    <span>{{ personmembership.id_card_status}}</span>
-    <span>{{personmembership.ss_card_status}}</span>
-    <span>{{personmembership.dpa_status}}</span>
-    <span>{{personmembership.photo_status}}</span>
-    <span>{{personmembership.card_status}}</span>
-  </p>
+<div class="card-container">
+  {% for membership in object_list %}
+  <a href="{% url 'membership-detail' membership.id %}" class="membership-card element">
+    {% for personmembership in membership.personmembership_set.all %}
+    {% if forloop.counter <= 6 %}
+    <p>
+      <div class="avatar element">
+        <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="30" height="30" />
+      </div>
+      <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
+    </p>
+    {% elif forloop.counter == 7 %}
+    <p>...</p>
+    {% endif %}
     {% endfor %}
-</a>
-{% endfor %}
+  </a>
+  {% endfor %}
+</div>
 {% endblock %}

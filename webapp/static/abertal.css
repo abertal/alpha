@@ -124,6 +124,9 @@ button {
   background-color: inherit;
   text-decoration: underline;
 }
+.avatar {
+ display: inline;
+}
 
  /* Forms */
 .alpha-form {
@@ -179,4 +182,23 @@ button {
 }
 .alpha-menu > li > a:hover {
   background: rgba(0, 0, 0, 0.05);
+}
+
+/* Elements */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.membership-card {
+  width: 360px;
+  max-width: 360px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: thin solid silver;
+  border-radius: 10px;
+  flex-grow: 1;
+}
+.membership-card:hover {
+  border-color: black;
 }
