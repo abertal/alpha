@@ -64,3 +64,10 @@ class NewFamilyMember(generic.FormView):
     def form_valid(self, form):
         form.execute()
         return redirect('home')
+
+
+class MembershipList(generic.ListView):
+    template_name = 'webapp/membership_list.html'
+
+    def get_queryset(self):
+        return models.Membership.objects.all()

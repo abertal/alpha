@@ -1,0 +1,21 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h1 class="element">Lista de miembros</h1>
+{% for membership in object_list %}
+<a href="" class="element">
+  <p>ID membresía: {{ membership.id }}</p>
+  <p>Número de personas: {{ membership.personmembership_set.count }}</p>
+  {% for personmembership in membership.personmembership_set.all %}
+  <p>
+    <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
+    <span>{{ personmembership.id_card_status}}</span>
+    <span>{{personmembership.ss_card_status}}</span>
+    <span>{{personmembership.dpa_status}}</span>
+    <span>{{personmembership.photo_status}}</span>
+    <span>{{personmembership.card_status}}</span>
+  </p>
+    {% endfor %}
+</a>
+{% endfor %}
+{% endblock %}

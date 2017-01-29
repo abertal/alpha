@@ -20,9 +20,9 @@ def test_list_views(view_name):
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
     '/webapp/home/',
+    '/webapp/membership/',
     # '/webapp/new-member/',
     # '/webapp/new-family/',
-    # '/webapp/list/',
 ])
 def test_views_exist(url):
     c = Client()
