@@ -123,7 +123,7 @@ body {
 	padding: calc(20px /2); /* Gutter */
 }
 .primary-sidebar {
-  width: 120px;
+  width: 220px;
 }
 .main-content {
   flex: 1 1 auto;
@@ -211,21 +211,14 @@ body {
 }
 
 /* Menu of links */
-.alpha-menu {
-  display: flex;
-  flex-wrap: wrap;
-}
 .alpha-menu > li {
   min-width: 200px;
 }
 .alpha-menu > li > a {
   display: block;
-  border: thin solid black;
-  border-radius: 10px;
-  padding: 44px;
 }
 .alpha-menu > li > a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  color:white;
 }
 
 /* Elements */
