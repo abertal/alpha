@@ -17,7 +17,13 @@
     {% block menu %}
     <ul class="alpha-menu element">
       {% for option in menu %}
-      <li class="{% if option.is_current %}is-active{% endif %} element"><a href="{{ option.url }}">{{ option.name }}</a></li>
+      <li class="{% if option.is_current %}is-active{% endif %} element">
+        {% if option.url %}
+        <a href="{{ option.url }}">{{ option.name }}</a>
+        {% else %}
+        {{ option.name }}
+        {% endif %}
+      </li>
       {% endfor %}
     </ul>
     {% endblock %}

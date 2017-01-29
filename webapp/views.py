@@ -9,7 +9,7 @@ from . import forms
 class Option:
     def __init__(self, name, viewname, args=None, kwargs=None, menu=None):
         self.name = name
-        self.url = reverse(viewname, args, kwargs)
+        self.url = reverse(viewname, args, kwargs) if viewname else False
         self.menu = menu
 
     def is_current(self):
@@ -22,7 +22,8 @@ class MenuBar:
 
     def get_options(self):
         return [
-            Option('Membresías', 'membership-list', menu=self),
+            Option('Lista', 'membership-list', menu=self),
+            Option('Detalle', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
             Option('Nueva familia', 'basicformnewfamily', menu=self),
         ]
@@ -104,7 +105,7 @@ class NewFamilyMember(MenuMixin, generic.FormView):
 
 class MembershipList(MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
-    name = 'Membresías'
+    name = 'Lista'
 
     def get_queryset(self):
         return models.Membership.objects.all()
@@ -113,4 +114,4 @@ class MembershipList(MenuMixin, generic.ListView):
 class MembershipDetail(MenuMixin, generic.DetailView):
     model = models.Membership
     template_name = 'webapp/membership_detail.html'
-    name = 'Detalle membresía'
+    name = 'Detalle'
