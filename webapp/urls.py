@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.login),
-    url(r'^home/$', views.home, name='home'),
+    url(r'^home/$', views.Home.as_view(), name='home'),
     url(r'^basicformnewperson/$', views.NewIndividualMember.as_view(), name='basicformnewperson'),
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),
     url(r'^membership/$', views.MembershipList.as_view(), name='membership-list'),

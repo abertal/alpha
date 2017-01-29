@@ -69,11 +69,6 @@ def login(request):
     return render(request, 'webapp/login.html', context=context)
 
 
-def home(request):
-    context = {'menu': MenuBar('home')}
-    return render(request, 'webapp/home.html', context=context)
-
-
 class MenuMixin:
     name = ''
 
@@ -81,6 +76,11 @@ class MenuMixin:
         if 'menu' not in kwargs:
             kwargs['menu'] = MenuBar(self.name)
         return super().get_context_data(**kwargs)
+
+
+class Home(MenuMixin, generic.TemplateView):
+    name = 'Inicio'
+    template_name = 'webapp/home.html'
 
 
 class NewIndividualMember(MenuMixin, generic.FormView):
