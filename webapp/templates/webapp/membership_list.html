@@ -1,7 +1,7 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<h1 class="element">Lista de miembros</h1>
+<h1 class="element">{{ view.name }}</h1>
 <div class="card-container">
   {% for membership in object_list %}
   <a href="{% url 'membership-detail' membership.id %}" class="membership-card element">

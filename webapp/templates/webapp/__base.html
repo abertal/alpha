@@ -16,9 +16,9 @@
     <aside class="primary-sidebar">
     {% block menu %}
     <ul class="alpha-menu element">
-      <li class="element"><a href="{% url 'membership-list' %}">Membresías</a></li>
-      <li class="is-active element"><a href="{% url 'basicformnewperson' %}">Nuevo socio individual</a></li>
-      <li class="element"><a href="{% url 'basicformnewfamily' %}">Nueva familia</a></li>
+      {% for option in menu %}
+      <li class="{% if option.is_current %}is-active{% endif %} element"><a href="{{ option.url }}">{{ option.name }}</a></li>
+      {% endfor %}
     </ul>
     {% endblock %}
     </aside>
