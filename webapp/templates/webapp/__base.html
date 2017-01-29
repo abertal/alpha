@@ -8,9 +8,18 @@
   <link rel="stylesheet" href="{% static 'abertal.css' %}?{% now "U" %}">
 </head>
 
-<body class="container">
-{% block body %}
-{% endblock %}
+<body>
+  <header class="main-header">Abertal alpha</header>
+  <div class="main-row">
+    <aside class="primary-sidebar">Sidebar (left)</aside>
+    <div class="main-column">
+      <main class="main-content">
+      {% block body %}
+      {% endblock %}
+      </main>
+      <footer class="main-footer">Copyright © 2016-2017, C.X. Abertal</footer>
+    </div>
+  </div>
 </body>
 
 </html>

@@ -99,8 +99,52 @@ button {
  * Custom style
  */
 
+/* Page layout */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+.main-row {
+  flex: 1 1 auto;
+  display: flex;
+}
+.main-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-header,
+.main-footer,
+.primary-sidebar {
+  flex: 0 0 auto;
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.primary-sidebar {
+  width: 120px;
+}
+.main-content {
+  flex: 1 1 auto;
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.main-header,
+.primary-sidebar {
+  color: white;
+  background-color: #6b7a8f;
+}
+.main-column {
+  background-color: #eeeeee;
+}
+.main-footer {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 0.8em;
+}
+
  /* Base */
-.container,
 .element {
 	padding: 10px; /* Failback if calc not supported */
 	padding: calc(20px /2); /* Gutter */
