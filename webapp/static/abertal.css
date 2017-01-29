@@ -232,6 +232,10 @@ body {
   border-bottom: 10px solid transparent;
   border-left: 10px solid white;
 }
+.alpha-menu > li > span {
+  cursor: not-allowed;
+  display: block;
+}
 
 /* Elements */
 .card-container {

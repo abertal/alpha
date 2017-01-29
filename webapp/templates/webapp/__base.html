@@ -10,7 +10,7 @@
 
 <body>
   <header class="main-header">
-    <a href="{% url 'home' %}">Abertal alpha</a>
+    <h1><a href="{% url 'home' %}">Abertal alpha</a></h1>
   </header>
   <div class="main-row">
     <aside class="primary-sidebar">
@@ -21,7 +21,7 @@
         {% if option.url %}
         <a href="{{ option.url }}">{{ option.name }}</a>
         {% else %}
-        {{ option.name }}
+        <span>{{ option.name }}</span>
         {% endif %}
       </li>
       {% endfor %}
