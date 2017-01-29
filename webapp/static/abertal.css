@@ -198,6 +198,7 @@ button {
   border: thin solid silver;
   border-radius: 10px;
   flex-grow: 1;
+  height: 240px;
 }
 .membership-card:hover {
   border-color: black;

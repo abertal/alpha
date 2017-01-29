@@ -5,7 +5,7 @@
 {% for personmembership in membership.personmembership_set.all %}
 <p>
   <div class="avatar element">
-    <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="30" height="30" />
+    <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="36" height="36" />
   </div>
   <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
 </p>
