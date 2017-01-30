@@ -1,6 +1,8 @@
+from decimal import Decimal as D
+
 from django import forms
 
-from core.models import Person
+from core import models
 
 
 class NewIndividualMember(forms.Form):
@@ -11,17 +13,21 @@ class NewIndividualMember(forms.Form):
     mail = forms.CharField()
     id_number = forms.CharField()
 
+    membership_fee = D('15.00')
+
     def execute(self):
         cleaned_data = self.cleaned_data
-        print(cleaned_data)
-        person = Person.objects.create(
+        membership = models.Membership.objects.create(membership_fee=self.membership_fee)
+        person = models.Person.objects.create(
             name=cleaned_data['name'],
             surname=cleaned_data['surname'],
             phone_number=cleaned_data['phone'],
             address_street=cleaned_data['adress'],
             id_number=cleaned_data['id_number'],
             email=cleaned_data['mail'])
-        return person
+        models.PersonMembership.objects.create(person=person, membership=membership)
+
+        return membership
 
 
 class NewFamilyMember(forms.Form):
@@ -50,35 +56,19 @@ class NewFamilyMember(forms.Form):
     id_number4 = forms.CharField()
     mail4 = forms.CharField()
 
+    membership_fee = D('40.00')
+
     def execute(self):
         cleaned_data = self.cleaned_data
-        print(cleaned_data)
+        membership = models.Membership.objects.create(membership_fee=self.membership_fee)
+        for i in range(1, 5):
+            person = models.Person.objects.create(
+                name=cleaned_data['name' + str(i)],
+                surname=cleaned_data['surname' + str(i)],
+                phone_number=cleaned_data['phone' + str(i)],
+                id_number=cleaned_data['id_number' + str(i)],
+                email=cleaned_data['mail' + str(i)],
+            )
+            models.PersonMembership.objects.create(person=person, membership=membership)
 
-        i = 1
-
-        person1 = Person.objects.create(
-            name=cleaned_data['name' + str(i)],
-            surname=cleaned_data['surname' + str(i)],
-            phone_number=cleaned_data['phone' + str(i)],
-            id_number=cleaned_data['id_number' + str(i)],
-            email=cleaned_data['mail' + str(i)])
-        person2 = Person.objects.create(
-            name=cleaned_data['name' + str(i)],
-            surname=cleaned_data['surname' + str(i)],
-            phone_number=cleaned_data['phone' + str(i)],
-            id_number=cleaned_data['id_number' + str(i)],
-            email=cleaned_data['mail' + str(i)])
-        person3 = Person.objects.create(
-            name=cleaned_data['name' + str(i)],
-            surname=cleaned_data['surname' + str(i)],
-            phone_number=cleaned_data['phone' + str(i)],
-            id_number=cleaned_data['id_number' + str(i)],
-            email=cleaned_data['mail' + str(i)])
-        person4 = Person.objects.create(
-            name=cleaned_data['name' + str(i)],
-            surname=cleaned_data['surname' + str(i)],
-            phone_number=cleaned_data['phone' + str(i)],
-            id_number=cleaned_data['id_number' + str(i)],
-            email=cleaned_data['mail' + str(i)])
-
-        return person1
+        return membership
