@@ -2,11 +2,38 @@
 
 {% block body %}
 {% for personmembership in membership.personmembership_set.all %}
-<p>
+<div class="element">
   <div class="avatar element">
     <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="36" height="36" />
   </div>
   <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
-</p>
+  {% if personmembership.person.age %}
+  <p>Edad: {{ personmembership.person.age|default:"" }}</p>
+  {% endif %}
+  {% if personmembership.person.phone_number %}
+  <p>Teléfono: {{ personmembership.person.phone_number|default:"" }}</p>
+  {% endif %}
+  {% if personmembership.person.address_street %}
+  <p>Dirección: {{ personmembership.person.address_street|default:"" }}</p>
+  {% endif %}
+  {% if personmembership.person.id_number %}
+  <p>DNI: {{ personmembership.person.id_number|default:"" }}</p>
+  {% endif %}
+  {% if personmembership.person.ss_number %}
+  <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
+  {% endif %}
+  <p>Estado del carné: {{ personmembership.card_status|default:"" }}</p>
+  {% if personmembership.id_card_status == "no" %}
+  <p>Falta por entregar la fotocopia del DNI</p>
+  {% endif %}
+  {% if personmembership.ss_card_status == "no" %}
+  <p>Falta por entregar la fotocopia de la tarjeta sanitaria</p>
+  {% endif %}
+  {% if personmembership.dpa_status == "no" %}
+  <p>Falta por firmar la LOPD</p> {% endif %}
+  {% if personmembership.photo_status == "no" %}
+  <p>Falta por entregar la foto</p>
+  {% endif %}
+</div>
 {% endfor %}
 {% endblock %}
