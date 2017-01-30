@@ -1,6 +1,6 @@
-{% extends './__base.html' %} 
+{% extends './__base.html' %}
 
-{% block body %} 
+{% block body %}
 {% for personmembership in membership.personmembership_set.all %}
 <div class="element">
   <div class="avatar element">
@@ -22,5 +22,5 @@
   <p>Foto entregada: {{ personmembership.photo_status|default:"" }}</p>
   <p>Estado del carné: {{ personmembership.card_status|default:"" }}</p>
 </div>
-{% endfor %} 
+{% endfor %}
 {% endblock %}
