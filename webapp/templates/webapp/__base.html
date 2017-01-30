@@ -5,12 +5,38 @@
 <head>
   <meta charset="utf-8">
   <title>Abertal</title>
-  <link rel="stylesheet" href="{% static 'abertal.css' %}">
+  <link rel="stylesheet" href="{% static 'abertal.css' %}?{% now "U" %}">
 </head>
 
-<body class="container">
-{% block body %}
-{% endblock %}
+<body>
+  <header class="main-header">
+    <h1><a href="{% url 'home' %}">Abertal alpha</a></h1>
+  </header>
+  <div class="main-row">
+    <aside class="primary-sidebar">
+    {% block menu %}
+    <ul class="alpha-menu element">
+      {% for option in menu %}
+      <li class="{% if option.is_current %}is-active{% endif %} element">
+        {% if option.url %}
+        <a href="{{ option.url }}">{{ option.name }}</a>
+        {% else %}
+        <span>{{ option.name }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endblock %}
+    </aside>
+    <div class="main-column">
+      <main class="main-content">
+      <h1 class="element">{{ view.name }}</h1>
+      {% block body %}
+      {% endblock %}
+      </main>
+      <footer class="main-footer">Copyright © 2016-2017, C.X. Abertal</footer>
+    </div>
+  </div>
 </body>
 
 </html>

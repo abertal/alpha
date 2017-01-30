@@ -1,7 +1,6 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<h1 class="element">Nueva familia</h1>
 {%if form.errors %}<h2>{{ form.errors }}</h2>{% endif %}
 <form class="custom-form element" action="{% url 'basicformnewfamily' %}" method="post">
   {% csrf_token %}

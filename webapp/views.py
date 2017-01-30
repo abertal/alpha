@@ -1,9 +1,35 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, reverse
 from django.views import generic
 
 from core import models
 
 from . import forms
+
+
+class Option:
+    def __init__(self, name, viewname, args=None, kwargs=None, menu=None):
+        self.name = name
+        self.url = reverse(viewname, args, kwargs) if viewname else False
+        self.menu = menu
+
+    def is_current(self):
+        return self.menu.current == self.name
+
+
+class MenuBar:
+    def __init__(self, current):
+        self.current = current
+
+    def get_options(self):
+        return [
+            Option('Lista', 'membership-list', menu=self),
+            Option('Detalle', None, menu=self),
+            Option('Nuevo socio individual', 'basicformnewperson', menu=self),
+            Option('Nueva familia', 'basicformnewfamily', menu=self),
+        ]
+
+    def __iter__(self):
+        return iter(self.get_options())
 
 
 def group_list(request):
@@ -43,24 +69,49 @@ def login(request):
     return render(request, 'webapp/login.html', context=context)
 
 
-def home(request):
-    context = {}
-    return render(request, 'webapp/home.html', context=context)
+class MenuMixin:
+    name = ''
+
+    def get_context_data(self, **kwargs):
+        if 'menu' not in kwargs:
+            kwargs['menu'] = MenuBar(self.name)
+        return super().get_context_data(**kwargs)
 
 
-class NewIndividualMember(generic.FormView):
+class Home(MenuMixin, generic.TemplateView):
+    name = 'Inicio'
+    template_name = 'webapp/home.html'
+
+
+class NewIndividualMember(MenuMixin, generic.FormView):
     form_class = forms.NewIndividualMember
     template_name = 'webapp/basicformnewperson.html'
+    name = 'Nuevo socio individual'
 
     def form_valid(self, form):
         form.execute()
         return redirect('home')
 
 
-class NewFamilyMember(generic.FormView):
+class NewFamilyMember(MenuMixin, generic.FormView):
     form_class = forms.NewFamilyMember
     template_name = 'webapp/basicformnewfamily.html'
+    name = 'Nueva familia'
 
     def form_valid(self, form):
         form.execute()
         return redirect('home')
+
+
+class MembershipList(MenuMixin, generic.ListView):
+    template_name = 'webapp/membership_list.html'
+    name = 'Lista'
+
+    def get_queryset(self):
+        return models.Membership.objects.all()
+
+
+class MembershipDetail(MenuMixin, generic.DetailView):
+    model = models.Membership
+    template_name = 'webapp/membership_detail.html'
+    name = 'Detalle'

@@ -99,8 +99,52 @@ button {
  * Custom style
  */
 
+/* Page layout */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+.main-row {
+  flex: 1 1 auto;
+  display: flex;
+}
+.main-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-header,
+.main-footer,
+.primary-sidebar {
+  flex: 0 0 auto;
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.primary-sidebar {
+  width: 260px;
+}
+.main-content {
+  flex: 1 1 auto;
+	padding: 10px; /* Failback if calc not supported */
+	padding: calc(20px /2); /* Gutter */
+}
+.main-header,
+.primary-sidebar {
+  color: white;
+  background-color: #6b7a8f;
+}
+.main-column {
+  background-color: #eeeeee;
+}
+.main-footer {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 0.8em;
+}
+
  /* Base */
-.container,
 .element {
 	padding: 10px; /* Failback if calc not supported */
 	padding: calc(20px /2); /* Gutter */
@@ -123,6 +167,9 @@ button {
 .btn-return:hover {
   background-color: inherit;
   text-decoration: underline;
+}
+.avatar {
+ display: inline;
 }
 
  /* Forms */
@@ -164,19 +211,49 @@ button {
 }
 
 /* Menu of links */
-.alpha-menu {
-  display: flex;
-  flex-wrap: wrap;
-}
 .alpha-menu > li {
   min-width: 200px;
 }
 .alpha-menu > li > a {
   display: block;
-  border: thin solid black;
-  border-radius: 10px;
-  padding: 44px;
 }
 .alpha-menu > li > a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  color:white;
+}
+.alpha-menu > li.is-active {
+  font-weight: bold;
+}
+.alpha-menu > li.is-active::before {
+  content: '';
+  float: right;
+  height: 0;
+  width: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid white;
+}
+.alpha-menu > li > span {
+  cursor: not-allowed;
+  display: block;
+}
+
+/* Elements */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.membership-card {
+  width: 360px;
+  max-width: 360px;
+  height: 240px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: thin solid silver;
+  border-radius: 10px;
+  flex-grow: 1;
+  background-color: white;
+}
+.membership-card:hover {
+  border-color: black;
 }
