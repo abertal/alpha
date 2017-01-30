@@ -1,8 +1,8 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<p>tipo {{membership.type_of_membership}}<p>
-  <p>estado {{membership.payment_status}}</p>
+<p>Tipo: {{ membership.type_of_membership }}<p>
+<p>Estado: {{ membership.payment_status }}</p>
 {% for personmembership in membership.personmembership_set.all %}
 <div class="element">
   <div class="avatar element">
@@ -39,6 +39,8 @@
   {% if personmembership.photo_status == "no" %}
   <p>Falta por entregar la foto</p>
   {% endif %}
-</div>
+  {% if personmembership.person.health_warnings %}
+  <p>{{ personmembership.person.health_warnings }}</p>
+  {% endif %}
 {% endfor %}
 {% endblock %}
