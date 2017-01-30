@@ -17,7 +17,13 @@
   <p>Dirección: {{ personmembership.person.address_street|default:"" }}</p>
   {% endif %}
   <p>DNI entregado: {{ personmembership.id_card_status|default:"" }}</p>
+  {% if personmembership.person.id_number %}
+  <p>DNI: {{ personmembership.person.id_number|default:"" }}</p>
+  {% endif %}
   <p>Tarjeta Sanitaria entregada: {{ personmembership.ss_card_status|default:"" }}</p>
+  {% if personmembership.person.ss_number %}
+  <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
+  {% endif %}
   <p>LOPD firmada: {{ personmembership.dpa_status|default:"" }}</p>
   <p>Foto entregada: {{ personmembership.photo_status|default:"" }}</p>
   <p>Estado del carné: {{ personmembership.card_status|default:"" }}</p>
