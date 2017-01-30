@@ -23,16 +23,17 @@
   <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
   {% endif %}
   <p>Estado del carné: {{ personmembership.card_status|default:"" }}</p>
-  {% if personmembership.id_card_status == "no" %} <p>Falta por entregar la fotocopia del DNI</p> {% endif %}
-  {% if personmembership.ss_card_status == "no" %} <p>Falta por entregar la fotocopia de la tarjeta sanitaria</p> {% endif %}
-  {% if personmembership.dpa_status == "no" %} <p>Falta por firmar la LOPD</p> {% endif %}
-  {% if personmembership.photo_status == "no" %} <p>Falta por entregar la foto</p> {% endif %}
-  
-  <!--<p>DNI entregado: {{ personmembership.id_card_status|default:"" }}</p>  
-  <p>Tarjeta Sanitaria entregada: {{ personmembership.ss_card_status|default:"" }}</p>  
-  <p>LOPD firmada: {{ personmembership.dpa_status|default:"" }}</p>
-  <p>Foto entregada: {{ personmembership.photo_status|default:"" }}</p>-->
-  
+  {% if personmembership.id_card_status == "no" %}
+  <p>Falta por entregar la fotocopia del DNI</p>
+  {% endif %}
+  {% if personmembership.ss_card_status == "no" %}
+  <p>Falta por entregar la fotocopia de la tarjeta sanitaria</p>
+  {% endif %}
+  {% if personmembership.dpa_status == "no" %}
+  <p>Falta por firmar la LOPD</p> {% endif %}
+  {% if personmembership.photo_status == "no" %}
+  <p>Falta por entregar la foto</p>
+  {% endif %}
 </div>
 {% endfor %}
 {% endblock %}
