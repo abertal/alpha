@@ -21,7 +21,7 @@ class NewIndividualMember(forms.Form):
             address_street=cleaned_data['adress'],
             id_number=cleaned_data['id_number'],
             email=cleaned_data['mail'])
-        print(person)
+        return person
 
 
 class NewFamilyMember(forms.Form):
@@ -81,7 +81,4 @@ class NewFamilyMember(forms.Form):
             id_number=cleaned_data['id_number' + str(i)],
             email=cleaned_data['mail' + str(i)])
 
-        print(person1)
-        print(person2)
-        print(person3)
-        print(person4)
+        return person1
