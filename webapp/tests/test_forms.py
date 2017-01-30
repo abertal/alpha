@@ -1,5 +1,7 @@
 import pytest
 
+from core import models
+
 from webapp import forms
 
 
@@ -18,3 +20,4 @@ def test_new_individual_member():
 
     membership = form.execute()
     assert membership.pk is not None
+    assert isinstance(membership, models.Membership)
