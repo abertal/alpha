@@ -157,6 +157,22 @@ body {
   padding: 10px 12px;
   margin-right: 10px;
 }
+.btn_detalle {
+  border: transparent;
+  border-radius: 6px;
+  color: white;
+  background-color: rgb(0, 120, 40);
+  padding: 6px 12px;
+  margin-right: 10px;
+}
+.btn_detalle_comentarios {
+  border: transparent;
+  border-radius: 6px;
+  color: white;
+  background-color: rgb(120, 120, 120);
+  padding: 6px 12px;
+  margin-right: 10px;
+}
 .btn:hover {
   background-color: rgba(239, 127, 26, 0.5);
 }
