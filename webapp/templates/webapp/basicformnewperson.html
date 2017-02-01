@@ -1,32 +1,38 @@
 {% extends './__base.html' %}
 
 {% block body %}
-{%if form.errors %}<h2>{{ form.errors }}</h2>{% endif %}
 <form class="custom-form element" action="{% url 'basicformnewperson' %}" method="post">
   {% csrf_token %}
+  {{ form.non_field_errors }}
   <div class="alpha-form-row element">
-    <label for="name">Nombre</label>
-    <input type="text" id="name" name="name">
+    {{ form.name.label_tag }}
+    {{ form.name }}
+    {{ form.name.errors }}
   </div>
   <div class="alpha-form-row element">
-    <label for="surname">Apellidos</label>
-    <input type="text" id="surname" name="surname">
+    {{ form.surname.label_tag }}
+    {{ form.surname }}
+    {{ form.surname.errors }}
   </div>
   <div class="alpha-form-row element">
-    <label for="id_number">DNI</label>
-    <input type="text" id="id_number" name="id_number">
+    {{ form.id_number.label_tag }}
+    {{ form.id_number }}
+    {{ form.id_number.errors }}
   </div>
   <div class="alpha-form-row element">
-    <label for="phone">Teléfono</label>
-    <input type="text" id="phone" name="phone">
+    {{ form.phone.label_tag }}
+    {{ form.phone }}
+    {{ form.phone.errors }}
   </div>
   <div class="alpha-form-row element">
-    <label for="mail">Correo electrónico</label>
-    <input type="text" id="mail" name="mail">
+    {{ form.mail.label_tag }}
+    {{ form.mail }}
+    {{ form.mail.errors }}
   </div>
   <div class="alpha-form-row element">
-    <label for="adress">Dirección</label>
-    <input type="text" id="adress" name="adress">
+    {{ form.adress.label_tag }}
+    {{ form.adress }}
+    {{ form.adress.errors }}
   </div>
   <div class="alpha-form-row alpha-form-actions element">
     <input type="submit" class="btn" value="Guardar nuevo socio">

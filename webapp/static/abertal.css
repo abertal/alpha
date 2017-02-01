@@ -184,7 +184,7 @@ body {
 .alpha-form-row {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
 }
 .alpha-form-section > .alpha-form-row {
   padding-left: -10px;
@@ -196,7 +196,6 @@ body {
 }
 .alpha-form-row > label {
   display: block;
-  align-self: center;
   text-align: right;
   width: 200px;
   max-width: 200px;
@@ -208,6 +207,16 @@ body {
 }
 .alpha-form-row > .btn {
   display: block;
+}
+ul.errorlist {
+  display: block;
+}
+ul.errorlist > li {
+  display: inline;
+  color: red;
+}
+.alpha-form-row > ul.errorlist > li {
+  margin-left: 10px;
 }
 
 /* Menu of links */

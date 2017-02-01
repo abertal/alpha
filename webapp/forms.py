@@ -6,12 +6,12 @@ from core import models
 
 
 class NewIndividualMember(forms.Form):
-    name = forms.CharField()
-    surname = forms.CharField()
-    phone = forms.CharField()
-    adress = forms.CharField()
-    mail = forms.CharField()
-    id_number = forms.CharField()
+    name = forms.CharField(label='Nombre')
+    surname = forms.CharField(label='Apellidos')
+    phone = forms.CharField(label='Teléfono')
+    adress = forms.CharField(label='Dirección')
+    mail = forms.EmailField(label='Correo electrónico')
+    id_number = forms.CharField(label='DNI')
 
     membership_fee = D('15.00')
 
@@ -32,29 +32,29 @@ class NewIndividualMember(forms.Form):
 
 class NewFamilyMember(forms.Form):
 
-    name1 = forms.CharField()
-    phone1 = forms.CharField()
-    surname1 = forms.CharField()
-    id_number1 = forms.CharField()
-    mail1 = forms.CharField()
+    name1 = forms.CharField(label='Nombre')
+    phone1 = forms.CharField(label='Teléfono')
+    surname1 = forms.CharField(label='Apellidos')
+    id_number1 = forms.CharField(label='DNI')
+    mail1 = forms.CharField(label='Correo electrónico')
 
-    name2 = forms.CharField()
-    phone2 = forms.CharField()
-    surname2 = forms.CharField()
-    id_number2 = forms.CharField()
-    mail2 = forms.CharField()
+    name2 = forms.CharField(label='Nombre')
+    phone2 = forms.CharField(label='Teléfono')
+    surname2 = forms.CharField(label='Apellidos')
+    id_number2 = forms.CharField(label='DNI')
+    mail2 = forms.CharField(label='Correo electrónico')
 
-    name3 = forms.CharField()
-    phone3 = forms.CharField()
-    surname3 = forms.CharField()
-    id_number3 = forms.CharField()
-    mail3 = forms.CharField()
+    name3 = forms.CharField(label='Nombre')
+    phone3 = forms.CharField(label='Teléfono')
+    surname3 = forms.CharField(label='Apellidos')
+    id_number3 = forms.CharField(label='DNI')
+    mail3 = forms.CharField(label='Correo electrónico')
 
-    name4 = forms.CharField()
-    phone4 = forms.CharField()
-    surname4 = forms.CharField()
-    id_number4 = forms.CharField()
-    mail4 = forms.CharField()
+    name4 = forms.CharField(label='Nombre')
+    phone4 = forms.CharField(label='Teléfono')
+    surname4 = forms.CharField(label='Apellidos')
+    id_number4 = forms.CharField(label='DNI')
+    mail4 = forms.CharField(label='Correo electrónico')
 
     membership_fee = D('40.00')
 
