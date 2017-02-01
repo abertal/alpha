@@ -6,12 +6,12 @@ from core import models
 
 
 class NewIndividualMember(forms.Form):
-    name = forms.CharField()
-    surname = forms.CharField()
-    phone = forms.CharField()
-    adress = forms.CharField()
-    mail = forms.CharField()
-    id_number = forms.CharField()
+    name = forms.CharField(label='Nombre')
+    surname = forms.CharField(label='Apellidos')
+    phone = forms.CharField(label='Teléfono')
+    adress = forms.CharField(label='Dirección')
+    mail = forms.EmailField(label='Correo electrónico')
+    id_number = forms.CharField(label='DNI')
 
     membership_fee = D('15.00')
 
