@@ -19,7 +19,7 @@
   <p>Correo electrónico: {{ personmembership.person.email|default:"" }}</p>
   {% endif %}
   {% if personmembership.person.address_street %}
-  <p>Dirección: {{ personmembership.person.address_street|default:"" }}. {{personmembership.person.address_locality}}.</p>
+  <p>Dirección: {{ personmembership.person.address_street|default:"" }} - {{ personmembership.person.address_locality|default:"" }}</p>
   {% endif %}
   {% if personmembership.person.id_number %}
   <p>DNI: {{ personmembership.person.id_number|default:"" }}</p>
@@ -28,16 +28,20 @@
   <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
   {% endif %}
   <p>Estado del carné: {{ personmembership.card_status|default:"" }}</p>
+  {% if  personmembership.id_card_status == "no" or personmembership.ss_card_status == "no" or personmembership.dpa_status == "no" or personmembership.photo_status == "no" %}
+  Falta documentación por entregar:
   {% if personmembership.id_card_status == "no" %}
-  <p>Falta por entregar la fotocopia del DNI</p>
+  <p>- Fotocopia del DNI</p>
   {% endif %}
   {% if personmembership.ss_card_status == "no" %}
-  <p>Falta por entregar la fotocopia de la tarjeta sanitaria</p>
+  <p>- Fotocopia de la tarjeta sanitaria</p>
   {% endif %}
   {% if personmembership.dpa_status == "no" %}
-  <p>Falta por firmar la LOPD</p> {% endif %}
+  <p>- Firmar la LOPD</p>
+  {% endif %}
   {% if personmembership.photo_status == "no" %}
-  <p>Falta por entregar la foto</p>
+  <p>- Foto</p>
+  {% endif %}
   {% endif %}
   {% if personmembership.person.health_warnings %}
   <p>{{ personmembership.person.health_warnings }}</p>
