@@ -208,6 +208,16 @@ body {
 .alpha-form-row > .btn {
   display: block;
 }
+ul.errorlist {
+  display: block;
+}
+ul.errorlist > li {
+  display: inline;
+  color: red;
+}
+.alpha-form-row > ul.errorlist > li {
+  margin-left: 10px;
+}
 
 /* Menu of links */
 .alpha-menu > li {
