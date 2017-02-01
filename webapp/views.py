@@ -89,8 +89,8 @@ class NewIndividualMember(MenuMixin, generic.FormView):
     name = 'Nuevo socio individual'
 
     def form_valid(self, form):
-        form.execute()
-        return redirect('home')
+        membership = form.execute()
+        return redirect('membership-detail', pk=membership.pk)
 
 
 class NewFamilyMember(MenuMixin, generic.FormView):
@@ -99,8 +99,8 @@ class NewFamilyMember(MenuMixin, generic.FormView):
     name = 'Nueva familia'
 
     def form_valid(self, form):
-        form.execute()
-        return redirect('home')
+        membership = form.execute()
+        return redirect('membership-detail', pk=membership.pk)
 
 
 class MembershipList(MenuMixin, generic.ListView):

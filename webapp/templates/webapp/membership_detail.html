@@ -1,6 +1,8 @@
 {% extends './__base.html' %}
 
 {% block body %}
+<p>Tipo: {{ membership.type_of_membership }}<p>
+<p>Estado: {{ membership.payment_status }}</p>
 {% for personmembership in membership.personmembership_set.all %}
 <div class="element">
   <div class="avatar element">
@@ -12,6 +14,9 @@
   {% endif %}
   {% if personmembership.person.phone_number %}
   <p>Teléfono: {{ personmembership.person.phone_number|default:"" }}</p>
+  {% endif %}
+  {% if personmembership.person.email %}
+  <p>Correo electrónico: {{ personmembership.person.email|default:"" }}</p>
   {% endif %}
   {% if personmembership.person.address_street %}
   <p>Dirección: {{ personmembership.person.address_street|default:"" }} - {{ personmembership.person.address_locality|default:"" }}</p>
@@ -38,6 +43,8 @@
   <p>- Foto</p>
   {% endif %}
   {% endif %}
-</div>
+  {% if personmembership.person.health_warnings %}
+  <p>{{ personmembership.person.health_warnings }}</p>
+  {% endif %}
 {% endfor %}
 {% endblock %}
