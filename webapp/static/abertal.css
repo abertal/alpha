@@ -149,6 +149,9 @@ body {
 	padding: 10px; /* Failback if calc not supported */
 	padding: calc(20px /2); /* Gutter */
 }
+.error{
+  color:red;
+}
 .btn {
   border: transparent;
   border-radius: 10px;
@@ -156,6 +159,16 @@ body {
   background-color: rgb(239, 127, 26);
   padding: 10px 12px;
   margin-right: 10px;
+}
+.btn-detalle{
+  padding: 6px 12px;
+  border-radius: 6px;
+  }
+.btn-documentos{
+  background-color: rgb(0, 120, 40);
+}
+.btn-comentarios{
+  background-color: rgb(120, 120, 120);
 }
 .btn:hover {
   background-color: rgba(239, 127, 26, 0.5);
