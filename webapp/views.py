@@ -66,6 +66,8 @@ def missing_doc(request):
 
 def login(request):
     context = {}
+    if request.method == 'POST':
+        return redirect('home')
     return render(request, 'webapp/login.html', context=context)
 
 

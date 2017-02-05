@@ -1,42 +1,23 @@
+{% extends './__simple.html' %}
 {% load static %}
-<!doctype html>
-<html lang="es">
 
-<head>
-  <meta charset="utf-8">
-  <title>Abertal</title>
-  <link rel="stylesheet" href="{% static 'abertal.css' %}?{% now "U" %}">
-</head>
-
-<body>
-  <header class="main-header">
-    <h1><a href="{% url 'home' %}">Abertal alpha</a></h1>
-  </header>
-  <div class="main-row">
-    <aside class="primary-sidebar">
-    {% block menu %}
-    <ul class="alpha-menu element">
-      {% for option in menu %}
-      <li class="{% if option.is_current %}is-active{% endif %} element">
-        {% if option.url %}
-        <a href="{{ option.url }}">{{ option.name }}</a>
-        {% else %}
-        <span>{{ option.name }}</span>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endblock %}
-    </aside>
-    <div class="main-column">
-      <main class="main-content">
-      <h1 class="element">{{ view.name }}</h1>
-      {% block body %}
-      {% endblock %}
-      </main>
-      <footer class="main-footer">Copyright © 2016-2017, C.X. Abertal</footer>
-    </div>
+{% block main %}
+<aside class="col-2">
+  {% block menu %}
+  <div class="list-group">
+  {% for option in menu %}
+    {% if option.url %}
+    <a href="{{ option.url }}" class="list-group-item {% if option.is_current %}active{% endif %}">{{ option.name }}</a>
+    {% else %}
+    <a href="#" class="list-group-item {% if option.is_current %}active{% endif %} disabled">{{ option.name }}</a>
+    {% endif %}
+  {% endfor %}
   </div>
-</body>
-
-</html>
+  {% endblock %}
+</aside>
+<main class="col">
+  <h1>{{ view.name }}</h1>
+  {% block body %}
+  {% endblock %}
+</main>
+{% endblock %}
