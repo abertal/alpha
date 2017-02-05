@@ -7,16 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Abertal</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/alpha.css' %}?{% now 'U' %}">
 </head>
 
 <body>
-  <div class="fluid-container">
-    <div class="row">
-      {% block main %}{% endblock %}
+  <div class="main-content">
+    <div class="fluid-container">
+      <div class="row">
+        {% block main %}{% endblock %}
+      </div>
     </div>
-    <div class="row">
-      <footer class="col">Copyright © 2016-2017, C.X. Abertal</footer>
-    </div>
+  </div>
+  <div class="main-footer">
+    <footer>Copyright © 2016-2017, C.X. Abertal</footer>
   </div>
   <!-- jQuery first, then Tether, then Bootstrap JS. -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
