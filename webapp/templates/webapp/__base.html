@@ -1,45 +1,25 @@
+{% extends './__simple.html' %}
 {% load static %}
-<!doctype html>
-<html lang="es">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Abertal</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-</head>
-
-<body>
-  <header class="main-header">
-    <h1><a href="{% url 'home' %}">Abertal alpha</a></h1>
-  </header>
-  <div class="main-row">
-    <aside class="primary-sidebar">
-    {% block menu %}
-    <ul class="alpha-menu element">
-      {% for option in menu %}
-      <li class="{% if option.is_current %}is-active{% endif %} element">
-        {% if option.url %}
-        <a href="{{ option.url }}">{{ option.name }}</a>
-        {% else %}
-        <span>{{ option.name }}</span>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endblock %}
-    </aside>
-    <div class="main-column">
-      <main class="main-content">
-      <h1 class="element">{{ view.name }}</h1>
-      {% block body %}
-      {% endblock %}
-      </main>
-      <footer class="main-footer">Copyright © 2016-2017, C.X. Abertal</footer>
-    </div>
-  </div>
-  <!-- jQuery first, then Tether, then Bootstrap JS. -->
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
+{% block main %}
+<aside class="col-2">
+  {% block menu %}
+  <ul class="alpha-menu element">
+    {% for option in menu %}
+    <li>
+      {% if option.url %}
+      <a href="{{ option.url }}">{{ option.name }}</a>
+      {% else %}
+      <span>{{ option.name }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+</aside>
+<main class="col">
+  <h1>{{ view.name }}</h1>
+  {% block body %}
+  {% endblock %}
+</main>
+{% endblock %}
