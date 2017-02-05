@@ -21,8 +21,8 @@ def test_list_views(view_name):
     '/webapp/login/',
     '/webapp/home/',
     '/webapp/membership/',
-    # '/webapp/new-member/',
-    # '/webapp/new-family/',
+    '/webapp/basicformnewperson/',
+    '/webapp/basicformnewfamily/',
 ])
 def test_views_exist(url):
     c = Client()
