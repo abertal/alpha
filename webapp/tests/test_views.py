@@ -28,3 +28,24 @@ def test_views_exist(url):
     c = Client()
     response = c.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/login/',
+])
+def test_views_post_and_redirect(url):
+    c = Client()
+    response = c.post(url)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/basicformnewperson/',
+    '/webapp/basicformnewfamily/',
+])
+def test_views_post_with_errors(url):
+    c = Client()
+    response = c.post(url)
+    assert response.status_code == 200
