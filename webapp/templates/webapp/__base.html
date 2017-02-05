@@ -4,17 +4,15 @@
 {% block main %}
 <aside class="col-2">
   {% block menu %}
-  <ul class="alpha-menu element">
-    {% for option in menu %}
-    <li>
-      {% if option.url %}
-      <a href="{{ option.url }}">{{ option.name }}</a>
-      {% else %}
-      <span>{{ option.name }}</span>
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+  <div class="list-group">
+  {% for option in menu %}
+    {% if option.url %}
+    <a href="{{ option.url }}" class="list-group-item {% if option.name == view.name %}active{% endif %}">{{ option.name }}</a>
+    {% else %}
+    <a href="#" class="list-group-item {% if option.name == view.name %}active{% endif %} disabled">{{ option.name }}</a>
+    {% endif %}
+  {% endfor %}
+  </div>
   {% endblock %}
 </aside>
 <main class="col">
