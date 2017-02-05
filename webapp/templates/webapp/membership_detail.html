@@ -1,56 +1,74 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<div class="element">
+<div class="row"><div class="col">
   <p>Tipo: <b>{{ membership.type_of_membership }}</b></p>
   <p>Estado: <b>{{ membership.payment_status }}</b></p>
+</div></div>
+
+<div class="row"><div class="col">
   {% for personmembership in membership.personmembership_set.all %}
-  <div class="element">
-    <div class="avatar element">
-      <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="36" height="36" alt="identicon para {{ personmembership.person.name }}"/>
-    </div>
-    <span><b>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</b></span>
-    {% if personmembership.person.age %}
-    <p>Edad: {{ personmembership.person.age|default:"" }}</p>
-    {% endif %}
-    {% if personmembership.person.phone_number %}
-    <p>Teléfono: {{ personmembership.person.phone_number|default:"" }}</p>
-    {% endif %}
-    {% if personmembership.person.email %}
-    <p>Correo electrónico: {{ personmembership.person.email|default:"" }}</p>
-    {% endif %}
-    {% if personmembership.person.address_street %}
-    <p>Dirección: {{ personmembership.person.address_street|default:"" }}. {{personmembership.person.address_locality}}.</p>
-    {% endif %}
-    {% if personmembership.person.id_number %}
-    <p>DNI: {{ personmembership.person.id_number|default:"" }}</p>
-    {% endif %}
-    {% if personmembership.person.ss_number %}
-    <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
-    {% endif %}
-    <p><b>Estado del carné: {{ personmembership.card_status|default:"" }}</b></p>
-    {% if personmembership.id_card_status == "no" %}
-    <p><b class="error"> por entregar la fotocopia del DNI</b> <input type="button" class="btn btn-detalle btn-documentos" value="recogido"/><input type="button" class="btn btn-return" value="revertir"/></p>
-    {% endif %}
-    {% if personmembership.ss_card_status == "no" %}
-    <p><b class="error">Falta por entregar la fotocopia de la tarjeta sanitaria</b> <input type="button" class="btn btn-detalle btn-documentos" value="recogido"/><input type="button" class="btn btn-return" value="revertir"/></p>
-    {% endif %}
-    {% if personmembership.dpa_status == "no" %}
-    <p><b class="error">Falta por firmar la LOPD</b> <input type="button" class="btn btn-detalle btn-documentos" value="recogido"/><input type="button" class="btn btn-return" value="revertir"/></p> {% endif %}
-    {% if personmembership.photo_status == "no" %}
-    <p><b class="error">Falta por entregar la foto</b> <input type="button" class="btn btn-detalle btn-documentos" value="recogido"/><input type="button" class="btn btn-return" value="revertir"/></p>
-    {% endif %}
-    {% if personmembership.person.health_warnings %}
-    <p><b class="alerta-medica">{{ personmembership.person.health_warnings }}</b>
-    {% endif %}
-    <p><input type="button" class="btn btn-detalle btn-comentarios" value="Observaciones"/><input type="button" class="btn btn-detalle btn-comentarios" value="Observaciones Médicas"/></p>
-  </div>
+
+  {% if forloop.counter0|divisibleby:3 %}
+  <div class="card-group">
+  {% endif %}
+
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">
+          <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="36" height="36" alt="identicon para {{ personmembership.person.name }}"/>
+          {{ personmembership.person.name }} {{personmembership.person.surname}}
+        </h3>
+        {% if personmembership.person.age %}
+        <p>Edad: {{ personmembership.person.age|default:"" }}</p>
+        {% endif %}
+        {% if personmembership.person.phone_number %}
+        <p>Teléfono: {{ personmembership.person.phone_number|default:"" }}</p>
+        {% endif %}
+        {% if personmembership.person.email %}
+        <p>Correo electrónico: {{ personmembership.person.email|default:"" }}</p>
+        {% endif %}
+        {% if personmembership.person.address_street %}
+        <p>Dirección: {{ personmembership.person.address_street|default:"" }}. {{personmembership.person.address_locality}}.</p>
+        {% endif %}
+        {% if personmembership.person.id_number %}
+        <p>DNI: {{ personmembership.person.id_number|default:"" }}</p>
+        {% endif %}
+        {% if personmembership.person.ss_number %}
+        <p>Tarjeta sanitaria: {{ personmembership.person.ss_number|default:"" }}</p>
+        {% endif %}
+        <p><b>Estado del carné: {{ personmembership.card_status|default:"" }}</b></p>
+        {% if personmembership.id_card_status == "no" %}
+        <p><b class="error"> por entregar la fotocopia del DNI</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+        {% endif %}
+        {% if personmembership.ss_card_status == "no" %}
+        <p><b class="error">Falta por entregar la fotocopia de la tarjeta sanitaria</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+        {% endif %}
+        {% if personmembership.dpa_status == "no" %}
+        <p><b class="error">Falta por firmar la LOPD</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p> {% endif %}
+        {% if personmembership.photo_status == "no" %}
+        <p><b class="error">Falta por entregar la foto</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+        {% endif %}
+        {% if personmembership.person.health_warnings %}
+        <p><b class="alerta-medica">{{ personmembership.person.health_warnings }}</b>
+        {% endif %}
+      </div>
+      <div class="card-footer">
+        <input type="button" class="btn btn-primary" value="Añadir observaciones"/>
+        <input type="button" class="btn btn-primary" value="Añadir observaciones Médicas"/>
+      </div>
+    </div><!-- card -->
+
+  {% if forloop.counter|divisibleby:3 or forloop.last %}
+  </div><!-- deck {{ forloop.counter }} -->
+  {% endif %}
+
   {% endfor %}
-</div>
-<br/>
-<br/>
-<div class="element">
-  <input type="button" class="btn btn-detalle btn-documentos" value="Guardar Cambios"/>
-  <input type="button" class="btn btn-return" value="Cancelar"/>
-</div>
+</div></div>
+
+<div class="row"><div class="col">
+  <input type="button" class="btn btn-secondary" value="Guardar Cambios"/>
+  <input type="button" class="btn btn-link" value="Cancelar"/>
+</div></div>
+
 {% endblock %}
