@@ -1,22 +1,28 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<div class="card-container">
-  {% for membership in object_list %}
-  <a href="{% url 'membership-detail' membership.id %}" class="membership-card element">
-    {% for personmembership in membership.personmembership_set.all %}
-    {% if forloop.counter <= 6 %}
-    <div>
-      <div class="avatar element">
+{% for membership in object_list %}
+{% if forloop.counter0|divisibleby:3 %}
+<div class="card-deck">
+{% endif %}
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Socio {{ membership.type_of_membership }}</h4>
+      {% for personmembership in membership.personmembership_set.all %}
+      <p>
+        {% if forloop.counter <= 6 %}
         <img src="https://sigil.cupcake.io/{{ personmembership.person.id }}.png?w=36" width="36" height="36" alt="identicon para {{ personmembership.person.name }}"/>
-      </div>
-      <span>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</span>
+        {{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}
+        {% elif forloop.counter == 7 %}
+        Más...
+        {% endif %}
+      </p>
+      {% endfor %}
+      <a href="{% url 'membership-detail' membership.id %}" class="card-link">Ver ficha</a>
     </div>
-    {% elif forloop.counter == 7 %}
-    <p>...</p>
-    {% endif %}
-    {% endfor %}
-  </a>
-  {% endfor %}
-</div>
+  </div><!-- card -->
+{% if forloop.counter|divisibleby:3 %}
+</div><!-- deck -->
+{% endif %}
+{% endfor %}
 {% endblock %}
