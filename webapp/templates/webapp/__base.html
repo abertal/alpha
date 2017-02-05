@@ -7,9 +7,9 @@
   <div class="list-group">
   {% for option in menu %}
     {% if option.url %}
-    <a href="{{ option.url }}" class="list-group-item {% if option.name == view.name %}active{% endif %}">{{ option.name }}</a>
+    <a href="{{ option.url }}" class="list-group-item {% if option.is_current %}active{% endif %}">{{ option.name }}</a>
     {% else %}
-    <a href="#" class="list-group-item {% if option.name == view.name %}active{% endif %} disabled">{{ option.name }}</a>
+    <a href="#" class="list-group-item {% if option.is_current %}active{% endif %} disabled">{{ option.name }}</a>
     {% endif %}
   {% endfor %}
   </div>
