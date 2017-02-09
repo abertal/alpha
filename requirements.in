@@ -1,4 +1,5 @@
 Django
+django-widget-tweaks
 dj-database-url
 openpyxl
 psycopg2
