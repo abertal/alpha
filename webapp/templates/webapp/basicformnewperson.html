@@ -1,42 +1,49 @@
 {% extends './__base.html' %}
+{% load widget_tweaks %}
 
 {% block body %}
 <form class="custom-form element" action="{% url 'basicformnewperson' %}" method="post">
   {% csrf_token %}
   {{ form.non_field_errors }}
-  <div class="alpha-form-row element">
-    {{ form.name.label_tag }}
-    {{ form.name }}
-    {{ form.name.errors }}
+  <div class="form-group">
+    <label for="{{ form.name.id_for_label }}" class="form-control-label">{{ form.name.label }}
+    {{ form.name|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.name.errors }}</div>
   </div>
-  <div class="alpha-form-row element">
-    {{ form.surname.label_tag }}
-    {{ form.surname }}
-    {{ form.surname.errors }}
+  <div class="form-group">
+    <label for="{{ form.surname.id_for_label }}" class="form-control-label">{{ form.surname.label }}
+    {{ form.surname|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.surname.errors }}</div>
   </div>
-  <div class="alpha-form-row element">
-    {{ form.id_number.label_tag }}
-    {{ form.id_number }}
-    {{ form.id_number.errors }}
+  <div class="form-group">
+    <label for="{{ form.id_number.id_for_label }}" class="form-control-label">{{ form.id_number.label }}
+    {{ form.id_number|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.id_number.errors }}</div>
   </div>
-  <div class="alpha-form-row element">
-    {{ form.phone.label_tag }}
-    {{ form.phone }}
-    {{ form.phone.errors }}
+  <div class="form-group">
+    <label for="{{ form.phone.id_for_label }}" class="form-control-label">{{ form.phone.label }}
+    {{ form.phone|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.phone.errors }}</div>
   </div>
-  <div class="alpha-form-row element">
-    {{ form.mail.label_tag }}
-    {{ form.mail }}
-    {{ form.mail.errors }}
+  <div class="form-group">
+    <label for="{{ form.mail.id_for_label }}" class="form-control-label">{{ form.mail.label }}
+    {{ form.mail|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.mail.errors }}</div>
   </div>
-  <div class="alpha-form-row element">
-    {{ form.adress.label_tag }}
-    {{ form.adress }}
-    {{ form.adress.errors }}
+  <div class="form-group">
+    <label for="{{ form.adress.id_for_label }}" class="form-control-label">{{ form.adress.label }}
+    {{ form.adress|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ form.adress.errors }}</div>
   </div>
-  <div class="alpha-form-row alpha-form-actions element">
-    <input type="submit" class="btn" value="Guardar nuevo socio">
-    <a href="{% url 'home' %}" class="btn btn-return">Volver sin guardar</a>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Guardar nuevo socio">
+    <a href="{% url 'home' %}" class="btn btn-link">Volver sin guardar</a>
   </div>
 </form>
 {% endblock %}
