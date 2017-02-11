@@ -1,7 +1,6 @@
 import pytest
 
 from core import models
-
 from webapp import forms
 
 
@@ -16,6 +15,41 @@ def test_new_individual_member():
         'id_number': '12345678A'
     }
     form = forms.NewIndividualMember(data=data)
+    assert form.is_valid(), form.errors
+
+    membership = form.execute()
+    assert membership.pk is not None
+    assert isinstance(membership, models.Membership)
+
+
+@pytest.mark.django_db
+def test_new_family_member():
+    data = {
+        'name1': 'Juan',
+        'phone1': '555555555',
+        'surname1': 'García',
+        'id_number1': '12345678A',
+        'mail1': 'email@example.com',
+
+        'name2': 'Juan',
+        'phone2': '555555555',
+        'surname2': 'García',
+        'id_number2': '12345678A',
+        'mail2': 'email@example.com',
+
+        'name3': 'Juan',
+        'phone3': '555555555',
+        'surname3': 'García',
+        'id_number3': '12345678A',
+        'mail3': 'email@example.com',
+
+        'name4': 'Juan',
+        'phone4': '555555555',
+        'surname4': 'García',
+        'id_number4': '12345678A',
+        'mail4': 'email@example.com',
+    }
+    form = forms.NewFamilyMember(data=data)
     assert form.is_valid(), form.errors
 
     membership = form.execute()
