@@ -1,45 +1,26 @@
 {% extends './__base.html' %}
+{% load widget_tweaks %}
 
 {% block body %}
-{%if form.errors %}<h2>{{ form.errors }}</h2>{% endif %}
 <form class="custom-form element" action="{% url 'basicformnewfamily' %}" method="post">
   {% csrf_token %}
-  {% for i in "1234" %}
-  <section class="alpha-form-section element">
-    <h2 class="element">Miembro {{ i }}</h2>
-    <div class="alpha-form-row element">
-      <label for="name{{ i }}">Nombre</label>
-      <input type="text" id="name{{ i }}" name="name{{ i }}">
-    </div>
-    <div class="alpha-form-row element">
-      <label for="surname{{ i }}">Apellidos</label>
-      <input type="text" id="surname{{ i }}" name="surname{{ i }}">
-    </div>
-    <div class="alpha-form-row element">
-    <label for="id_number{{ i }}">DNI</label>
-    <input type="text" id="id_number{{ i }}" name="id_number{{ i }}">
-  </div>
-  <div class="alpha-form-row element">
-    <label for="mail{{ i }}">Correo electrónico</label>
-    <input type="text" id="mail{{ i }}" name="mail{{ i }}">
-  </div>
-
-    <div class="alpha-form-row element">
-      <label for="phone{{ i }}">Teléfono</label>
-      <input type="text" id="phone{{ i }}" name="phone{{ i }}">
-    </div>
-  </section>
+  {{ form.non_field_errors }}
+  {# Include the hidden fields #}
+  {% for hidden in form.hidden_fields %}
+  {{ hidden }}
   {% endfor %}
-  <section class="alpha-form-section element">
-    <h2 class="element">Datos comunes</h2>
-  <div class="alpha-form-row element">
-    <label for="adress">Dirección</label>
-    <input type="text" id="adress" name="adress">
+  {# Include the visible fields #}
+  {% for field in form.visible_fields %}
+  <div class="form-group">
+    <label for="{{ field.id_for_label }}" class="form-control-label">{{ field.label }}
+    {{ field|add_class:"form-control" }}
+    </label>
+    <div class="form-control-feedback">{{ field.errors }}</div>
   </div>
-  </section>
-    <div class="alpha-form-row alpha-form-actions element">
-      <input type="submit" class="btn" value="Guardar nueva familia">
-      <a href="{% url 'home' %}" class="btn btn-return">Volver sin guardar</a>
-    </div>
+  {% endfor %}
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Guardar nueva familia">
+    <a href="{% url 'home' %}" class="btn btn-link">Volver sin guardar</a>
+  </div>
 </form>
 {% endblock %}
