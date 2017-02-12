@@ -1,0 +1,24 @@
+{
+  "name": "abertal-alpha",
+  "version": "0.0.1",
+  "description": "Proof of concept association web management Edit",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser-sync": "browser-sync start --files \"./**/*.css, ./**/*.js, ./**/*.py, ./**/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
+    "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run browser-sync\" "
+},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abertal/alpha/"
+  },
+  "author": "C.X. Abertal",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "concurrently": "^3.2.0"
+  }
+}
