@@ -63,6 +63,9 @@ class Recipient(models.Model):
     category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person)
 
+    def __str__(self):
+        return '{}'.format(self.id)
+
 
 class Volunteer(models.Model):
     """Voluntarios, en general animadores con una vinculación con cierto plazo."""
@@ -75,6 +78,9 @@ class Volunteer(models.Model):
         default=None,
     )
     person = models.ForeignKey(Person)
+
+    def __str__(self):
+        return '{}'.format(self.id)
 
 
 class Custodian(models.Model):
@@ -91,6 +97,9 @@ class Custodian(models.Model):
     category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person)
     minor = models.ForeignKey(Recipient)
+
+    def __str__(self):
+        return '{}'.format(self.id)
 
 
 class Group(models.Model):
