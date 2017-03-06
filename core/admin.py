@@ -15,6 +15,14 @@ class Person(admin.ModelAdmin):
                     'age')
 
 
+@admin.register(models.Recipient)
+class Recipient(admin.ModelAdmin):
+    search_fields = ['person__name', 'person__surname']
+
+    list_display = ('id',
+                    'category')
+
+
 @admin.register(models.Group)
 class Group(admin.ModelAdmin):
     search_fields = ['group_name']

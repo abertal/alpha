@@ -46,6 +46,24 @@ class Person(models.Model):
         return '{} {}'.format(self.name.capitalize(), self.surname.upper())
 
 
+class Recipient(models.Model):
+    """"Destinatario de las actividades de la asociación.
+
+    Jóvenes asignados a un grupo dentro de un proyecto (destinatario). Pueden
+    ser infantiles (6 a 14 años) o juveniles (14 a 29 años).
+    """
+    class Meta:
+        verbose_name = 'Destinatario'
+
+    CATEGORIES = [
+        ('child', 'Infantil'),
+        ('juvenile', 'Juvenil'),
+    ]
+
+    category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
+    person = models.ForeignKey(Person)
+
+
 class Group(models.Model):
 
     class Meta:
