@@ -77,6 +77,22 @@ class Volunteer(models.Model):
     person = models.ForeignKey(Person)
 
 
+class Custodian(models.Model):
+    """Padre, madre o tutor legal de un menor."""
+    class Meta:
+        verbose_name = 'Padre, madre, tutor'
+
+    CATEGORIES = [
+        ('father', 'Padre'),
+        ('mother', 'Madre'),
+        ('legal', 'Tutor'),
+    ]
+
+    category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
+    person = models.ForeignKey(Person)
+    minor = models.ForeignKey(Recipient)
+
+
 class Group(models.Model):
 
     class Meta:
