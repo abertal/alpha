@@ -23,6 +23,14 @@ class Recipient(admin.ModelAdmin):
                     'category')
 
 
+@admin.register(models.Volunteer)
+class Volunteer(admin.ModelAdmin):
+    search_fields = ['person__name', 'person__surname']
+
+    list_display = ('id',
+                    'lack_of_sexual_offenses_date_certificate')
+
+
 @admin.register(models.Group)
 class Group(admin.ModelAdmin):
     search_fields = ['group_name']

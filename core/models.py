@@ -64,6 +64,19 @@ class Recipient(models.Model):
     person = models.ForeignKey(Person)
 
 
+class Volunteer(models.Model):
+    """Voluntarios, en general animadores con una vinculación con cierto plazo."""
+    class Meta:
+        verbose_name = 'Voluntario'
+
+    lack_of_sexual_offenses_date_certificate = models.DateField(
+        'Fecha de emisión del Certificado de Delitos de Naturaleza Sexual',
+        null=True,
+        default=None,
+    )
+    person = models.ForeignKey(Person)
+
+
 class Group(models.Model):
 
     class Meta:
