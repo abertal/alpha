@@ -31,6 +31,16 @@ class Volunteer(admin.ModelAdmin):
                     'lack_of_sexual_offenses_date_certificate')
 
 
+@admin.register(models.Custodian)
+class Custodian(admin.ModelAdmin):
+    search_fields = ['person__name', 'person__surname']
+
+    list_display = ('id',
+                    'category',
+                    'person',
+                    'minor')
+
+
 @admin.register(models.Group)
 class Group(admin.ModelAdmin):
     search_fields = ['group_name']
