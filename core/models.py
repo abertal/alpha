@@ -128,7 +128,7 @@ class Enrolment(models.Model):
 
 
 class Membership(models.Model):
-
+    """Membresía."""
     class Meta:
         verbose_name = 'Membresía'
 
@@ -145,6 +145,26 @@ class Membership(models.Model):
     )
 
     membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
+
+
+class Member(models.Model):
+    """Socio."""
+    class Meta:
+        verbose_name = 'Socio'
+
+    CATEGORY = [
+        ('child', 'Infantil'),
+        ('juvenile', 'Juvenil'),
+        ('volunteer', 'Voluntario'),
+        ('contributor', 'Colaborador'),
+        ('family', 'Familiar'),
+    ]
+    category = models.CharField('Tipo de socio', choices=CATEGORY, max_length=32)
+    person = models.ForeignKey(Person)
+    membership = models.ForeignKey(Membership)
+
+    def __str__(self):
+        return '{}'.format(self.id)
 
 
 class PersonMembership(models.Model):

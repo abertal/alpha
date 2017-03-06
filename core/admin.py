@@ -65,6 +65,16 @@ class Membership(admin.ModelAdmin):
     )
 
 
+@admin.register(models.Member)
+class Member(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'category',
+        'person',
+        'membership',
+    )
+
+
 @admin.register(models.PersonMembership)
 class PersonMembership(admin.ModelAdmin):
     list_display = (
