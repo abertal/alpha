@@ -28,7 +28,15 @@ class Volunteer(admin.ModelAdmin):
     search_fields = ['person__name', 'person__surname']
 
     list_display = ('id',
-                    'lack_of_sexual_offenses_date_certificate')
+                    'get_name',
+                    'get_surname',
+                    'lack_of_sexual_offenses_date_certificate',
+                    'volunteer')
+    def get_name(self, obj):
+        return obj.person.name
+    def get_surname(self, obj):
+        return obj.person.surname
+
 
 
 @admin.register(models.Custodian)
