@@ -66,6 +66,21 @@ class Command(BaseCommand):
                 'dpa_status': data['LOPD'] or '',
             }
 
+            #'volunteer'
+            """volunteer_data = data['si'] == 'si'
+            volunteer_data = data['no'] == 'no'
+            volunteer_data = data[''] == 'no'"""
+
+            #'grupo'
+            group = data['Destinatario']
+            if group:
+                saltimbanqui = data['Destinatario'] == 'Saltimbanqui'
+                andaina = data['Destinatario'] == 'Andaina'
+                ads = data['Destinatario'] == 'ADS'
+                catecumenado = data['Destinatario'] == 'Catecumenado'
+            else:
+                group = data['Destinatario'] == 'no'
+
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
             entregado = data['Carnet entregado'] == 'si'
