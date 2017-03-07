@@ -32,11 +32,12 @@ class Volunteer(admin.ModelAdmin):
                     'get_surname',
                     'lack_of_sexual_offenses_date_certificate',
                     'volunteer')
+
     def get_name(self, obj):
         return obj.person.name
+
     def get_surname(self, obj):
         return obj.person.surname
-
 
 
 @admin.register(models.Custodian)

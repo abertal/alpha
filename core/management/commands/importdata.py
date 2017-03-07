@@ -67,7 +67,7 @@ class Command(BaseCommand):
             }
             volunteer_data = {
 
-                'volunteer' : data['Voluntario'] or '',
+                'volunteer': data['Voluntario'] or '',
 
             }
             # `card_status´
