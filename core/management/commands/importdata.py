@@ -90,13 +90,18 @@ class Command(BaseCommand):
             msg = '{} persona con UID {}'.format(action, person.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
-            volunteer, created = models.Volunteer.objects.update_or_create(
-                person=person,
-                defaults=volunteer_data,
-            )
-            action = 'Creada' if created else 'Actualizada'
-            msg = '{} voluntario con UID {}'.format(action, volunteer.id)
-            self.stdout.write(self.style.SUCCESS(msg))
+            is_volunteer = data['Voluntario'] == 'si'
+            if is_volunteer:
+                volunteer, created = models.Volunteer.objects.update_or_create(
+                    person=person,
+                    defaults=volunteer_data,
+                )
+                action = 'Creada' if created else 'Actualizada'
+                msg = '{} voluntario con UID {}'.format(action, volunteer.id)
+                self.stdout.write(self.style.SUCCESS(msg))
+
+            else:
+                pass
 
             membership, created = models.Membership.objects.update_or_create(
                 id=data['UIDMembresia'],
