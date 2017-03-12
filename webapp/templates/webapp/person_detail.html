@@ -1,7 +1,30 @@
 {% extends './__base.html' %}
 
 {% block body %}
-<p>
-  <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
-</p>
+<h3>{{ person.name }} {{ person.surname|upper }}</h3>
+<dl>
+  <dt>Código único</dt>
+  <dd>{{ person.id }}</dd>
+  <dt>Fecha de nacimiento</dt>
+  <dd>{{ person.birthday|default:"Sin especificar" }}</dd>
+  <dt>DNI</dt>
+  <dd>{{ person.id_number }}</dd>
+  <dt>Tarjeta sanitaria</dt>
+  <dd>{{ person.ss_number }}</dd>
+  <dt>Teléfono</dt>
+  <dd>{{ person.phone_number }}</dd>
+  <dt>Móvil</dt>
+  <dd>{{ person.mobile_number }}</dd>
+  <dt>Correo electrónico</dt>
+  <dd>{{ person.email }}</dd>
+  <dt>Dirección</dt>
+  <dd>{{ person.address_street }}</dd>
+  <dd>{{ person.address_locality }}</dd>
+  <dd>{{ person.address_region }}</dd>
+  <dd>{{ person.address_country }}</dd>
+  <dt>Observaciones médicas</dt>
+  <dd>{{ person.health_warnings }}</dd>
+  <dt>Observaciones</dt>
+  <dd>{{ person.comment }}</dd>
+</dl>
 {% endblock %}
