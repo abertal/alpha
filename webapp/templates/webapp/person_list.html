@@ -2,7 +2,10 @@
 
 {% block body %}
 {% for person in object_list %}
-  <p><a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }}</a></p>
+  <p>
+    <a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
+  </p>
+
 {% empty %}
   <p>No hay grupos</p>
 {% endfor %}
