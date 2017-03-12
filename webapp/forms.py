@@ -8,7 +8,24 @@ from core import models
 class EditPerson(forms.ModelForm):
     class Meta:
         model = models.Person
-        fields = 'name', 'surname'
+        fields = (
+            'name', 'surname', 'birthday',
+            'id_number', 'ss_number',
+            'phone_number', 'mobile_number', 'email',
+            'address_street', 'address_locality', 'address_region', 'address_country',
+            'health_warnings', 'comment',
+        )
+        widgets = {
+            'name': forms.TextInput(),
+            'surname': forms.TextInput(),
+            'id_number': forms.TextInput(),
+            'ss_number': forms.TextInput(),
+            'phone_number': forms.TextInput(),
+            'mobile_number': forms.TextInput(),
+            'address_locality': forms.TextInput(),
+            'address_region': forms.TextInput(),
+            'address_country': forms.TextInput(),
+        }
 
 
 class NewIndividualMember(forms.Form):
