@@ -1,0 +1,17 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h3>{{ person.name }} {{ person.surname|upper }}</h3>
+<dl>
+  <dt>Código único</dt>
+  <dd>{{ person.id }}</dd>
+</dl>
+<form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
+{% csrf_token %}
+{{ form }}
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Guardar cambios">
+    <a href="{% url 'person-detail' person.id %}" class="btn btn-link">Volver sin guardar</a>
+  </div>
+</form>
+{% endblock %}

@@ -103,10 +103,20 @@ class PersonList(MenuMixin, generic.ListView):
         return models.Person.objects.all()
 
 
-class PersonDetail(MenuMixin, generic.DeleteView):
+class PersonDetail(MenuMixin, generic.DetailView):
     model = models.Person
     template_name = 'webapp/person_detail.html'
     name = 'Detalle persona'
+
+
+class PersonEdit(MenuMixin, generic.UpdateView):
+    model = models.Person
+    form_class = forms.EditPerson
+    template_name = 'webapp/person_edit.html'
+    name = 'Detalle persona'
+
+    def get_success_url(self):
+        return reverse('person-detail', args=[self.object.id])
 
 
 class MembershipList(MenuMixin, generic.ListView):
