@@ -1,28 +1,9 @@
-<html>
+{% extends './__base.html' %}
 
-<head>
-    <title>Abertal WebApp</title>
-    <meta charset="UTF-8">
-    <style>
-        #cajaLista {
-            width: 95%;
-            height: 600px;
-            border: black solid 2px;
-        }
-    </style>
-</head>
-
-<body>
-    <h1>Lista de grupos</h1>
-    <div id="cajaLista">
-        <ul>
-            {% for person in object_list %}
-            <li><a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }}</a></li>
-            {% empty %}
-            <li>No hay grupos</li>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
-
-</html>
+{% block body %}
+{% for person in object_list %}
+  <p><a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }}</a></p>
+{% empty %}
+  <p>No hay grupos</p>
+{% endfor %}
+{% endblock %}
