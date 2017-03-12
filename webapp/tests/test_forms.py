@@ -1,7 +1,24 @@
 import pytest
 
+from django.forms.models import model_to_dict
+
 from core import models
 from webapp import forms
+
+
+@pytest.fixture
+def person():
+    return models.Person.objects.create(name='Juan', surname='Bosco')
+
+
+@pytest.mark.django_db
+def test_edit_person_form(person):
+    data = model_to_dict(person)
+    data['name'] = 'John'
+    form = forms.EditPerson(data, instance=person)
+    assert form.is_valid(), form.errors
+    obj = form.save()
+    assert obj.name == 'John'
 
 
 @pytest.mark.django_db
