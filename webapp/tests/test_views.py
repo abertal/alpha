@@ -50,3 +50,14 @@ def test_views_post_with_errors(url):
     c = Client()
     response = c.post(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/person/{}/',
+    '/webapp/person/{}/edit/',
+])
+def test_person_views(person, url):
+    c = Client()
+    response = c.get(url.format(person.id))
+    assert response.status_code == 200
