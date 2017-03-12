@@ -2,9 +2,10 @@
 
 {% block body %}
 {% for person in object_list %}
-  <p>
+  <div>
     <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
-  </p>
+    <p>{{ person.birthday|default:"Sin fecha de nacimiento" }}</p>
+  </div>
 
 {% empty %}
   <p>No hay grupos</p>
