@@ -3,21 +3,7 @@
 
 {% block body %}
 <form class="custom-form element" action="{% url 'basicformnewfamily' %}" method="post">
-  {% csrf_token %}
-  {{ form.non_field_errors }}
-  {# Include the hidden fields #}
-  {% for hidden in form.hidden_fields %}
-  {{ hidden }}
-  {% endfor %}
-  {# Include the visible fields #}
-  {% for field in form.visible_fields %}
-  <div class="form-group">
-    <label for="{{ field.id_for_label }}" class="form-control-label">{{ field.label }}
-    {{ field|add_class:"form-control" }}
-    </label>
-    <div class="form-control-feedback">{{ field.errors }}</div>
-  </div>
-  {% endfor %}
+{% include './_form_fields.html' %}
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="Guardar nueva familia">
     <a href="{% url 'home' %}" class="btn btn-link">Volver sin guardar</a>
