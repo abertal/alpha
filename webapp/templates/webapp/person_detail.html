@@ -27,4 +27,5 @@
   <dt>Observaciones</dt>
   <dd>{{ person.comment }}</dd>
 </dl>
+<a href="{% url 'person-edit' person.id %}">Editar</a>
 {% endblock %}
