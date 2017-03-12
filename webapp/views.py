@@ -22,7 +22,8 @@ class MenuBar:
 
     def get_options(self):
         return [
-            Option('Lista', 'membership-list', menu=self),
+            Option('Personas', 'person-list', menu=self),
+            Option('Socios', 'membership-list', menu=self),
             Option('Detalle', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
             Option('Nueva familia', 'basicformnewfamily', menu=self),
@@ -43,12 +44,6 @@ def group_detail(request, pk):
     people = models.Person.objects.filter(enrolment__group=obj)
     context = {'object': obj, 'people': people}
     return render(request, 'webapp/detail.html', context=context)
-
-
-def person_list(request):
-    object_list = models.Person.objects.all()
-    context = {'object_list': object_list}
-    return render(request, 'webapp/person_list.html', context=context)
 
 
 def person_detail(request, pk):
@@ -105,9 +100,17 @@ class NewFamilyMember(MenuMixin, generic.FormView):
         return redirect('membership-detail', pk=membership.pk)
 
 
+class PersonList(MenuMixin, generic.ListView):
+    template_name = 'webapp/person_list.html'
+    name = 'Personas'
+
+    def get_queryset(self):
+        return models.Person.objects.all()
+
+
 class MembershipList(MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
-    name = 'Lista'
+    name = 'Socios'
 
     def get_queryset(self):
         return models.Membership.objects.all()
