@@ -46,12 +46,6 @@ def group_detail(request, pk):
     return render(request, 'webapp/detail.html', context=context)
 
 
-def person_detail(request, pk):
-    object = models.Person.objects.get(pk=pk)
-    context = {'object': object}
-    return render(request, 'webapp/person_detail.html', context=context)
-
-
 def missing_doc(request):
     pending = models.PersonMembership.objects.exclude(id_card_status='si')
     object_list = models.Membership.objects.filter(personmembership__in=pending).distinct()
@@ -106,6 +100,11 @@ class PersonList(MenuMixin, generic.ListView):
 
     def get_queryset(self):
         return models.Person.objects.all()
+
+
+class PersonDetail(MenuMixin, generic.DeleteView):
+    model = models.Person
+    template_name = 'webapp/person_detail.html'
 
 
 class MembershipList(MenuMixin, generic.ListView):

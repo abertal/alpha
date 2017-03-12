@@ -3,7 +3,7 @@
 {% block body %}
 {% for person in object_list %}
   <p>
-    <a href="{% url 'person_detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
+    <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
   </p>
 
 {% empty %}

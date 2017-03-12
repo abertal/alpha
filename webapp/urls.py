@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
     url(r'^person/$', views.PersonList.as_view(), name='person-list'),
-    url(r'^person/(?P<pk>[^/]+)/$', views.person_detail, name='person_detail'),
+    url(r'^person/(?P<pk>[^/]+)/$', views.PersonDetail.as_view(), name='person-detail'),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.login),
