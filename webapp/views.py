@@ -23,8 +23,9 @@ class MenuBar:
     def get_options(self):
         return [
             Option('Personas', 'person-list', menu=self),
+            Option('Detalle persona', None, menu=self),
             Option('Socios', 'membership-list', menu=self),
-            Option('Detalle', None, menu=self),
+            Option('Detalle socio', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
             Option('Nueva familia', 'basicformnewfamily', menu=self),
         ]
@@ -105,6 +106,7 @@ class PersonList(MenuMixin, generic.ListView):
 class PersonDetail(MenuMixin, generic.DeleteView):
     model = models.Person
     template_name = 'webapp/person_detail.html'
+    name = 'Detalle persona'
 
 
 class MembershipList(MenuMixin, generic.ListView):
@@ -118,4 +120,4 @@ class MembershipList(MenuMixin, generic.ListView):
 class MembershipDetail(MenuMixin, generic.DetailView):
     model = models.Membership
     template_name = 'webapp/membership_detail.html'
-    name = 'Detalle'
+    name = 'Detalle socio'
