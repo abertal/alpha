@@ -1,6 +1,6 @@
-import pytest
-
 from django.forms.models import model_to_dict
+
+import pytest
 
 from core import models
 from webapp import forms
