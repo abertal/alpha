@@ -109,7 +109,7 @@ class Command(BaseCommand):
 
             mother = data['Madre'] or ''
             if mother:
-                mother_person = models.Person.objects.get(id=mother)
+                mother_person, _ = models.Person.objects.get_or_create(id=mother)
                 custodian, created = models.Custodian.objects.update_or_create(
                     person=mother_person,
                     minor=recipient,
@@ -117,6 +117,30 @@ class Command(BaseCommand):
                 )
                 action = 'Creada' if created else 'Actualizada'
                 msg = '{} madre de destinatario {}'.format(action, recipient.id)
+                self.stdout.write(self.style.SUCCESS(msg))
+
+            father = data['Padre'] or ''
+            if father:
+                father_person, _ = models.Person.objects.get_or_create(id=father)
+                custodian, created = models.Custodian.objects.update_or_create(
+                    person=father_person,
+                    minor=recipient,
+                    defaults={'category': 'father'}
+                )
+                action = 'Creada' if created else 'Actualizada'
+                msg = '{} padre de destinatario {}'.format(action, recipient.id)
+                self.stdout.write(self.style.SUCCESS(msg))
+
+            legal = data['Tutor'] or ''
+            if legal:
+                legal_person, _ = models.Person.objects.get_or_create(id=legal)
+                custodian, created = models.Custodian.objects.update_or_create(
+                    person=legal_person,
+                    minor=recipient,
+                    defaults={'category': 'legal'}
+                )
+                action = 'Creada' if created else 'Actualizada'
+                msg = '{} tutor de destinatario {}'.format(action, recipient.id)
                 self.stdout.write(self.style.SUCCESS(msg))
 
             membership, created = models.Membership.objects.update_or_create(
