@@ -79,7 +79,7 @@ class Volunteer(models.Model):
     person = models.ForeignKey(Person)
 
     def __str__(self):
-        return '{} {}'.format(self.id, self.volunteer)
+        return '{} ({})'.format(self.id, self.person)
 
 
 class Custodian(models.Model):
