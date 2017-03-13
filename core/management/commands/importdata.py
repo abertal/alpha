@@ -107,8 +107,17 @@ class Command(BaseCommand):
                 msg = '{} destinatario con UID {}'.format(action, recipient.id)
                 self.stdout.write(self.style.SUCCESS(msg))
 
-            else:
-                pass
+            mother = data['Madre'] or ''
+            if mother:
+                mother_person = models.Person.objects.get(id=mother)
+                custodian, created = models.Custodian.objects.update_or_create(
+                    person=mother_person,
+                    minor=recipient,
+                    defaults={'category': 'mother'}
+                )
+                action = 'Creada' if created else 'Actualizada'
+                msg = '{} madre de destinatario {}'.format(action, recipient.id)
+                self.stdout.write(self.style.SUCCESS(msg))
 
             membership, created = models.Membership.objects.update_or_create(
                 id=data['UIDMembresia'],
