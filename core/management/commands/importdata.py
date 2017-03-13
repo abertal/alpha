@@ -65,11 +65,7 @@ class Command(BaseCommand):
                 'photo_status': data['Foto'] or '',
                 'dpa_status': data['LOPD'] or '',
             }
-            volunteer_data = {
 
-                'volunteer': data['Voluntario'] or '',
-
-            }
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
             entregado = data['Carnet entregado'] == 'si'
@@ -92,9 +88,8 @@ class Command(BaseCommand):
 
             is_volunteer = data['Voluntario'] == 'si'
             if is_volunteer:
-                volunteer, created = models.Volunteer.objects.update_or_create(
+                volunteer, created = models.Volunteer.objects.get_or_create(
                     person=person,
-                    defaults=volunteer_data,
                 )
                 action = 'Creada' if created else 'Actualizada'
                 msg = '{} voluntario con UID {}'.format(action, volunteer.id)

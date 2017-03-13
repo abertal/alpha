@@ -71,7 +71,6 @@ class Volunteer(models.Model):
     """Voluntarios, en general animadores con una vinculación con cierto plazo."""
     class Meta:
         verbose_name = 'Voluntario'
-    volunteer = models.TextField(verbose_name='Voluntario', blank=True, default='')
     lack_of_sexual_offenses_date_certificate = models.DateField(
         verbose_name='Fecha de emisión del Certificado de Delitos de Naturaleza Sexual',
         null=True,
