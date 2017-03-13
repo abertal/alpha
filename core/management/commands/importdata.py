@@ -66,6 +66,9 @@ class Command(BaseCommand):
                 'dpa_status': data['LOPD'] or '',
             }
 
+            # Group info to determine if this person is a recipient
+            group = data['Destinatario'] or ''
+
             # `card_status´
             por_entregar = data['Carnet entregar'] == 'si'
             entregado = data['Carnet entregado'] == 'si'
@@ -93,6 +96,15 @@ class Command(BaseCommand):
                 )
                 action = 'Creada' if created else 'Actualizada'
                 msg = '{} voluntario con UID {}'.format(action, volunteer.id)
+                self.stdout.write(self.style.SUCCESS(msg))
+
+            is_recipient = group.lower() in ['saltimbanqui', 'andaina', 'ads', 'catecumenado']
+            if is_recipient:
+                recipient, created = models.Recipient.objects.get_or_create(
+                    person=person,
+                )
+                action = 'Creada' if created else 'Actualizada'
+                msg = '{} destinatario con UID {}'.format(action, recipient.id)
                 self.stdout.write(self.style.SUCCESS(msg))
 
             else:
