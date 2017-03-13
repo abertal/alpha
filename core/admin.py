@@ -30,8 +30,7 @@ class Volunteer(admin.ModelAdmin):
     list_display = ('id',
                     'Nombre',
                     'Apellidos',
-                    'lack_of_sexual_offenses_date_certificate',
-                    'volunteer')
+                    'lack_of_sexual_offenses_date_certificate',)
 
     def Nombre(self, obj):
         return obj.person.name
