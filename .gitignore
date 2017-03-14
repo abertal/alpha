@@ -95,3 +95,6 @@ ENV/
 # Excel files
 *.xls
 *.xlsx
+
+# Node_modules
+node_modules/
