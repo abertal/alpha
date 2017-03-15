@@ -133,6 +133,13 @@ class Membership(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
+    # Documentation
+    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
+    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
+    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
+    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
+    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
+
     type_of_membership = models.TextField(verbose_name='Modalidad', blank=True, default='')
 
     payment_status = models.TextField(verbose_name='Estado del pago', blank=True, default='')
@@ -144,6 +151,10 @@ class Membership(models.Model):
     )
 
     membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
+
+    @property
+    def documentation_correct(self):
+        return 'no' in [self.id_card_status, self.ss_card_status, self.photo_status, self.dpa_status]
 
 
 class Member(models.Model):
@@ -164,23 +175,4 @@ class Member(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
-
-
-class PersonMembership(models.Model):
-
-    class Meta:
-        verbose_name = 'Datos de socio'
-
-    person = models.ForeignKey(Person)
-    membership = models.ForeignKey(Membership)
-
-    # Documentation
-    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
-    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
-    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
-    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
-    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
-
-    @property
-    def documentation_correct(self):
-        return 'no' in [self.id_card_status, self.ss_card_status, self.photo_status, self.dpa_status]
+        
