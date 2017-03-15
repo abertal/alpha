@@ -145,6 +145,17 @@ class Membership(models.Model):
 
     membership_status = models.TextField(verbose_name='Estado de socio', blank=True, default='')
 
+    # Documentation
+    id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
+    ss_card_status = models.TextField(verbose_name='Tarjeta sanitaria', blank=True, default='')
+    photo_status = models.TextField(verbose_name='Foto', blank=True, default='')
+    dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
+    card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
+
+    @property
+    def documentation_correct(self):
+        return 'no' in [self.id_card_status, self.ss_card_status, self.photo_status, self.dpa_status]   
+
 
 class Member(models.Model):
     """Socio."""
