@@ -17,8 +17,12 @@ class Person(models.Model):
         verbose_name='Fecha de nacimiento', blank=True, null=True)
     id_number = models.TextField(
         verbose_name='DNI/NIE', blank=True, default='')
+    id_photocopy = models.TextField(
+        verbose_name='Fotocopia DNI/NIE', blank=True, default='')
     ss_number = models.TextField(
         verbose_name='Tarjeta sanitaria', blank=True, default='')
+    ss_photocopy = models.TextField(
+        verbose_name='Fotocopia DNI/NIE', blank=True, default='')
     address_street = models.TextField(
         verbose_name='Dirección', blank=True, default='')
     address_locality = models.TextField(
@@ -33,6 +37,7 @@ class Person(models.Model):
         verbose_name='Teléfono móvil', blank=True, default='')
     email = models.EmailField(
         verbose_name='Correo electrónico', blank=True, default='')
+    dpa_authorization = models.TextField(verbose_name='LOPD', blank=True, default='')
     comment = models.TextField(
         verbose_name='Observaciones', blank=True, default='')
     health_warnings = models.TextField(
@@ -87,7 +92,8 @@ class Custodian(models.Model):
     """Padre, madre o tutor legal de un menor."""
     class Meta:
         verbose_name = 'Padre, madre, tutor'
-
+    authorized_signature = models.TextField(verbose_name='Firma autorización')
+    emergency_contact = models.TextField(verbose_name='Contacto de emergencia')
     CATEGORIES = [
         ('father', 'Padre'),
         ('mother', 'Madre'),
