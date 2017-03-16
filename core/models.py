@@ -22,7 +22,7 @@ class Person(models.Model):
     ss_number = models.TextField(
         verbose_name='Tarjeta sanitaria', blank=True, default='')
     ss_photocopy = models.TextField(
-        verbose_name='Fotocopia DNI/NIE', blank=True, default='')
+        verbose_name='Fotocopia Seguridad Social', blank=True, default='')
     address_street = models.TextField(
         verbose_name='Dirección', blank=True, default='')
     address_locality = models.TextField(
@@ -92,8 +92,8 @@ class Custodian(models.Model):
     """Padre, madre o tutor legal de un menor."""
     class Meta:
         verbose_name = 'Padre, madre, tutor'
-    authorized_signature = models.TextField(verbose_name='Firma autorización')
-    emergency_contact = models.TextField(verbose_name='Contacto de emergencia')
+    authorized_signature = models.TextField(verbose_name='Firma autorización',blank=True, default='')
+    emergency_contact = models.TextField(verbose_name='Contacto de emergencia',blank=True, default='')
     CATEGORIES = [
         ('father', 'Padre'),
         ('mother', 'Madre'),
