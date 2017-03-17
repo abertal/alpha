@@ -159,20 +159,6 @@ class Member(models.Model):
         ('family', 'Familiar'),
     ]
     category = models.CharField('Tipo de socio', choices=CATEGORY, max_length=32)
-    person = models.ForeignKey(Person)
-    membership = models.ForeignKey(Membership)
-
-    def __str__(self):
-        return '{}'.format(self.id)
-
-
-class PersonMembership(models.Model):
-
-    class Meta:
-        verbose_name = 'Datos de socio'
-
-    person = models.ForeignKey(Person)
-    membership = models.ForeignKey(Membership)
 
     # Documentation
     id_card_status = models.TextField(verbose_name='DNI/NIE', blank=True, default='')
@@ -181,6 +167,13 @@ class PersonMembership(models.Model):
     dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
     card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
 
+    person = models.ForeignKey(Person)
+    membership = models.ForeignKey(Membership)
+
     @property
     def documentation_correct(self):
         return 'no' in [self.id_card_status, self.ss_card_status, self.photo_status, self.dpa_status]
+
+    def __str__(self):
+        return '{}'.format(self.id)
+
