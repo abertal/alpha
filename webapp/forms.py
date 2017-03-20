@@ -28,6 +28,12 @@ class EditPerson(forms.ModelForm):
         }
 
 
+class RecipientEdit(forms.ModelForm):
+    class Meta:
+        model = models.Recipient
+        fields = 'category',
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label='Nombre')
     surname = forms.CharField(label='Apellidos')
