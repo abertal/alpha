@@ -57,9 +57,6 @@ class Command(BaseCommand):
                 'membership_fee': data['Cuota socio'] or 0,
                 'payment_status': data['Pago'] or '',
                 'membership_status': data['Estado'] or '',
-            }
-
-            person_membership_data = {
                 'id_card_status': data['DNI autorizado'] or '',
                 'ss_card_status': data['Tarjeta sanitaria'] or '',
                 'photo_status': data['Foto'] or '',
@@ -78,7 +75,7 @@ class Command(BaseCommand):
                 card_status = 'Por entregar'
             else:
                 card_status = 'Falta documentación'
-            person_membership_data['card_status'] = card_status
+            membership_data['card_status'] = card_status
 
             # Store on database
             person, created = models.Person.objects.update_or_create(
@@ -151,14 +148,14 @@ class Command(BaseCommand):
             msg = '{} membresía con UID {}'.format(action, membership.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
-            print('Membership defaults: ', person_membership_data)
-            person_membership, created = models.PersonMembership.objects.update_or_create(
+            print('Membership defaults: ', membership_data)
+            membership, created = models.Membership.objects.update_or_create(
                 person=person,
                 membership=membership,
-                defaults=person_membership_data,
+                defaults=membership_data,
             )
             action = 'Creada' if created else 'Actualizada'
-            msg = '{} membresía con ID {}'.format(action, person_membership.id)
+            msg = '{} membresía con ID {}'.format(action, membership.id)
             self.stdout.write(self.style.SUCCESS(msg))
 
     def handle(self, *args, **options):

@@ -81,16 +81,3 @@ class Member(admin.ModelAdmin):
         'person',
         'membership',
     )
-
-
-@admin.register(models.PersonMembership)
-class PersonMembership(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'person',
-        'id_card_status',
-        'ss_card_status',
-        'photo_status',
-        'dpa_status',
-        'card_status',
-    )
