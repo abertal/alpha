@@ -4,7 +4,7 @@
 <h3>{{ recipient.person.name }} {{ recipient.person.surname|upper }}</h3>
 <dl>
   <dt>Tipo</dt>
-  <dd>{{ recipient.category|default:'Sin especificar' }}</dd>
+  <dd>{{ recipient.get_category_display|default:'Sin especificar' }}</dd>
 </dl>
 <a href="{% url 'person-detail' recipient.person.id %}">Ir a la ficha personal</a>
 {% endblock %}
