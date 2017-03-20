@@ -6,5 +6,6 @@
   <dt>Tipo</dt>
   <dd>{{ recipient.get_category_display|default:'Sin especificar' }}</dd>
 </dl>
+<a href="{% url 'recipient-edit' recipient.id %}">Editar</a>
 <a href="{% url 'person-detail' recipient.person.id %}">Ir a la ficha personal</a>
 {% endblock %}
