@@ -176,4 +176,3 @@ class Member(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
-
