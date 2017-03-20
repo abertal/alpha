@@ -126,6 +126,16 @@ class RecipientDetail(MenuMixin, generic.DetailView):
     name = 'Detalle destinatario'
 
 
+class RecipientEdit(MenuMixin, generic.UpdateView):
+    model = models.Recipient
+    form_class = forms.RecipientEdit
+    template_name = 'webapp/recipient_edit.html'
+    name = 'Detalle destinatario'
+
+    def get_success_url(self):
+        return reverse('recipient-detail', args=[self.object.id])
+
+
 class MembershipList(MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
     name = 'Socios'
