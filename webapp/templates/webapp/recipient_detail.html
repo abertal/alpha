@@ -1,0 +1,31 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h3>{{ recipient.person.name }} {{ recipient.person.surname|upper }}</h3>
+<dl>
+  <dt>Tipo</dt>
+  <dd>{{ recipient.category|default:'Sin especificar' }}</dd>
+  <dt>Fecha de nacimiento</dt>
+  <dd>{{ recipient.person.birthday|default:"Sin especificar" }}</dd>
+  <dt>DNI</dt>
+  <dd>{{ recipient.person.id_number }}</dd>
+  <dt>Tarjeta sanitaria</dt>
+  <dd>{{ recipient.person.ss_number }}</dd>
+  <dt>Teléfono</dt>
+  <dd>{{ recipient.person.phone_number }}</dd>
+  <dt>Móvil</dt>
+  <dd>{{ recipient.person.mobile_number }}</dd>
+  <dt>Correo electrónico</dt>
+  <dd>{{ recipient.person.email }}</dd>
+  <dt>Dirección</dt>
+  <dd>{{ recipient.person.address_street }}</dd>
+  <dd>{{ recipient.person.address_locality }}</dd>
+  <dd>{{ recipient.person.address_region }}</dd>
+  <dd>{{ recipient.person.address_country }}</dd>
+  <dt>Observaciones médicas</dt>
+  <dd>{{ recipient.person.health_warnings }}</dd>
+  <dt>Observaciones</dt>
+  <dd>{{ recipient.person.comment }}</dd>
+</dl>
+<a href="{% url 'person-detail' recipient.person.id %}">Ir a la ficha</a>
+{% endblock %}

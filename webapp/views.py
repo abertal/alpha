@@ -24,6 +24,7 @@ class MenuBar:
         return [
             Option('Personas', 'person-list', menu=self),
             Option('Detalle persona', None, menu=self),
+            Option('Detalle destinatario', None, menu=self),
             Option('Socios', 'membership-list', menu=self),
             Option('Detalle socio', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
@@ -117,6 +118,12 @@ class PersonEdit(MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
+
+
+class RecipientDetail(MenuMixin, generic.DetailView):
+    model = models.Recipient
+    template_name = 'webapp/recipient_detail.html'
+    name = 'Detalle destinatario'
 
 
 class MembershipList(MenuMixin, generic.ListView):
