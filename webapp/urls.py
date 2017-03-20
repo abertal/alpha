@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),
     url(r'^membership/$', views.MembershipList.as_view(), name='membership-list'),
     url(r'^membership/(?P<pk>[^/]+)/$', views.MembershipDetail.as_view(), name='membership-detail'),
+
+    url(r'^recipient/(?P<pk>\d+)/$', views.RecipientDetail.as_view(), name='recipient-detail'),
 ]
