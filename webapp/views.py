@@ -48,8 +48,8 @@ def group_detail(request, pk):
 
 
 def missing_doc(request):
-    pending = models.PersonMembership.objects.exclude(id_card_status='si')
-    object_list = models.Membership.objects.filter(personmembership__in=pending).distinct()
+    pending = models.Member.objects.exclude(id_card_status='si')
+    object_list = models.Membership.objects.filter(member__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
 

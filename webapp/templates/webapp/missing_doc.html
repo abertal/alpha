@@ -60,19 +60,19 @@ body {
             </tr>
         </thead>
         <tbody>
-            {% for membership in object_list %} {% for personmembership in membership.personmembership_set.all %}
+            {% for membership in object_list %} {% for member in membership.member_set.all %}
             <tr {% if forloop.first %}class="first--row--membership"{% endif %}>
                 {% if forloop.first %}
-                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.id }}</td>
-                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.membership_fee }}</td>
-                <td rowspan="{{ membership.personmembership_set.count }}">{{ membership.payment_status }}</td>
+                <td rowspan="{{ membership.member_set.count }}">{{ membership.id }}</td>
+                <td rowspan="{{ membership.member_set.count }}">{{ membership.membership_fee }}</td>
+                <td rowspan="{{ membership.member_set.count }}">{{ membership.payment_status }}</td>
                 {% endif %}
-                <td>{{ personmembership.person.name }}&thinsp;{{personmembership.person.surname}}</td>
-                <td>{{ personmembership.id_card_status}}</td>
-                <td>{{personmembership.ss_card_status}}</td>
-                <td>{{personmembership.dpa_status}}</td>
-                <td>{{personmembership.photo_status}}</td>
-                <td>{{personmembership.card_status}}</td>
+                <td>{{ member.person.name }}&thinsp;{{member.person.surname}}</td>
+                <td>{{ member.id_card_status}}</td>
+                <td>{{member.ss_card_status}}</td>
+                <td>{{member.dpa_status}}</td>
+                <td>{{member.photo_status}}</td>
+                <td>{{member.card_status}}</td>
             </tr>
             {% endfor %} {% endfor %}
         </tbody>
