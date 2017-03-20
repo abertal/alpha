@@ -28,4 +28,7 @@
   <dd>{{ person.comment }}</dd>
 </dl>
 <a href="{% url 'person-edit' person.id %}">Editar</a>
+{% for recipient in person.recipient_set.all %}
+<a href="{% url 'recipient-detail' recipient.id %}">Ficha de destinatario</a>
+{% endfor %}
 {% endblock %}
