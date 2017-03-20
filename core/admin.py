@@ -86,4 +86,3 @@ class Member(admin.ModelAdmin):
         'dpa_status',
         'card_status',
     )
-
