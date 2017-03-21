@@ -34,6 +34,12 @@ class RecipientEdit(forms.ModelForm):
         fields = 'category',
 
 
+class MemberEdit(forms.Form):
+    class Meta:
+        model = models.Member
+        fields = ('photo_status', 'card_status',)
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label='Nombre')
     surname = forms.CharField(label='Apellidos')
