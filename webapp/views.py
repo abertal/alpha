@@ -153,6 +153,19 @@ class VolunteerDetail(MenuMixin, generic.DetailView):
         return reverse('volunteer-detail', args=[self.object.id])
 
 
+class MemberDetail(MenuMixin, generic.DetailView):
+    model = models.Member
+    template_name = 'member-detail'
+    name = 'Detalle socio'
+
+
+class MemberEdit(MenuMixin, generic.UpdateView):
+    model = models.Member
+    form_class = forms.MemberEdit
+    template_name = 'member-edit'
+    name = 'Detalle socio'
+
+
 class MembershipList(MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
     name = 'Socios'
