@@ -34,6 +34,12 @@ class RecipientEdit(forms.ModelForm):
         fields = 'category',
 
 
+class VolunteerEdit(forms.ModelForm):
+    class Meta:
+        model = models.Volunteer
+        fields = 'lack_of_sexual_offenses_date_certificate',
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label='Nombre')
     surname = forms.CharField(label='Apellidos')
