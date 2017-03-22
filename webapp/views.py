@@ -138,14 +138,14 @@ class RecipientEdit(MenuMixin, generic.UpdateView):
 
 class MemberDetail(MenuMixin, generic.DetailView):
     model = models.Member
-    template_name = 'member-detail'
+    template_name = 'webapp/member_detail.html'
     name = 'Detalle socio'
 
 
 class MemberEdit(MenuMixin, generic.UpdateView):
     model = models.Member
     form_class = forms.MemberEdit
-    template_name = 'member-edit'
+    template_name = 'webapp/member_edit.html'
     name = 'Detalle socio'
 
 
