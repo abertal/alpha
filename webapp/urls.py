@@ -15,10 +15,16 @@ recipient = [
     url(r'^(?P<pk>\d+)/edit/$', views.RecipientEdit.as_view(), name='recipient-edit'),
 ]
 
+member = [
+    url(r'^(?P<pk>\d+)/$', views.MemberDetail.as_view(), name='member-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.MemberEdit.as_view(), name='member-edit'),
+]
+
 
 urlpatterns = [
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),
+    url(r'^member/', include(member)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
