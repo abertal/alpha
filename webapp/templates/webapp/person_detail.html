@@ -31,4 +31,7 @@
 {% for recipient in person.recipient_set.all %}
 <a href="{% url 'recipient-detail' recipient.id %}">Ficha de destinatario</a>
 {% endfor %}
+{% for volunteer in person.volunteer_set.all %}
+<a href="{% url 'volunteer-detail' volunteer.id %}">Ficha de voluntario</a>
+{% endfor %}
 {% endblock %}
