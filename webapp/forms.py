@@ -38,6 +38,7 @@ class VolunteerEdit(forms.ModelForm):
     class Meta:
         model = models.Volunteer
         fields = 'lack_of_sexual_offenses_date_certificate',
+        widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(),}
 
 
 class NewIndividualMember(forms.Form):
