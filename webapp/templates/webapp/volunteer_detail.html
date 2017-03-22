@@ -1,0 +1,12 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h3>{{ volunteer.person.name }} {{ volunteer.person.surname|upper }}</h3>
+<dl>
+  <dt>Fecha expiración certificados</dt>
+  <dd>{{ recipient.get_lack_of_sexual_offenses_date_certificate_display|default:'Sin especificar' }}</dd>
+</dl>
+<a href="{% url 'volunteer-edit' volunteer.id %}">Editar</a>
+<a href="{% url 'person-detail' volunteer.person.id %}">Ir a la ficha personal</a>
+
+{% endblock %}
