@@ -11,5 +11,5 @@
   <dd>{{ member.get_card_status_display|default:'Sin especificar' }}</dd>
 </dl>
 <a href="{% url 'member-edit' member.id %}">Editar</a>
-<a href="{% url 'member-detail' member.person.id %}">Ir a la ficha personal</a>
+<a href="{% url 'person-detail' member.person.id %}">Ir a la ficha personal</a>
 {% endblock %}
