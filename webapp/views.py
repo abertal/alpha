@@ -25,7 +25,7 @@ class MenuBar:
             Option('Personas', 'person-list', menu=self),
             Option('Detalle persona', None, menu=self),
             Option('Detalle destinatario', None, menu=self),
-            Option('Detalle Voluntario', None, menu=self),
+            Option('Detalle voluntario', None, menu=self),
             Option('Socios', 'membership-list', menu=self),
             Option('Detalle socio', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
