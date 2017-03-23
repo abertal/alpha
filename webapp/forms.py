@@ -41,6 +41,12 @@ class VolunteerEdit(forms.ModelForm):
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
 
+class MemberEdit(forms.Form):
+    class Meta:
+        model = models.Member
+        fields = ('photo_status', 'card_status',)
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label='Nombre')
     surname = forms.CharField(label='Apellidos')
