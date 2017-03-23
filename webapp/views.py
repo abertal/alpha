@@ -58,9 +58,11 @@ def missing_doc(request):
 
 def login(request):
     context = {}
-    if request.method == 'POST':
+    print(request.POST)
+    if request.method == 'POST' and request.POST.get('user') == 'demo' and request.POST.get('password') == 'demo':
         return redirect('home')
-    return render(request, 'webapp/login.html', context=context)
+    elif:
+        return render(request, 'webapp/login.html', context=context)
 
 
 class MenuMixin:
