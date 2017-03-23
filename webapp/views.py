@@ -61,7 +61,7 @@ def login(request):
     print(request.POST)
     if request.POST.get('user') == 'demo' and request.POST.get('password') == 'demo':
         return redirect('home')
-    elif:
+    else:
         return render(request, 'webapp/login.html', context=context)
 
 
