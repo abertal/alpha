@@ -34,7 +34,7 @@ class RecipientEdit(forms.ModelForm):
         fields = 'category',
 
 
-class MemberEdit(forms.Form):
+class MemberEdit(forms.ModelForm):
     class Meta:
         model = models.Member
         fields = ('photo_status', 'card_status',)

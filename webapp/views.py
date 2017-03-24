@@ -148,6 +148,9 @@ class MemberEdit(MenuMixin, generic.UpdateView):
     template_name = 'webapp/member_edit.html'
     name = 'Detalle socio'
 
+    def get_success_url(self):
+        return reverse('member-detail', args=[self.object.id])
+
 
 class MembershipList(MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
