@@ -63,9 +63,13 @@ def login(request):
         if user is not None:
             return redirect('home')
         else:
-            return render(request, 'webapp/login.html', {'message': 'error de introduccion de datos'})
+            return render(
+                request,
+                'webapp/login.html',
+                {'message': 'Por favor introduzca el nombre de usuario'
+                    ' y la clave correctos para una cuenta de personal.'})
     else:
-        return render(request, 'webapp/login.html', {'message': ''})
+        return render(request, 'webapp/login.html', {'message': None})
 
 
 class MenuMixin:
