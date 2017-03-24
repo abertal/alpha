@@ -36,7 +36,7 @@ def test_views_exist(url):
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
 ])
-def test_views_post_and_redirect(url, django_user_model):
+def test_views_post_and_redirect(url):
     User.objects.create_user('admin', 'admin@example.com', '12345678')
     c = Client()
     response = c.post(url, {'user':'admin', 'password':'12345678'})
@@ -50,7 +50,6 @@ def test_views_post_and_redirect(url, django_user_model):
 ])
 def test_views_post_with_errors(url):
     c = Client()
-    print(c)
     response = c.post(url)
     assert response.status_code == 200
 
