@@ -59,11 +59,11 @@ def missing_doc(request):
 
 def login(request):
     if request.method == 'POST':
-        user = authenticate(username=request.POST.get('user'), password=request.POST.get('password'))
+        user = authenticate(username=request.POST.get('user'), password= request.POST.get('password'))
         if user is not None:
             return redirect('home')
         else:
-            return render(request, 'webapp/login.html', {'message': 'error'})
+            return render(request, 'webapp/login.html', {'message': 'error de introduccion de datos'})
     else:
         return render(request, 'webapp/login.html', {'message': ''})
 
