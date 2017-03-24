@@ -1,5 +1,6 @@
 from django.shortcuts import reverse
 from django.test import Client
+from django.contrib.auth.models import User
 
 import pytest
 
@@ -37,7 +38,9 @@ def test_views_exist(url):
 ])
 def test_views_post_and_redirect(url):
     c = Client()
-    response = c.post(url)
+    user = User.objects.create_user('initios', 'lennon@thebeatles.com', 'initiosyago')
+    user.save()
+    response = c.post(url, {'user': 'initios', 'password': 'initiosyago'})
     assert response.status_code == 302
 
 

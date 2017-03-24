@@ -2,8 +2,6 @@ from django.shortcuts import redirect, render, reverse
 from django.views import generic
 from django.contrib.auth import authenticate
 from core import models
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from . import forms
 
 
