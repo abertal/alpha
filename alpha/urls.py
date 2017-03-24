@@ -19,7 +19,6 @@ from django.views.generic import RedirectView
 
 import webapp.urls
 
-
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='webapp/')),
     url(r'^admin/', admin.site.urls),
