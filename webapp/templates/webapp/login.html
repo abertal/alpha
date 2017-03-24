@@ -3,6 +3,9 @@
 {% block main %}
 <div class="col-3 offset-3 align-self-center">
   <h1 class="element">Acceso</h1>
+  {% if message %}
+    <p class="error">{{ message }}</p>
+  {% endif %}
   <form method="post">
     {% csrf_token %}
     <div class="form-group">
