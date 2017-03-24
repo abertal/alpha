@@ -44,12 +44,12 @@ Instrucciones instalación en Windows
 
 .. code::
 
-    $ cd alpha
-    $ python3 -m venv .venv
-    $ .venv\Scripts\Activate.PS1
-    (.venv) $ pip install --upgrade pip setuptools wheel
-    (.venv) $ pip install --requirement requirements.txt
-    (.venv) $ pip install --requirement dev-requirements.txt
+    PS > cd alpha
+    PS > python3 -m venv .venv
+    PS > .venv\Scripts\Activate.PS1
+    (.venv) PS > pip install --upgrade pip setuptools wheel
+    (.venv) PS > pip install --requirement requirements.txt
+    (.venv) PS > pip install --requirement dev-requirements.txt
 
 Clonación del repositorio y subida de repositorios
 --------------------------------------------------
@@ -146,14 +146,14 @@ Primero debemos generar un fichero con los cambios realizados usando PowerShell
 
 .. code::
 
-    $ python .\manage.py makemigrations
+    PS > python .\manage.py makemigrations
 
 
 Para realizar el cambio de modelo y actualizarlo con el fichero generado antes
 
 .. code::
 
-    $ python .\manage.py migrate
+    PS > python .\manage.py migrate
 
 Migraciones de modelos (Linux)
 ------------------------------
