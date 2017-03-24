@@ -1,11 +1,8 @@
-from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from django.test import Client
 
 import pytest
-
-from core import models
 
 
 @pytest.mark.django_db
@@ -40,7 +37,7 @@ def test_views_exist(url):
     '/webapp/login/',
 ])
 def test_views_post_and_redirect(url, django_user_model):
-    user = User.objects.create_user('admin', 'admin@example.com', '12345678')
+    User.objects.create_user('admin', 'admin@example.com', '12345678')
     c = Client()
     response = c.post(url, {'user':'admin', 'password':'12345678'})
     assert response.status_code == 302
