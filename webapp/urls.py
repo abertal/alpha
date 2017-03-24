@@ -3,7 +3,6 @@ from django.views.generic import RedirectView
 
 from . import views
 
-
 person = [
     url(r'^$', views.PersonList.as_view(), name='person-list'),
     url(r'^(?P<pk>[^/]+)/$', views.PersonDetail.as_view(), name='person-detail'),
