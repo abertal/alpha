@@ -41,7 +41,7 @@ class VolunteerEdit(forms.ModelForm):
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
 
-class MemberEdit(forms.Form):
+class MemberEdit(forms.ModelForm):
     class Meta:
         model = models.Member
         fields = ('photo_status', 'card_status',)
