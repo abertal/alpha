@@ -45,6 +45,16 @@ def test_views_post_and_redirect(url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
+    '/webapp/login/',
+])
+def test_login_incorrect(url):
+    c = Client()
+    response = c.post(url, {'user': 'user00', 'password': 'secret1'})
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
     '/webapp/basicformnewperson/',
     '/webapp/basicformnewfamily/',
 ])
