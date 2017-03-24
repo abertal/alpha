@@ -38,9 +38,8 @@ def test_views_exist(url):
 ])
 def test_views_post_and_redirect(url):
     c = Client()
-    user = User.objects.create_user('initios', 'lennon@thebeatles.com', 'initiosyago')
-    user.save()
-    response = c.post(url, {'user': 'initios', 'password': 'initiosyago'})
+    user = User.objects.create_user('user00', 'first.last@example', 'secret')
+    response = c.post(url, {'user': 'user00', 'password': 'secret'})
     assert response.status_code == 302
 
 
