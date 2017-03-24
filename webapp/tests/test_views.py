@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from django.test import Client
-from django.contrib.auth.models import User
 
 import pytest
 
