@@ -3,8 +3,8 @@
 {% block main %}
 <div class="col-3 offset-3 align-self-center">
   <h1 class="element">Acceso</h1>
-  {% if mensaje == 'error' %}
-    <p class="error">Error al introducir el usuario o la contraseña. /p>
+  {% if message %}
+    <p class="error">{{ message }}</p>
   {% endif %}
   <form method="post">
     {% csrf_token %}

@@ -66,7 +66,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(request, 'webapp/login.html', {'mensaje': 'error'})
+            return render(request, 'webapp/login.html', {'message': 'Error al introducir el usuario o la contraseña.'})
     return render(request, 'webapp/login.html')
 
 
