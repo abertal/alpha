@@ -98,3 +98,6 @@ ENV/
 
 # Node_modules
 node_modules/
+
+# VSCode
+.vscode/
