@@ -48,7 +48,7 @@ def test_views_post_and_redirect(url):
     '/webapp/login/',
 ])
 def test_views_post_and_wrong_redirect(url):
-    User.objects.create_user('admin', 'a@a.es', 'abc123.')
+    User.objects.create_user('admin', 'email@example.com', 'abc123.')
     c = Client()
     response = c.post(url, {'user': 'admin', 'password': 'abc123..fd'})
     assert response.status_code == 200
