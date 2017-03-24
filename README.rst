@@ -172,7 +172,7 @@ recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
 
 .. code::
 
-    (.venv) PS > flake8
+    (.venv) $ flake8
 
 Si hay algún error debe corregirse antes.
 
@@ -181,7 +181,7 @@ tests simplmente hay que ejecutar el comando `pytest`.
 
 .. code::
 
-    (.venv) PS > pytest
+    (.venv) $ pytest
 
 Al igual que con la comprobación anterior, no se puede subir código que no pase
 los tests.
@@ -191,7 +191,7 @@ paquetes y librerías estén ordenados y agrupados de manera homogénea en toda 
 
 .. code::
 
-    (.venv) PS > isort
+    (.venv) $ isort
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
 
