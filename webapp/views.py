@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
+from django.contrib.auth import authenticate, login
+
 
 from core import models
 
@@ -57,12 +59,16 @@ def missing_doc(request):
 
 
 def login(request):
-    context = {}
-    print(request.POST)
-    if request.POST.get('user') == 'demo' and request.POST.get('password') == 'demo':
-        return redirect('home')
+    if request.method == 'POST':
+        user = authenticate( \
+            username=request.POST.get('user'), \
+            password=request.POST.get('password'))
+        if user is not None:
+            return redirect('home')
+        else:
+            return render(request, 'webapp/login.html', {'message':'error'})
     else:
-        return render(request, 'webapp/login.html', context=context)
+        return render(request, 'webapp/login.html', {'message':''})
 
 
 class MenuMixin:
