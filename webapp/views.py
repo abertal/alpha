@@ -137,16 +137,16 @@ class RecipientEdit(MenuMixin, generic.UpdateView):
         return reverse('recipient-detail', args=[self.object.id])
 
 
-class VolunteerEdit(MenuMixin, generic.DetailView):
-    model = models.Volunteer
-    form_class = forms.VolunteerEdit
-    template_name = 'webapp/volunteer_edit.html'
-    name = 'Detalle voluntario'
-
-
 class VolunteerDetail(MenuMixin, generic.DetailView):
     model = models.Volunteer
     template_name = 'webapp/volunteer_detail.html'
+    name = 'Detalle voluntario'
+
+
+class VolunteerEdit(MenuMixin, generic.UpdateView):
+    model = models.Volunteer
+    form_class = forms.VolunteerEdit
+    template_name = 'webapp/volunteer_edit.html'
     name = 'Detalle voluntario'
 
     def get_success_url(self):
