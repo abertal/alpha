@@ -14,6 +14,9 @@
       <input type="password" class="form-control" id="password" name="password">
     </div>
     <input type="submit" value="Aceptar">
+    {% if message %}
+    <p style="color:red;">{{ message }}</p>
+    {% endif %}
   </form>
 </div>
 {% endblock %}

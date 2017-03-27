@@ -59,7 +59,8 @@ def missing_doc(request):
 
 
 def login(request):
-    context = {'message': 'error'}
+    context = {'message': 'Por favor introduzca usuario o clave correctos. \
+    Observe que ambos campos pueden ser sensibles a mayúsculas.'}
     if request.method == 'POST':
         user = authenticate(
             username=request.POST.get('user'),
