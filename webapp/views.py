@@ -58,6 +58,7 @@ def missing_doc(request):
 
 
 def login(request):
+    context = {'message': 'error'}
     if request.method == 'POST':
         user = authenticate(
             username=request.POST.get('user'),
@@ -65,9 +66,9 @@ def login(request):
         if user is not None:
             return redirect('home')
         else:
-            return render(request, 'webapp/login.html', {'message' : 'error'})
+            return render(request, 'webapp/login.html', context=context)
     else:
-        return render(request, 'webapp/login.html', {'message' : ''})
+        return render(request, 'webapp/login.html', context=None)
 
 
 class MenuMixin:
