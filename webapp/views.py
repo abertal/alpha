@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
+from django.contrib.auth import authenticate
 
 from core import models
 
@@ -51,16 +52,24 @@ def group_detail(request, pk):
 
 def missing_doc(request):
     pending = models.Member.objects.exclude(id_card_status='si')
-    object_list = models.Membership.objects.filter(member__in=pending).distinct()
+    object_list = models.Membership.objects.filter(
+        member__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
 
 
 def login(request):
-    context = {}
+    context = {'message': 'error'}
     if request.method == 'POST':
-        return redirect('home')
-    return render(request, 'webapp/login.html', context=context)
+        user = authenticate(
+            username=request.POST.get('user'),
+            password=request.POST.get('password'))
+        if user is not None:
+            return redirect('home')
+        else:
+            return render(request, 'webapp/login.html', context=context)
+    else:
+        return render(request, 'webapp/login.html', context=None)
 
 
 class MenuMixin:
