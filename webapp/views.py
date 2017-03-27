@@ -1,8 +1,8 @@
-from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from core import models
 
