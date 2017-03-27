@@ -20,7 +20,6 @@ def test_list_views(view_name):
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
-    '/webapp/home/',
     '/webapp/membership/',
     '/webapp/basicformnewperson/',
     '/webapp/basicformnewfamily/',
@@ -30,6 +29,16 @@ def test_views_exist(url):
     c = Client()
     response = c.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/home/',
+])
+def test_views_forbidden(url):
+    c = Client()
+    response = c.post(url)
+    assert response.status_code == 403
 
 
 @pytest.mark.django_db
