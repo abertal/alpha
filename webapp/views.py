@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
 
@@ -57,10 +58,17 @@ def missing_doc(request):
 
 
 def login(request):
-    context = {}
+    context = {'message': 'error'}
     if request.method == 'POST':
-        return redirect('home')
-    return render(request, 'webapp/login.html', context=context)
+        user = authenticate(
+            username=request.POST.get('user'),
+            password=request.POST.get('password'))
+        if user is not None:
+            return redirect('home')
+        else:
+            return render(request, 'webapp/login.html', context=context)
+    else:
+        return render(request, 'webapp/login.html', context=None)
 
 
 class MenuMixin:
