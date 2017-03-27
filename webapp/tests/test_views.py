@@ -45,6 +45,17 @@ def test_views_post_and_redirect(url, django_user_model):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
+    '/webapp/login/',
+])
+def test_views_post_and_not_found_redirect(url):
+    User.objects.create_user('admin', 'admin@example.com', '12345678')
+    c = Client()
+    response = c.post(url, {'user': 'admin', 'password': '123456ss8'})
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
     '/webapp/basicformnewperson/',
     '/webapp/basicformnewfamily/',
 ])
