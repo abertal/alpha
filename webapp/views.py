@@ -1,5 +1,8 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from core import models
 
@@ -57,10 +60,18 @@ def missing_doc(request):
 
 
 def login(request):
-    context = {}
+    context = {'message': 'error'}
     if request.method == 'POST':
-        return redirect('home')
-    return render(request, 'webapp/login.html', context=context)
+        user = authenticate(
+            username=request.POST.get('user'),
+            password=request.POST.get('password'))
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'webapp/login.html', context=context)
+    else:
+        return render(request, 'webapp/login.html', context=None)
 
 
 class MenuMixin:
@@ -72,9 +83,12 @@ class MenuMixin:
         return super().get_context_data(**kwargs)
 
 
-class Home(MenuMixin, generic.TemplateView):
+class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     name = 'Inicio'
+    login_url = '../login'
     template_name = 'webapp/home.html'
+    redirect_field_name = 'redirect_to'
+    raise_exception = True
 
 
 class NewIndividualMember(MenuMixin, generic.FormView):
