@@ -1,3 +1,6 @@
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
 
@@ -51,16 +54,26 @@ def group_detail(request, pk):
 
 def missing_doc(request):
     pending = models.Member.objects.exclude(id_card_status='si')
-    object_list = models.Membership.objects.filter(member__in=pending).distinct()
+    object_list = models.Membership.objects.filter(
+        member__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
 
 
 def login(request):
-    context = {}
+    context = {'message': 'Por favor introduzca usuario o clave correctos. \
+    Observe que ambos campos pueden ser sensibles a mayúsculas.'}
     if request.method == 'POST':
-        return redirect('home')
-    return render(request, 'webapp/login.html', context=context)
+        user = authenticate(
+            username=request.POST.get('user'),
+            password=request.POST.get('password'))
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'webapp/login.html', context=context)
+    else:
+        return render(request, 'webapp/login.html', context=None)
 
 
 class MenuMixin:
@@ -72,8 +85,11 @@ class MenuMixin:
         return super().get_context_data(**kwargs)
 
 
-class Home(MenuMixin, generic.TemplateView):
+class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     name = 'Inicio'
+    login_url = '../login/'
+    redirect_field_name = 'redirect_to'
+    raise_exception = True
     template_name = 'webapp/home.html'
 
 
