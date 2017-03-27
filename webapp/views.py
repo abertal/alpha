@@ -1,6 +1,6 @@
+from django.contrib.auth import authenticate
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
-from django.contrib.auth import authenticate
 
 from core import models
 
