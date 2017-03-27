@@ -42,6 +42,7 @@ def test_views_post_and_redirect(url, django_user_model):
     response = c.post(url, {'user': 'admin', 'password': '12345678'})
     assert response.status_code == 302
 
+
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
