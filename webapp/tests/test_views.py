@@ -13,12 +13,9 @@ import pytest
     'person-list',
     'missing_doc',
 ])
-def test_list_views(view_name):
+def test_list_views(logged_client, view_name):
     url = reverse(view_name)
-    c = Client()
-    user = User.objects.create_user('user00', 'first.last@example.com', 'secret')
-    c.force_login(user)
-    response = c.get(url)
+    response = logged_client.get(url)
     assert response.status_code == 200
 
 
@@ -31,11 +28,8 @@ def test_list_views(view_name):
     '/webapp/basicformnewfamily/',
     '/webapp/person/',
 ])
-def test_views_exist(url):
-    c = Client()
-    user = User.objects.create_user('user00', 'first.last@example.com', 'secret')
-    c.force_login(user)
-    response = c.get(url)
+def test_views_exist(logged_client, url):
+    response = logged_client.get(url)
     assert response.status_code == 200
 
 
@@ -65,11 +59,8 @@ def test_login_incorrect(url):
     '/webapp/basicformnewperson/',
     '/webapp/basicformnewfamily/',
 ])
-def test_views_post_with_errors(url):
-    c = Client()
-    user = User.objects.create_user('user00', 'first.last@example.com', 'secret')
-    c.force_login(user)
-    response = c.post(url)
+def test_views_post_with_errors(logged_client, url):
+    response = logged_client.post(url)
     assert response.status_code == 200
 
 
@@ -78,9 +69,6 @@ def test_views_post_with_errors(url):
     '/webapp/person/{}/',
     '/webapp/person/{}/edit/',
 ])
-def test_person_views(person, url):
-    c = Client()
-    user = User.objects.create_user('user00', 'first.last@example.com', 'secret')
-    c.force_login(user)
-    response = c.get(url.format(person.id))
+def test_person_views(logged_client, person, url):
+    response = logged_client.get(url.format(person.id))
     assert response.status_code == 200
