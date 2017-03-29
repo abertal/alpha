@@ -88,7 +88,7 @@ class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     template_name = 'webapp/home.html'
 
 
-class NewIndividualMember(LoginRequiredMixin,MenuMixin, generic.FormView):
+class NewIndividualMember(LoginRequiredMixin, MenuMixin, generic.FormView):
     form_class = forms.NewIndividualMember
     template_name = 'webapp/basicformnewperson.html'
     name = 'Nuevo socio individual'
@@ -98,7 +98,7 @@ class NewIndividualMember(LoginRequiredMixin,MenuMixin, generic.FormView):
         return redirect('membership-detail', pk=membership.pk)
 
 
-class NewFamilyMember(LoginRequiredMixin,MenuMixin, generic.FormView):
+class NewFamilyMember(LoginRequiredMixin, MenuMixin, generic.FormView):
     form_class = forms.NewFamilyMember
     template_name = 'webapp/basicformnewfamily.html'
     name = 'Nueva familia'
@@ -108,7 +108,7 @@ class NewFamilyMember(LoginRequiredMixin,MenuMixin, generic.FormView):
         return redirect('membership-detail', pk=membership.pk)
 
 
-class PersonList(LoginRequiredMixin,MenuMixin, generic.ListView):
+class PersonList(LoginRequiredMixin, MenuMixin, generic.ListView):
     template_name = 'webapp/person_list.html'
     name = 'Personas'
 
@@ -116,13 +116,13 @@ class PersonList(LoginRequiredMixin,MenuMixin, generic.ListView):
         return models.Person.objects.all()
 
 
-class PersonDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
+class PersonDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Person
     template_name = 'webapp/person_detail.html'
     name = 'Detalle persona'
 
 
-class PersonEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
+class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Person
     form_class = forms.EditPerson
     template_name = 'webapp/person_edit.html'
@@ -132,13 +132,13 @@ class PersonEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
         return reverse('person-detail', args=[self.object.id])
 
 
-class RecipientDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
+class RecipientDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Recipient
     template_name = 'webapp/recipient_detail.html'
     name = 'Detalle destinatario'
 
 
-class RecipientEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
+class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Recipient
     form_class = forms.RecipientEdit
     template_name = 'webapp/recipient_edit.html'
@@ -148,14 +148,14 @@ class RecipientEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
         return reverse('recipient-detail', args=[self.object.id])
 
 
-class VolunteerEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
+class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Volunteer
     form_class = forms.VolunteerEdit
     template_name = 'webapp/volunteer_edit.html'
     name = 'Detalle voluntario'
 
 
-class VolunteerDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
+class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Volunteer
     template_name = 'webapp/volunteer_detail.html'
     name = 'Detalle voluntario'
@@ -164,13 +164,13 @@ class VolunteerDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
         return reverse('volunteer-detail', args=[self.object.id])
 
 
-class MemberDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
+class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Member
     template_name = 'webapp/member_detail.html'
     name = 'Detalle socio'
 
 
-class MemberEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
+class MemberEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Member
     form_class = forms.MemberEdit
     template_name = 'webapp/member_edit.html'
@@ -180,7 +180,7 @@ class MemberEdit(LoginRequiredMixin,MenuMixin, generic.UpdateView):
         return reverse('member-detail', args=[self.object.id])
 
 
-class MembershipList(LoginRequiredMixin,MenuMixin, generic.ListView):
+class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
     name = 'Socios'
 
@@ -188,7 +188,7 @@ class MembershipList(LoginRequiredMixin,MenuMixin, generic.ListView):
         return models.Membership.objects.all()
 
 
-class MembershipDetail(LoginRequiredMixin,MenuMixin, generic.DetailView):
+class MembershipDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Membership
     template_name = 'webapp/membership_detail.html'
     name = 'Detalle socio'
