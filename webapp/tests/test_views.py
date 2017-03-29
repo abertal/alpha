@@ -1,7 +1,4 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from django.http import HttpRequest
 from django.shortcuts import reverse
 from django.test import Client
 
