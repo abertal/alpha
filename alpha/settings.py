@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'webapp',
 ]
 
+LOGIN_URL = '/webapp/login/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
