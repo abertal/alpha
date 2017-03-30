@@ -173,7 +173,7 @@ class Member(models.Model):
     dpa_status = models.TextField(verbose_name='LOPD', blank=True, default='')
     card_status = models.TextField(verbose_name='Estado del carnet', blank=True, default='')
 
-    photo = models.ImageField(verbose_name='Fotografía', upload_to='members', default=None)
+    photo = models.ImageField(verbose_name='Fotografía', upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person)
     membership = models.ForeignKey(Membership)
