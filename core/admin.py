@@ -85,4 +85,5 @@ class Member(admin.ModelAdmin):
         'photo_status',
         'dpa_status',
         'card_status',
+        'photo'
     )
