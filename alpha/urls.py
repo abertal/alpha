@@ -24,10 +24,5 @@ import webapp.urls
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='webapp/')),
     url(r'^admin/', admin.site.urls),
-    url(r'^webapp/', include(webapp.urls)),
-]
-
-if settings.DEBUG:
-    urlpatterns = [
-        # ... the rest of your URLconf goes here ...
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^webapp/', include(webapp.urls)), ] + \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
