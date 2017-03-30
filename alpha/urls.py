@@ -17,6 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import RedirectView
 
+from django.conf import settings
+from django.contrib.staticfiles import views
+
 import webapp.urls
 
 urlpatterns = [
@@ -24,3 +27,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^webapp/', include(webapp.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/members/(?P<path>.*)$', views.serve),
+    ]
