@@ -5,3 +5,4 @@ openpyxl
 psycopg2
 waitress
 whitenoise
+Pillow
