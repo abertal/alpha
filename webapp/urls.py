@@ -41,7 +41,8 @@ urlpatterns = [
     url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
-    url(r'^login/$', views.login),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', views.signout, name='logout'),
     url(r'^home/$', views.Home.as_view(), name='home'),
     url(r'^basicformnewperson/$', views.NewIndividualMember.as_view(), name='basicformnewperson'),
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),
