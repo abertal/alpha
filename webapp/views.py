@@ -1,4 +1,6 @@
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+
 from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
@@ -56,14 +58,16 @@ def group_detail(request, pk):
 
 def missing_doc(request):
     pending = models.Member.objects.exclude(id_card_status='si')
-    object_list = models.Membership.objects.filter(member__in=pending).distinct()
+    object_list = models.Membership.objects.filter(
+        member__in=pending).distinct()
     context = {'object_list': object_list}
     return render(request, 'webapp/missing_doc.html', context=context)
 
 
 def login(request):
     if request.method == 'POST':
-        user = authenticate(username=request.POST.get('user'), password=request.POST.get('password'))
+        user = authenticate(username=request.POST.get(
+            'user'), password=request.POST.get('password'))
         if user is not None:
             auth_login(request, user)
             return redirect('home')
@@ -75,6 +79,11 @@ def login(request):
                     ' y la clave correctos para una cuenta de personal.'})
     else:
         return render(request, 'webapp/login.html', {'message': None})
+
+
+def signout(request):
+    auth_logout(request)
+    return redirect(reverse('login'))
 
 
 class MenuMixin:
