@@ -1,13 +1,23 @@
 {% extends './__base.html' %}
 
 {% block body %}
-{% for person in object_list %}
-  <div>
+{% block content %}
+<br>
+    <form method="get">
+     {{ filter.form.as_p }}
+     <button type="submit">Buscar</button>
+    </form>
+     <br>
+     <ul>
+  {% for person in filter.qs %}
+    <div>
     <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
     <p>{{ person.birthday|default:"Sin fecha de nacimiento" }}</p>
   </div>
-
 {% empty %}
   <p>No hay grupos</p>
-{% endfor %}
+  {% endfor %}
+     </ul>
+{% endblock %}
+
 {% endblock %}

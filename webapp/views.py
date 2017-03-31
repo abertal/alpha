@@ -4,7 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
 from django.views import generic
 
+from django_filters.views import FilterView
+
 from core import models
+from webapp.filters import PersonFilter
 
 from . import forms
 
@@ -108,9 +111,11 @@ class NewFamilyMember(LoginRequiredMixin, MenuMixin, generic.FormView):
         return redirect('membership-detail', pk=membership.pk)
 
 
-class PersonList(LoginRequiredMixin, MenuMixin, generic.ListView):
+class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/person_list.html'
     name = 'Personas'
+    model = PersonFilter
+    filterset_class = PersonFilter
 
     def get_queryset(self):
         return models.Person.objects.all()
