@@ -8,7 +8,6 @@ from django_filters.views import FilterView
 
 from core import models
 from webapp.filters import PersonFilter
-
 from . import forms
 
 
@@ -114,7 +113,7 @@ class NewFamilyMember(LoginRequiredMixin, MenuMixin, generic.FormView):
 class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/person_list.html'
     name = 'Personas'
-    model = PersonFilter
+    model = models.Person
     filterset_class = PersonFilter
 
     def get_queryset(self):
