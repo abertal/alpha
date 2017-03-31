@@ -1,8 +1,9 @@
 Django
+django-filter
 django-widget-tweaks
 dj-database-url
 openpyxl
+Pillow
 psycopg2
 waitress
 whitenoise
-Pillow
