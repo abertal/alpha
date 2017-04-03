@@ -41,6 +41,17 @@ def test_create_person(logged_client, url):
 
 
 @pytest.mark.django_db
+@pytest.mark.parametrize('url, data', [
+    ('/webapp/person/{pk}/volunteer/', {}),
+])
+def test_create_from_person(logged_client, person, url, data):
+    # Inject person UID to POST data
+    data['person'] = person.pk
+    response = logged_client.post(url.format(pk=person.id), data=data)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
 ])
