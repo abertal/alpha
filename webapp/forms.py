@@ -8,7 +8,7 @@ from core import models
 class CreatePerson(forms.ModelForm):
     class Meta:
         model = models.Person
-        fields = ('name',)
+        fields = ('name', 'surname',)
 
         widgets = {
             'name': forms.TextInput(),

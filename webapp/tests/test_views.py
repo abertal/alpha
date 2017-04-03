@@ -35,7 +35,7 @@ def test_views_exist(logged_client, url):
     '/webapp/person/new/',
 ])
 def test_create_person(logged_client, url):
-    data = {'name': 'Juan'}
+    data = {'name': 'Juan', 'surname': 'Bosco'}
     response = logged_client.post(url, data=data)
     assert response.status_code == 302
 
