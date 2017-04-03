@@ -167,7 +167,7 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     template_name = 'webapp/custodian_edit.html'
     name = 'Detalle custodian'
 
-    def get_succes_url(self):
+    def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
 
 
