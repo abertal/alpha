@@ -7,7 +7,6 @@
   <dd>{{ person.id }}</dd>
 </dl>
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
-{% csrf_token %}
 {% include './_form_fields.html' %}
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="Guardar cambios">
