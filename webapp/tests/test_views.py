@@ -32,6 +32,16 @@ def test_views_exist(logged_client, url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
+    '/webapp/person/new/',
+])
+def test_create_person(logged_client, url):
+    data = {'name': 'Juan'}
+    response = logged_client.post(url, data=data)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
     '/webapp/login/',
 ])
 def test_views_post_and_redirect(url):
@@ -53,6 +63,7 @@ def test_login_incorrect(url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
+    '/webapp/person/new/',
     '/webapp/basicformnewperson/',
     '/webapp/basicformnewfamily/',
 ])

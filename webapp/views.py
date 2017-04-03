@@ -126,6 +126,15 @@ class PersonDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = 'Detalle persona'
 
 
+class PersonCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Person
+    form_class = forms.CreatePerson
+    template_name = 'webapp/person_create.html'
+
+    def get_success_url(self):
+        return reverse('person-detail', args=[self.object.id])
+
+
 class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Person
     form_class = forms.EditPerson
