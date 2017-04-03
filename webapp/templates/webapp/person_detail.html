@@ -26,6 +26,12 @@
   <dd>{{ person.health_warnings }}</dd>
   <dt>Observaciones</dt>
   <dd>{{ person.comment }}</dd>
+  <dt>Responsable</dt>
+  <dd>
+    {% for custodian in person.custodian_set.all %}
+  <a href="{% url 'custodian-detail' custodian.id %}">{{ custodian.person.name }}</a>
+  {% endfor %}
+  </dd>
 </dl>
 <a href="{% url 'person-edit' person.id %}">Editar</a>
 {% for recipient in person.recipient_set.all %}
