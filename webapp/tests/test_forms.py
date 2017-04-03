@@ -26,6 +26,15 @@ def test_edit_person_form(person):
 
 
 @pytest.mark.django_db
+def test_create_volunteer_form(person):
+    data = {'person': person.id}
+    form = forms.VolunteerCreate(data)
+    assert form.is_valid(), form.errors
+    obj = form.save()
+    assert obj.person.id == person.id
+
+
+@pytest.mark.django_db
 def test_new_individual_member():
     data = {
         'mail': 'email@example.com',

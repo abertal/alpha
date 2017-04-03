@@ -45,6 +45,16 @@ class RecipientEdit(forms.ModelForm):
         fields = 'category',
 
 
+class VolunteerCreate(forms.ModelForm):
+    class Meta:
+        model = models.Volunteer
+        fields = 'person',
+
+        widgets = {
+            'person': forms.HiddenInput(),
+        }
+
+
 class VolunteerEdit(forms.ModelForm):
     class Meta:
         model = models.Volunteer
