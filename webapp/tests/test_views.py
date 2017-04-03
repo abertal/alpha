@@ -76,7 +76,7 @@ def test_views_post_with_errors(logged_client, url):
 @pytest.mark.parametrize('url', [
     '/webapp/logout'
 ])
-def test_user_logged_out(logged_client,url):
+def test_user_logged_out(logged_client, url):
     response = logged_client.get(url)
     assert response.status_code == 301
 
