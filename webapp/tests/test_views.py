@@ -77,8 +77,9 @@ def test_views_post_with_errors(logged_client, url):
     '/webapp/logout'
 ])
 def test_user_logged_out(logged_client, url):
-    response = logged_client.get(url)
-    assert response.status_code == 301
+    response = logged_client.get(url, follow=True)
+    import pdb; pdb.set_trace()
+    assert response.context['user'].is_authenticated() is False
 
 
 @pytest.mark.django_db
