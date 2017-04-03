@@ -32,7 +32,7 @@
       <a href="{% url 'recipient-detail' custodian.minor.id %}">{{ custodian.minor.person.name }}</a>
     {% endfor %}
   </dd>
-  </dl>
+</dl>
 <a href="{% url 'person-edit' person.id %}">Editar</a>
 {% for recipient in person.recipient_set.all %}
 <a href="{% url 'recipient-detail' recipient.id %}">Ficha de destinatario</a>
@@ -42,5 +42,8 @@
 {% endfor %}
 {% for member in person.member_set.all %}
 <a href="{% url 'member-detail' member.id %}">Ficha de documentación</a>
+{% endfor %}
+{% for custodian in person.custodian_set.all %}
+<a href="{% url 'custodian-edit' custodian.id %}">Editar responsable</a>
 {% endfor %}
 {% endblock %}
