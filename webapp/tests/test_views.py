@@ -74,6 +74,15 @@ def test_views_post_with_errors(logged_client, url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
+    '/webapp/logout'
+])
+def test_user_logged_out(logged_client,url):
+    response = logged_client.get(url)
+    assert response.status_code == 301
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
     '/webapp/person/{}/',
     '/webapp/person/{}/edit/',
 ])
