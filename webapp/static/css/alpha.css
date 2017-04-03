@@ -1,14 +1,28 @@
+/* -------------------- */
+/* Main styles          */
+/* -------------------- */
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 95vh;
-  min-height: calc(100vh - 24px);
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+    min-height: calc(100vh - 24px);
 }
+
 main {
-  flex: 1;
+    flex: 1;
 }
+
 footer {
-  text-align: center;
-  padding-top: 30px;
-  font-size: 0.8em;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 0.8em;
 }
+
+/* -------------------- */
+/* Resets         */
+/* -------------------- */
+
+.fluid-container, .row {
+    max-width: 100%;
+}
+
