@@ -4,13 +4,13 @@
 <h3>{{ person.name }} {{ person.surname|upper }}</h3>
 <dl>
   <dt>Código único</dt>
-  <dd>{{ person.id }}</dd>
+  <dd>{{ custodian.id }}</dd>
   <dt>Autorización</dt>
   <dd>{{ custodian.authorized_signature }}</dd>
   <dt>Contacto de Emergencia</dt>
   <dd>{{ custodian.emergency_contact }}</dd>
 </dl>
-<form class="custom-form element" action="{% url 'custodian-edit' custodian.person.id %}" method="post">
+<form class="custom-form element" action="{% url 'custodian-edit' custodian.id %}" method="post">
 {% csrf_token %}
 {% include './_form_fields.html' %}
   <div class="form-group">
