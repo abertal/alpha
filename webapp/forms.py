@@ -48,6 +48,16 @@ class MemberEdit(forms.ModelForm):
         fields = ('photo_status', 'card_status', 'photo')
 
 
+class CustodianEdit(forms.ModelForm):
+    class Meta:
+        model = models.Custodian
+        fields = 'category', 'authorized_signature', 'emergency_contact',
+        widgets = {
+            'authorized_signature': forms.TextInput(),
+            'emergency_contact': forms.TextInput(),
+        }
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label='Nombre')
     surname = forms.CharField(label='Apellidos')
