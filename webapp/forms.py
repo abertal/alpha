@@ -42,9 +42,10 @@ class VolunteerEdit(forms.ModelForm):
 
 
 class MemberEdit(forms.ModelForm):
+
     class Meta:
         model = models.Member
-        fields = ('photo_status', 'card_status',)
+        fields = ('photo_status', 'card_status', 'photo')
 
 
 class NewIndividualMember(forms.Form):
