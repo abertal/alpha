@@ -24,12 +24,17 @@ member = [
     url(r'^(?P<pk>\d+)/edit/$', views.MemberEdit.as_view(), name='member-edit'),
 ]
 
+custodian = [
+    url(r'^(?P<pk>\d+)/$', views.CustodianDetail.as_view(), name='custodian-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.CustodianEdit.as_view(), name='custodian-edit'),
+]
 
 urlpatterns = [
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),
     url(r'^volunteer/', include(volunteer)),
     url(r'^member/', include(member)),
+    url(r'^custodian/', include(custodian)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
