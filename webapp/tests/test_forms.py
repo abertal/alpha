@@ -8,7 +8,7 @@ from webapp import forms
 
 @pytest.mark.django_db
 def test_create_person_form():
-    data = {'name': 'John'}
+    data = {'name': 'John', 'surname': 'Bosco'}
     form = forms.CreatePerson(data)
     assert form.is_valid(), form.errors
     obj = form.save()
