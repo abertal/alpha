@@ -5,6 +5,12 @@
 <dl>
   <dt>Tipo</dt>
   <dd>{{ recipient.get_category_display|default:'Sin especificar' }}</dd>
+  <dt>Responsable</dt>
+   <dd>
+    {% for custodian in recipient.custodian_set.all %}
+  <a href="{% url 'custodian-detail' custodian.id %}">{{ custodian.person.name }}</a>
+  {% endfor %}
+  </dd>
 </dl>
 <a href="{% url 'recipient-edit' recipient.id %}">Editar</a>
 <a href="{% url 'person-detail' recipient.person.id %}">Ir a la ficha personal</a>
