@@ -3,36 +3,36 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Abertal</title>
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}?{% now 'U' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/alpha.css' %}?{% now 'U' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Abertal</title>
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}?{% now 'U' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/alpha.css' %}?{% now 'U' %}">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-            <a class="navbar-brand" href="{% url 'home' %}">Abertal alpha</a>
-            <div class="collapse navbar-collapse">
-                <div class="navbar-nav">
-                    {% if request.user.is_authenticated %}
-                    <a class="nav-item nav-link" href="{% url 'logout' %}">SIGNOUT</a> {% endif %}
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div class="fluid-container">
-            <div class="row">
-              {% block main %}{% endblock %}
-            </div>
+  <header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="{% url 'home' %}">Abertal alpha</a>
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          {% if request.user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'logout' %}">SIGNOUT</a> {% endif %}
         </div>
-    </main>
-    <footer>Copyright © 2016-2017, C.X. Abertal</footer>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="fluid-container">
+      <div class="row">
+        {% block main %}{% endblock %}
+      </div>
+    </div>
+  </main>
+  <footer>Copyright © 2016-2017, C.X. Abertal</footer>
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>

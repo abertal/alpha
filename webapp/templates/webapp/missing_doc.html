@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <title>Abertal WebApp</title>
-    <meta charset="UTF-8">
-    <style type="text/css">
+  <title>Abertal WebApp</title>
+  <meta charset="UTF-8">
+  <style type="text/css">
 body {
-    font-size: 14px;
-    padding: 14px;
+  font-size: 14px;
+  padding: 14px;
 }
 .alpha--table {
-    border: 1px solid black;
-    border-collapse: collapse;
+  border: 1px solid black;
+  border-collapse: collapse;
 
 }
 .alpha--table th,
@@ -35,47 +35,47 @@ body {
   text-align: center;
 }
 .first--row--membership {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 </style>
 </head>
 
 <body>
-    <h1>Documentación pendiente</h1>
-    <table class="alpha--table">
-        <thead>
-            <tr>
-                <th rowspan="2">ID</th>
-                <th rowspan="2">CUOTA</th>
-                <th rowspan="2">PAGO</th>
-                <th colspan="6">SOCIOS</th>
-            </tr>
-            <tr>
-                <th>NOME</th>
-                <th>DNI</th>
-                <th>SS</th>
-                <th>LOPD</th>
-                <th>FOTO</th>
-                <th>CARNET</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for membership in object_list %} {% for member in membership.member_set.all %}
-            <tr {% if forloop.first %}class="first--row--membership"{% endif %}>
-                {% if forloop.first %}
-                <td rowspan="{{ membership.member_set.count }}">{{ membership.id }}</td>
-                <td rowspan="{{ membership.member_set.count }}">{{ membership.membership_fee }}</td>
-                <td rowspan="{{ membership.member_set.count }}">{{ membership.payment_status }}</td>
-                {% endif %}
-                <td>{{ member.person.name }}&thinsp;{{member.person.surname}}</td>
-                <td>{{ member.id_card_status}}</td>
-                <td>{{member.ss_card_status}}</td>
-                <td>{{member.dpa_status}}</td>
-                <td>{{member.photo_status}}</td>
-                <td>{{member.card_status}}</td>
-            </tr>
-            {% endfor %} {% endfor %}
-        </tbody>
-    </table>
+  <h1>Documentación pendiente</h1>
+  <table class="alpha--table">
+    <thead>
+      <tr>
+        <th rowspan="2">ID</th>
+        <th rowspan="2">CUOTA</th>
+        <th rowspan="2">PAGO</th>
+        <th colspan="6">SOCIOS</th>
+      </tr>
+      <tr>
+        <th>NOME</th>
+        <th>DNI</th>
+        <th>SS</th>
+        <th>LOPD</th>
+        <th>FOTO</th>
+        <th>CARNET</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for membership in object_list %} {% for member in membership.member_set.all %}
+      <tr {% if forloop.first %}class="first--row--membership"{% endif %}>
+        {% if forloop.first %}
+        <td rowspan="{{ membership.member_set.count }}">{{ membership.id }}</td>
+        <td rowspan="{{ membership.member_set.count }}">{{ membership.membership_fee }}</td>
+        <td rowspan="{{ membership.member_set.count }}">{{ membership.payment_status }}</td>
+        {% endif %}
+        <td>{{ member.person.name }}&thinsp;{{member.person.surname}}</td>
+        <td>{{ member.id_card_status}}</td>
+        <td>{{member.ss_card_status}}</td>
+        <td>{{member.dpa_status}}</td>
+        <td>{{member.photo_status}}</td>
+        <td>{{member.card_status}}</td>
+      </tr>
+      {% endfor %} {% endfor %}
+    </tbody>
+  </table>
 </body>
 </html>

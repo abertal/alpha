@@ -13,51 +13,51 @@
   <div class="card-group">
   {% endif %}
 
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">
-          <img src="https://sigil.cupcake.io/{{ member.person.id }}.png?w=36" width="36" height="36" alt="identicon para {{ member.person.name }}"/>
-          {{ member.person.name }} {{member.person.surname}}
-        </h3>
-        {% if member.person.age %}
-        <p>Edad: {{ member.person.age|default:"" }}</p>
-        {% endif %}
-        {% if member.person.phone_number %}
-        <p>Teléfono: {{ member.person.phone_number|default:"" }}</p>
-        {% endif %}
-        {% if member.person.email %}
-        <p>Correo electrónico: {{ member.person.email|default:"" }}</p>
-        {% endif %}
-        {% if member.person.address_street %}
-        <p>Dirección: {{ member.person.address_street|default:"" }}. {{member.person.address_locality}}.</p>
-        {% endif %}
-        {% if member.person.id_number %}
-        <p>DNI: {{ member.person.id_number|default:"" }}</p>
-        {% endif %}
-        {% if member.person.ss_number %}
-        <p>Tarjeta sanitaria: {{ member.person.ss_number|default:"" }}</p>
-        {% endif %}
-        <p><b>Estado del carné: {{ member.card_status|default:"" }}</b></p>
-        {% if member.id_card_status == "no" %}
-        <p><b class="error"> por entregar la fotocopia del DNI</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
-        {% endif %}
-        {% if member.ss_card_status == "no" %}
-        <p><b class="error">Falta por entregar la fotocopia de la tarjeta sanitaria</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
-        {% endif %}
-        {% if member.dpa_status == "no" %}
-        <p><b class="error">Falta por firmar la LOPD</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p> {% endif %}
-        {% if member.photo_status == "no" %}
-        <p><b class="error">Falta por entregar la foto</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
-        {% endif %}
-        {% if member.person.health_warnings %}
-        <p><b class="alerta-medica">{{ member.person.health_warnings }}</b>
-        {% endif %}
-      </div>
-      <div class="card-footer">
-        <input type="button" class="btn btn-primary" value="Añadir observaciones"/>
-        <input type="button" class="btn btn-primary" value="Añadir observaciones Médicas"/>
-      </div>
-    </div><!-- card -->
+  <div class="card">
+    <div class="card-block">
+    <h3 class="card-title">
+      <img src="https://sigil.cupcake.io/{{ member.person.id }}.png?w=36" width="36" height="36" alt="identicon para {{ member.person.name }}"/>
+      {{ member.person.name }} {{member.person.surname}}
+    </h3>
+    {% if member.person.age %}
+    <p>Edad: {{ member.person.age|default:"" }}</p>
+    {% endif %}
+    {% if member.person.phone_number %}
+    <p>Teléfono: {{ member.person.phone_number|default:"" }}</p>
+    {% endif %}
+    {% if member.person.email %}
+    <p>Correo electrónico: {{ member.person.email|default:"" }}</p>
+    {% endif %}
+    {% if member.person.address_street %}
+    <p>Dirección: {{ member.person.address_street|default:"" }}. {{member.person.address_locality}}.</p>
+    {% endif %}
+    {% if member.person.id_number %}
+    <p>DNI: {{ member.person.id_number|default:"" }}</p>
+    {% endif %}
+    {% if member.person.ss_number %}
+    <p>Tarjeta sanitaria: {{ member.person.ss_number|default:"" }}</p>
+    {% endif %}
+    <p><b>Estado del carné: {{ member.card_status|default:"" }}</b></p>
+    {% if member.id_card_status == "no" %}
+    <p><b class="error"> por entregar la fotocopia del DNI</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+    {% endif %}
+    {% if member.ss_card_status == "no" %}
+    <p><b class="error">Falta por entregar la fotocopia de la tarjeta sanitaria</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+    {% endif %}
+    {% if member.dpa_status == "no" %}
+    <p><b class="error">Falta por firmar la LOPD</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p> {% endif %}
+    {% if member.photo_status == "no" %}
+    <p><b class="error">Falta por entregar la foto</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+    {% endif %}
+    {% if member.person.health_warnings %}
+    <p><b class="alerta-medica">{{ member.person.health_warnings }}</b>
+    {% endif %}
+    </div>
+    <div class="card-footer">
+    <input type="button" class="btn btn-primary" value="Añadir observaciones"/>
+    <input type="button" class="btn btn-primary" value="Añadir observaciones Médicas"/>
+    </div>
+  </div><!-- card -->
 
   {% if forloop.counter|divisibleby:3 or forloop.last %}
   </div><!-- deck {{ forloop.counter }} -->
