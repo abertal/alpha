@@ -85,6 +85,7 @@ def test_user_logged_out(logged_client, url):
 @pytest.mark.parametrize('url', [
     '/webapp/person/{}/',
     '/webapp/person/{}/edit/',
+    '/webapp/person/{}/volunteer/',
 ])
 def test_person_views(logged_client, person, url):
     response = logged_client.get(url.format(person.id))
