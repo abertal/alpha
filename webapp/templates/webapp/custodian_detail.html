@@ -1,0 +1,13 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h3>{{ custodian.person.name }} {{ custodian.person.surname|upper }}</h3>
+<dl>
+  <dt>Contacto de emergencia</dt>
+  <dd>{{ custodian.emergency_contact }}</dd>
+  <dt>Autorización</dt>
+  <dd>{{ custodian.authorized_signature }}</dd>
+</dl>
+<a href="{% url 'custodian-edit' custodian.id %}">Editar</a>
+<a href="{% url 'person-detail' custodian.person.id %}">Ir a la ficha personal</a>
+{% endblock %}
