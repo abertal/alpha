@@ -5,6 +5,12 @@ from django import forms
 from core import models
 
 
+class CreatePerson(forms.ModelForm):
+    class Meta:
+        model = models.Person
+        fields = ('name',)
+
+
 class EditPerson(forms.ModelForm):
     class Meta:
         model = models.Person

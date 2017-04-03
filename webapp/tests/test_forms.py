@@ -7,6 +7,15 @@ from webapp import forms
 
 
 @pytest.mark.django_db
+def test_create_person_form():
+    data = {'name': 'John'}
+    form = forms.CreatePerson(data)
+    assert form.is_valid(), form.errors
+    obj = form.save()
+    assert obj.name == 'John'
+
+
+@pytest.mark.django_db
 def test_edit_person_form(person):
     data = model_to_dict(person)
     data['name'] = 'John'
