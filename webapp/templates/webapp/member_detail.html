@@ -5,10 +5,12 @@
 <dl>
   <dt>Tipo</dt>
   <dd>{{ member.get_category_display|default:'Sin especificar' }}</dd>
-  <dt>Foto</dt>
-  <dd>{{ member.get_photo_status_display|default:'Sin especificar' }}</dd>
+  <dt>Foto Estado</dt>
+  <dd>{{ member.photo_status|default:'Sin especificar' }}</dd>
   <dt>Carnet</dt>
-  <dd>{{ member.get_card_status_display|default:'Sin especificar' }}</dd>
+  <dd>{{ member.card_status|default:'Sin especificar' }}</dd>
+  <dt>Foto</dt>
+  <dd> <img src= "/media/{{member.photo}}" alt="Fotografia miembro" height="100" width="100"> </dd>
 </dl>
 <a href="{% url 'member-edit' member.id %}">Editar</a>
 <a href="{% url 'person-detail' member.person.id %}">Ir a la ficha personal</a>
