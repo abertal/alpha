@@ -10,6 +10,11 @@ class CreatePerson(forms.ModelForm):
         model = models.Person
         fields = ('name',)
 
+        widgets = {
+            'name': forms.TextInput(),
+            'surname': forms.TextInput(),
+        }
+
 
 class EditPerson(forms.ModelForm):
     class Meta:
