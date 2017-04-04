@@ -31,6 +31,11 @@ custodian = [
     url(r'^(?P<pk>\d+)/edit/$', views.CustodianEdit.as_view(), name='custodian-edit'),
 ]
 
+membership = [
+    url(r'^(?P<pk>\d+)/$', views.MembershipDetail.as_view(), name='membership-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.MembershipEdit.as_view(), name='membership-edit'),
+]
+
 urlpatterns = [
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),

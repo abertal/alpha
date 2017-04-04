@@ -69,6 +69,13 @@ class MemberEdit(forms.ModelForm):
         fields = ('photo_status', 'card_status', 'photo')
 
 
+class MembershipEdit(forms.ModelForm):
+
+    class Meta:
+        model = models.Membership
+        fields = ('type_of_membership', 'payment_status', 'membership_fee', 'membership_status')
+
+
 class CustodianEdit(forms.ModelForm):
     class Meta:
         model = models.Custodian
