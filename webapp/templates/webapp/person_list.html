@@ -11,7 +11,7 @@
      <button type="submit">Buscar</button>
     </form>
     <br>
-    {% for person in filter.qs %}
+    {% for person in object_list %}
      <div>
       <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
       <p>{{ person.birthday|default:"Sin fecha de nacimiento" }}</p>
@@ -19,6 +19,6 @@
     {% empty %}
      <p>No hay grupos</p>
     {% endfor %}
-  {% endblock %}
-
-{% endblock %}
+    {% include './_pagination.html' %}
+  {% endblock content %}
+{% endblock body %}
