@@ -33,19 +33,19 @@
     {% endfor %}
   </dd>
 </dl>
-<a href="{% url 'person-edit' person.id %}">Editar</a>
+<a href="{% url 'person-edit' person.id %}" class="btn btn-secondary">Editar</a>
 {% for recipient in person.recipient_set.all %}
-<a href="{% url 'recipient-detail' recipient.id %}">Ficha de destinatario</a>
+<a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-info">Ficha de destinatario</a>
 {% endfor %}
 {% for volunteer in person.volunteer_set.all %}
-<a href="{% url 'volunteer-detail' volunteer.id %}">Ficha de voluntario</a>
+<a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-info">Ficha de voluntario</a>
 {% empty %}
-<a href="{% url 'volunteer-create' person.id %}">Dar de alta como voluntario</a>
+<a href="{% url 'volunteer-create' person.id %}" class="btn btn-secondary">Dar de alta como voluntario</a>
 {% endfor %}
 {% for member in person.member_set.all %}
-<a href="{% url 'member-detail' member.id %}">Ficha de documentación</a>
+<a href="{% url 'member-detail' member.id %}" class="btn btn-info">Ficha de documentación</a>
 {% endfor %}
 {% for custodian in person.custodian_set.all %}
-<a href="{% url 'custodian-edit' custodian.id %}">Editar responsable</a>
+<a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar responsable</a>
 {% endfor %}
 {% endblock %}

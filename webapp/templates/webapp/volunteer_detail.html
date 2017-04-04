@@ -6,7 +6,7 @@
   <dt>Fecha expiración certificados</dt>
   <dd>{{ volunteer.lack_of_sexual_offenses_date_certificate|default:'Sin especificar' }}</dd>
 </dl>
-<a href="{% url 'volunteer-edit' volunteer.id %}">Editar</a>
-<a href="{% url 'person-detail' volunteer.person.id %}">Ir a la ficha personal</a>
+<a href="{% url 'volunteer-edit' volunteer.id %}" class="btn btn-secondary">Editar</a>
+<a href="{% url 'person-detail' volunteer.person.id %}" class="btn btn-link>Ir a la ficha personal</a>
 
 {% endblock %}
