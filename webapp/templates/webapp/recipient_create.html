@@ -1,0 +1,11 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<form class="custom-form element" action="{% url 'recipient-create' person.id %}" method="post">
+{% include './_form_fields.html' %}
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Crear">
+    <a href="{% url 'person-detail' person.id %}" class="btn btn-link">Volver sin guardar</a>
+  </div>
+</form>
+{% endblock %}

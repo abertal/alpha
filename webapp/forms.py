@@ -39,6 +39,16 @@ class EditPerson(forms.ModelForm):
         }
 
 
+class RecipientCreate(forms.ModelForm):
+    class Meta:
+        model = models.Recipient
+        fields = 'person',
+
+        widgets = {
+            'person': forms.HiddenInput(),
+        }
+
+
 class RecipientEdit(forms.ModelForm):
     class Meta:
         model = models.Recipient
