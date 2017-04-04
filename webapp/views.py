@@ -124,6 +124,7 @@ class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     name = 'Personas'
     model = models.Person
     filterset_class = PersonFilter
+    paginate_by = 5
 
     def get_queryset(self):
         return models.Person.objects.all()
