@@ -90,6 +90,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'alpha.wsgi.application'
 
 
+# Overriding method of the verbose lookups from django_filters
+
+def FILTERS_VERBOSE_LOOKUPS():
+    from django_filters.conf import DEFAULTS
+
+    verbose_lookups = DEFAULTS['VERBOSE_LOOKUPS'].copy()
+    verbose_lookups.update({
+        'contains': '',
+    })
+    return verbose_lookups
+
+
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 

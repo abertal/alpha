@@ -6,4 +6,7 @@ class PersonFilter(django_filters.FilterSet):
 
     class Meta:
         model = Person
-        fields = ['name']
+        fields = {
+            'surname': ['contains'],
+            'name': ['contains'],
+        }
