@@ -154,6 +154,27 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('person-detail', args=[self.object.id])
 
 
+class RecipientCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Recipient
+    form_class = forms.RecipientCreate
+    template_name = 'webapp/recipient_create.html'
+
+    def get_person(self):
+        id_ = self.kwargs['pk']
+        return models.Person.objects.get(id=id_)
+
+    def get_initial(self):
+        person = self.get_person()
+        return {'person': person.id}
+
+    def get_context_data(self, **kwargs):
+        kwargs['person'] = self.get_person()
+        return super().get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse('person-detail', args=[self.object.id])
+
+
 class RecipientDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Recipient
     template_name = 'webapp/recipient_detail.html'
