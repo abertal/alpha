@@ -322,4 +322,3 @@ class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('membership-detail', args=[self.object.id])
-        
