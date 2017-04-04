@@ -19,6 +19,6 @@
     {% empty %}
      <p>No hay grupos</p>
     {% endfor %}
-  {% endblock %}
-
-{% endblock %}
+    {% include './_pagination.html' %}
+  {% endblock content %}
+{% endblock body %}
