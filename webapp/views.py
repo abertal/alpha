@@ -197,6 +197,9 @@ class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     template_name = 'webapp/volunteer_edit.html'
     name = 'Detalle voluntario'
 
+    def get_success_url(self):
+        return reverse('volunteer-detail', args=[self.object.id])
+
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
