@@ -9,5 +9,5 @@
   <dd>{{ custodian.authorized_signature }}</dd>
 </dl>
 <a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar</a>
-<a href="{% url 'person-detail' custodian.person.id %}">Ir a la ficha personal</a>
+<a href="{% url 'person-detail' custodian.person.id %}" class="btn btn-link">Ir a la ficha personal</a>
 {% endblock %}
