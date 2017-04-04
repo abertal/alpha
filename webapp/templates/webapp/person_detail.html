@@ -37,6 +37,10 @@
 {% for recipient in person.recipient_set.all %}
 <a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-info">Ficha de destinatario</a>
 {% endfor %}
+{% for recipient in person.recipient_set.all %}
+{% empty %}
+<a href="{% url 'recipient-create' person.id %}">Dar de alta como destinatario</a>
+{% endfor %}
 {% for volunteer in person.volunteer_set.all %}
 <a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-info">Ficha de voluntario</a>
 {% empty %}
