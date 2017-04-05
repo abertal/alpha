@@ -11,7 +11,7 @@
      <button type="submit">Buscar</button>
     </form>
     <br>
-    {% for volunteer in filter.qs %}
+    {% for recipient in filter.qs %}
      <div>
       <a href="{% url 'recipient-detail' pk=recipient.pk %}">{{ recipient.person.name }} {{ recipient.person.surname|upper }}</a>
       <p>{{ recipient.person.birthday|default:"Sin fecha de nacimiento" }}
