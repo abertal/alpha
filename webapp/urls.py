@@ -25,6 +25,7 @@ volunteer = [
 ]
 
 member = [
+    url(r'^$', views.MemberList.as_view(), name='member-list'),
     url(r'^(?P<pk>\d+)/$', views.MemberDetail.as_view(), name='member-detail'),
     url(r'^(?P<pk>\d+)/edit/$', views.MemberEdit.as_view(), name='member-edit'),
 ]
