@@ -13,7 +13,6 @@ from webapp.filters import PersonFilter, VolunteerFilter
 from . import forms
 
 
-
 class Option:
     def __init__(self, name, viewname, args=None, kwargs=None, menu=None):
         self.name = name

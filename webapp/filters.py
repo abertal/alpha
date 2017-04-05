@@ -9,6 +9,7 @@ class PersonFilter(django_filters.FilterSet):
         model = Person
         fields = ['name']
 
+
 class VolunteerFilter(django_filters.FilterSet):
 
     class Meta:
