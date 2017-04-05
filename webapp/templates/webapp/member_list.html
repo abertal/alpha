@@ -1,0 +1,24 @@
+{% extends './__base.html' %}
+
+{% block body %}
+  {% block content %}
+  <div>
+    <a href="{% url 'person-create' %}" class="btn btn-primary">Nueva persona</a>
+  </div>
+    <br>
+    <form method="get">
+     {{ filter.form.as_p }}
+     <button type="submit">Buscar</button>
+    </form>
+    <br>
+    {% for member in filter.qs %}
+     <div>
+      <a href="{% url 'member-detail' pk=member.pk %}">{{ member.person.name }} {{ member.person.surname|upper }}</a>
+      <p>{{ member.person.birthday|default:"Sin fecha de nacimiento" }}
+     </div>
+    {% empty %}
+     <p>No hay socios...</p>
+    {% endfor %}
+  {% endblock %}
+
+{% endblock %}

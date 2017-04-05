@@ -8,7 +8,7 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from core import models
-from webapp.filters import PersonFilter, RecipientFilter, VolunteerFilter
+from webapp.filters import MemberFilter, PersonFilter, RecipientFilter, VolunteerFilter
 
 from . import forms
 
@@ -35,7 +35,8 @@ class MenuBar:
             Option('Detalle destinatario', None, menu=self),
             Option('Voluntarios', 'volunteer-list', menu=self),
             Option('Detalle voluntario', None, menu=self),
-            Option('Socios', 'membership-list', menu=self),
+            Option('Membresías', 'membership-list', menu=self),
+            Option('Socios', 'member-list', menu=self),
             Option('Detalle socio', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
             Option('Nueva familia', 'basicformnewfamily', menu=self),
@@ -265,9 +266,20 @@ class MemberEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('member-detail', args=[self.object.id])
 
 
+class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/member_list.html'
+    name = 'Socios'
+    model = models.Member
+    filterset_class = MemberFilter
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Member.objects.all()
+
+
 class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
-    name = 'Socios'
+    name = 'Membresías'
 
     def get_queryset(self):
         return models.Membership.objects.all()

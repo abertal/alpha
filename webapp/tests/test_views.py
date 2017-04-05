@@ -7,6 +7,7 @@ import pytest
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('view_name', [
+    'member-list',
     'person-list',
     'recipient-list',
     'volunteer-list',

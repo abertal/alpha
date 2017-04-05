@@ -1,6 +1,6 @@
 import django_filters
 
-from core.models import Person, Recipient, Volunteer
+from core.models import Member, Person, Recipient, Volunteer
 
 
 class PersonFilter(django_filters.FilterSet):
@@ -21,4 +21,11 @@ class RecipientFilter(django_filters.FilterSet):
 
     class Meta:
         model = Recipient
+        fields = ['person__name']
+
+
+class MemberFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Member
         fields = ['person__name']
