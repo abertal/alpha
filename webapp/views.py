@@ -9,8 +9,9 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from core import models
-from webapp.filters import PersonFilter
+from webapp.filters import PersonFilter, VolunteerFilter
 from . import forms
+
 
 
 class Option:
@@ -30,6 +31,7 @@ class MenuBar:
     def get_options(self):
         return [
             Option('Personas', 'person-list', menu=self),
+            Option('Voluntarios', 'volunteer-list', menu=self),
             Option('Detalle persona', None, menu=self),
             Option('Detalle destinatario', None, menu=self),
             Option('Detalle voluntario', None, menu=self),
@@ -202,6 +204,25 @@ class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('volunteer-detail', args=[self.object.id])
 
 
+class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Volunteer
+    template_name = 'webapp/volunteer_detail.html'
+    name = 'Detalle voluntario'
+
+    def get_success_url(self):
+        return reverse('volunteer-detail', args=[self.object.id])
+
+
+class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/volunteer_list.html'
+    name = 'Voluntarios'
+    model = models.Volunteer
+    filterset_class = VolunteerFilter
+
+    def get_queryset(self):
+        return models.Volunteer.objects.all()
+
+
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
     template_name = 'webapp/custodian_detail.html'
@@ -216,15 +237,6 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
-
-
-class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
-    model = models.Volunteer
-    template_name = 'webapp/volunteer_detail.html'
-    name = 'Detalle voluntario'
-
-    def get_success_url(self):
-        return reverse('volunteer-detail', args=[self.object.id])
 
 
 class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
