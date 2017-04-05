@@ -3,7 +3,7 @@
 
 {% block body %}
 <h3>{{ member.person.name }} {{ member.person.surname|upper }}</h3>
-<form class="custom-form element" action="{% url 'membership-edit' member.id %}" method="post"
+<form class="custom-form element" action="{% url 'membership-edit' membership.id %}" method="post"
 enctype="multipart/form-data">
 {% include './_form_fields.html' %}
   <div class="form-group">
