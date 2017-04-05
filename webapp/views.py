@@ -200,6 +200,7 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     name = 'Destinatarios'
     model = models.Recipient
     filterset_class = RecipientFilter
+    paginate_by = 5
 
     def get_queryset(self):
         return models.Recipient.objects.all()
@@ -250,6 +251,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     name = 'Voluntarios'
     model = models.Volunteer
     filterset_class = VolunteerFilter
+    paginate_by = 4
 
     def get_queryset(self):
         return models.Volunteer.objects.all()

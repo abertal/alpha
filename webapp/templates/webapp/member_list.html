@@ -11,7 +11,7 @@
      <button type="submit">Buscar</button>
     </form>
     <br>
-    {% for member in filter.qs %}
+    {% for member in object_list %}
      <div>
       <a href="{% url 'member-detail' pk=member.pk %}">{{ member.person.name }} {{ member.person.surname|upper }}</a>
       <p>{{ member.person.birthday|default:"Sin fecha de nacimiento" }}
@@ -19,6 +19,7 @@
     {% empty %}
      <p>No hay socios...</p>
     {% endfor %}
+    {% include './_pagination.html' %}
   {% endblock %}
 
 {% endblock %}

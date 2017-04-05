@@ -11,7 +11,7 @@
      <button type="submit">Buscar</button>
     </form>
     <br>
-    {% for recipient in filter.qs %}
+    {% for recipient in object_list %}
      <div>
       <a href="{% url 'recipient-detail' pk=recipient.pk %}">{{ recipient.person.name }} {{ recipient.person.surname|upper }}</a>
       <p>{{ recipient.person.birthday|default:"Sin fecha de nacimiento" }}
@@ -19,6 +19,7 @@
     {% empty %}
      <p>No hay destinatarios...</p>
     {% endfor %}
+    {% include './_pagination.html' %}
   {% endblock %}
 
 {% endblock %}
