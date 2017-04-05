@@ -1,6 +1,6 @@
 import django_filters
-from core.models import Person
-from core.models import Volunteer
+
+from core.models import Person, Volunteer
 
 
 class PersonFilter(django_filters.FilterSet):
