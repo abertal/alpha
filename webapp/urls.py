@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^volunteer/', include(volunteer)),
     url(r'^member/', include(member)),
     url(r'^custodian/', include(custodian)),
+    url(r'^membership/', include(membership)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
