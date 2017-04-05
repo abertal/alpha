@@ -8,7 +8,7 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from core import models
-from webapp.filters import PersonFilter, VolunteerFilter
+from webapp.filters import PersonFilter, RecipientFilter, VolunteerFilter
 
 from . import forms
 
@@ -31,6 +31,7 @@ class MenuBar:
         return [
             Option('Personas', 'person-list', menu=self),
             Option('Detalle persona', None, menu=self),
+            Option('Destinatarios', 'recipient-list', menu=self),
             Option('Detalle destinatario', None, menu=self),
             Option('Voluntarios', 'volunteer-list', menu=self),
             Option('Detalle voluntario', None, menu=self),
@@ -170,6 +171,16 @@ class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
+
+
+class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/recipient_list.html'
+    name = 'Destinatarios'
+    model = models.Recipient
+    filterset_class = RecipientFilter
+
+    def get_queryset(self):
+        return models.Recipient.objects.all()
 
 
 class VolunteerCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
