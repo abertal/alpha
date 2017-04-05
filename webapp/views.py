@@ -30,9 +30,9 @@ class MenuBar:
     def get_options(self):
         return [
             Option('Personas', 'person-list', menu=self),
-            Option('Voluntarios', 'volunteer-list', menu=self),
             Option('Detalle persona', None, menu=self),
             Option('Detalle destinatario', None, menu=self),
+            Option('Voluntarios', 'volunteer-list', menu=self),
             Option('Detalle voluntario', None, menu=self),
             Option('Socios', 'membership-list', menu=self),
             Option('Detalle socio', None, menu=self),
