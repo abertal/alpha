@@ -1,6 +1,5 @@
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-
 from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
@@ -10,6 +9,7 @@ from django_filters.views import FilterView
 
 from core import models
 from webapp.filters import PersonFilter, VolunteerFilter
+
 from . import forms
 
 
