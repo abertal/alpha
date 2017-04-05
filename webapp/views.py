@@ -176,7 +176,7 @@ class RecipientCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
-        return reverse('person-detail', args=[self.object.id])
+        return reverse('person-detail', args=[self.object.person_id])
 
 
 class RecipientDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
