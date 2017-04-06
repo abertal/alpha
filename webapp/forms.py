@@ -79,6 +79,16 @@ class MemberEdit(forms.ModelForm):
         fields = ('photo_status', 'card_status', 'photo')
 
 
+class MembershipCreate(forms.ModelForm):
+    class Meta:
+        model = models.Membership
+        fields = 'payment_status',
+
+        widgets = {
+            'payment_status': forms.HiddenInput(),
+        }
+
+
 class MembershipEdit(forms.ModelForm):
 
     class Meta:

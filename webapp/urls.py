@@ -10,6 +10,7 @@ person = [
     url(r'^(?P<pk>[^/]+)/edit/$', views.PersonEdit.as_view(), name='person-edit'),
     url(r'^(?P<pk>[^/]+)/volunteer/$', views.VolunteerCreate.as_view(), name='volunteer-create'),
     url(r'^(?P<pk>[^/]+)/recipient/$', views.RecipientCreate.as_view(), name='recipient-create'),
+    url(r'^(?P<pk>[^/]+)/membership/$', views.MembershipCreate.as_view(), name='membership-create'),
 ]
 
 recipient = [
