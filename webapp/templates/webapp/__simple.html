@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
 <html lang="es">
 
@@ -17,11 +18,25 @@
       <div class="collapse navbar-collapse">
         <div class="navbar-nav">
           {% if request.user.is_authenticated %}
-          <a class="nav-item nav-link" href="javascript:(0);">{{ request.user.username }}</a>
-          <a class="nav-item nav-link" href="{% url 'logout' %}">Salir</a>
+          <a class="nav-item nav-link" href="javascript:(0);">{% blocktrans %}Hola{% endblocktrans %} {{ request.user.username }}</a>
+          <a class="nav-item nav-link justify-content-end" href="{% url 'logout' %}">{% blocktrans %}Salir{% endblocktrans %}</a>
           {% endif %}
         </div>
       </div>
+      <form action="{% url 'set_language' %}" method="post" class="nav-item">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="/" />
+        <select name="language" class="form-control" onchange="this.form.submit()" style="text-transform: capitalize; width: auto !important;">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          {% for language in languages %}
+              <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                  {{ language.name_local }}
+              </option>
+          {% endfor %}
+        </select>
+      </form>
     </nav>
   </header>
   <main>

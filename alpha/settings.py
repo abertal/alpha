@@ -37,6 +37,24 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
 ]
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#language-code
+LANGUAGE_CODE = 'es'
+
+
+def ugettext(s): return s
+
+
+LANGUAGES = (
+    ('gl', ugettext(u'Galego')),
+    ('es', ugettext(u'Español')),
+)
+LOCALE_PATHS = (
+    str(os.path.join(BASE_DIR, 'locale')),
+)
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
+USE_I18N = True
+
 
 # Application definition
 
@@ -68,6 +86,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'alpha.urls'
@@ -80,6 +99,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.request',
                 'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',

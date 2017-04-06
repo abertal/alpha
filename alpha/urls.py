@@ -19,14 +19,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import RedirectView
 
-
 import webapp.urls
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='webapp/')),
     url(r'^admin/', admin.site.urls),
-    url(r'^webapp/', include(webapp.urls)), ] + \
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^webapp/', include(webapp.urls)),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:  # pragma: nocover
     import debug_toolbar
