@@ -5,6 +5,7 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 dj-database-url==0.4.2
+django-debug-toolbar==1.7
 django-filter==1.0.2
 django-widget-tweaks==1.4.1
 django==1.10.5
@@ -14,5 +15,6 @@ olefile==0.44             # via pillow
 openpyxl==2.4.2
 pillow==4.0.0
 psycopg2==2.6.2
+sqlparse==0.2.3           # via django-debug-toolbar
 waitress==1.0.2
 whitenoise==3.3.0
