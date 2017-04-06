@@ -98,6 +98,20 @@ class MenuMixin:
         return super().get_context_data(**kwargs)
 
 
+class FromPersonMixin:
+    def get_person(self):
+        id_ = self.kwargs['pk']
+        return models.Person.objects.get(id=id_)
+
+    def get_initial(self):
+        person = self.get_person()
+        return {'person': person.id}
+
+    def get_context_data(self, **kwargs):
+        kwargs['person'] = self.get_person()
+        return super().get_context_data(**kwargs)
+
+
 class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     template_name = 'webapp/home.html'
 
@@ -158,22 +172,10 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('person-detail', args=[self.object.id])
 
 
-class RecipientCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Recipient
     form_class = forms.RecipientCreate
     template_name = 'webapp/recipient_create.html'
-
-    def get_person(self):
-        id_ = self.kwargs['pk']
-        return models.Person.objects.get(id=id_)
-
-    def get_initial(self):
-        person = self.get_person()
-        return {'person': person.id}
-
-    def get_context_data(self, **kwargs):
-        kwargs['person'] = self.get_person()
-        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -206,22 +208,10 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
         return models.Recipient.objects.all()
 
 
-class VolunteerCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer
     form_class = forms.VolunteerCreate
     template_name = 'webapp/volunteer_create.html'
-
-    def get_person(self):
-        id_ = self.kwargs['pk']
-        return models.Person.objects.get(id=id_)
-
-    def get_initial(self):
-        person = self.get_person()
-        return {'person': person.id}
-
-    def get_context_data(self, **kwargs):
-        kwargs['person'] = self.get_person()
-        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
