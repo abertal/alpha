@@ -312,3 +312,34 @@ class MembershipDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Membership
     template_name = 'webapp/membership_detail.html'
     name = 'Detalle socio'
+
+
+class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Membership
+    form_class = forms.MembershipEdit
+    template_name = 'webapp/membership_edit.html'
+    name = 'Detalle socio'
+
+    def get_success_url(self):
+        return reverse('membership-detail', args=[self.object.id])
+
+
+class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Membership
+    form_class = forms.MembershipCreate
+    template_name = 'webapp/membership_create.html'
+
+    def get_person(self):
+        id_ = self.kwargs['pk']
+        return models.Person.objects.get(id=id_)
+
+    def get_initial(self):
+        person = self.get_person()
+        return {'person': person.id}
+
+    def get_context_data(self, **kwargs):
+        kwargs['person'] = self.get_person()
+        return super().get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse('membership-detail', args=[self.object.id])

@@ -50,4 +50,7 @@
 {% for custodian in person.custodian_set.all %}
 <a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar responsable</a>
 {% endfor %}
+{% for membership in person.membership_set.all %}
+<a href="{% url 'membership-edit' person.id %}" class="btn btn-secondary">Editar miembro</a>
+{% endfor %}
 {% endblock %}
