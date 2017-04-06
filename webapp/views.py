@@ -205,7 +205,7 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 5
 
     def get_queryset(self):
-        return models.Recipient.objects.all()
+        return models.Recipient.objects.select_related('person').all()
 
 
 class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
@@ -244,7 +244,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 4
 
     def get_queryset(self):
-        return models.Volunteer.objects.all()
+        return models.Volunteer.objects.select_related('person').all()
 
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
@@ -297,7 +297,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 5
 
     def get_queryset(self):
-        return models.Member.objects.all()
+        return models.Member.objects.select_related('person').all()
 
 
 class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):
