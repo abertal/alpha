@@ -262,6 +262,7 @@ class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     def get_success_url(self):
         return reverse('membership-detail', args=[self.object.id])
 
+
 class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
     model = models.Membership
     form_class = forms.MembershipCreate
