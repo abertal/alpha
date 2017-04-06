@@ -19,7 +19,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import RedirectView
 
-
 import webapp.urls
 
 urlpatterns = [

@@ -1,4 +1,5 @@
 from django.db.models import Q
+
 import django_filters
 
 from core.models import Member, Person, Recipient, Volunteer
