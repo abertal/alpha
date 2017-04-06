@@ -40,7 +40,9 @@ ALLOWED_HOSTS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'es'
 
+
 def ugettext(s): return s
+
 
 LANGUAGES = (
     ('gl', ugettext(u'Galego')),
