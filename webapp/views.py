@@ -263,6 +263,16 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('custodian-detail', args=[self.object.id])
 
 
+class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+    model = models.Member
+    form_class = forms.MemberCreate
+    template_name = 'webapp/member_create.html'
+    name = 'Nuevo socio'
+
+    def get_success_url(self):
+        return reverse('member-detail', args=[self.object.id])
+
+
 class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Member
     template_name = 'webapp/member_detail.html'
