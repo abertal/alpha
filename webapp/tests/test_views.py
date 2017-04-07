@@ -102,7 +102,7 @@ def test_views_post_with_errors(logged_client, url):
 ])
 def test_user_logged_out(logged_client, url):
     response = logged_client.get(url, follow=True)
-    assert response.context['user'].is_authenticated() is False
+    assert not response.context['user'].is_authenticated
 
 
 @pytest.mark.django_db
