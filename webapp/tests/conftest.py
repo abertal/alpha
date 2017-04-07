@@ -17,3 +17,8 @@ def logged_client():
     user = User.objects.create_user('user00', 'first.last@example.com', 'secret')
     c.force_login(user)
     return c
+
+
+@pytest.fixture
+def person_filter():
+    return models.Person.objects.create(name='Example', surname='SurExample')
