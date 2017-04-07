@@ -98,6 +98,20 @@ class MenuMixin:
         return super().get_context_data(**kwargs)
 
 
+class FromPersonMixin:
+    def get_person(self):
+        id_ = self.kwargs['pk']
+        return models.Person.objects.get(id=id_)
+
+    def get_initial(self):
+        person = self.get_person()
+        return {'person': person.id}
+
+    def get_context_data(self, **kwargs):
+        kwargs['person'] = self.get_person()
+        return super().get_context_data(**kwargs)
+
+
 class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     template_name = 'webapp/home.html'
 
@@ -158,22 +172,10 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('person-detail', args=[self.object.id])
 
 
-class RecipientCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Recipient
     form_class = forms.RecipientCreate
     template_name = 'webapp/recipient_create.html'
-
-    def get_person(self):
-        id_ = self.kwargs['pk']
-        return models.Person.objects.get(id=id_)
-
-    def get_initial(self):
-        person = self.get_person()
-        return {'person': person.id}
-
-    def get_context_data(self, **kwargs):
-        kwargs['person'] = self.get_person()
-        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -203,25 +205,13 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 5
 
     def get_queryset(self):
-        return models.Recipient.objects.order_by('-id')
+        return models.Recipient.objects.select_related('person').order_by('-id')
 
 
-class VolunteerCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer
     form_class = forms.VolunteerCreate
     template_name = 'webapp/volunteer_create.html'
-
-    def get_person(self):
-        id_ = self.kwargs['pk']
-        return models.Person.objects.get(id=id_)
-
-    def get_initial(self):
-        person = self.get_person()
-        return {'person': person.id}
-
-    def get_context_data(self, **kwargs):
-        kwargs['person'] = self.get_person()
-        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
@@ -254,7 +244,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 4
 
     def get_queryset(self):
-        return models.Volunteer.objects.order_by('-id')
+        return models.Volunteer.objects.select_related('person').order_by('-id')
 
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
@@ -271,6 +261,16 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
+
+
+class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+    model = models.Member
+    form_class = forms.MemberCreate
+    template_name = 'webapp/member_create.html'
+    name = 'Nuevo socio'
+
+    def get_success_url(self):
+        return reverse('member-detail', args=[self.object.id])
 
 
 class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
@@ -297,7 +297,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     paginate_by = 5
 
     def get_queryset(self):
-        return models.Member.objects.order_by('-id')
+        return models.Member.objects.select_related('person').order_by('-id')
 
 
 class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):

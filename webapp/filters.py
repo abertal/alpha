@@ -1,4 +1,5 @@
 from django.db.models import Q
+
 import django_filters
 
 from core.models import Member, Person, Recipient, Volunteer
@@ -18,20 +19,35 @@ class PersonFilter(django_filters.FilterSet):
 
 class VolunteerFilter(django_filters.FilterSet):
 
+    q = django_filters.CharFilter(name="person__name", method='custom_filter')
+
     class Meta:
         model = Volunteer
-        fields = ['person__name']
+        fields = []
+
+    def custom_filter(self, queryset, name, value):
+        return queryset.filter(Q(person__name__icontains=value) | Q(person__surname__icontains=value))
 
 
 class RecipientFilter(django_filters.FilterSet):
 
+    q = django_filters.CharFilter(name='person__name', method='custom_filter')
+
     class Meta:
         model = Recipient
-        fields = ['person__name']
+        fields = []
+
+    def custom_filter(self, queryset, name, value):
+        return queryset.filter(Q(person__name__icontains=value) | Q(person__surname__icontains=value))
 
 
 class MemberFilter(django_filters.FilterSet):
 
+    q = django_filters.CharFilter(name='person__name', method='custom_filter')
+
     class Meta:
         model = Member
-        fields = ['person__name']
+        fields = []
+
+    def custom_filter(self, queryset, name, value):
+        return queryset.filter(Q(person__name__icontains=value) | Q(person__surname__icontains=value))
