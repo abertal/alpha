@@ -66,7 +66,7 @@ class Recipient(models.Model):
     ]
 
     category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
-    person = models.ForeignKey(Person)
+    person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
         return '{}'.format(self.id)
@@ -81,7 +81,7 @@ class Volunteer(models.Model):
         null=True,
         default=None,
     )
-    person = models.ForeignKey(Person)
+    person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
         return '{} ({})'.format(self.id, self.person)
@@ -100,8 +100,8 @@ class Custodian(models.Model):
     ]
 
     category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
-    person = models.ForeignKey(Person)
-    minor = models.ForeignKey(Recipient)
+    person = models.ForeignKey(Person, on_delete=models.PROTECT)
+    minor = models.ForeignKey(Recipient, on_delete=models.CASCADE)
 
     def __str__(self):
         return '{}'.format(self.id)
@@ -125,8 +125,8 @@ class Enrolment(models.Model):
         verbose_name_plural = 'Inscripciones'
         unique_together = (('person', 'group'),)
 
-    person = models.ForeignKey(Person)
-    group = models.ForeignKey(Group)
+    person = models.ForeignKey(Person, on_delete=models.PROTECT)
+    group = models.ForeignKey(Group, on_delete=models.PROTECT)
 
     created = models.DateTimeField(
         auto_now_add=True, verbose_name='Fecha de inscripción')
@@ -175,8 +175,8 @@ class Member(models.Model):
 
     photo = models.ImageField(verbose_name='Fotografía', upload_to='members', blank=True, null=True)
 
-    person = models.ForeignKey(Person)
-    membership = models.ForeignKey(Membership)
+    person = models.ForeignKey(Person, on_delete=models.PROTECT)
+    membership = models.ForeignKey(Membership, on_delete=models.PROTECT)
 
     @property
     def documentation_correct(self):
