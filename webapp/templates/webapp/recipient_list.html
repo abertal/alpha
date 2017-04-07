@@ -2,9 +2,7 @@
 
 {% block body %}
   {% block content %}
-  <div>
-    <a href="{% url 'person-create' %}" class="btn btn-primary">Nueva persona</a>
-  </div>
+ 
     <br>
     <form method="get">
      {{ filter.form.as_p }}
