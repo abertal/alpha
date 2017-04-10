@@ -123,9 +123,9 @@ class Enrolment(models.Model):
     class Meta:
         verbose_name = 'Inscripción'
         verbose_name_plural = 'Inscripciones'
-        unique_together = (('person', 'group'),)
+        unique_together = (('recipient', 'group'),)
 
-    person = models.ForeignKey(Person, on_delete=models.PROTECT)
+    recipient = models.ForeignKey(Recipient, on_delete=models.PROTECT)
     group = models.ForeignKey(Group, on_delete=models.PROTECT)
 
     created = models.DateTimeField(
