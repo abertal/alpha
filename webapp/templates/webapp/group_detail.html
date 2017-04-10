@@ -1,0 +1,11 @@
+{% extends './__base.html' %}
+
+{% block body %}
+<h3>{{ group.person.name }} {{ group.person.surname|upper }}</h3>
+<dl>
+  <dt>Grupo</dt>
+  <dd>{{ group.group_name_display|default:'Sin especificar' }}</dd>
+</dl>
+<a href="{% url 'group-edit' group.id %}" class="btn btn-secondary">Editar</a>
+<a href="{% url 'person-detail' group.person.id %}" class="btn btn-link">Ir a la ficha personal</a>
+{% endblock %}
