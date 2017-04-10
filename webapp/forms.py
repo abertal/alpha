@@ -55,6 +55,12 @@ class RecipientEdit(forms.ModelForm):
         fields = 'category',
 
 
+class GroupEdit(forms.ModelForm):
+    class Meta:
+        model = models.Group
+        fields = 'category',
+
+
 class VolunteerCreate(forms.ModelForm):
     class Meta:
         model = models.Volunteer

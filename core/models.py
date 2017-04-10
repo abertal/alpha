@@ -111,11 +111,18 @@ class Group(models.Model):
 
     class Meta:
         verbose_name = 'Grupo'
+    CATEGORIES = [
+        ('Saltimbanquis'),
+        ('Andaina'),
+        ('ADS'),
+        ('Catecumenado'),
+    ]
 
     group_name = models.TextField(verbose_name='Nombre grupo')
+    category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
 
     def __str__(self):
-        return self.group_name
+        return '{}'.format(self.id)
 
 
 class Enrolment(models.Model):
