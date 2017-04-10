@@ -25,7 +25,6 @@
       </div>
       <form action="{% url 'set_language' %}" method="post" class="nav-item">
         {% csrf_token %}
-        <input name="next" type="hidden" value="/" />
         <select name="language" class="form-control" onchange="this.form.submit()" style="text-transform: capitalize; width: auto !important;">
           {% get_current_language as LANGUAGE_CODE %}
           {% get_available_languages as LANGUAGES %}
