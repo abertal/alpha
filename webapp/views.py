@@ -68,6 +68,9 @@ def missing_doc(request):
 
 
 def login(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated():
+            return redirect('home')
     if request.method == 'POST':
         user = authenticate(username=request.POST.get(
             'user'), password=request.POST.get('password'))
