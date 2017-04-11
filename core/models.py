@@ -112,10 +112,7 @@ class Group(models.Model):
     class Meta:
         verbose_name = 'Grupo'
     CATEGORIES = [
-        ('Saltimbanquis'),
-        ('Andaina'),
-        ('ADS'),
-        ('Catecumenado'),
+
     ]
 
     group_name = models.TextField(verbose_name='Nombre grupo')

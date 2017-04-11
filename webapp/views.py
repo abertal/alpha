@@ -267,7 +267,7 @@ class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Group
     form_class = forms.GroupEdit
     template_name = 'webapp/group_edit.html'
-    name = 'Detalle custodian'
+    name = 'Detalle grupo'
 
     def get_success_url(self):
         return reverse('group-detail', args=[self.object.id])

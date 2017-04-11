@@ -15,8 +15,7 @@ person = [
 ]
 
 group = [
-
-    url(r'^(?P<pk>[^/]+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
+    url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
 ]
 
 recipient = [
@@ -57,7 +56,7 @@ urlpatterns = [
     url(r'^group/', include(group)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
-    url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
+
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.login, name='login'),
