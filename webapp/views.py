@@ -255,7 +255,6 @@ class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
 
 class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Custodian
-    form_class = forms.CustodianEdit
     template_name = 'webapp/custodian_edit.html'
     name = 'Detalle custodian'
 
@@ -265,7 +264,6 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Group
-    form_class = forms.GroupEdit
     template_name = 'webapp/group_edit.html'
     name = 'Detalle grupo'
 
