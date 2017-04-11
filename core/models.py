@@ -59,6 +59,8 @@ class Recipient(models.Model):
     """
     class Meta:
         verbose_name = 'Destinatario'
+        
+    name = models.TextField(verbose_name='Nombre')
 
     CATEGORIES = [
         ('child', 'Infantil'),
@@ -76,6 +78,9 @@ class Volunteer(models.Model):
     """Voluntarios, en general animadores con una vinculación con cierto plazo."""
     class Meta:
         verbose_name = 'Voluntario'
+
+    name = models.TextField(verbose_name='Nombre')
+
     lack_of_sexual_offenses_date_certificate = models.DateField(
         verbose_name='Fecha de emisión del Certificado de Delitos de Naturaleza Sexual',
         null=True,
@@ -156,6 +161,8 @@ class Member(models.Model):
     """Socio."""
     class Meta:
         verbose_name = 'Socio'
+        
+    name = models.TextField(verbose_name='Nombre')
 
     CATEGORY = [
         ('child', 'Infantil'),
