@@ -111,12 +111,8 @@ class Group(models.Model):
 
     class Meta:
         verbose_name = 'Grupo'
-    CATEGORIES = [
-
-    ]
 
     group_name = models.TextField(verbose_name='Nombre grupo')
-    category = models.CharField('Tipo', choices=CATEGORIES, max_length=32)
 
     def __str__(self):
         return '{}'.format(self.id)
