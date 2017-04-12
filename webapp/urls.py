@@ -45,6 +45,7 @@ membership = [
 group = [
     url(r'^$', views.GroupList.as_view(), name='group-list'),
     url(r'^(?P<pk>\d+)/$', views.GroupDetail.as_view(), name='group-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
 ]
 
 urlpatterns = [
