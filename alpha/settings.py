@@ -37,6 +37,24 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
 ]
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#language-code
+LANGUAGE_CODE = 'es'
+
+
+def ugettext(s): return s
+
+
+LANGUAGES = (
+    ('gl', ugettext(u'Galego')),
+    ('es', ugettext(u'Español')),
+)
+LOCALE_PATHS = (
+    str(os.path.join(BASE_DIR, 'locale')),
+)
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
+USE_I18N = True
+
 
 # Application definition
 
@@ -48,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'debug_toolbar',
     # Third party apps
     'widget_tweaks',
     # Custom apps
@@ -59,6 +78,7 @@ LOGIN_URL = '/webapp/login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,6 +86,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'alpha.urls'
@@ -78,6 +99,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.request',
                 'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
@@ -139,3 +161,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Debug-tools
+# https://django-debug-toolbar.readthedocs.io/en/stable/
+
+INTERNAL_IPS = '127.0.0.1'

@@ -72,11 +72,46 @@ class VolunteerEdit(forms.ModelForm):
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
 
+class MemberCreate(forms.ModelForm):
+    membership_fee = forms.DecimalField(label='Cuota de membresía')
+
+    class Meta:
+        model = models.Member
+        fields = 'person',
+        widgets = {
+            'person': forms.HiddenInput(),
+        }
+
+    def save(self, *args, **kwargs):
+        membership_data = {
+            'membership_fee': self.cleaned_data['membership_fee']
+        }
+        self.instance.membership = models.Membership(**membership_data)
+        return super().save(*args, **kwargs)
+
+
 class MemberEdit(forms.ModelForm):
 
     class Meta:
         model = models.Member
         fields = ('photo_status', 'card_status', 'photo')
+
+
+class MembershipCreate(forms.ModelForm):
+    class Meta:
+        model = models.Membership
+        fields = 'payment_status',
+
+        widgets = {
+            'payment_status': forms.HiddenInput(),
+        }
+
+
+class MembershipEdit(forms.ModelForm):
+
+    class Meta:
+        model = models.Membership
+        fields = ('type_of_membership', 'payment_status', 'membership_fee', 'membership_status')
 
 
 class CustodianEdit(forms.ModelForm):

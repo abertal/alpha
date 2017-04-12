@@ -10,6 +10,12 @@ person = [
     url(r'^(?P<pk>[^/]+)/edit/$', views.PersonEdit.as_view(), name='person-edit'),
     url(r'^(?P<pk>[^/]+)/volunteer/$', views.VolunteerCreate.as_view(), name='volunteer-create'),
     url(r'^(?P<pk>[^/]+)/recipient/$', views.RecipientCreate.as_view(), name='recipient-create'),
+    url(r'^(?P<pk>[^/]+)/member/$', views.MemberCreate.as_view(), name='member-create'),
+    url(r'^(?P<pk>[^/]+)/membership/$', views.MembershipCreate.as_view(), name='membership-create'),
+]
+
+group = [
+    url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
 ]
 
 recipient = [
@@ -35,15 +41,22 @@ custodian = [
     url(r'^(?P<pk>\d+)/edit/$', views.CustodianEdit.as_view(), name='custodian-edit'),
 ]
 
+membership = [
+    url(r'^(?P<pk>\d+)/$', views.MembershipDetail.as_view(), name='membership-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.MembershipEdit.as_view(), name='membership-edit'),
+]
+
 urlpatterns = [
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),
     url(r'^volunteer/', include(volunteer)),
     url(r'^member/', include(member)),
     url(r'^custodian/', include(custodian)),
+    url(r'^membership/', include(membership)),
+    url(r'^group/', include(group)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
-    url(r'^groups/(?P<pk>\d+)/$', views.group_detail, name='group_detail'),
+
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.login, name='login'),

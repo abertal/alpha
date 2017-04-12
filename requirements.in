@@ -1,4 +1,5 @@
 Django
+django-debug-toolbar
 django-filter
 django-widget-tweaks
 dj-database-url

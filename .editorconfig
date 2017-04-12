@@ -21,3 +21,8 @@ indent_size = 2
 # Use 2 spaces for the CSS files
 [*.css]
 indent_size = 2
+
+
+# Use 2 spaces for the JSON files
+[*.json]
+indent_size = 2

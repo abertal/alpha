@@ -37,7 +37,7 @@
 {% for recipient in person.recipient_set.all %}
 <a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-info">Ficha de destinatario</a>
 {% empty %}
-<a href="{% url 'recipient-create' person.id %}">Dar de alta como destinatario</a>
+<a href="{% url 'recipient-create' person.id %}" class="btn btn-secondary">Dar de alta como destinatario</a>
 {% endfor %}
 {% for volunteer in person.volunteer_set.all %}
 <a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-info">Ficha de voluntario</a>
@@ -46,6 +46,8 @@
 {% endfor %}
 {% for member in person.member_set.all %}
 <a href="{% url 'member-detail' member.id %}" class="btn btn-info">Ficha de documentación</a>
+{% empty %}
+<a href="{% url 'member-create' person.id %}" class="btn btn-secondary">Dar de alta como socio</a>
 {% endfor %}
 {% for custodian in person.custodian_set.all %}
 <a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar responsable</a>
