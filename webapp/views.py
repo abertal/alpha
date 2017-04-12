@@ -55,6 +55,9 @@ def missing_doc(request):
 
 
 def login(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated():
+            return redirect('home')
     if request.method == 'POST':
         user = authenticate(username=request.POST.get(
             'user'), password=request.POST.get('password'))
@@ -248,6 +251,15 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
+
+
+class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Group
+    template_name = 'webapp/group_edit.html'
+    name = 'Detalle grupo'
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])
 
 
 class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):

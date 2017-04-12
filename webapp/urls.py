@@ -14,6 +14,10 @@ person = [
     url(r'^(?P<pk>[^/]+)/membership/$', views.MembershipCreate.as_view(), name='membership-create'),
 ]
 
+group = [
+    url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
+]
+
 recipient = [
     url(r'^$', views.RecipientList.as_view(), name='recipient-list'),
     url(r'^(?P<pk>\d+)/$', views.RecipientDetail.as_view(), name='recipient-detail'),

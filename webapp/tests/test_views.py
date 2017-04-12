@@ -21,7 +21,6 @@ def test_list_views(logged_client, view_name):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
-    '/webapp/login/',
     '/webapp/home/',
     '/webapp/membership/',
     '/webapp/basicformnewperson/',
@@ -31,6 +30,16 @@ def test_list_views(logged_client, view_name):
 def test_views_exist(logged_client, url):
     response = logged_client.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/login/',
+])
+def test_check_user(logged_client, url):
+    data = {'name': 'Juan', 'surname': 'Bosco'}
+    response = logged_client.get(url, data=data)
+    assert response.status_code == 302
 
 
 @pytest.mark.django_db
