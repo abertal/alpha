@@ -249,13 +249,13 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
-    form_class = forms.CustodianEdit
     template_name = 'webapp/custodian_detail.html'
     name = 'Detalle custodian'
 
 
 class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Custodian
+    form_class = forms.CustodianEdit
     template_name = 'webapp/custodian_edit.html'
     name = 'Detalle custodian'
 
