@@ -359,3 +359,13 @@ class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('group-detail', args=[self.object.id])
+
+
+class GroupCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+    model = models.Group
+    form_class = forms.GroupCreate
+    template_name = 'webapp/group_create.html'
+    name = 'Nuevo grupo'
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])
