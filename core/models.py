@@ -115,7 +115,7 @@ class Group(models.Model):
     group_name = models.TextField(verbose_name='Nombre grupo')
 
     def __str__(self):
-        return self.group_name
+        return '{}'.format(self.id)
 
 
 class Enrolment(models.Model):
