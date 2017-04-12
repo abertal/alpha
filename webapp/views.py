@@ -363,7 +363,6 @@ class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class GroupCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Group
-    form_class = forms.GroupCreate
     template_name = 'webapp/group_create.html'
     name = 'Nuevo grupo'
 
