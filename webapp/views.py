@@ -10,9 +10,8 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from core import models
-from webapp.filters import MemberFilter, PersonFilter, RecipientFilter, VolunteerFilter
 
-from . import forms
+from . import filters, forms
 
 
 class Option:
@@ -40,25 +39,14 @@ class MenuBar:
             Option(_('Membresías'), 'membership-list', menu=self),
             Option(_('Socios'), 'member-list', menu=self),
             Option(_('Detalle socio'), None, menu=self),
+            Option(_('Grupos'), 'group-list', menu=self),
+            Option(_('Detalle grupo'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
             Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
         ]
 
     def __iter__(self):
         return iter(self.get_options())
-
-
-def group_list(request):
-    object_list = models.Group.objects.all()
-    context = {'object_list': object_list}
-    return render(request, 'webapp/main.html', context=context)
-
-
-def group_detail(request, pk):
-    obj = models.Group.objects.get(pk=pk)
-    people = models.Person.objects.filter(enrolment__group=obj)
-    context = {'object': obj, 'people': people}
-    return render(request, 'webapp/detail.html', context=context)
 
 
 def missing_doc(request):
@@ -145,7 +133,7 @@ class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/person_list.html'
     name = ugettext_lazy('Personas')
     model = models.Person
-    filterset_class = PersonFilter
+    filterset_class = filters.PersonFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -206,7 +194,7 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/recipient_list.html'
     name = ugettext_lazy('Destinatarios')
     model = models.Recipient
-    filterset_class = RecipientFilter
+    filterset_class = filters.RecipientFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -245,7 +233,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/volunteer_list.html'
     name = ugettext_lazy('Voluntarios')
     model = models.Volunteer
-    filterset_class = VolunteerFilter
+    filterset_class = filters.VolunteerFilter
     paginate_by = 4
 
     def get_queryset(self):
@@ -266,15 +254,6 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
-
-
-class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
-    model = models.Group
-    template_name = 'webapp/group_edit.html'
-    name = ugettext_lazy('Detalle grupo')
-
-    def get_success_url(self):
-        return reverse('group-detail', args=[self.object.id])
 
 
 class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
@@ -307,7 +286,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/member_list.html'
     name = ugettext_lazy('Socios')
     model = models.Member
-    filterset_class = MemberFilter
+    filterset_class = filters.MemberFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -357,3 +336,38 @@ class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('membership-detail', args=[self.object.id])
+
+
+class GroupList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/group_list.html'
+    name = ugettext_lazy('Grupos')
+    filterset_class = filters.GroupFilter
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Group.objects.all()
+
+
+class GroupDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Group
+    template_name = 'webapp/group_detail.html'
+    name = ugettext_lazy('Detalle grupo')
+
+
+class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Group
+    form_class = forms.GroupEdit
+    template_name = 'webapp/group_edit.html'
+    name = ugettext_lazy('Detalle grupo')
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])
+
+
+class GroupCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Group
+    template_name = 'webapp/group_create.html'
+    name = ugettext_lazy('Nuevo grupo')
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])

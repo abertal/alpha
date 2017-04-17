@@ -125,6 +125,12 @@ class CustodianEdit(forms.ModelForm):
         }
 
 
+class GroupEdit(forms.ModelForm):
+    class Meta:
+        model = models.Group
+        fields = ('group_name',)
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label=_('Nombre'))
     surname = forms.CharField(label=_('Apellidos'))
