@@ -1,12 +1,13 @@
 {% extends './__base.html' %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block body %}
 <form class="custom-form element" action="{% url 'basicformnewperson' %}" method="post">
 {% include './_form_fields.html' %}
   <div class="form-group">
-    <input type="submit" class="btn btn-primary" value="Guardar nuevo socio">
-    <a href="{% url 'home' %}" class="btn btn-link">Volver sin guardar</a>
+    <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
+    <a href="{% url 'home' %}" class="btn btn-link">{% trans 'Volver sin guardar' %}</a>
   </div>
 </form>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 {% for membership in object_list %}
@@ -9,7 +10,7 @@
 
   <div class="card">
     <div class="card-block">
-      <h4 class="card-title">Socio {{ membership.type_of_membership }}</h4>
+      <h4 class="card-title">{% trans 'Socio' %} {{ membership.type_of_membership }}</h4>
       {% for member in membership.member_set.all %}
       <p>
         {% if forloop.counter <= 6 %}

@@ -1,12 +1,13 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <h3>{{ person.name }} {{ person.surname|upper }}</h3>
 <form class="custom-form element" action="{% url 'volunteer-edit' volunteer.id %}" method="post">
 {% include './_form_fields.html' %}
   <div class="form-group">
-    <input type="submit" class="btn btn-primary" value="Guardar cambios">
-    <a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-link">Volver sin guardar</a>
+    <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
+    <a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-link">{% trans 'Volver sin guardar' %}</a>
   </div>
 </form>
 {% endblock %}

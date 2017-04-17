@@ -1,22 +1,23 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
   {% block content %}
     <br>
     <form method="get">
      {{ filter.form.as_p }}
-     <button type="submit">Buscar</button>
+     <button type="submit">{% trans 'Buscar' %}</button>
     </form>
     <br>
     {% for volunteer in object_list %}
      <div>
       <a href="{% url 'volunteer-detail' pk=volunteer.pk %}">{{ volunteer.person.name }} {{ volunteer.person.surname|upper }}</a>
-      <p>{{ volunteer.person.birthday|default:"Sin fecha de nacimiento" }}
+      <p>{{ volunteer.person.birthday|default:_("Sin fecha de nacimiento") }}
       </br>
-      Emisión certificado: {{ volunteer.lack_of_sexual_offenses_date_certificate|default:"Sin certificado" }}</p>
+      Emisión certificado: {{ volunteer.lack_of_sexual_offenses_date_certificate|default:_("Sin certificado") }}</p>
      </div>
     {% empty %}
-     <p>No hay voluntarios...</p>
+     <p>{% trans 'No hay voluntarios...' %}</p>
     {% endfor %}
     {% include './_pagination.html' %}
   {% endblock %}
