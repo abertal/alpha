@@ -361,7 +361,7 @@ class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('group-detail', args=[self.object.id])
 
 
-class GroupCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+class GroupCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
     model = models.Group
     template_name = 'webapp/group_create.html'
     name = 'Nuevo grupo'
