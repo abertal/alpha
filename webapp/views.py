@@ -266,6 +266,15 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('custodian-detail', args=[self.object.id])
 
 
+class GroupCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Group
+    template_name = 'webapp/group_create.html'
+    name = 'Nuevo grupo'
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])
+
+
 class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Group
     template_name = 'webapp/group_edit.html'
