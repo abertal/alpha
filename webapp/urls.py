@@ -16,7 +16,7 @@ person = [
 
 group = [
     url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
-    url(r'^/group/$', views.GroupCreate.as_view(), name='group-create')
+    url(r'^new/$', views.GroupCreate.as_view(), name='group-create'),
 ]
 
 recipient = [
