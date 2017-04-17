@@ -37,6 +37,8 @@ class MenuBar:
             Option('Membresías', 'membership-list', menu=self),
             Option('Socios', 'member-list', menu=self),
             Option('Detalle socio', None, menu=self),
+            Option('Grupos', 'group-list', menu=self),
+            Option('Detalle grupo', None, menu=self),
             Option('Nuevo socio individual', 'basicformnewperson', menu=self),
             Option('Nueva familia', 'basicformnewfamily', menu=self),
         ]
