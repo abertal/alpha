@@ -334,9 +334,10 @@ class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
         return reverse('membership-detail', args=[self.object.id])
 
 
-class GroupList(LoginRequiredMixin, MenuMixin, generic.ListView):
+class GroupList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/group_list.html'
     name = 'Grupos'
+    filterset_class = filters.GroupFilter
 
     def get_queryset(self):
         return models.Group.objects.all()
