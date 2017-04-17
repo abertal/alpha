@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.utils.translation import ugettext_lazy as _
 
 import django_filters
 
@@ -7,7 +8,7 @@ from core.models import Group, Member, Person, Recipient, Volunteer
 
 class PersonFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(name='name', method='custom_filter')
+    q = django_filters.CharFilter(label=_('Nombre'), name='name', method='custom_filter')
 
     class Meta:
         model = Person
@@ -19,7 +20,7 @@ class PersonFilter(django_filters.FilterSet):
 
 class VolunteerFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(name="person__name", method='custom_filter')
+    q = django_filters.CharFilter(label=_('Nombre'), name='person__name', method='custom_filter')
 
     class Meta:
         model = Volunteer
@@ -31,7 +32,7 @@ class VolunteerFilter(django_filters.FilterSet):
 
 class RecipientFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(name='person__name', method='custom_filter')
+    q = django_filters.CharFilter(label=_('Nombre'), name='person__name', method='custom_filter')
 
     class Meta:
         model = Recipient
@@ -43,7 +44,7 @@ class RecipientFilter(django_filters.FilterSet):
 
 class MemberFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(name='person__name', method='custom_filter')
+    q = django_filters.CharFilter(label=_('Nombre'), name='person__name', method='custom_filter')
 
     class Meta:
         model = Member

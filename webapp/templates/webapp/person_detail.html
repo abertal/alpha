@@ -1,55 +1,56 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <h3>{{ person.name }} {{ person.surname|upper }}</h3>
 <dl>
-  <dt>Código único</dt>
+  <dt>{% trans 'Código único' %}</dt>
   <dd>{{ person.id }}</dd>
-  <dt>Fecha de nacimiento</dt>
-  <dd>{{ person.birthday|default:"Sin especificar" }}</dd>
+  <dt>{% trans 'Fecha de nacimiento' %}</dt>
+  <dd>{{ person.birthday|default:_("Sin especificar") }}</dd>
   <dt>DNI</dt>
   <dd>{{ person.id_number }}</dd>
-  <dt>Tarjeta sanitaria</dt>
+  <dt>{% trans 'Tarjeta sanitaria' %}</dt>
   <dd>{{ person.ss_number }}</dd>
   <dt>Teléfono</dt>
   <dd>{{ person.phone_number }}</dd>
   <dt>Móvil</dt>
   <dd>{{ person.mobile_number }}</dd>
-  <dt>Correo electrónico</dt>
+  <dt>{% trans 'Correo electrónico' %}</dt>
   <dd>{{ person.email }}</dd>
-  <dt>Dirección</dt>
+  <dt>{% trans 'Dirección' %}</dt>
   <dd>{{ person.address_street }}</dd>
   <dd>{{ person.address_locality }}</dd>
   <dd>{{ person.address_region }}</dd>
   <dd>{{ person.address_country }}</dd>
-  <dt>Observaciones médicas</dt>
+  <dt>{% trans 'Observaciones médicas' %}</dt>
   <dd>{{ person.health_warnings }}</dd>
-  <dt>Observaciones</dt>
+  <dt>{% trans 'Observaciones' %}</dt>
   <dd>{{ person.comment }}</dd>
-  <dt>Es responsable de</dt>
+  <dt>{% trans 'Es responsable de' %}</dt>
   <dd>
     {% for custodian in person.custodian_set.all %}
       <a href="{% url 'recipient-detail' custodian.minor.id %}">{{ custodian.minor.person.name }}</a>
     {% endfor %}
   </dd>
 </dl>
-<a href="{% url 'person-edit' person.id %}" class="btn btn-secondary">Editar</a>
+<a href="{% url 'person-edit' person.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
 {% for recipient in person.recipient_set.all %}
-<a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-info">Ficha de destinatario</a>
+<a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-info">{% trans 'Ficha de destinatario' %}</a>
 {% empty %}
-<a href="{% url 'recipient-create' person.id %}" class="btn btn-secondary">Dar de alta como destinatario</a>
+<a href="{% url 'recipient-create' person.id %}" class="btn btn-secondary">{% trans 'Dar de alta como destinatario' %}</a>
 {% endfor %}
 {% for volunteer in person.volunteer_set.all %}
-<a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-info">Ficha de voluntario</a>
+<a href="{% url 'volunteer-detail' volunteer.id %}" class="btn btn-info">{% trans 'Ficha de voluntario' %}</a>
 {% empty %}
-<a href="{% url 'volunteer-create' person.id %}" class="btn btn-secondary">Dar de alta como voluntario</a>
+<a href="{% url 'volunteer-create' person.id %}" class="btn btn-secondary">{% trans 'Dar de alta como voluntario' %}</a>
 {% endfor %}
 {% for member in person.member_set.all %}
-<a href="{% url 'member-detail' member.id %}" class="btn btn-info">Ficha de documentación</a>
+<a href="{% url 'member-detail' member.id %}" class="btn btn-info">{% trans 'Ficha de documentación' %}</a>
 {% empty %}
-<a href="{% url 'member-create' person.id %}" class="btn btn-secondary">Dar de alta como socio</a>
+<a href="{% url 'member-create' person.id %}" class="btn btn-secondary">{% trans 'Dar de alta como socio' %}</a>
 {% endfor %}
 {% for custodian in person.custodian_set.all %}
-<a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar responsable</a>
+<a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">{% trans 'Editar responsable' %}</a>
 {% endfor %}
 {% endblock %}

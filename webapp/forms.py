@@ -1,6 +1,7 @@
 from decimal import Decimal as D
 
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from core import models
 
@@ -73,7 +74,7 @@ class VolunteerEdit(forms.ModelForm):
 
 
 class MemberCreate(forms.ModelForm):
-    membership_fee = forms.DecimalField(label='Cuota de membresía')
+    membership_fee = forms.DecimalField(label=_('Cuota de membresía'))
 
     class Meta:
         model = models.Member
@@ -131,11 +132,11 @@ class GroupEdit(forms.ModelForm):
 
 
 class NewIndividualMember(forms.Form):
-    name = forms.CharField(label='Nombre')
-    surname = forms.CharField(label='Apellidos')
-    phone = forms.CharField(label='Teléfono')
-    adress = forms.CharField(label='Dirección')
-    mail = forms.EmailField(label='Correo electrónico')
+    name = forms.CharField(label=_('Nombre'))
+    surname = forms.CharField(label=_('Apellidos'))
+    phone = forms.CharField(label=_('Teléfono'))
+    adress = forms.CharField(label=_('Dirección'))
+    mail = forms.EmailField(label=_('Correo electrónico'))
     id_number = forms.CharField(label='DNI')
 
     membership_fee = D('15.00')
@@ -157,29 +158,29 @@ class NewIndividualMember(forms.Form):
 
 class NewFamilyMember(forms.Form):
 
-    name1 = forms.CharField(label='Nombre')
-    phone1 = forms.CharField(label='Teléfono')
-    surname1 = forms.CharField(label='Apellidos')
+    name1 = forms.CharField(label=_('Nombre'))
+    phone1 = forms.CharField(label=_('Teléfono'))
+    surname1 = forms.CharField(label=_('Apellidos'))
     id_number1 = forms.CharField(label='DNI')
-    mail1 = forms.CharField(label='Correo electrónico')
+    mail1 = forms.CharField(label=_('Correo electrónico'))
 
-    name2 = forms.CharField(label='Nombre')
-    phone2 = forms.CharField(label='Teléfono')
-    surname2 = forms.CharField(label='Apellidos')
+    name2 = forms.CharField(label=_('Nombre'))
+    phone2 = forms.CharField(label=_('Teléfono'))
+    surname2 = forms.CharField(label=_('Apellidos'))
     id_number2 = forms.CharField(label='DNI')
-    mail2 = forms.CharField(label='Correo electrónico')
+    mail2 = forms.CharField(label=_('Correo electrónico'))
 
-    name3 = forms.CharField(label='Nombre')
-    phone3 = forms.CharField(label='Teléfono')
-    surname3 = forms.CharField(label='Apellidos')
+    name3 = forms.CharField(label=_('Nombre'))
+    phone3 = forms.CharField(label=_('Teléfono'))
+    surname3 = forms.CharField(label=_('Apellidos'))
     id_number3 = forms.CharField(label='DNI')
-    mail3 = forms.CharField(label='Correo electrónico')
+    mail3 = forms.CharField(label=_('Correo electrónico'))
 
-    name4 = forms.CharField(label='Nombre')
-    phone4 = forms.CharField(label='Teléfono')
-    surname4 = forms.CharField(label='Apellidos')
+    name4 = forms.CharField(label=_('Nombre'))
+    phone4 = forms.CharField(label=_('Teléfono'))
+    surname4 = forms.CharField(label=_('Apellidos'))
     id_number4 = forms.CharField(label='DNI')
-    mail4 = forms.CharField(label='Correo electrónico')
+    mail4 = forms.CharField(label=_('Correo electrónico'))
 
     membership_fee = D('40.00')
 

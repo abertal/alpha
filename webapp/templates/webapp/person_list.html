@@ -1,9 +1,10 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
   {% block content %}
   <div>
-    <a href="{% url 'person-create' %}" class="btn btn-primary">Nueva persona</a>
+    <a href="{% url 'person-create' %}" class="btn btn-primary">{% trans 'Nueva persona '%}</a>
   </div>
     <br>
     <form method="get">
@@ -14,10 +15,10 @@
     {% for person in object_list %}
      <div>
       <a href="{% url 'person-detail' pk=person.pk %}">{{ person.name }} {{ person.surname|upper }}</a>
-      <p>{{ person.birthday|default:"Sin fecha de nacimiento" }}</p>
+      <p>{{ person.birthday|default:_("Sin fecha de nacimiento") }}</p>
      </div>
     {% empty %}
-     <p>No hay grupos</p>
+     <p>{% trans 'No hay grupos' %}</p>
     {% endfor %}
     {% include './_pagination.html' %}
   {% endblock content %}

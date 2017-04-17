@@ -1,20 +1,21 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <h3>{{ person.name }} {{ person.surname|upper }}</h3>
 <dl>
-  <dt>Código único</dt>
+  <dt>{% trans 'Código único' %}</dt>
   <dd>{{ custodian.id }}</dd>
-  <dt>Autorización</dt>
+  <dt>{% trans 'Autorización' %}</dt>
   <dd>{{ custodian.authorized_signature }}</dd>
-  <dt>Contacto de Emergencia</dt>
+  <dt>{% trans 'Contacto de Emergencia' %}</dt>
   <dd>{{ custodian.emergency_contact }}</dd>
 </dl>
 <form class="custom-form element" action="{% url 'custodian-edit' custodian.id %}" method="post">
 {% include './_form_fields.html' %}
   <div class="form-group">
-    <input type="submit" class="btn btn-primary" value="Guardar cambios">
-    <a href="{% url 'custodian-detail' custodian.id %}" class="btn btn-link">Volver sin guardar</a>
+    <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
+    <a href="{% url 'custodian-detail' custodian.id %}" class="btn btn-link">{% trans 'Volver sin guardar' %}</a>
   </div>
 </form>
 {% endblock %}

@@ -1,17 +1,18 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <h3>{{ member.person.name }} {{ member.person.surname|upper }}</h3>
 <dl>
   <dt>Tipo</dt>
-  <dd>{{ member.get_category_display|default:'Sin especificar' }}</dd>
+  <dd>{{ member.get_category_display|default:_('Sin especificar') }}</dd>
   <dt>Foto Estado</dt>
-  <dd>{{ member.photo_status|default:'Sin especificar' }}</dd>
-  <dt>Carnet</dt>
-  <dd>{{ member.card_status|default:'Sin especificar' }}</dd>
-  <dt>Foto</dt>
+  <dd>{{ member.photo_status|default:_('Sin especificar') }}</dd>
+  <dt>{% trans 'Carnet' %}</dt>
+  <dd>{{ member.card_status|default:_('Sin especificar') }}</dd>
+  <dt>{% trans 'Foto' %}</dt>
   <dd> <img src= "/media/{{member.photo}}" alt="Fotografia miembro" height="100" width="100"> </dd>
 </dl>
-<a href="{% url 'member-edit' member.id %}" class="btn btn-secondary">Editar</a>
-<a href="{% url 'person-detail' member.person.id %}" class="btn btn-link">Ir a la ficha personal</a>
+<a href="{% url 'member-edit' member.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
+<a href="{% url 'person-detail' member.person.id %}" class="btn btn-link">{% trans 'Ir a la ficha personal' %}</a>
 {% endblock %}

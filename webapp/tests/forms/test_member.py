@@ -1,4 +1,5 @@
 from decimal import Decimal as D
+
 import pytest
 
 from webapp import forms
