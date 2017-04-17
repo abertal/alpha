@@ -8,9 +8,8 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from core import models
-from webapp.filters import MemberFilter, PersonFilter, RecipientFilter, VolunteerFilter
 
-from . import forms
+from . import filters, forms
 
 
 class Option:
@@ -130,7 +129,7 @@ class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/person_list.html'
     name = 'Personas'
     model = models.Person
-    filterset_class = PersonFilter
+    filterset_class = filters.PersonFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -191,7 +190,7 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/recipient_list.html'
     name = 'Destinatarios'
     model = models.Recipient
-    filterset_class = RecipientFilter
+    filterset_class = filters.RecipientFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -230,7 +229,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/volunteer_list.html'
     name = 'Voluntarios'
     model = models.Volunteer
-    filterset_class = VolunteerFilter
+    filterset_class = filters.VolunteerFilter
     paginate_by = 4
 
     def get_queryset(self):
@@ -283,7 +282,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/member_list.html'
     name = 'Socios'
     model = models.Member
-    filterset_class = MemberFilter
+    filterset_class = filters.MemberFilter
     paginate_by = 5
 
     def get_queryset(self):
