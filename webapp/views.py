@@ -340,6 +340,7 @@ class GroupList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/group_list.html'
     name = 'Grupos'
     filterset_class = filters.GroupFilter
+    paginate_by = 5
 
     def get_queryset(self):
         return models.Group.objects.all()
