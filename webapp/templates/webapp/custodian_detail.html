@@ -1,13 +1,14 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <h3>{{ custodian.person.name }} {{ custodian.person.surname|upper }}</h3>
 <dl>
-  <dt>Contacto de emergencia</dt>
+  <dt>{% trans 'Contacto de emergencia' %}</dt>
   <dd>{{ custodian.emergency_contact }}</dd>
-  <dt>Autorización</dt>
+  <dt>{% trans 'Autorización' %}</dt>
   <dd>{{ custodian.authorized_signature }}</dd>
 </dl>
-<a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">Editar</a>
-<a href="{% url 'person-detail' custodian.person.id %}" class="btn btn-link">Ir a la ficha personal</a>
+<a href="{% url 'custodian-edit' custodian.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
+<a href="{% url 'person-detail' custodian.person.id %}" class="btn btn-link">{% trans 'Ir a la ficha personal' %}</a>
 {% endblock %}

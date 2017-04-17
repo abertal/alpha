@@ -1,4 +1,5 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
 <div class="row"><div class="col">
@@ -20,13 +21,13 @@
       {{ member.person.name }} {{member.person.surname}}
     </h3>
     {% if member.person.age %}
-    <p>Edad: {{ member.person.age|default:"" }}</p>
+    <p>{% trans 'Edad' %}: {{ member.person.age|default:"" }}</p>
     {% endif %}
     {% if member.person.phone_number %}
     <p>Teléfono: {{ member.person.phone_number|default:"" }}</p>
     {% endif %}
     {% if member.person.email %}
-    <p>Correo electrónico: {{ member.person.email|default:"" }}</p>
+    <p>{% trans 'Correo electrónico' %}: {{ member.person.email|default:"" }}</p>
     {% endif %}
     {% if member.person.address_street %}
     <p>Dirección: {{ member.person.address_street|default:"" }}. {{member.person.address_locality}}.</p>
@@ -35,27 +36,27 @@
     <p>DNI: {{ member.person.id_number|default:"" }}</p>
     {% endif %}
     {% if member.person.ss_number %}
-    <p>Tarjeta sanitaria: {{ member.person.ss_number|default:"" }}</p>
+    <p>{% trans 'Tarjeta sanitaria' %}: {{ member.person.ss_number|default:"" }}</p>
     {% endif %}
     <p><b>Estado del carné: {{ member.card_status|default:"" }}</b></p>
     {% if member.id_card_status == "no" %}
     <p><b class="error"> por entregar la fotocopia del DNI</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
     {% endif %}
     {% if member.ss_card_status == "no" %}
-    <p><b class="error">Falta por entregar la fotocopia de la tarjeta sanitaria</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+    <p><b class="error">{% trans 'Falta por entregar la fotocopia de la tarjeta sanitaria' %}</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
     {% endif %}
     {% if member.dpa_status == "no" %}
     <p><b class="error">Falta por firmar la LOPD</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p> {% endif %}
     {% if member.photo_status == "no" %}
-    <p><b class="error">Falta por entregar la foto</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
+    <p><b class="error">{% trans 'Falta por entregar la foto' %}</b> <input type="button" class="btn btn-secondary" value="recogido"/><input type="button" class="btn btn-warning" value="revertir"/></p>
     {% endif %}
     {% if member.person.health_warnings %}
     <p><b class="alerta-medica">{{ member.person.health_warnings }}</b>
     {% endif %}
     </div>
     <div class="card-footer">
-    <input type="button" class="btn btn-primary" value="Añadir observaciones"/>
-    <input type="button" class="btn btn-primary" value="Añadir observaciones Médicas"/>
+    <input type="button" class="btn btn-primary" value="{% trans 'Añadir observaciones' %}"/>
+    <input type="button" class="btn btn-primary" value="{% trans 'Añadir observaciones Médicas' %}"/>
     </div>
   </div><!-- card -->
 
@@ -67,8 +68,8 @@
 </div></div>
 
 <div class="row"><div class="col">
-  <input type="button" class="btn btn-secondary" value="Guardar Cambios"/>
-  <input type="button" class="btn btn-link" value="Cancelar"/>
+  <input type="button" class="btn btn-secondary" value="{% trans 'Guardar Cambios' %}"/>
+  <input type="button" class="btn btn-link" value="{% trans 'Cancelar' %}"/>
 </div></div>
 
 {% endblock %}
