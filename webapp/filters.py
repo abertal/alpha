@@ -2,7 +2,7 @@ from django.db.models import Q
 
 import django_filters
 
-from core.models import Member, Person, Recipient, Volunteer, Group
+from core.models import Group, Member, Person, Recipient, Volunteer
 
 
 class PersonFilter(django_filters.FilterSet):
