@@ -46,19 +46,6 @@ class MenuBar:
         return iter(self.get_options())
 
 
-def group_list(request):
-    object_list = models.Group.objects.all()
-    context = {'object_list': object_list}
-    return render(request, 'webapp/main.html', context=context)
-
-
-def group_detail(request, pk):
-    obj = models.Group.objects.get(pk=pk)
-    people = models.Person.objects.filter(enrolment__group=obj)
-    context = {'object': obj, 'people': people}
-    return render(request, 'webapp/detail.html', context=context)
-
-
 def missing_doc(request):
     pending = models.Member.objects.exclude(id_card_status='si')
     object_list = models.Membership.objects.filter(
@@ -355,3 +342,27 @@ class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('membership-detail', args=[self.object.id])
+
+
+class GroupList(LoginRequiredMixin, MenuMixin, generic.ListView):
+    template_name = 'webapp/group_list.html'
+    name = 'Grupos'
+
+    def get_queryset(self):
+        return models.Group.objects.all()
+
+
+class GroupDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Group
+    template_name = 'webapp/group_detail.html'
+    name = 'Detalle grupo'
+
+
+class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Group
+    form_class = forms.GroupEdit
+    template_name = 'webapp/group_edit.html'
+    name = 'Detalle grupo'
+
+    def get_success_url(self):
+        return reverse('group-detail', args=[self.object.id])

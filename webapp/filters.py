@@ -2,7 +2,7 @@ from django.db.models import Q
 
 import django_filters
 
-from core.models import Member, Person, Recipient, Volunteer
+from core.models import Member, Person, Recipient, Volunteer, Group
 
 
 class PersonFilter(django_filters.FilterSet):
@@ -51,3 +51,15 @@ class MemberFilter(django_filters.FilterSet):
 
     def custom_filter(self, queryset, name, value):
         return queryset.filter(Q(person__name__icontains=value) | Q(person__surname__icontains=value))
+
+
+class GroupFilter(django_filters.FilterSet):
+
+    q = django_filters.CharFilter(name='group__name', method='custom_filter')
+
+    class Meta:
+        model = Group
+        fields = []
+
+    def custom_filter(self, queryset, name, value):
+        return queryset.filter(Q(group__name__icontains=value))
