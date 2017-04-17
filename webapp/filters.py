@@ -19,7 +19,7 @@ class PersonFilter(django_filters.FilterSet):
 
 class VolunteerFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(name="person__name", method='custom_filter')
+    q = django_filters.CharFilter(label='Nombre', name='person__name', method='custom_filter')
 
     class Meta:
         model = Volunteer
