@@ -3,6 +3,8 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, reverse
+from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy
 from django.views import generic
 
 from django_filters.views import FilterView
@@ -29,17 +31,17 @@ class MenuBar:
 
     def get_options(self):
         return [
-            Option('Personas', 'person-list', menu=self),
-            Option('Detalle persona', None, menu=self),
-            Option('Destinatarios', 'recipient-list', menu=self),
-            Option('Detalle destinatario', None, menu=self),
-            Option('Voluntarios', 'volunteer-list', menu=self),
-            Option('Detalle voluntario', None, menu=self),
-            Option('Membresías', 'membership-list', menu=self),
-            Option('Socios', 'member-list', menu=self),
-            Option('Detalle socio', None, menu=self),
-            Option('Nuevo socio individual', 'basicformnewperson', menu=self),
-            Option('Nueva familia', 'basicformnewfamily', menu=self),
+            Option(_('Personas'), 'person-list', menu=self),
+            Option(_('Detalle persona'), None, menu=self),
+            Option(_('Destinatarios'), 'recipient-list', menu=self),
+            Option(_('Detalle destinatario'), None, menu=self),
+            Option(_('Voluntarios'), 'volunteer-list', menu=self),
+            Option(_('Detalle voluntario'), None, menu=self),
+            Option(_('Membresías'), 'membership-list', menu=self),
+            Option(_('Socios'), 'member-list', menu=self),
+            Option(_('Detalle socio'), None, menu=self),
+            Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
+            Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
         ]
 
     def __iter__(self):
@@ -81,8 +83,8 @@ def login(request):
             return render(
                 request,
                 'webapp/login.html',
-                {'message': 'Por favor introduzca el nombre de usuario'
-                    ' y la clave correctos para una cuenta de personal.'})
+                {'message': _('Por favor introduzca el nombre de usuario'
+                              ' y la clave correctos para una cuenta de personal.')})
     else:
         return render(request, 'webapp/login.html', {'message': None})
 
@@ -122,7 +124,7 @@ class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
 class NewIndividualMember(LoginRequiredMixin, MenuMixin, generic.FormView):
     form_class = forms.NewIndividualMember
     template_name = 'webapp/basicformnewperson.html'
-    name = 'Nuevo socio individual'
+    name = ugettext_lazy('Nuevo socio individual')
 
     def form_valid(self, form):
         membership = form.execute()
@@ -132,7 +134,7 @@ class NewIndividualMember(LoginRequiredMixin, MenuMixin, generic.FormView):
 class NewFamilyMember(LoginRequiredMixin, MenuMixin, generic.FormView):
     form_class = forms.NewFamilyMember
     template_name = 'webapp/basicformnewfamily.html'
-    name = 'Nueva familia'
+    name = ugettext_lazy('Nueva familia')
 
     def form_valid(self, form):
         membership = form.execute()
@@ -141,7 +143,7 @@ class NewFamilyMember(LoginRequiredMixin, MenuMixin, generic.FormView):
 
 class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/person_list.html'
-    name = 'Personas'
+    name = ugettext_lazy('Personas')
     model = models.Person
     filterset_class = PersonFilter
     paginate_by = 5
@@ -153,7 +155,7 @@ class PersonList(LoginRequiredMixin, MenuMixin, FilterView):
 class PersonDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Person
     template_name = 'webapp/person_detail.html'
-    name = 'Detalle persona'
+    name = ugettext_lazy('Detalle persona')
 
 
 class PersonCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
@@ -169,7 +171,7 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Person
     form_class = forms.EditPerson
     template_name = 'webapp/person_edit.html'
-    name = 'Detalle persona'
+    name = ugettext_lazy('Detalle persona')
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
@@ -187,14 +189,14 @@ class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.Cr
 class RecipientDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Recipient
     template_name = 'webapp/recipient_detail.html'
-    name = 'Detalle destinatario'
+    name = ugettext_lazy('Detalle destinatario')
 
 
 class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Recipient
     form_class = forms.RecipientEdit
     template_name = 'webapp/recipient_edit.html'
-    name = 'Detalle destinatario'
+    name = ugettext_lazy('Detalle destinatario')
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -202,7 +204,7 @@ class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/recipient_list.html'
-    name = 'Destinatarios'
+    name = ugettext_lazy('Destinatarios')
     model = models.Recipient
     filterset_class = RecipientFilter
     paginate_by = 5
@@ -224,7 +226,7 @@ class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Volunteer
     form_class = forms.VolunteerEdit
     template_name = 'webapp/volunteer_edit.html'
-    name = 'Detalle voluntario'
+    name = ugettext_lazy('Detalle voluntario')
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
@@ -233,7 +235,7 @@ class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Volunteer
     template_name = 'webapp/volunteer_detail.html'
-    name = 'Detalle voluntario'
+    name = ugettext_lazy('Detalle voluntario')
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
@@ -241,7 +243,7 @@ class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
 
 class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/volunteer_list.html'
-    name = 'Voluntarios'
+    name = ugettext_lazy('Voluntarios')
     model = models.Volunteer
     filterset_class = VolunteerFilter
     paginate_by = 4
@@ -253,14 +255,14 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
     template_name = 'webapp/custodian_detail.html'
-    name = 'Detalle custodian'
+    name = ugettext_lazy('Detalle custodian')
 
 
 class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Custodian
     form_class = forms.CustodianEdit
     template_name = 'webapp/custodian_edit.html'
-    name = 'Detalle custodian'
+    name = ugettext_lazy('Detalle custodian')
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
@@ -269,7 +271,7 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Group
     template_name = 'webapp/group_edit.html'
-    name = 'Detalle grupo'
+    name = ugettext_lazy('Detalle grupo')
 
     def get_success_url(self):
         return reverse('group-detail', args=[self.object.id])
@@ -279,7 +281,7 @@ class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.Creat
     model = models.Member
     form_class = forms.MemberCreate
     template_name = 'webapp/member_create.html'
-    name = 'Nuevo socio'
+    name = ugettext_lazy('Nuevo socio')
 
     def get_success_url(self):
         return reverse('member-detail', args=[self.object.id])
@@ -288,14 +290,14 @@ class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.Creat
 class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Member
     template_name = 'webapp/member_detail.html'
-    name = 'Detalle socio'
+    name = ugettext_lazy('Detalle socio')
 
 
 class MemberEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Member
     form_class = forms.MemberEdit
     template_name = 'webapp/member_edit.html'
-    name = 'Detalle socio'
+    name = ugettext_lazy('Detalle socio')
 
     def get_success_url(self):
         return reverse('member-detail', args=[self.object.id])
@@ -303,7 +305,7 @@ class MemberEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/member_list.html'
-    name = 'Socios'
+    name = ugettext_lazy('Socios')
     model = models.Member
     filterset_class = MemberFilter
     paginate_by = 5
@@ -314,7 +316,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
 
 class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):
     template_name = 'webapp/membership_list.html'
-    name = 'Membresías'
+    name = ugettext_lazy('Membresías')
 
     def get_queryset(self):
         return models.Membership.objects.all()
@@ -323,14 +325,14 @@ class MembershipList(LoginRequiredMixin, MenuMixin, generic.ListView):
 class MembershipDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Membership
     template_name = 'webapp/membership_detail.html'
-    name = 'Detalle socio'
+    name = ugettext_lazy('Detalle socio')
 
 
 class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Membership
     form_class = forms.MembershipEdit
     template_name = 'webapp/membership_edit.html'
-    name = 'Detalle socio'
+    name = ugettext_lazy('Detalle socio')
 
     def get_success_url(self):
         return reverse('membership-detail', args=[self.object.id])
