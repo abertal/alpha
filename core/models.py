@@ -92,7 +92,7 @@ class Custodian(models.Model):
     class Meta:
         verbose_name = _('Padre, madre, tutor')
     authorized_signature = models.TextField(verbose_name=_('Firma autorización'), blank=True, default='')
-    emergency_contact = models.TextField(verbose_name=('Contacto de emergencia'), blank=True, default='')
+    emergency_contact = models.TextField(verbose_name=_('Contacto de emergencia'), blank=True, default='')
     CATEGORIES = [
         ('father', 'Padre'),
         ('mother', 'Madre'),
