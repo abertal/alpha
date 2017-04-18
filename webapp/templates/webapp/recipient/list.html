@@ -1,4 +1,4 @@
-{% extends './__base.html' %}
+{% extends '../__base.html' %}
 {% load i18n %}
 
 {% block body %}
@@ -17,7 +17,7 @@
     {% empty %}
      <p>{% trans 'No hay destinatarios...' %}</p>
     {% endfor %}
-    {% include './_pagination.html' %}
+    {% include '../_pagination.html' %}
   {% endblock %}
 
 {% endblock %}
