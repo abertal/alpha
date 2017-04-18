@@ -18,7 +18,7 @@
     </table>
     <input type="submit" value="Aceptar"value="{{ next }}" />
     {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>{% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}</p>
     {% endif %}
   </form>
 </div>
