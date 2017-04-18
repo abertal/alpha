@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect, render, reverse
@@ -57,7 +56,6 @@ def missing_doc(request):
 
 
 class Login(LoginView):
-    form_class = AuthenticationForm
     template_name = 'webapp/login.html'
 
 
