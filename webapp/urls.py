@@ -47,6 +47,8 @@ group = [
     url(r'^(?P<pk>\d+)/$', views.GroupDetail.as_view(), name='group-detail'),
     url(r'^(?P<pk>\d+)/edit/$', views.GroupEdit.as_view(), name='group-edit'),
     url(r'^new/$', views.GroupCreate.as_view(), name='group-create'),
+    url(r'^enrolment/$', views.RecipientGroup.as_view(), name='recipient-group'),
+
 ]
 
 urlpatterns = [
