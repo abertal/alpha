@@ -1,4 +1,4 @@
-{% extends './__base.html' %}
+{% extends '../__base.html' %}
 {% load i18n %}
 
 {% block body %}
@@ -12,7 +12,7 @@
   <dd>{{ custodian.emergency_contact }}</dd>
 </dl>
 <form class="custom-form element" action="{% url 'custodian-edit' custodian.id %}" method="post">
-{% include './_form_fields.html' %}
+{% include '../_form_fields.html' %}
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
     <a href="{% url 'custodian-detail' custodian.id %}" class="btn btn-link">{% trans 'Volver sin guardar' %}</a>
