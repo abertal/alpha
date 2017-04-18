@@ -1,4 +1,3 @@
-from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
@@ -63,9 +62,7 @@ class Login(LoginView):
 
 
 class LogOut(LogoutView):
-
-    def logout_then_login(self, request, login_url=None, current_app=None, extra_context=None):
-        auth_logout(request)
+    pass
 
 
 class MenuMixin:
