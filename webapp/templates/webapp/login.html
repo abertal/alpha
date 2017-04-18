@@ -1,23 +1,35 @@
-{% extends './__simple.html' %}
+{% extends './__base.html' %}
 {% load i18n %}
+{% block body %}
+{% block content %}
 
-{% block main %}
-<div class="col-3 offset-3 align-self-center">
-  <h1 class="element">Acceso</h1>
-  <form method="post">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="user">Usuario</label>
-      <input type="text" class="form-control" id="user" name="user">
-    </div>
-    <div class="form-group">
-      <label for="password">{% blocktrans %}Contraseña{% endblocktrans %}</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <input type="submit" value="Aceptar">
-    {% if message %}
-      <p>{{message}}</p>
+{% if form.errors %}
+<p>Tu usuario y contraseña no coinciden. Porfavor intenta de nuevo.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina porque no estas autenticado</p>
     {% endif %}
-  </form>
-</div>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+{% endblock %}
 {% endblock %}

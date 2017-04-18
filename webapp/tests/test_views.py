@@ -37,8 +37,8 @@ def test_views_exist(logged_client, url):
     '/webapp/login/',
 ])
 def test_check_user(logged_client, url):
-    data = {'name': 'Juan', 'surname': 'Bosco'}
-    response = logged_client.get(url, data=data)
+    data = {'username': 'user00', 'password': 'secret'}
+    response = logged_client.post(url, data=data)
     assert response.status_code == 302
 
 
@@ -80,7 +80,7 @@ def test_create_from_person(logged_client, person, url, data):
 def test_views_post_and_redirect(url):
     c = Client()
     User.objects.create_user('user00', 'first.last@example.com', 'secret')
-    response = c.post(url, {'user': 'user00', 'password': 'secret'})
+    response = c.post(url, {'username': 'user00', 'password': 'secret'})
     assert response.status_code == 302
 
 
