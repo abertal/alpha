@@ -171,6 +171,12 @@ class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('recipient-detail', args=[self.object.id])
 
 
+class RecipientGroup(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Group
+    template_name = 'webapp/recipient_group.html'
+    name = ugettext_lazy('Detalle destinatario')
+
+
 class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/recipient_list.html'
     name = ugettext_lazy('Destinatarios')
