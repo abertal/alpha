@@ -130,7 +130,7 @@ class GroupCreate(forms.ModelForm):
         model = models.Group
         fields = ('group_name',)
         widgets = {
-            'group_name': forms.HiddenInput(),
+            'group_name': forms.TextInput(),
         }
 
 
