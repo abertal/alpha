@@ -1,20 +1,17 @@
 {% extends './__base.html' %}
+{% load i18n %}
 
 {% block body %}
   {% block content %}
+  <div>
+    <a href="{% url 'group-create' %}" class="btn btn-primary">{% trans 'Nuevo grupo '%}</a>
+  </div>
     <br>
     <form method="get">
      {{ filter.form.as_p }}
      <button type="submit">Buscar</button>
     </form>
     <br>
-    {% for group in object_list %}
-     <div>
-      <a href="{% url 'group-detail' pk=group.pk %}">{{ group.group_name|upper }}</a>
-     </div>
-    {% empty %}
-     <p>No hay grupos...</p>
-    {% endfor %}
     {% include './_pagination.html' %}
   {% endblock %}
 
