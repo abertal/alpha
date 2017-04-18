@@ -173,7 +173,6 @@ class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class RecipientGroup(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Group
-    form_class = forms.Group
     template_name = 'webapp/recipient_group.html'
     name = ugettext_lazy('Detalle destinatario')
 
