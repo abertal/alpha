@@ -65,8 +65,8 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
-    url(r'^login/$', views.login, name='login'),
-    url(r'^logout/$', views.signout, name='logout'),
+    url(r'^login/$', views.Login.as_view(), name='login'),
+    url(r'^logout/$', views.LogOut.as_view(), name='logout'),
     url(r'^home/$', views.Home.as_view(), name='home'),
     url(r'^basicformnewperson/$', views.NewIndividualMember.as_view(), name='basicformnewperson'),
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),

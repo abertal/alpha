@@ -1,7 +1,7 @@
-from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect, render, reverse
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
@@ -57,29 +57,15 @@ def missing_doc(request):
     return render(request, 'webapp/missing_doc.html', context=context)
 
 
-def login(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated():
-            return redirect('home')
-    if request.method == 'POST':
-        user = authenticate(username=request.POST.get(
-            'user'), password=request.POST.get('password'))
-        if user is not None:
-            auth_login(request, user)
-            return redirect('home')
-        else:
-            return render(
-                request,
-                'webapp/login.html',
-                {'message': _('Por favor introduzca el nombre de usuario'
-                              ' y la clave correctos para una cuenta de personal.')})
-    else:
-        return render(request, 'webapp/login.html', {'message': None})
+class Login(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'webapp/login.html'
 
 
-def signout(request):
-    auth_logout(request)
-    return redirect(reverse('login'))
+class LogOut(LogoutView):
+
+    def logout_then_login(self, request, login_url=None, current_app=None, extra_context=None):
+        auth_logout(request)
 
 
 class MenuMixin:
