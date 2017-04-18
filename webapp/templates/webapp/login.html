@@ -4,19 +4,21 @@
 {% block main %}
 <div class="col-3 offset-3 align-self-center">
   <h1 class="element">Acceso</h1>
-  <form method="post">
+  <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <div class="form-group">
-      <label for="user">Usuario</label>
-      <input type="text" class="form-control" id="user" name="user">
-    </div>
-    <div class="form-group">
-      <label for="password">{% blocktrans %}Contraseña{% endblocktrans %}</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <input type="submit" value="Aceptar">
-    {% if message %}
-      <p>{{message}}</p>
+    <table>
+      <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="Aceptar"value="{{ next }}" />
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
   </form>
 </div>
