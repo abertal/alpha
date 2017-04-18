@@ -125,6 +125,15 @@ class CustodianEdit(forms.ModelForm):
         }
 
 
+class GroupCreate(forms.ModelForm):
+    class Meta:
+        model = models.Group
+        fields = ('group_name',)
+        widgets = {
+            'group_name': forms.HiddenInput(),
+        }
+
+
 class GroupEdit(forms.ModelForm):
     class Meta:
         model = models.Group
