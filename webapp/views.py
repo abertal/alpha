@@ -175,7 +175,7 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/recipient/list.html'
     name = ugettext_lazy('Destinatarios')
     model = models.Recipient
-    filterset_class = filters.RecipientFilter
+    filterset_class = filters.FromPersonFilter
     paginate_by = 5
 
     def get_queryset(self):
@@ -214,7 +214,7 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/volunteer/list.html'
     name = ugettext_lazy('Voluntarios')
     model = models.Volunteer
-    filterset_class = filters.VolunteerFilter
+    filterset_class = filters.FromPersonFilter
     paginate_by = 4
 
     def get_queryset(self):
@@ -267,7 +267,7 @@ class MemberList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/member/list.html'
     name = ugettext_lazy('Socios')
     model = models.Member
-    filterset_class = filters.MemberFilter
+    filterset_class = filters.FromPersonFilter
     paginate_by = 5
 
     def get_queryset(self):
