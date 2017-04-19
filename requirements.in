@@ -1,6 +1,7 @@
 Django
 django-debug-toolbar
 django-filter
+django-spurl
 django-widget-tweaks
 dj-database-url
 openpyxl
