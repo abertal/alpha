@@ -55,14 +55,17 @@ def filter_person_name():
     f = Filter(name='person__name', lookup_expr='icontains')
     return f
 
+
 @pytest.fixture
 def group_filter():
     return models.Group.objects.create(group_name='Example Group')
+
 
 @pytest.fixture
 def filter_group_name():
     f = Filter(name='group_name', lookup_expr='icontains')
     return f
+
 
 @pytest.fixture
 def group_query_filter():

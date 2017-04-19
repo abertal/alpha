@@ -22,7 +22,7 @@ class FilterTests(TransactionTestCase):
         result = fixture.filter_person_name().filter(qs, 'ex')
         qs2 = FromPersonFilter.custom_filter(self, qs, '', 'ex')
         t.assertQuerysetEqual(qs2, [repr(r) for r in result])
-    
+
     def test_filter_group(self):
         t = TransactionTestCase()
         qs = fixture.group_query_filter()
