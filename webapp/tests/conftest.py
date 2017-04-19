@@ -39,43 +39,9 @@ def volunteer_filter():
 
 
 @pytest.fixture
-def volunteer_query_filter():
+def from_person_query_filter():
     volunteer_filter()
     return models.Volunteer.objects.all().order_by('id')
-
-
-@pytest.fixture
-def recipient_filter():
-    person_filter()
-    return models.Recipient.objects.create(person=models.Person.objects.get(name='Example'))
-
-
-@pytest.fixture
-def recipient_query_filter():
-    recipient_filter()
-    return models.Recipient.objects.all().order_by('id')
-
-
-@pytest.fixture
-def membership():
-    return models.Membership.objects.create(membership_fee='2',
-                                            type_of_membership='Infantil')
-
-
-@pytest.fixture
-def member_filter():
-    person_filter()
-    membership()
-    return models.Member.objects.create(
-                                        person=models.Person.objects.get(name='Example'),
-                                        membership=models.Membership.objects.get(
-                                            type_of_membership='Infantil'))
-
-
-@pytest.fixture
-def member_query_filter():
-    member_filter()
-    return models.Member.objects.all().order_by('id')
 
 
 @pytest.fixture
@@ -88,3 +54,17 @@ def filter_name():
 def filter_person_name():
     f = Filter(name='person__name', lookup_expr='icontains')
     return f
+
+@pytest.fixture
+def group_filter():
+    return models.Group.objects.create(group_name='Example Group')
+
+@pytest.fixture
+def filter_group_name():
+    f = Filter(name='group_name', lookup_expr='icontains')
+    return f
+
+@pytest.fixture
+def group_query_filter():
+    group_filter()
+    return models.Group.objects.all().order_by('id')
