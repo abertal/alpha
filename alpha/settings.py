@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'debug_toolbar',
+    'spurl',
     # Third party apps
     'widget_tweaks',
     # Custom apps
