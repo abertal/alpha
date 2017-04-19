@@ -3,6 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import django_filters
 
+from core.models import Group
+
 
 class PersonFilter(django_filters.FilterSet):
 
@@ -39,6 +41,10 @@ class MemberFilter(django_filters.FilterSet):
 class GroupFilter(django_filters.FilterSet):
 
     q = django_filters.CharFilter(name='group_name', method='custom_filter')
+
+    class Meta:
+        model = Group
+        fields = []
 
     def custom_filter(self, queryset, name, value):
         return queryset.filter(Q(group_name__icontains=value))
