@@ -49,7 +49,7 @@ class Person(models.Model):
         return timesince(self.birthday) if self.birthday else None
 
     def __str__(self):
-        return '{} {}'.format(self.name.capitalize(), self.surname.upper())
+        return _('{} {}').format(self.name.capitalize(), self.surname.upper())
 
 
 class Recipient(models.Model):
@@ -70,7 +70,7 @@ class Recipient(models.Model):
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return _('{}').format(self.id)
 
 
 class Volunteer(models.Model):
@@ -78,14 +78,14 @@ class Volunteer(models.Model):
     class Meta:
         verbose_name = _('Voluntario')
     lack_of_sexual_offenses_date_certificate = models.DateField(
-        verbose_name='Fecha de emisión del Certificado de Delitos de Naturaleza Sexual',
+        verbose_name=_('Fecha de emisión del Certificado de Delitos de Naturaleza Sexual'),
         null=True,
         default=None,
     )
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '{} ({})'.format(self.id, self.person)
+        return _('{} ({})').format(self.id, self.person)
 
 
 class Custodian(models.Model):
@@ -105,7 +105,7 @@ class Custodian(models.Model):
     minor = models.ForeignKey(Recipient, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return _('{}').format(self.id)
 
 
 class Group(models.Model):
@@ -116,7 +116,7 @@ class Group(models.Model):
     group_name = models.TextField(verbose_name=_('Nombre grupo'))
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return _('{}').format(self.id)
 
 
 class Enrolment(models.Model):
