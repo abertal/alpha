@@ -148,7 +148,6 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
 
 class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     model = models.Person
-    form_class = forms.DeletePerson
     template_name = 'webapp/person/delete.html'
     name = ugettext_lazy('Eliminar persona')
 

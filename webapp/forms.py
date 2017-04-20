@@ -40,15 +40,6 @@ class EditPerson(forms.ModelForm):
         }
 
 
-class DeletePerson(forms.ModelForm):
-    class Meta:
-        model = models.Person
-        fields = (
-        )
-        widgets = {
-        }
-
-
 class RecipientCreate(forms.ModelForm):
     class Meta:
         model = models.Recipient
