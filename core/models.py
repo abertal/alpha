@@ -62,8 +62,8 @@ class Recipient(models.Model):
         verbose_name = _('Destinatario')
 
     CATEGORIES = [
-        ('child', 'Infantil'),
-        ('juvenile', 'Juvenil'),
+        ('child', _('Infantil')),
+        ('juvenile', _('Juvenil')),
     ]
 
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
@@ -95,9 +95,9 @@ class Custodian(models.Model):
     authorized_signature = models.TextField(verbose_name=_('Firma autorización'), blank=True, default='')
     emergency_contact = models.TextField(verbose_name=_('Contacto de emergencia'), blank=True, default='')
     CATEGORIES = [
-        ('father', 'Padre'),
-        ('mother', 'Madre'),
-        ('legal', 'Tutor'),
+        ('father', _('Padre')),
+        ('mother', _('Madre')),
+        ('legal', _('Tutor')),
     ]
 
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
