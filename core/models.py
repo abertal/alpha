@@ -124,9 +124,9 @@ class Enrolment(models.Model):
     class Meta:
         verbose_name = _('Inscripción')
         verbose_name_plural = _('Inscripciones')
-        unique_together = (('person', 'group'),)
+        unique_together = (('recipient', 'group'),)
 
-    person = models.ForeignKey(Person, on_delete=models.PROTECT)
+    recipient = models.ForeignKey(Recipient, on_delete=models.PROTECT)
     group = models.ForeignKey(Group, on_delete=models.PROTECT)
 
     created = models.DateTimeField(
@@ -159,11 +159,11 @@ class Member(models.Model):
         verbose_name = _('Socio')
 
     CATEGORY = [
-        ('child', 'Infantil'),
-        ('juvenile', 'Juvenil'),
-        ('volunteer', 'Voluntario'),
-        ('contributor', 'Colaborador'),
-        ('family', 'Familiar'),
+        ('child', _('Infantil')),
+        ('juvenile', _('Juvenil')),
+        ('volunteer', _('Voluntario')),
+        ('contributor', _('Colaborador')),
+        ('family', _('Familiar')),
     ]
     category = models.CharField(_('Tipo de socio'), choices=CATEGORY, max_length=32)
 
