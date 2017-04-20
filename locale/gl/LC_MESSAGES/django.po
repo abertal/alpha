@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Abertal-alpha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-20 15:46+0200\n"
-"PO-Revision-Date: 2017-04-20 19:27+0200\n"
+"PO-Revision-Date: 2017-04-20 19:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Initios\n"
 "Language: gl\n"
@@ -137,7 +137,7 @@ msgstr "Pai, nai, titor"
 
 #: core/models.py:95
 msgid "Firma autorización"
-msgstr "Sinatura autorización "
+msgstr "Sinatura autorización"
 
 #: core/models.py:96 webapp/templates/webapp/custodian/detail.html:7
 msgid "Contacto de emergencia"
@@ -307,7 +307,7 @@ msgstr "Contacto de Emerxencia"
 
 #: webapp/templates/webapp/group/list.html:7
 msgid "Nuevo grupo "
-msgstr "Novo grupo "
+msgstr "Novo grupo"
 
 #: webapp/templates/webapp/login.html:21
 msgid "Usuario o contraseña incorrecta. Inténtalo de nuevo."
@@ -408,11 +408,11 @@ msgstr "Editar responsable"
 
 #: webapp/templates/webapp/person/edit.html:7
 msgid "Código único "
-msgstr "Código único "
+msgstr "Código único"
 
 #: webapp/templates/webapp/person/list.html:7
 msgid "Nueva persona "
-msgstr "Nova persoa "
+msgstr "Nova persoa"
 
 #: webapp/templates/webapp/recipient/detail.html:9
 msgid "Responsable"
