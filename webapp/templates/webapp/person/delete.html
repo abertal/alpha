@@ -6,7 +6,9 @@
 <form class="custom-form element" action="{% url 'person-delete' person.id %}" method="post">
 {% include '../_form_fields.html' %}
 <div class="form-group">
-    <p>{% trans 'Está seguro de querer eliminar a ' %}{{ object }}{% trans ' de la lista' %}?</p>
+    {% blocktrans %}
+    <p>Está seguro de querer eliminar a {{ object }} de la lista?</p>
+    {% endblocktrans %}
     <input type="submit" class="btn btn-primary" value="{% trans 'Confirmar'%}" method="post"/>
     <a href="{% url 'person-detail' person.id %}" class="btn btn-link">{% trans 'Volver sin eliminar' %}</a>
 </div>

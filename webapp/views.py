@@ -152,7 +152,7 @@ class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     name = ugettext_lazy('Eliminar persona')
 
     def get_success_url(self):
-        return reverse('person-list', args=[])
+        return reverse('person-list')
 
 
 class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
