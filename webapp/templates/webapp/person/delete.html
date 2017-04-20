@@ -1,0 +1,14 @@
+{% extends '../__base.html'%}
+{% load i18n %}
+
+{% block body %}
+<h3>{{ person.name }} {{ person.surname|upper }}</h3>
+<form class="custom-form element" action="{% url 'person-delete' person.id %}" method="post">
+{% include '../_form_fields.html' %}
+<div class="form-group">
+    <p>{% trans 'Está seguro de querer eliminar a ' %}{{ object }}{% trans ' de la lista' %}?</p>
+    <input type="submit" class="btn btn-primary" value="{% trans 'Confirmar'%}" method="post"/>
+    <a href="{% url 'person-detail' person.id %}" class="btn btn-link">{% trans 'Volver sin eliminar' %}</a>
+</div>
+</form>
+{% endblock %}
