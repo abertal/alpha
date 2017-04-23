@@ -146,6 +146,15 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('person-detail', args=[self.object.id])
 
 
+class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
+    model = models.Person
+    template_name = 'webapp/person/delete.html'
+    name = ugettext_lazy('Eliminar persona')
+
+    def get_success_url(self):
+        return reverse('person-list')
+
+
 class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Recipient
     form_class = forms.RecipientCreate
