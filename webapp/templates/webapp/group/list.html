@@ -12,6 +12,13 @@
      <button type="submit">Buscar</button>
     </form>
     <br>
+    {% for group in object_list %}
+    <div>
+      <a href="{% url 'group-detail' pk=group.pk %}">{{ group.group_name|upper }}</a>
+    </div>
+    {% empty %}
+    <p>{% trans 'No hay grupos...' %}</p>
+    {% endfor %}
     {% include '../_pagination.html' %}
   {% endblock %}
 
