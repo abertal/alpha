@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Abertal-alpha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-20 15:46+0200\n"
-"PO-Revision-Date: 2017-04-18 13:12+0200\n"
+"PO-Revision-Date: 2017-04-20 19:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Initios\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: alpha/settings.py:48
@@ -89,7 +89,7 @@ msgstr "Teléfono"
 
 #: core/models.py:38
 msgid "Teléfono móvil"
-msgstr "Teléfono móvil"
+msgstr "Teléfono móbil"
 
 #: core/models.py:40 webapp/forms.py:148 webapp/forms.py:174
 #: webapp/forms.py:180 webapp/forms.py:186 webapp/forms.py:192
@@ -116,11 +116,11 @@ msgstr "Destinatario"
 
 #: core/models.py:65 core/models.py:162
 msgid "Infantil"
-msgstr ""
+msgstr "Infantil"
 
 #: core/models.py:66 core/models.py:163
 msgid "Juvenil"
-msgstr ""
+msgstr "Xuvenil"
 
 #: core/models.py:69 core/models.py:103
 #: webapp/templates/webapp/recipient/detail.html:7
@@ -137,7 +137,7 @@ msgstr "Pai, nai, titor"
 
 #: core/models.py:95
 msgid "Firma autorización"
-msgstr "Sinatura autorización "
+msgstr "Sinatura autorización"
 
 #: core/models.py:96 webapp/templates/webapp/custodian/detail.html:7
 msgid "Contacto de emergencia"
@@ -145,15 +145,15 @@ msgstr "Contacto de emerxencia"
 
 #: core/models.py:98
 msgid "Padre"
-msgstr ""
+msgstr "Pai"
 
 #: core/models.py:99
 msgid "Madre"
-msgstr ""
+msgstr "Nai"
 
 #: core/models.py:100
 msgid "Tutor"
-msgstr ""
+msgstr "Titor"
 
 #: core/models.py:114
 msgid "Grupo"
@@ -201,11 +201,11 @@ msgstr "Socio"
 
 #: core/models.py:165
 msgid "Colaborador"
-msgstr ""
+msgstr "Colaborador"
 
 #: core/models.py:166
 msgid "Familiar"
-msgstr ""
+msgstr "Familiar"
 
 #: core/models.py:168
 msgid "Tipo de socio"
@@ -306,8 +306,6 @@ msgid "Contacto de Emergencia"
 msgstr "Contacto de Emerxencia"
 
 #: webapp/templates/webapp/group/list.html:7
-#, fuzzy
-#| msgid "Nuevo grupo"
 msgid "Nuevo grupo "
 msgstr "Novo grupo"
 
