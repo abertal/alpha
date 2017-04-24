@@ -6,7 +6,6 @@ from . import views
 person = [
     url(r'^$', views.PersonList.as_view(), name='person-list'),
     url(r'^new/$', views.PersonCreate.as_view(), name='person-create'),
-    url(r'^(?P<pk>[^/]+)/delete/$', views.PersonDelete.as_view(), name='person-delete'),
     url(r'^(?P<pk>[^/]+)/$', views.PersonDetail.as_view(), name='person-detail'),
     url(r'^(?P<pk>[^/]+)/delete/$', views.PersonDelete.as_view(), name='person-delete'),
     url(r'^(?P<pk>[^/]+)/edit/$', views.PersonEdit.as_view(), name='person-edit'),
@@ -25,6 +24,7 @@ recipient = [
 volunteer = [
     url(r'^$', views.VolunteerList.as_view(), name='volunteer-list'),
     url(r'^(?P<pk>\d+)/$', views.VolunteerDetail.as_view(), name='volunteer-detail'),
+    url(r'^(?P<pk>\d+)/delete/$', views.VolunteerDelete.as_view(), name='volunteer-delete'),
     url(r'^(?P<pk>\d+)/edit/$', views.VolunteerEdit.as_view(), name='volunteer-edit'),
 ]
 
