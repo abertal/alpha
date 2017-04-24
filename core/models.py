@@ -62,8 +62,8 @@ class Recipient(models.Model):
         verbose_name = _('Destinatario')
 
     CATEGORIES = [
-        ('child', 'Infantil'),
-        ('juvenile', 'Juvenil'),
+        ('child', _('Infantil')),
+        ('juvenile', _('Juvenil')),
     ]
 
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
@@ -95,9 +95,9 @@ class Custodian(models.Model):
     authorized_signature = models.TextField(verbose_name=_('Firma autorización'), blank=True, default='')
     emergency_contact = models.TextField(verbose_name=_('Contacto de emergencia'), blank=True, default='')
     CATEGORIES = [
-        ('father', 'Padre'),
-        ('mother', 'Madre'),
-        ('legal', 'Tutor'),
+        ('father', _('Padre')),
+        ('mother', _('Madre')),
+        ('legal', _('Tutor')),
     ]
 
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
@@ -159,11 +159,11 @@ class Member(models.Model):
         verbose_name = _('Socio')
 
     CATEGORY = [
-        ('child', 'Infantil'),
-        ('juvenile', 'Juvenil'),
-        ('volunteer', 'Voluntario'),
-        ('contributor', 'Colaborador'),
-        ('family', 'Familiar'),
+        ('child', _('Infantil')),
+        ('juvenile', _('Juvenil')),
+        ('volunteer', _('Voluntario')),
+        ('contributor', _('Colaborador')),
+        ('family', _('Familiar')),
     ]
     category = models.CharField(_('Tipo de socio'), choices=CATEGORY, max_length=32)
 
@@ -174,7 +174,7 @@ class Member(models.Model):
     dpa_status = models.TextField(verbose_name=_('LOPD'), blank=True, default='')
     card_status = models.TextField(verbose_name=_('Estado del carnet'), blank=True, default='')
 
-    photo = models.ImageField(verbose_name=_('Fotografía'), upload_to=_('members'), blank=True, null=True)
+    photo = models.ImageField(verbose_name=_('Fotografía'), upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
     membership = models.ForeignKey(Membership, on_delete=models.PROTECT)

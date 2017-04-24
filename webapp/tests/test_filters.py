@@ -3,7 +3,7 @@ from django.test import TransactionTestCase
 import pytest
 
 import webapp.tests.conftest as fixture
-from webapp.filters import MemberFilter, PersonFilter, RecipientFilter, VolunteerFilter
+from webapp.filters import FromPersonFilter, GroupFilter, PersonFilter
 
 
 class FilterTests(TransactionTestCase):
@@ -16,23 +16,16 @@ class FilterTests(TransactionTestCase):
         qs2 = PersonFilter.custom_filter(self, qs, '', 'ex')
         t.assertQuerysetEqual(qs2, [repr(r) for r in result])
 
-    def test_filter_volunteer(self):
+    def test_filter_from_person(self):
         t = TransactionTestCase()
-        qs = fixture.volunteer_query_filter()
+        qs = fixture.from_person_query_filter()
         result = fixture.filter_person_name().filter(qs, 'ex')
-        qs2 = VolunteerFilter.custom_filter(self, qs, '', 'ex')
+        qs2 = FromPersonFilter.custom_filter(self, qs, '', 'ex')
         t.assertQuerysetEqual(qs2, [repr(r) for r in result])
 
-    def test_filter_recipient(self):
+    def test_filter_group(self):
         t = TransactionTestCase()
-        qs = fixture.recipient_query_filter()
-        result = fixture.filter_person_name().filter(qs, 'ex')
-        qs2 = RecipientFilter.custom_filter(self, qs, '', 'ex')
-        t.assertQuerysetEqual(qs2, [repr(r) for r in result])
-
-    def test_filter_member(self):
-        t = TransactionTestCase()
-        qs = fixture.member_query_filter()
-        result = fixture.filter_person_name().filter(qs, 'ex')
-        qs2 = MemberFilter.custom_filter(self, qs, '', 'ex')
+        qs = fixture.group_query_filter()
+        result = fixture.filter_group_name().filter(qs, 'ex')
+        qs2 = GroupFilter.custom_filter(self, qs, '', 'ex')
         t.assertQuerysetEqual(qs2, [repr(r) for r in result])
