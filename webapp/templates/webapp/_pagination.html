@@ -5,9 +5,15 @@
 <nav aria-label="Ĺist pagination">
   <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
+    {% if filter.form.q.value is not None %}
     <li class="page-item">
       <a class="page-link" href="{% spurl base="{{ request.path }}" add_query="q={{ filter.form.q.value }}" add_query="page={{ page_obj.previous_page_number }}" %}" tabindex="-1">Anterior</a>
     </li>
+    {% else %}
+     <li class="page-item">
+      <a class="page-link" href="{% spurl base="{{ request.path }}" add_query="page={{ page_obj.previous_page_number }}" %}" tabindex="-1">Anterior</a>
+    </li>
+    {% endif %}
     {% else %}
     <li class="page-item disabled">
       <a class="page-link" tabindex="-1">Anterior</a>
@@ -15,9 +21,15 @@
     {% endif %}
     <li class="page-item disabled"><a class="page-link">{% trans 'Página' %} {{ page_obj.number }} de {{ paginator.num_pages }}</a></li>
     {% if page_obj.has_next %}
+    {% if filter.form.q.value is not None %}
     <li class="page-item">
       <a class="page-link" href= "{% spurl base="{{ request.path }}" add_query="q={{ filter.form.q.value }}" add_query="page={{ page_obj.next_page_number}}" %}">{% trans 'Siguiente' %}</a>
     </li>
+    {% else %}
+     <li class="page-item">
+      <a class="page-link" href= "{% spurl base="{{ request.path }}" add_query="page={{ page_obj.next_page_number}}" %}">{% trans 'Siguiente' %}</a>
+    </li>
+    {% endif %}
     {% else %}
     <li class="page-item disabled">
       <a class="page-link" href="#">{% trans 'Siguiente' %}</a>
