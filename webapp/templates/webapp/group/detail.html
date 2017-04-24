@@ -8,9 +8,9 @@
 <dl>
   <dt>Destinatarios de {{ group.group_name|upper }}:</dt>
 
-   {% for enrolment in group.enrolment.person_set.all %}    
+   {% for enrolment in group.enrolment_set.all %}    
     <p>
-      <a href="{% url 'person-detail' person.id %}" class="card-link">{{ group.enrolment.person.name }}&thinsp;{{ group.enrolment.person.name }}</a>
+      <a href="{% url 'person-detail' enrolment.person.id %}" class="card-link">{{ enrolment.person.name }}&thinsp;{{ enrolment.person.surname }}</a>
     </p>      
     {% empty %}
     <p>No hay usuarios asociados a este grupo</p>
