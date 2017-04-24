@@ -7,8 +7,6 @@
 <br>
 <dl>
   <dt>Destinatarios de {{ group.group_name|upper }}:</dt>
-  
-  <!--<a><dd>{{ group.enrolment.person.name_display|default:'Sin especificar' }}</dd></a>-->
 
    {% for enrolment in group.enrolment.person_set.all %}    
     <p>
