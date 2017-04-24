@@ -19,7 +19,8 @@ Generación de archivos de traducción
 
 Para generar los archivos de traducción es necesario utilizar el siguiente comando que devolverá todas las cadenas susceptibles a traducción.
 
-..code::
+.. code::
+
     $ python manage.py makemessages
 
 Esto generará un django.po que puede ser editado con un programa de edición de archivos .po (POEdit por ejemplo):
@@ -31,5 +32,6 @@ http://dle.rae.es/?w=diccionario
 
 Una vez editado el archivo .po es necesario hacer la compilación del archivo binario que mostrará las cadenas ya traducidas:
 
-..code::
+.. code::
+
     $python manage.py compilemessages
