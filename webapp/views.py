@@ -199,6 +199,7 @@ class RecipientDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     def get_success_url(self):
         return reverse('person-list')
 
+
 class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer
     form_class = forms.VolunteerCreate
