@@ -1,11 +1,22 @@
 {% extends '../__base.html' %}
 
 {% block body %}
-<h3>{{ group.person.name }} {{ group.person.surname|upper }}</h3>
-<dl>
-  <dt>Grupo</dt>
-  <dd>{{ group.group_name_display|default:'Sin especificar' }}</dd>
-</dl>
+<h3>{{ group.group_name|upper }}</h3>
 <a href="{% url 'group-edit' group.id %}" class="btn btn-secondary">Editar</a>
 <a href="{% url 'group-list' %}" class="btn btn-link">Volver</a>
+<br>
+<dl>
+  <dt>Destinatarios de {{ group.group_name|upper }}:</dt>
+  
+  <!--<a><dd>{{ group.enrolment.person.name_display|default:'Sin especificar' }}</dd></a>-->
+
+   {% for enrolment in group.enrolment.person_set.all %}    
+    <p>
+      <a href="{% url 'person-detail' person.id %}" class="card-link">{{ group.enrolment.person.name }}&thinsp;{{ group.enrolment.person.name }}</a>
+    </p>      
+    {% empty %}
+    <p>No hay usuarios asociados a este grupo</p>
+   {% endfor %}
+   
+</dl>
 {% endblock %}
