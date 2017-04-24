@@ -40,22 +40,6 @@ class EditPerson(forms.ModelForm):
         }
 
 
-class DeletePerson(forms.ModelForm):
-    class Meta:
-        model = models.Person
-        fields = (
-            'name', 'surname', 'birthday',
-            'id_number', 'ss_number',
-            'phone_number', 'mobile_number', 'email',
-            'address_street', 'address_locality', 'address_region', 'address_country',
-            'health_warnings', 'comment',
-        )
-        widgets = {
-            'name': forms.TextInput(),
-            'surname': forms.TextInput(),
-        }
-
-
 class RecipientCreate(forms.ModelForm):
     class Meta:
         model = models.Recipient
