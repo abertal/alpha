@@ -63,8 +63,19 @@ def test_edit_person(logged_client, person, url):
 
 
 @pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/person/{}/delete/',
+])
+def test_delete_person(logged_client, person, url):
+    data = {'name': 'Juan', 'surname': 'Bosco'}
+    response = logged_client.post(url.format(person.id), data=data)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
 @pytest.mark.parametrize('url, data', [
     ('/webapp/person/{pk}/volunteer/', {}),
+    ('/webapp/person/{pk}/recipient/', {}),
 ])
 def test_create_from_person(logged_client, person, url, data):
     # Inject person UID to POST data
