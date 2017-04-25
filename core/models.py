@@ -87,6 +87,8 @@ class Volunteer(models.Model):
         null=True,
         default=None,
     )
+    comment = models.TextField(
+        verbose_name=_('Observaciones'), blank=True, default='')
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
