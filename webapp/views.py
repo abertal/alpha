@@ -135,8 +135,6 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
     model = models.Person
     form_class = forms.CreatePerson
     template_name = 'webapp/person/create.html'
-    success_message = ugettext_lazy('Persona creada correctamente')
-
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
