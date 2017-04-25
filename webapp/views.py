@@ -131,15 +131,13 @@ class PersonDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle persona')
 
 
-class PersonCreate(LoginRequiredMixin, MenuMixin, generic.CreateView, SuccessMessageMixin):
+class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.CreateView):
     model = models.Person
     form_class = forms.CreatePerson
     template_name = 'webapp/person/create.html'
-    success_url = reverse_lazy('person-detail')
     success_message = ugettext_lazy("Persona creada correctamente")
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('person-detail', args=[self.object.id])
 
 
@@ -148,8 +146,7 @@ class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     form_class = forms.EditPerson
     template_name = 'webapp/person/edit.html'
     name = ugettext_lazy('Detalle persona')
-    success_url = reverse_lazy('person-detail')
-    success_message = ugettext_lazy("Persona editada correctamente")
+    success_message = ugettext_lazy('Persona editada correctamente')
 
     def get_success_url(self):
         messages.success(self.request, self.success_message)
