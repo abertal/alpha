@@ -58,9 +58,9 @@ class Group(admin.ModelAdmin):
 
 @admin.register(models.Enrolment)
 class Enrolment(admin.ModelAdmin):
-    search_fields = ['group', 'person']
+    search_fields = ['group', 'recipient']
 
-    list_display = ('group', 'person', 'created')
+    list_display = ('group', 'recipient', 'created')
 
 
 @admin.register(models.Membership)

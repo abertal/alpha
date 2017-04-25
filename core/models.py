@@ -124,10 +124,10 @@ class Enrolment(models.Model):
     class Meta:
         verbose_name = _('Inscripción')
         verbose_name_plural = _('Inscripciones')
-        unique_together = (('person', 'group'),)
+        unique_together = (('recipient', 'group'),)
 
-    person = models.ForeignKey(Person, on_delete=models.PROTECT)
-    group = models.ForeignKey(Group, on_delete=models.PROTECT)
+    recipient = models.ForeignKey(Recipient, on_delete=models.PROTECT, blank=True, default='')
+    group = models.ForeignKey(Group, on_delete=models.PROTECT, blank=True, default='')
 
     created = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Fecha de inscripción'))
