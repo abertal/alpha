@@ -71,6 +71,8 @@ class Recipient(models.Model):
         verbose_name=_('Estudios'), blank=True, default='')
     brother_sister = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, default='')
+    Authorize_photo = models.TextField(
+        verbose_name=_('Autoriza foto'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
@@ -180,7 +182,7 @@ class Member(models.Model):
     photo_status = models.TextField(verbose_name=_('Foto'), blank=True, default='')
     dpa_status = models.TextField(verbose_name=_('LOPD'), blank=True, default='')
     card_status = models.TextField(verbose_name=_('Estado del carnet'), blank=True, default='')
-
+    bursary = model.TextField(verbose_name=_('Beca'), blank=True, default='')
     photo = models.ImageField(verbose_name=_('Fotografía'), upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
