@@ -57,6 +57,7 @@ def missing_doc(request):
 
 class Login(LoginView):
     template_name = 'webapp/login.html'
+    redirect_authenticated_user = 'home'
 
 
 class LogOut(LogoutView):
