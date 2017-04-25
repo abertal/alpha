@@ -17,6 +17,11 @@
 </aside>
 <main class="col">
   <h1>{{ view.name }}</h1>
+  {% if messages %}
+      {% for message in messages %}
+      <h3><span class="badge badge-primary">{{ message }}</span></h3>
+      {% endfor %}
+  {% endif %}
   {% block body %}
   {% endblock %}
 </main>
