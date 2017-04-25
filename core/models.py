@@ -70,7 +70,7 @@ class Recipient(models.Model):
     estudies = models.TextField(
         verbose_name=_('Estudios'), blank=True, default='')
     sibling = models.IntegerField(
-        verbose_name=_('Hermanos'), blank=True, default=None)
+        verbose_name=_('Hermanos'), blank=True, null=True, default=None)
     authorize_photo = models.TextField(
         verbose_name=_('Autoriza foto'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
