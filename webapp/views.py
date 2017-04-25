@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render, reverse
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
 from django.views import generic
-
+from django.core.urlresolvers import reverse_lazy
+from django.contrib import messages
 from django_filters.views import FilterView
 
 from core import models
@@ -151,9 +153,12 @@ class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     model = models.Person
     template_name = 'webapp/person/delete.html'
     name = ugettext_lazy('Eliminar persona')
+    success_url= reverse_lazy('person-list')
+    success_message = 'Persona eliminada correctamente'
 
-    def get_success_url(self):
-        return reverse('person-list')
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(PersonDelete, self).delete(request, *args, **kwargs)
 
 
 class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
