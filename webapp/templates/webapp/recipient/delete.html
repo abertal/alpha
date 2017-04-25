@@ -6,9 +6,11 @@
 <form class="custom-form element" action="{% url 'recipient-delete' recipient.id %}" method="post">
 {% include '../_form_fields.html' %}
 <div class="form-group">
+    <p>
     {% blocktrans %}
-    <p>Está seguro de querer eliminarlo de la lista?</p>
+    ¿Está seguro de querer eliminar al destinatario de la lista?
     {% endblocktrans %}
+    </p>
     <input type="submit" class="btn btn-primary" value="{% trans 'Confirmar'%}" method="post"/>
     <a href="{% url 'recipient-detail' recipient.pk %}" class="btn btn-link">{% trans 'Volver sin eliminar' %}</a>
 </div>
