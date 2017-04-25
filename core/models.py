@@ -69,7 +69,7 @@ class Recipient(models.Model):
     ]
     estudies = models.TextField(
         verbose_name=_('Estudios'), blank=True, default='')
-    brother_sister = models.IntegerField(
+    sibling = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, default='')
     authorize_photo = models.TextField(
         verbose_name=_('Autoriza foto'), blank=True, default='')
