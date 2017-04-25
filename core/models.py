@@ -119,6 +119,21 @@ class Group(models.Model):
         return '{}'.format(self.id)
 
 
+class Project(models.Model):
+
+    class Meta:
+        verbose_name = _('Proyecto')
+
+    project_name = models.TextField(
+        verbose_name=_('Nombre proyecto'))
+    date_start = models.DateField(
+        verbose_name=_('Fecha inicio'))
+    date_end = models.DateField(
+        verbose_name=('Fecha fin'))
+    comment = models.TextField(
+        verbose_name=_('Observaciones'), blank=True, default='')
+
+
 class Enrolment(models.Model):
 
     class Meta:
