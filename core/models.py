@@ -69,6 +69,8 @@ class Recipient(models.Model):
     ]
     estudies = models.TextField(
         verbose_name=_('Estudios'), blank=True, default='')
+    brother_sister = models.IntegerField(
+        verbose_name=_('Hermanos'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
