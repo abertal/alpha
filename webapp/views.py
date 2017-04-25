@@ -192,6 +192,15 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
         return models.Recipient.objects.select_related('person').order_by('-id')
 
 
+class RecipientDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
+    template_name = 'webapp/recipient/delete.html'
+    name = ugettext_lazy("Eliminar destinatario")
+    model = models.Recipient
+
+    def get_success_url(self):
+        return reverse('person-list')
+
+
 class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer
     form_class = forms.VolunteerCreate
@@ -229,6 +238,15 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
 
     def get_queryset(self):
         return models.Volunteer.objects.select_related('person').order_by('-id')
+
+
+class VolunteerDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
+    model = models.Volunteer
+    template_name = 'webapp/volunteer/delete.html'
+    name = ugettext_lazy('Eliminar voluntario')
+
+    def get_success_url(self):
+        return reverse('volunteer-list')
 
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
