@@ -71,7 +71,7 @@ class Recipient(models.Model):
         verbose_name=_('Estudios'), blank=True, default='')
     brother_sister = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, default='')
-    Authorize_photo = models.TextField(
+    authorize_photo = models.TextField(
         verbose_name=_('Autoriza foto'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
