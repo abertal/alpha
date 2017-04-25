@@ -24,6 +24,8 @@ class Person(models.Model):
         verbose_name=_('Tarjeta sanitaria'), blank=True, default='')
     ss_photocopy = models.TextField(
         verbose_name=_('Fotocopia Seguridad Social'), blank=True, default='')
+    postal_code = models.TextField(
+        verbose_name=_('Código postal'), blank=True, default='')
     address_street = models.TextField(
         verbose_name=_('Dirección'), blank=True, default='')
     address_locality = models.TextField(
