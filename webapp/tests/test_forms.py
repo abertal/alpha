@@ -26,6 +26,26 @@ def test_edit_person_form(person):
 
 
 @pytest.mark.django_db
+def test_create_recipient_form(person):
+    data = {'person': person.id}
+    form = forms.RecipientCreate(data)
+    assert form.is_valid(), form.errors
+    obj = form.save()
+    assert obj.person.name == 'Juan'
+    assert str(obj) == '{}'.format(obj.id)
+
+
+@pytest.mark.django_db
+def test_create_custodian_form(person):
+    data = {'person': person.id}
+    form = forms.RecipientCreate(data)
+    assert form.is_valid(), form.errors
+    obj = form.save()
+    assert obj.person.name == 'Juan'
+    assert str(obj) == '{}'.format(obj.id)
+
+
+@pytest.mark.django_db
 def test_create_volunteer_form(person):
     data = {'person': person.id}
     form = forms.VolunteerCreate(data)
