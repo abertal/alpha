@@ -182,7 +182,7 @@ class Member(models.Model):
     photo_status = models.TextField(verbose_name=_('Foto'), blank=True, default='')
     dpa_status = models.TextField(verbose_name=_('LOPD'), blank=True, default='')
     card_status = models.TextField(verbose_name=_('Estado del carnet'), blank=True, default='')
-    bursary = model.TextField(verbose_name=_('Beca'), blank=True, default='')
+    bursary = models.TextField(verbose_name=_('Beca'), blank=True, default='')
     photo = models.ImageField(verbose_name=_('Fotografía'), upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
