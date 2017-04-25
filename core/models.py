@@ -24,6 +24,8 @@ class Person(models.Model):
         verbose_name=_('Tarjeta sanitaria'), blank=True, default='')
     ss_photocopy = models.TextField(
         verbose_name=_('Fotocopia Seguridad Social'), blank=True, default='')
+    postal_code = models.TextField(
+        verbose_name=_('Código postal'), blank=True, default='')
     address_street = models.TextField(
         verbose_name=_('Dirección'), blank=True, default='')
     address_locality = models.TextField(
@@ -65,7 +67,12 @@ class Recipient(models.Model):
         ('child', _('Infantil')),
         ('juvenile', _('Juvenil')),
     ]
-
+    estudies = models.TextField(
+        verbose_name=_('Estudios'), blank=True, default='')
+    sibling = models.IntegerField(
+        verbose_name=_('Hermanos'), blank=True, default=None)
+    authorize_photo = models.TextField(
+        verbose_name=_('Autoriza foto'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
@@ -82,6 +89,8 @@ class Volunteer(models.Model):
         null=True,
         default=None,
     )
+    comment = models.TextField(
+        verbose_name=_('Observaciones'), blank=True, default='')
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -173,7 +182,7 @@ class Member(models.Model):
     photo_status = models.TextField(verbose_name=_('Foto'), blank=True, default='')
     dpa_status = models.TextField(verbose_name=_('LOPD'), blank=True, default='')
     card_status = models.TextField(verbose_name=_('Estado del carnet'), blank=True, default='')
-
+    bursary = models.TextField(verbose_name=_('Beca'), blank=True, default='')
     photo = models.ImageField(verbose_name=_('Fotografía'), upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
