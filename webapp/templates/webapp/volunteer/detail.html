@@ -2,6 +2,13 @@
 {% load i18n %}
 
 {% block body %}
+{% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
 <h3>{{ volunteer.person.name }} {{ volunteer.person.surname|upper }}</h3>
 <dl>
   <dt>{% trans 'Fecha expiración certificados' %}</dt>
