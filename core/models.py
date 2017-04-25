@@ -67,7 +67,8 @@ class Recipient(models.Model):
         ('child', _('Infantil')),
         ('juvenile', _('Juvenil')),
     ]
-
+    estudies = models.TextField(
+        verbose_name=_('Estudios'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
