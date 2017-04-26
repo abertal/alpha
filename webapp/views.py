@@ -43,6 +43,8 @@ class MenuBar:
             Option(_('Detalle socio'), None, menu=self),
             Option(_('Grupos'), 'group-list', menu=self),
             Option(_('Detalle grupo'), None, menu=self),
+            Option(_('Actividades'), 'event-list', menu=self),
+            Option(_('Detalle actividades'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
             Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
         ]
@@ -277,6 +279,42 @@ class CustodianEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.
 
     def get_success_url(self):
         return reverse('custodian-detail', args=[self.object.id])
+
+
+class EventEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Event
+    form_class = forms.EventEdit
+    template_name = 'webapp/event/edit.html'
+    name = ugettext_lazy('Detalle actividad')
+
+    def get_success_url(self):
+        return reverse('event-edit', args=[self.object.id])
+
+
+class EventCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Event
+    form_class = forms.EventCreate
+    template_name = 'webapp/event/create.html'
+    name = ugettext_lazy('Nueva actividad')
+
+
+class EventList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/event/list.html'
+    name = ugettext_lazy('Actividades')
+    filterset_class = filters.EventFilter
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Event.objects.all()
+
+
+class EventDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Event
+    template_name = 'webapp/event/detail.html'
+    name = ugettext_lazy('Detalle actividad')
+
+    def get_success_url(self):
+        return reverse('event-detail', args=[self.object.id])
 
 
 class MemberCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, FromPersonMixin, generic.CreateView):
