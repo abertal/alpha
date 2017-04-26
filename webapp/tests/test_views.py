@@ -153,3 +153,12 @@ def test_person_views(logged_client, person, url):
 def test_edit_group(logged_client, group_filter, url):
     response = logged_client.post(url.format(pk=group_filter.id), {'group_name': 'group_name'})
     assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/recipient/{pk}/edit/',
+])
+def test_edit_recipient(logged_client, recipient_filter, url):
+    response = logged_client.post(url.format(pk=recipient_filter.id), {'category': 'child'})
+    assert response.status_code == 302

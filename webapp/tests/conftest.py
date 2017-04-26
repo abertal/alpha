@@ -38,6 +38,11 @@ def volunteer_filter():
     return models.Volunteer.objects.create(person=models.Person.objects.get(name='Example'))
 
 
+@pytest.fixture()
+def recipient_filter():
+    return models.Recipient.objects.create(category='child', person=person_filter())
+
+
 @pytest.fixture
 def from_person_query_filter():
     volunteer_filter()
