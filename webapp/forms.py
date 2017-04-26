@@ -140,6 +140,21 @@ class GroupEdit(forms.ModelForm):
         fields = ('group_name',)
 
 
+class ProjectCreate(forms.ModelForm):
+    class Meta:
+        model = models.Project
+        fields = ('project_name',)
+        widgets = {
+            'project_name': forms.TextInput(),
+        }
+
+
+class ProjectEdit(forms.ModelForm):
+    class Meta:
+        model = models.Project
+        fields = ('project_name',)
+
+
 class NewIndividualMember(forms.Form):
     name = forms.CharField(label=_('Nombre'))
     surname = forms.CharField(label=_('Apellidos'))
