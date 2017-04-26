@@ -87,7 +87,7 @@ class Recipient(models.Model):
         ('CARRERA', _('Carrera Universitaria')),
     ]
 
-    courses = models.CharField(_('Estudios'),blank=True, default='', choices=COURSES, max_length=32)
+    courses = models.CharField(_('Estudios'), blank=True, default='', choices=COURSES, max_length=32)
     sibling = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, null=True, default=None)
     authorize_photo = models.TextField(
