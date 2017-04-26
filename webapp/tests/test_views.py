@@ -151,7 +151,7 @@ def test_person_views(logged_client, person, url):
     '/webapp/group/new/',
 ])
 def test_create_group(logged_client, url):
-    data = {'group_name':'test_group'}
+    data = {'group_name': 'test_group'}
     response = logged_client.post(url, data=data)
     assert response.status_code == 302
 
@@ -161,6 +161,6 @@ def test_create_group(logged_client, url):
     '/webapp/group/{}/edit/',
 ])
 def test_edit_group(logged_client, group, url):
-    data = {'group_name':'Example groups'}
-    response = logged_client.post(url.format(group.id), data = data)
+    data = {'group_name': 'Example groups'}
+    response = logged_client.post(url.format(group.id), data=data)
     assert response.status_code == 302
