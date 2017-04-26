@@ -1,0 +1,25 @@
+{% extends '../__base.html' %}
+{% load i18n %}
+
+{% block body %}
+  {% block content %}
+  <div>
+    <a href="{% url 'event-create' %}" class="btn btn-primary">{% trans 'Nueva actividad '%}</a>
+  </div>
+    <br>
+    <form method="get">
+     {{ filter.form.as_p }}
+     <button type="submit">Buscar</button>
+    </form>
+    <br>
+    {% for event in object_list %}
+    <div>
+      <a href="{% url 'event-detail' pk=event.pk %}">{{ event.event_name|upper }}</a>
+    </div>
+    {% empty %}
+    <p>{% trans 'No hay actividades...' %}</p>
+    {% endfor %}
+    {% include '../_pagination.html' %}
+  {% endblock %}
+
+{% endblock %}
