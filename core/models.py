@@ -117,19 +117,6 @@ class Custodian(models.Model):
         return '{}'.format(self.id)
 
 
-class Group(models.Model):
-
-    class Meta:
-        verbose_name = _('Grupo')
-
-    group_name = models.TextField(verbose_name=_('Nombre grupo'))
-
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return '{}'.format(self.id)
-
-
 class Project(models.Model):
 
     class Meta:
@@ -143,6 +130,19 @@ class Project(models.Model):
         verbose_name=('Fecha fin'))
     comment = models.TextField(
         verbose_name=_('Observaciones'), blank=True, default='')
+
+class Group(models.Model):
+
+    class Meta:
+        verbose_name = _('Grupo')
+
+    group_name = models.TextField(verbose_name=_('Nombre grupo'))
+
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}'.format(self.id)
+
 
 
 class Enrolment(models.Model):
