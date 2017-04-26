@@ -145,10 +145,11 @@ def test_person_views(logged_client, person, url):
     response = logged_client.get(url.format(person.id))
     assert response.status_code == 200
 
+
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/group/{pk}/edit/',
 ])
 def test_edit_group(logged_client, group_filter, url):
-    response = logged_client.post(url.format(pk=group_filter.id), {'group_name':'groupname'})
+    response = logged_client.post(url.format(pk=group_filter.id), {'group_name': 'group_name'})
     assert response.status_code == 302
