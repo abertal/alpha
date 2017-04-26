@@ -37,6 +37,8 @@ class MenuBar:
             Option(_('Membresías'), 'membership-list', menu=self),
             Option(_('Socios'), 'member-list', menu=self),
             Option(_('Detalle socio'), None, menu=self),
+            Option(_('Proyectos'), 'project-list', menu=self),
+            Option(_('Detalle proyecto'), None, menu=self),
             Option(_('Grupos'), 'group-list', menu=self),
             Option(_('Detalle grupo'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
