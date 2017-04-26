@@ -1,3 +1,5 @@
+from decimal import Decimal as D
+
 from django.contrib.auth.models import User
 from django.test import Client
 
@@ -10,6 +12,27 @@ from core import models
 @pytest.fixture
 def person():
     return models.Person.objects.create(name='Juan', surname='Bosco')
+
+
+@pytest.fixture
+def recipient():
+    return models.Recipient.objects.create(
+        person=models.Person.objects.create(name='Name_example', surname='Surname_example'))
+
+
+@pytest.fixture
+def custodian():
+    return models.Custodian.objects.create(person=person(), minor=recipient())
+
+
+@pytest.fixture
+def membership():
+    return models.Membership.objects.create(membership_fee=D('15.00'))
+
+
+@pytest.fixture
+def member():
+    return models.Member.objects.create(person=person(), membership=membership())
 
 
 @pytest.fixture
