@@ -1,0 +1,25 @@
+{% extends '../__base.html' %}
+{% load i18n %}
+
+{% block body %}
+  {% block content %}
+  <div>
+    <a href="{% url 'project-create' %}" class="btn btn-primary">{% trans 'Nuevo proyecto '%}</a>
+  </div>
+    <br>
+    <form method="get">
+     {{ filter.form.as_p }}
+     <button type="submit">Buscar</button>
+    </form>
+    <br>
+    {% for project in object_list %}
+    <div>
+      <a href="{% url 'project-detail' pk=project.pk %}">{{ project.project_name|upper }}</a>
+    </div>
+    {% empty %}
+    <p>{% trans 'No hay proyectos...' %}</p>
+    {% endfor %}
+    {% include '../_pagination.html' %}
+  {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends '../__base.html' %}
+{% load i18n %}
+
+{% block body %}
+<h3>{{ project.project_name }}</h3>
+<a href="{% url 'project-edit' project.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
+<a href="{% url 'project-list' %}" class="btn btn-link">{% trans 'Volver' %}</a>
++<br>
+ +<dl>
+ +  <dt>Grupos asociados a {{ project.project_name|upper }}:</dt>
+ +
+ +   {% for group in project.group_set.all %}    
+ +    <p>
+ +      <a href="{% url 'group-detail' project.group.id %}" class="card-link">{{ project.group.name }}</a>
+ +    </p>      
+ +    {% empty %}
+ +    <p>No hay grupos asociados a este proyecto</p>
+ +   {% endfor %}
+ +   
+ +</dl>
+{% endblock %}
