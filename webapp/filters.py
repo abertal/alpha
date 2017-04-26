@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import django_filters
 
-from core.models import Group
+from core.models import Group, Event
 
 
 class PersonFilter(django_filters.FilterSet):
@@ -41,3 +41,15 @@ class GroupFilter(django_filters.FilterSet):
 
     def custom_filter(self, queryset, name, value):
         return queryset.filter(Q(group_name__icontains=value))
+
+
+class EventFilter(django_filters.FilterSet):
+
+    q = django_filters.CharFilter(name='event_name', method='custom_filter')
+
+    class Meta:
+        model = Event
+        fields = []
+
+    def custom_filter(self, queryset, name, value):
+        return queryset.filter(Q(event_name__icontains=value))
