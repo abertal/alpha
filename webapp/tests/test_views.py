@@ -162,3 +162,13 @@ def test_edit_group(logged_client, group_filter, url):
 def test_edit_recipient(logged_client, recipient_filter, url):
     response = logged_client.post(url.format(pk=recipient_filter.id), {'category': 'child'})
     assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/volunteer/{pk}/edit/',
+])
+def test_edit_volunteer(logged_client, volunteer_filter, url):
+    response = logged_client.post(url.format(pk=volunteer_filter.id),
+                                  {'lack_of_sexual_offenses_date_certificate': '23/03/2017'})
+    assert response.status_code == 302
