@@ -169,7 +169,6 @@ class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
             response = HttpResponseRedirect(success_url)
             messages.success(self.request, self.success_message)
         except Exception:
-            print('entra')
             self.object = self.get_object()
             success_url = self.get_success_url()
             self.success_message = ugettext_lazy('Persona no eliminada')

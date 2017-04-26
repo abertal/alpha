@@ -3,7 +3,7 @@ from django.forms.models import model_to_dict
 import pytest
 
 from core import models
-from webapp import forms
+from webapp import forms, views
 
 
 @pytest.mark.django_db
@@ -66,7 +66,9 @@ def test_new_individual_member():
     }
     form = forms.NewIndividualMember(data=data)
     assert form.is_valid(), form.errors
-
+    view = views.NewIndividualMember
+    response = view.form_valid(None, form)
+    assert response.status_code == 302
     membership = form.execute()
     assert membership.pk is not None
     assert isinstance(membership, models.Membership)
@@ -101,7 +103,9 @@ def test_new_family_member():
     }
     form = forms.NewFamilyMember(data=data)
     assert form.is_valid(), form.errors
-
+    view = views.NewFamilyMember
+    response = view.form_valid(None, form)
+    assert response.status_code == 302
     membership = form.execute()
     assert membership.pk is not None
     assert isinstance(membership, models.Membership)
