@@ -22,6 +22,11 @@ def logged_client():
 
 
 @pytest.fixture
+def group():
+    return models.Group.objects.create(group_name='Example group')
+
+
+@pytest.fixture
 def person_filter():
     return models.Person.objects.create(name='Example', surname='SurExample')
 
