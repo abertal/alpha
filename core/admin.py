@@ -48,6 +48,12 @@ class Custodian(admin.ModelAdmin):
                     'person',
                     'minor')
 
+@admin.register(models.Project)
+class Project(admin.ModelAdmin):
+    search_fields = ['project_name']
+
+    list_display = ('id', 'project_name')
+
 
 @admin.register(models.Group)
 class Group(admin.ModelAdmin):
