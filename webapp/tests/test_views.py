@@ -123,3 +123,23 @@ def test_user_logged_out(logged_client, url):
 def test_person_views(logged_client, person, url):
     response = logged_client.get(url.format(person.id))
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/group/new/',
+])
+def test_create_group(logged_client, url):
+    data = {'group_name':'test_group'}
+    response = logged_client.post(url, data=data)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/group/{}/edit/',
+])
+def test_edit_group(logged_client, group, url):
+    data = {'group_name':'Example groups'}
+    response = logged_client.post(url.format(group.id), data = data)
+    assert response.status_code == 302
