@@ -41,6 +41,8 @@ class MenuBar:
             Option(_('Membresías'), 'membership-list', menu=self),
             Option(_('Socios'), 'member-list', menu=self),
             Option(_('Detalle socio'), None, menu=self),
+            Option(_('Proyectos'), 'project-list', menu=self),
+            Option(_('Detalle proyecto'), None, menu=self),
             Option(_('Grupos'), 'group-list', menu=self),
             Option(_('Detalle grupo'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
@@ -403,3 +405,39 @@ class GroupCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Cr
     def get_success_url(self):
         messages.success(self.request, self.success_message)
         return reverse('group-detail', args=[self.object.id])
+
+
+class ProjectList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/project/list.html'
+    name = ugettext_lazy('Proyectos')
+    filterset_class = filters.ProjectFilter
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Project.objects.all()
+
+
+class ProjectDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Project
+    template_name = 'webapp/project/detail.html'
+    name = ugettext_lazy('Detalle proyecto')
+
+
+class ProjectEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Project
+    form_class = forms.ProjectEdit
+    template_name = 'webapp/project/edit.html'
+    name = ugettext_lazy('Detalle proyecto')
+
+    def get_success_url(self):
+        return reverse('project-detail', args=[self.object.id])
+
+
+class ProjectCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Project
+    form_class = forms.ProjectCreate
+    template_name = 'webapp/project/create.html'
+    name = ugettext_lazy('Nuevo proyecto')
+
+    def get_success_url(self):
+        return reverse('project-detail', args=[self.object.id])
