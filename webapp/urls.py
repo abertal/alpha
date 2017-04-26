@@ -43,6 +43,13 @@ membership = [
     url(r'^(?P<pk>\d+)/edit/$', views.MembershipEdit.as_view(), name='membership-edit'),
 ]
 
+project = [
+    url(r'^$', views.ProjectList.as_view(), name='project-list'),
+    url(r'^(?P<pk>\d+)/$', views.ProjectDetail.as_view(), name='project-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.ProjectEdit.as_view(), name='project-edit'),
+    url(r'^new/$', views.ProjectCreate.as_view(), name='project-create'),
+]
+
 group = [
     url(r'^$', views.GroupList.as_view(), name='group-list'),
     url(r'^(?P<pk>\d+)/$', views.GroupDetail.as_view(), name='group-detail'),
@@ -58,6 +65,7 @@ urlpatterns = [
     url(r'^custodian/', include(custodian)),
     url(r'^membership/', include(membership)),
     url(r'^group/', include(group)),
+    url(r'^project/', include(project)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
