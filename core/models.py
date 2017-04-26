@@ -161,6 +161,15 @@ class Project(models.Model):
     comment = models.TextField(
         verbose_name=_('Observaciones'), blank=True, default='')
 
+class Event(models.Model):
+
+    class Meta:
+        verbose_name = _('Actividades')
+
+        event_name = models.TextField(verbose_name=_('Nombre actividad'))
+        event_start = models.DateField(verbose_name=_('Fecha inicio'))
+        event_end = models.DateField(verbose_name=_('Fecha fin'))
+        comment = models.TextField(verbose_name=_('Observaciones'), blank=True, default='')
 
 class Enrolment(models.Model):
 
