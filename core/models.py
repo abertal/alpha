@@ -24,6 +24,8 @@ class Person(models.Model):
         verbose_name=_('Tarjeta sanitaria'), blank=True, default='')
     ss_photocopy = models.TextField(
         verbose_name=_('Fotocopia Seguridad Social'), blank=True, default='')
+    postal_code = models.TextField(
+        verbose_name=_('Código postal'), blank=True, default='')
     address_street = models.TextField(
         verbose_name=_('Dirección'), blank=True, default='')
     address_locality = models.TextField(
@@ -65,7 +67,31 @@ class Recipient(models.Model):
         ('child', _('Infantil')),
         ('juvenile', _('Juvenil')),
     ]
+    COURSES = [
+        ('4EI', _('4 Educacion Infantil')),
+        ('5EI', _('5 Educacion Infantil')),
+        ('6EI', _('6 Educacion Infantil')),
+        ('1EP', _('1 Educacion Primaria')),
+        ('2EP', _('2 Educacion Primaria')),
+        ('3EP', _('3 Educacion Primaria')),
+        ('4EP', _('4 Educacion Primaria')),
+        ('5EP', _('5 Educacion Primaria')),
+        ('6EP', _('6 Educacion Primaria')),
+        ('1ESO', _('1 Educación Secundaria Obligatoria')),
+        ('2ESO', _('2 Educación Secundaria Obligatoria')),
+        ('3ESO', _('3 Educación Secundaria Obligatoria')),
+        ('4ESO', _('4 Educación Secundaria Obligatoria')),
+        ('1BACH', _('1 Bachillerato')),
+        ('2BACH', _('2 Bachillerato')),
+        ('FP', _('Formación Profesional')),
+        ('CARRERA', _('Carrera Universitaria')),
+    ]
 
+    courses = models.CharField(_('Estudios'), blank=True, default='', choices=COURSES, max_length=32)
+    sibling = models.IntegerField(
+        verbose_name=_('Hermanos'), blank=True, null=True, default=None)
+    authorize_photo = models.TextField(
+        verbose_name=_('Autoriza foto'), blank=True, default='')
     category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
@@ -82,6 +108,8 @@ class Volunteer(models.Model):
         null=True,
         default=None,
     )
+    comment = models.TextField(
+        verbose_name=_('Observaciones'), blank=True, default='')
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -117,6 +145,21 @@ class Group(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
+
+
+class Project(models.Model):
+
+    class Meta:
+        verbose_name = _('Proyecto')
+
+    project_name = models.TextField(
+        verbose_name=_('Nombre proyecto'))
+    date_start = models.DateField(
+        verbose_name=_('Fecha inicio'))
+    date_end = models.DateField(
+        verbose_name=('Fecha fin'))
+    comment = models.TextField(
+        verbose_name=_('Observaciones'), blank=True, default='')
 
 
 class Enrolment(models.Model):
@@ -173,7 +216,7 @@ class Member(models.Model):
     photo_status = models.TextField(verbose_name=_('Foto'), blank=True, default='')
     dpa_status = models.TextField(verbose_name=_('LOPD'), blank=True, default='')
     card_status = models.TextField(verbose_name=_('Estado del carnet'), blank=True, default='')
-
+    bursary = models.TextField(verbose_name=_('Beca'), blank=True, default='')
     photo = models.ImageField(verbose_name=_('Fotografía'), upload_to='members', blank=True, null=True)
 
     person = models.ForeignKey(Person, on_delete=models.PROTECT)

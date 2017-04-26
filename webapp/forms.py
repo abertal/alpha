@@ -69,7 +69,7 @@ class RecipientCreate(forms.ModelForm):
 class RecipientEdit(forms.ModelForm):
     class Meta:
         model = models.Recipient
-        fields = 'category',
+        fields = 'category', 'courses'
 
 
 class VolunteerCreate(forms.ModelForm):
