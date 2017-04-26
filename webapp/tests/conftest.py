@@ -26,6 +26,11 @@ def person_filter():
     return models.Person.objects.create(name='Example', surname='SurExample')
 
 
+@pytest.fixture()
+def recipient_filter():
+    return models.Recipient.objects.create(category='child', person=person_filter())
+
+
 @pytest.fixture
 def person_query_filter():
     person_filter()
