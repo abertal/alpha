@@ -17,6 +17,15 @@
 </aside>
 <main class="col">
   <h1>{{ view.name }}</h1>
+  {% if messages %}
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <h3><span class="badge badge-danger">{{ message }}</span></h3>
+        {% else %}
+        <h3><span class="badge badge-primary">{{ message }}</span></h3>
+        {% endif %}
+      {% endfor %}
+  {% endif %}
   {% block body %}
   {% endblock %}
 </main>
