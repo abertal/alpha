@@ -18,7 +18,7 @@
       <p>{{ person.birthday|default:_("Sin fecha de nacimiento") }}</p>
      </div>
     {% empty %}
-     <p>{% trans 'No hay grupos' %}</p>
+     <p>{% trans 'No hay personas' %}</p>
     {% endfor %}
     {% include '../_pagination.html' %}
   {% endblock content %}
