@@ -131,6 +131,7 @@ class Project(models.Model):
     comment = models.TextField(
         verbose_name=_('Observaciones'), blank=True, default='')
 
+
 class Group(models.Model):
 
     class Meta:
@@ -142,7 +143,6 @@ class Group(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
-
 
 
 class Enrolment(models.Model):
