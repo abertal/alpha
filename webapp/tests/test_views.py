@@ -148,19 +148,27 @@ def test_person_views(logged_client, person, url):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
-    '/webapp/group/new/',
+    '/webapp/group/{pk}/edit/',
 ])
-def test_create_group(logged_client, url):
-    data = {'group_name': 'test_group'}
-    response = logged_client.post(url, data=data)
+def test_edit_group(logged_client, group_filter, url):
+    response = logged_client.post(url.format(pk=group_filter.id), {'group_name': 'group_name'})
     assert response.status_code == 302
 
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('url', [
-    '/webapp/group/{}/edit/',
+    '/webapp/recipient/{pk}/edit/',
 ])
-def test_edit_group(logged_client, group, url):
-    data = {'group_name': 'Example groups'}
-    response = logged_client.post(url.format(group.id), data=data)
+def test_edit_recipient(logged_client, recipient_filter, url):
+    response = logged_client.post(url.format(pk=recipient_filter.id), {'category': 'child'})
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/volunteer/{pk}/edit/',
+])
+def test_edit_volunteer(logged_client, volunteer_filter, url):
+    response = logged_client.post(url.format(pk=volunteer_filter.id),
+                                  {'lack_of_sexual_offenses_date_certificate': '23/03/2017'})
     assert response.status_code == 302
