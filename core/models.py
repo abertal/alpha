@@ -67,8 +67,27 @@ class Recipient(models.Model):
         ('child', _('Infantil')),
         ('juvenile', _('Juvenil')),
     ]
-    estudies = models.TextField(
-        verbose_name=_('Estudios'), blank=True, default='')
+    COURSES = [
+        ('4EI', _('4 Educacion Infantil')),
+        ('5EI', _('5 Educacion Infantil')),
+        ('6EI', _('6 Educacion Infantil')),
+        ('1EP', _('1 Educacion Primaria')),
+        ('2EP', _('2 Educacion Primaria')),
+        ('3EP', _('3 Educacion Primaria')),
+        ('4EP', _('4 Educacion Primaria')),
+        ('5EP', _('5 Educacion Primaria')),
+        ('6EP', _('6 Educacion Primaria')),
+        ('1ESO', _('1 Educación Secundaria Obligatoria')),
+        ('2ESO', _('2 Educación Secundaria Obligatoria')),
+        ('3ESO', _('3 Educación Secundaria Obligatoria')),
+        ('4ESO', _('4 Educación Secundaria Obligatoria')),
+        ('1BACH', _('1 Bachillerato')),
+        ('2BACH', _('2 Bachillerato')),
+        ('FP', _('Formación Profesional')),
+        ('CARRERA', _('Carrera Universitaria')),
+    ]
+
+    courses = models.CharField(_('Estudios'), blank=True, default='', choices=COURSES, max_length=32)
     sibling = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, null=True, default=None)
     authorize_photo = models.TextField(
