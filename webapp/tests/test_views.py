@@ -150,5 +150,5 @@ def test_person_views(logged_client, person, url):
     '/webapp/group/{pk}/edit/',
 ])
 def test_edit_group(logged_client, group_filter, url):
-    response = logged_client.post(url.format(pk=group_filter.id), {'group_name':'paco'})
+    response = logged_client.post(url.format(pk=group_filter.id), {'group_name':'groupname'})
     assert response.status_code == 302
