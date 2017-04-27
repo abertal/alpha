@@ -31,8 +31,7 @@ def test_create_recipient_form(person):
     form = forms.RecipientCreate(data)
     assert form.is_valid(), form.errors
     obj = form.save()
-    assert obj.person.name == 'Juan'
-    assert str(obj) == '{}'.format(obj.id)
+    assert str(obj) == '{} {}'.format(obj.person.name, obj.person.surname.upper())
 
 
 @pytest.mark.django_db
@@ -41,8 +40,7 @@ def test_create_custodian_form(person):
     form = forms.RecipientCreate(data)
     assert form.is_valid(), form.errors
     obj = form.save()
-    assert obj.person.name == 'Juan'
-    assert str(obj) == '{}'.format(obj.id)
+    assert str(obj) == '{} {}'.format(obj.person.name, obj.person.surname.upper())
 
 
 @pytest.mark.django_db

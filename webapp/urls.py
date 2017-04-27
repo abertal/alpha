@@ -18,6 +18,7 @@ person = [
 recipient = [
     url(r'^$', views.RecipientList.as_view(), name='recipient-list'),
     url(r'^(?P<pk>\d+)/$', views.RecipientDetail.as_view(), name='recipient-detail'),
+    url(r'^(?P<pk>\d+)/delete/$', views.RecipientDelete.as_view(), name='recipient-delete'),
     url(r'^(?P<pk>\d+)/edit/$', views.RecipientEdit.as_view(), name='recipient-edit'),
 ]
 
