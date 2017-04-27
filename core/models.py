@@ -113,7 +113,7 @@ class Volunteer(models.Model):
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '{} ({})'.format(self.id, self.person)
+        return '{} {}'.format(self.person.name.capitalize(), self.person.surname.upper())
 
 
 class Custodian(models.Model):
