@@ -161,7 +161,7 @@ class Group(models.Model):
     def __str__(self):
         return '{}'.format(self.id)
 
-      
+
 class Event(models.Model):
 
     class Meta:
