@@ -1,5 +1,10 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.core.urlresolvers import reverse_lazy
+from django.db.models import ProtectedError
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, reverse
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
@@ -39,6 +44,8 @@ class MenuBar:
             Option(_('Detalle socio'), None, menu=self),
             Option(_('Grupos'), 'group-list', menu=self),
             Option(_('Detalle grupo'), None, menu=self),
+            Option(_('Actividades'), 'event-list', menu=self),
+            Option(_('Detalle actividades'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
             Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
         ]
@@ -128,20 +135,22 @@ class PersonDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle persona')
 
 
-class PersonCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.CreateView):
     model = models.Person
     form_class = forms.CreatePerson
     template_name = 'webapp/person/create.html'
+    success_message = ugettext_lazy('Persona creada correctamente')
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
 
 
-class PersonEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Person
     form_class = forms.EditPerson
     template_name = 'webapp/person/edit.html'
     name = ugettext_lazy('Detalle persona')
+    success_message = ugettext_lazy('Persona editada correctamente')
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
@@ -151,15 +160,28 @@ class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     model = models.Person
     template_name = 'webapp/person/delete.html'
     name = ugettext_lazy('Eliminar persona')
+    success_url = reverse_lazy('person-list')
+    success_message = ugettext_lazy('Persona eliminada correctamente')
 
-    def get_success_url(self):
-        return reverse('person-list')
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.success(self.request, self.success_message)
+        except ProtectedError:
+            self.success_message = ugettext_lazy('Persona no eliminada')
+            messages.error(self.request, self.success_message)
+        response = HttpResponseRedirect(success_url)
+        return response
 
 
-class RecipientCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+class RecipientCreate(LoginRequiredMixin, SuccessMessageMixin,
+                      MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Recipient
     form_class = forms.RecipientCreate
     template_name = 'webapp/recipient/create.html'
+    success_message = ugettext_lazy('Destinatario creado correctamente')
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -171,11 +193,12 @@ class RecipientDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle destinatario')
 
 
-class RecipientEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class RecipientEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Recipient
     form_class = forms.RecipientEdit
     template_name = 'webapp/recipient/edit.html'
     name = ugettext_lazy('Detalle destinatario')
+    success_message = ugettext_lazy('Destinatario editado correctamente')
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -192,26 +215,29 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
         return models.Recipient.objects.select_related('person').order_by('-id')
 
 
-class VolunteerCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+class VolunteerCreate(LoginRequiredMixin, SuccessMessageMixin,
+                      MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer
     form_class = forms.VolunteerCreate
     template_name = 'webapp/volunteer/create.html'
+    success_message = ugettext_lazy('Voluntario creado correctamente')
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
 
 
-class VolunteerEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class VolunteerEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Volunteer
     form_class = forms.VolunteerEdit
     template_name = 'webapp/volunteer/edit.html'
     name = ugettext_lazy('Detalle voluntario')
+    success_message = ugettext_lazy('Voluntario editado correctamente')
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
 
 
-class VolunteerDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+class VolunteerDetail(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
     model = models.Volunteer
     template_name = 'webapp/volunteer/detail.html'
     name = ugettext_lazy('Detalle voluntario')
@@ -237,7 +263,7 @@ class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle custodian')
 
 
-class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class CustodianEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Custodian
     form_class = forms.CustodianEdit
     template_name = 'webapp/custodian/edit.html'
@@ -247,27 +273,65 @@ class CustodianEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('custodian-detail', args=[self.object.id])
 
 
-class MemberCreate(LoginRequiredMixin, MenuMixin, FromPersonMixin, generic.CreateView):
+class EventEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+    model = models.Event
+    form_class = forms.EventEdit
+    template_name = 'webapp/event/edit.html'
+    name = ugettext_lazy('Detalle actividad')
+
+    def get_success_url(self):
+        return reverse('event-edit', args=[self.object.id])
+
+
+class EventCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Event
+    form_class = forms.EventCreate
+    template_name = 'webapp/event/create.html'
+    name = ugettext_lazy('Nueva actividad')
+
+
+class EventList(LoginRequiredMixin, MenuMixin, FilterView):
+    template_name = 'webapp/event/list.html'
+    name = ugettext_lazy('Actividades')
+    filterset_class = filters.EventFilter
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Event.objects.all()
+
+
+class EventDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+    model = models.Event
+    template_name = 'webapp/event/detail.html'
+    name = ugettext_lazy('Detalle actividad')
+
+    def get_success_url(self):
+        return reverse('event-detail', args=[self.object.id])
+
+
+class MemberCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Member
     form_class = forms.MemberCreate
     template_name = 'webapp/member/create.html'
     name = ugettext_lazy('Nuevo socio')
+    success_message = ugettext_lazy('Socio creado correctamente')
 
     def get_success_url(self):
         return reverse('member-detail', args=[self.object.id])
 
 
-class MemberDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
+class MemberDetail(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
     model = models.Member
     template_name = 'webapp/member/detail.html'
     name = ugettext_lazy('Detalle socio')
 
 
-class MemberEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class MemberEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Member
     form_class = forms.MemberEdit
     template_name = 'webapp/member/edit.html'
     name = ugettext_lazy('Detalle socio')
+    success_message = ugettext_lazy('Socio editado correctamente')
 
     def get_success_url(self):
         return reverse('member-detail', args=[self.object.id])
@@ -298,7 +362,7 @@ class MembershipDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle socio')
 
 
-class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class MembershipEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Membership
     form_class = forms.MembershipEdit
     template_name = 'webapp/membership/edit.html'
@@ -308,7 +372,7 @@ class MembershipEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
         return reverse('membership-detail', args=[self.object.id])
 
 
-class MembershipCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class MembershipCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.CreateView):
     model = models.Membership
     form_class = forms.MembershipCreate
     template_name = 'webapp/membership/create.html'
@@ -345,21 +409,23 @@ class GroupDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     name = ugettext_lazy('Detalle grupo')
 
 
-class GroupEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
+class GroupEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
     model = models.Group
     form_class = forms.GroupEdit
     template_name = 'webapp/group/edit.html'
     name = ugettext_lazy('Detalle grupo')
+    success_message = ugettext_lazy('Grupo editado correctamente')
 
     def get_success_url(self):
         return reverse('group-detail', args=[self.object.id])
 
 
-class GroupCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+class GroupCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.CreateView):
     model = models.Group
     form_class = forms.GroupCreate
     template_name = 'webapp/group/create.html'
     name = ugettext_lazy('Nuevo grupo')
+    success_message = ugettext_lazy('Grupo creado correctamente')
 
     def get_success_url(self):
         return reverse('group-detail', args=[self.object.id])

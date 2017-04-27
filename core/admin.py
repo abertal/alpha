@@ -63,6 +63,13 @@ class Group(admin.ModelAdmin):
     list_display = ('id', 'group_name')
 
 
+@admin.register(models.Event)
+class Event(admin.ModelAdmin):
+    search_fields = ['event_name']
+
+    list_display = ('id', 'event_name')
+
+
 @admin.register(models.Enrolment)
 class Enrolment(admin.ModelAdmin):
     search_fields = ['group', 'person']

@@ -57,6 +57,13 @@ group = [
     url(r'^new/$', views.GroupCreate.as_view(), name='group-create'),
 ]
 
+event = [
+    url(r'^$', views.EventList.as_view(), name='event-list'),
+    url(r'^(?P<pk>\d+)/$', views.EventDetail.as_view(), name='event-detail'),
+    url(r'^(?P<pk>\d+)/edit/$', views.EventEdit.as_view(), name='event-edit'),
+    url(r'^new/$', views.EventCreate.as_view(), name='event-create'),
+]
+
 urlpatterns = [
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),
@@ -66,6 +73,7 @@ urlpatterns = [
     url(r'^membership/', include(membership)),
     url(r'^group/', include(group)),
     url(r'^project/', include(project)),
+    url(r'^event/', include(event)),
 
     url(r'^$', RedirectView.as_view(url='login/')),
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
