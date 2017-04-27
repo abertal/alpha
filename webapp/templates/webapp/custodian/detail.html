@@ -4,6 +4,8 @@
 {% block body %}
 <h3>{{ custodian.person.name }} {{ custodian.person.surname|upper }}</h3>
 <dl>
+  <dt>{% trans 'Categoria' %}</dt>
+  <dd>{{ custodian.category }}</dd>
   <dt>{% trans 'Contacto de emergencia' %}</dt>
   <dd>{{ custodian.emergency_contact }}</dd>
   <dt>{% trans 'Autorización' %}</dt>
