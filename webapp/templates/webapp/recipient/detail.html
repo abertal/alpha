@@ -7,7 +7,7 @@
   <dt>{% trans 'Tipo' %}</dt>
   <dd>{{ recipient.get_category_display|default:_("Sin especificar") }}</dd>
   <dt>Curso</dt>
-  <dd>{{ recipient.courses|default:_('Sin especificar') }}</dd>
+  <dd>{{ recipient.get_courses_display|default:_('Sin especificar') }}</dd>
   <dt>{% trans 'Responsable'%}</dt>
    <dd>
     {% for custodian in recipient.custodian_set.all %}
