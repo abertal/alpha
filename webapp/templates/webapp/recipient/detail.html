@@ -13,6 +13,13 @@
   {% endfor %}
   </dd>
 </dl>
+{% for group in object_list %}
+     <div>
+      <a href="{% url 'person-detail' pk=person.pk %}" class="btn btn-secondary">{% trans 'Dar de alta en grupo' %}{{ group.group_name }}</a>
+     </div>
+    {% empty %}
+     <p>{% trans 'No hay grupos' %}</p>
+    {% endfor %}
 <a href="{% url 'recipient-edit' recipient.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
 <a href="{% url 'person-detail' recipient.person.id %}" class="btn btn-link">{% trans 'Ir a la ficha personal' %}</a>
 {% endblock %}
