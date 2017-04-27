@@ -263,8 +263,6 @@ class VolunteerDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     name = ugettext_lazy('Eliminar voluntario')
     success_url = reverse_lazy('volunteer-list')
 
-    def get_success_url(self):
-        return reverse('volunteer-list')
 
 
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
