@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import django_filters
 
-from core.models import Group, Event
+from core.models import Event, Group
 
 
 class PersonFilter(django_filters.FilterSet):
