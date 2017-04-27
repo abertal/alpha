@@ -58,7 +58,7 @@ class Group(admin.ModelAdmin):
 
 @admin.register(models.Event)
 class Event(admin.ModelAdmin):
-    search_fields =['event_name']
+    search_fields = ['event_name']
 
     list_display = ('id', 'event_name')
 
