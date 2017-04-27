@@ -24,6 +24,7 @@ recipient = [
 volunteer = [
     url(r'^$', views.VolunteerList.as_view(), name='volunteer-list'),
     url(r'^(?P<pk>\d+)/$', views.VolunteerDetail.as_view(), name='volunteer-detail'),
+    url(r'^(?P<pk>\d+)/delete/$', views.VolunteerDelete.as_view(), name='volunteer-delete'),
     url(r'^(?P<pk>\d+)/edit/$', views.VolunteerEdit.as_view(), name='volunteer-edit'),
 ]
 
