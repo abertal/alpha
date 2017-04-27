@@ -5,4 +5,17 @@
 <h3>{{ group.group_name }}</h3>
 <a href="{% url 'group-edit' group.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
 <a href="{% url 'group-list' %}" class="btn btn-link">{% trans 'Volver' %}</a>
+<br>
+ <dl>
+   <dt>Destinatarios de {{ group.group_name|upper }}:</dt>
+ 
+    {% for enrolment in group.enrolment_set.all %}    
+     <p>
+       <a href="{% url 'person-detail' enrolment.person.id %}" class="card-link">{{ enrolment.person.name }}&thinsp;{{ enrolment.person.surname }}</a>
+     </p>      
+     {% empty %}
+     <p>No hay usuarios asociados a este grupo</p>
+    {% endfor %}
+    
+ </dl>
 {% endblock %}
