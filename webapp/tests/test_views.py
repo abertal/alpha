@@ -181,3 +181,12 @@ def test_edit_volunteer(logged_client, volunteer_filter, url):
 def test_detail_volunteer(logged_client, volunteer_filter, url):
     response = logged_client.get(url.format(pk=volunteer_filter.id))
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('url', [
+    '/webapp/volunteer/{pk}/delete/',
+])
+def test_delete_volunteer(logged_client, volunteer_filter, url):
+    response = logged_client.post(url.format(pk=volunteer_filter.id))
+    assert response.status_code == 302
