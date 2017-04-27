@@ -73,6 +73,28 @@ class VolunteerEdit(forms.ModelForm):
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
 
+class EventCreate(forms.ModelForm):
+    class Meta:
+        model = models.Event
+        fields = ('event_name', 'event_start', 'event_end')
+        widgets = {
+            'event_name': forms.TextInput(),
+            'event_start': forms.DateField(),
+            'event_end': forms.DateField(),
+        }
+
+
+class EventEdit(forms.ModelForm):
+    class Meta:
+        model = models.Event
+        fields = ('event_name', 'event_start', 'event_end')
+        widgets = {
+            'event_name': forms.TextInput(),
+            'event_start': forms.DateField(),
+            'event_end': forms.DateField(),
+        }
+
+
 class MemberCreate(forms.ModelForm):
     membership_fee = forms.DecimalField(label=_('Cuota de membresía'))
 
