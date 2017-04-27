@@ -4,7 +4,9 @@
 {% block body %}
 <div class="row"><div class="col">
   <p>Tipo: <b>{{ membership.type_of_membership }}</b></p>
-  <p>Estado: <b>{{ membership.payment_status }}</b></p>
+  <p>Cuota: <b>{{ membership.membership_fee }}</b></p>
+  <p>Estado del pago: <b>{{ membership.payment_status }}</b></p>  
+  <p>Estado: <b>{{ membership.membership_status }}</b></p>
 </div></div>
 
 <div class="row"><div class="col">
