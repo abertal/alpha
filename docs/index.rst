@@ -34,4 +34,6 @@ Una vez editado el archivo .po es necesario hacer la compilación del archivo bi
 
 .. code::
 
-    $python manage.py compilemessages
+    $ (cd locale && ../manage.py compilemessages)
+
+Hacemos cd a locale en caso de tener un entorno virtual para no tener que compilar mensajes innecesarios.
