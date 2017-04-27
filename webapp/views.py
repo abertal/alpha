@@ -215,6 +215,13 @@ class RecipientList(LoginRequiredMixin, MenuMixin, FilterView):
         return models.Recipient.objects.select_related('person').order_by('-id')
 
 
+class RecipientDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
+    model = models.Recipient
+    template_name = 'webapp/recipient/delete.html'
+    name = ugettext_lazy('Eliminar destinatario')
+    success_url = reverse_lazy('recipient-list')
+
+
 class VolunteerCreate(LoginRequiredMixin, SuccessMessageMixin,
                       MenuMixin, FromPersonMixin, generic.CreateView):
     model = models.Volunteer

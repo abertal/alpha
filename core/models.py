@@ -96,7 +96,7 @@ class Recipient(models.Model):
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return '{} {}'.format(self.person.name, self.person.surname.upper())
 
 
 class Volunteer(models.Model):
