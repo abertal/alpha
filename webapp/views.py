@@ -257,6 +257,15 @@ class VolunteerList(LoginRequiredMixin, MenuMixin, FilterView):
         return models.Volunteer.objects.select_related('person').order_by('-id')
 
 
+class VolunteerDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
+    model = models.Volunteer
+    template_name = 'webapp/volunteer/delete.html'
+    name = ugettext_lazy('Eliminar voluntario')
+
+    def get_success_url(self):
+        return reverse('volunteer-list')
+
+
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
     template_name = 'webapp/custodian/detail.html'
