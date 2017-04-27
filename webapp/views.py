@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import ProtectedError
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, reverse
 from django.utils.translation import ugettext as _
@@ -162,18 +163,15 @@ class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     success_message = ugettext_lazy('Persona eliminada correctamente')
 
     def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
         try:
-            self.object = self.get_object()
-            success_url = self.get_success_url()
             self.object.delete()
-            response = HttpResponseRedirect(success_url)
             messages.success(self.request, self.success_message)
-        except Exception:
-            self.object = self.get_object()
-            success_url = self.get_success_url()
+        except ProtectedError:
             self.success_message = ugettext_lazy('Persona no eliminada')
-            response = HttpResponseRedirect(success_url)
             messages.error(self.request, self.success_message)
+        response = HttpResponseRedirect(success_url)
         return response
 
 
