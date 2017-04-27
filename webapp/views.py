@@ -264,7 +264,6 @@ class VolunteerDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     success_url = reverse_lazy('volunteer-list')
 
 
-
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
     template_name = 'webapp/custodian/detail.html'
