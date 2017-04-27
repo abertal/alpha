@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Abertal-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 14:45+0200\n"
-"PO-Revision-Date: 2017-04-26 14:49+0200\n"
+"POT-Creation-Date: 2017-04-27 09:23+0200\n"
+"PO-Revision-Date: 2017-04-27 09:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: Initios\n"
 "Language: gl\n"
@@ -46,7 +46,7 @@ msgstr "Apelidos"
 msgid "Fecha de nacimiento"
 msgstr "Data de nacemento"
 
-#: core/models.py:20 core/models.py:214
+#: core/models.py:20 core/models.py:229
 msgid "DNI/NIE"
 msgstr "DNI/NIE"
 
@@ -54,7 +54,7 @@ msgstr "DNI/NIE"
 msgid "Fotocopia DNI/NIE"
 msgstr "Fotocopia DNI/NIE"
 
-#: core/models.py:24 core/models.py:215
+#: core/models.py:24 core/models.py:230
 #: webapp/templates/webapp/membership/detail.html:39
 #: webapp/templates/webapp/person/detail.html:13
 msgid "Tarjeta sanitaria"
@@ -66,7 +66,7 @@ msgstr "Fotocopia Seguridade Social"
 
 #: core/models.py:28
 msgid "Código postal"
-msgstr "Código único"
+msgstr "Código postal"
 
 #: core/models.py:30 webapp/forms.py:147
 #: webapp/templates/webapp/person/detail.html:21
@@ -101,11 +101,11 @@ msgstr "Teléfono móbil"
 msgid "Correo electrónico"
 msgstr "Enderezo electrónico"
 
-#: core/models.py:43 core/models.py:217
+#: core/models.py:43 core/models.py:232
 msgid "LOPD"
 msgstr "LOPD"
 
-#: core/models.py:45 core/models.py:112 core/models.py:162
+#: core/models.py:45 core/models.py:112 core/models.py:162 core/models.py:177
 #: webapp/templates/webapp/person/detail.html:28
 msgid "Observaciones"
 msgstr "Observacións"
@@ -118,11 +118,11 @@ msgstr "Observacións médicas"
 msgid "Destinatario"
 msgstr "Destinatario"
 
-#: core/models.py:67 core/models.py:205
+#: core/models.py:67 core/models.py:220
 msgid "Infantil"
 msgstr "Infantil"
 
-#: core/models.py:68 core/models.py:206
+#: core/models.py:68 core/models.py:221
 msgid "Juvenil"
 msgstr "Xuvenil"
 
@@ -204,14 +204,14 @@ msgstr "Irmáns"
 
 #: core/models.py:94
 msgid "Autoriza foto"
-msgstr "Autorización"
+msgstr "Autoriza foto"
 
 #: core/models.py:95 core/models.py:131
 #: webapp/templates/webapp/recipient/detail.html:7
 msgid "Tipo"
 msgstr "Tipo"
 
-#: core/models.py:105 core/models.py:207
+#: core/models.py:105 core/models.py:222
 msgid "Voluntario"
 msgstr "Voluntario"
 
@@ -255,71 +255,83 @@ msgstr "Proxecto"
 msgid "Nombre proyecto"
 msgstr "Nome proxecto"
 
-#: core/models.py:158
+#: core/models.py:158 core/models.py:173
 msgid "Fecha inicio"
 msgstr "Data de inicio"
 
 #: core/models.py:168
+msgid "Actividades"
+msgstr "Actividades"
+
+#: core/models.py:171
+msgid "Nombre actividad"
+msgstr "Nome actividade"
+
+#: core/models.py:175
+msgid "Fecha fin"
+msgstr "Data fin"
+
+#: core/models.py:183
 msgid "Inscripción"
 msgstr "Inscripción"
 
-#: core/models.py:169
+#: core/models.py:184
 msgid "Inscripciones"
 msgstr "Inscripcións"
 
-#: core/models.py:176
+#: core/models.py:191
 msgid "Fecha de inscripción"
 msgstr "Data de inscripción"
 
-#: core/models.py:182
+#: core/models.py:197
 msgid "Membresía"
 msgstr "Membresía"
 
-#: core/models.py:186
+#: core/models.py:201
 msgid "Modalidad"
 msgstr "Modalidade"
 
-#: core/models.py:188
+#: core/models.py:203
 msgid "Estado del pago"
 msgstr "Estado de pagamento"
 
-#: core/models.py:191
+#: core/models.py:206
 msgid "Cuota de membresia"
 msgstr "Cuota de membresía"
 
-#: core/models.py:196
+#: core/models.py:211
 msgid "Estado de socio"
 msgstr "Estado de socio"
 
-#: core/models.py:202 webapp/templates/webapp/membership/list.html:13
+#: core/models.py:217 webapp/templates/webapp/membership/list.html:13
 msgid "Socio"
 msgstr "Socio"
 
-#: core/models.py:208
+#: core/models.py:223
 msgid "Colaborador"
 msgstr "Colaborador"
 
-#: core/models.py:209
+#: core/models.py:224
 msgid "Familiar"
 msgstr "Familiar"
 
-#: core/models.py:211
+#: core/models.py:226
 msgid "Tipo de socio"
 msgstr "Tipo de socio"
 
-#: core/models.py:216 webapp/templates/webapp/member/detail.html:13
+#: core/models.py:231 webapp/templates/webapp/member/detail.html:13
 msgid "Foto"
 msgstr "Foto"
 
-#: core/models.py:218
+#: core/models.py:233
 msgid "Estado del carnet"
 msgstr "Estado do carné"
 
-#: core/models.py:219
+#: core/models.py:234
 msgid "Beca"
 msgstr "Beca"
 
-#: core/models.py:220
+#: core/models.py:235
 msgid "Fotografía"
 msgstr "Fotografía"
 
@@ -501,7 +513,7 @@ msgstr "Confirmar"
 
 #: webapp/templates/webapp/person/delete.html:13
 msgid "Volver sin eliminar"
-msgstr "Voltar sen gardar"
+msgstr "Voltar sen eliminar"
 
 #: webapp/templates/webapp/person/detail.html:30
 msgid "Es responsable de"
@@ -570,7 +582,7 @@ msgstr "Sen certificado"
 
 #: webapp/templates/webapp/volunteer/list.html:20
 msgid "No hay voluntarios..."
-msgstr "Non hay voluntarios..."
+msgstr "Non hai voluntarios..."
 
 #: webapp/views.py:35 webapp/views.py:120
 msgid "Personas"
