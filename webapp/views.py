@@ -151,7 +151,6 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Upd
     success_message = ugettext_lazy('Persona editada correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('person-detail', args=[self.object.id])
 
 
