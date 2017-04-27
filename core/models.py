@@ -165,7 +165,7 @@ class Project(models.Model):
 class Event(models.Model):
 
     class Meta:
-        verbose_name = _('Actividad')
+        verbose_name = _('Actividades')
 
     event_name = models.TextField(
         verbose_name=_('Nombre actividad'))
