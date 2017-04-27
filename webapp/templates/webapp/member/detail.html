@@ -6,8 +6,16 @@
 <dl>
   <dt>Tipo</dt>
   <dd>{{ member.get_category_display|default:_('Sin especificar') }}</dd>
+  <dt>DNI Estado</dt>
+  <dd>{{ member.id_card_status|default:_('Sin especificar') }}</dd>
+  <dt>Tarjeta Sanitaria Estado</dt>
+  <dd>{{ member.ss_card_status|default:_('Sin especificar') }}</dd>
+  <dt>LOPD Estado</dt>
+  <dd>{{ member.dpa_status|default:_('Sin especificar') }}</dd>
   <dt>Foto Estado</dt>
   <dd>{{ member.photo_status|default:_('Sin especificar') }}</dd>
+  <dt>Beca</dt>
+  <dd>{{ member.bursary|default:_('Sin especificar') }}</dd>
   <dt>{% trans 'Carnet' %}</dt>
   <dd>{{ member.card_status|default:_('Sin especificar') }}</dd>
   <dt>{% trans 'Foto' %}</dt>
