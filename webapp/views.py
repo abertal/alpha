@@ -182,7 +182,6 @@ class RecipientCreate(LoginRequiredMixin, SuccessMessageMixin,
     success_message = ugettext_lazy('Destinatario creado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('recipient-detail', args=[self.object.id])
 
 
@@ -197,11 +196,9 @@ class RecipientEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.
     form_class = forms.RecipientEdit
     template_name = 'webapp/recipient/edit.html'
     name = ugettext_lazy('Detalle destinatario')
-
     success_message = ugettext_lazy('Destinatario editado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('recipient-detail', args=[self.object.id])
 
 
@@ -224,7 +221,6 @@ class VolunteerCreate(LoginRequiredMixin, SuccessMessageMixin,
     success_message = ugettext_lazy('Voluntario creado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('volunteer-detail', args=[self.object.id])
 
 
@@ -236,7 +232,6 @@ class VolunteerEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.
     success_message = ugettext_lazy('Voluntario editado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('volunteer-detail', args=[self.object.id])
 
 
@@ -284,7 +279,6 @@ class MemberCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, FromPerso
     success_message = ugettext_lazy('Socio creado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('member-detail', args=[self.object.id])
 
 
@@ -302,7 +296,6 @@ class MemberEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Upd
     success_message = ugettext_lazy('Socio editado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('member-detail', args=[self.object.id])
 
 
@@ -386,7 +379,6 @@ class GroupEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Upda
     success_message = ugettext_lazy('Grupo editado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('group-detail', args=[self.object.id])
 
 
@@ -398,5 +390,4 @@ class GroupCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Cr
     success_message = ugettext_lazy('Grupo creado correctamente')
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)
         return reverse('group-detail', args=[self.object.id])
