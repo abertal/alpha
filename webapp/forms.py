@@ -118,7 +118,15 @@ class MemberEdit(forms.ModelForm):
 
     class Meta:
         model = models.Member
-        fields = ('category', 'id_card_status', 'ss_card_status', 'dpa_status', 'photo_status', 'card_status', 'bursary', 'photo')
+        fields = (
+            'category',
+            'id_card_status',
+            'ss_card_status',
+            'dpa_status',
+            'photo_status',
+            'card_status',
+            'bursary',
+            'photo')
 
 
 class MembershipCreate(forms.ModelForm):
