@@ -177,6 +177,8 @@ class ProjectCreate(forms.ModelForm):
         fields = ('project_name',)
         widgets = {
             'project_name': forms.TextInput(),
+            'date_start': forms.DateInput(),
+            'date_end': forms.DateInput(),
         }
 
 
