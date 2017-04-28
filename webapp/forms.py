@@ -70,7 +70,7 @@ class VolunteerCreate(forms.ModelForm):
 class VolunteerEdit(forms.ModelForm):
     class Meta:
         model = models.Volunteer
-        fields = 'lack_of_sexual_offenses_date_certificate',
+        fields = 'lack_of_sexual_offenses_date_certificate', 'comment',
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
 
@@ -88,7 +88,7 @@ class EventCreate(forms.ModelForm):
 class EventEdit(forms.ModelForm):
     class Meta:
         model = models.Event
-        fields = ('event_name', 'event_start', 'event_end')
+        fields = ('event_name', 'event_start', 'event_end', 'comment')
         widgets = {
             'event_name': forms.TextInput(),
             'event_start': forms.DateField(),
@@ -118,13 +118,13 @@ class MemberEdit(forms.ModelForm):
 
     class Meta:
         model = models.Member
-        fields = ('photo_status', 'card_status', 'photo')
+        fields = ('category', 'id_card_status', 'ss_card_status', 'dpa_status', 'photo_status', 'card_status', 'bursary', 'photo')
 
 
 class MembershipCreate(forms.ModelForm):
     class Meta:
         model = models.Membership
-        fields = 'payment_status',
+        fields = 'type_of_membership', 'payment_status', 'membership_fee', 'membership_status',
 
         widgets = {
             'payment_status': forms.HiddenInput(),
