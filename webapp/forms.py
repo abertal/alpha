@@ -24,7 +24,7 @@ class EditPerson(forms.ModelForm):
             'name', 'surname', 'birthday',
             'id_number', 'ss_number',
             'phone_number', 'mobile_number', 'email',
-            'address_street', 'address_locality', 'address_region', 'address_country',
+            'address_street', 'address_locality', 'postal_code', 'address_region', 'address_country',
             'health_warnings', 'comment',
         )
         widgets = {
@@ -35,6 +35,7 @@ class EditPerson(forms.ModelForm):
             'phone_number': forms.TextInput(),
             'mobile_number': forms.TextInput(),
             'address_locality': forms.TextInput(),
+            'postal_code': forms.TextInput(),
             'address_region': forms.TextInput(),
             'address_country': forms.TextInput(),
         }
@@ -53,7 +54,7 @@ class RecipientCreate(forms.ModelForm):
 class RecipientEdit(forms.ModelForm):
     class Meta:
         model = models.Recipient
-        fields = 'category', 'courses'
+        fields = 'category', 'courses', 'sibling',
 
 
 class VolunteerCreate(forms.ModelForm):
