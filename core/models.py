@@ -165,7 +165,7 @@ class Group(models.Model):
 class Event(models.Model):
 
     class Meta:
-        verbose_name = _('Actividades')
+        verbose_name = _('Actividad')
 
     event_name = models.TextField(
         verbose_name=_('Nombre actividad'))
