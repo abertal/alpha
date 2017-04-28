@@ -175,7 +175,12 @@ class ProjectCreate(forms.ModelForm):
 class ProjectEdit(forms.ModelForm):
     class Meta:
         model = models.Project
-        fields = ('project_name',)
+        fields = ('project_name', 'date_start', 'date_end', 'comment',)
+        widgets = {
+            'project_name': forms.TextInput(),
+            'date_start': forms.DateInput(),
+            'date_end': forms.DateInput(),
+        }
 
 
 class NewIndividualMember(forms.Form):
