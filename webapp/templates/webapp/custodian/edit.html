@@ -10,7 +10,7 @@
   <dd>{{ custodian.authorized_signature }}</dd>
   <dt>{% trans 'Contacto de Emergencia' %}</dt>
   <dd>{{ custodian.emergency_contact }}</dd>
-  <dt>{% trans 'Categoria' %}</dt>
+  <dt>{% trans 'Categoría' %}</dt>
   <dd>{{ custodian.get_category_display }}</dd>
 </dl>
 <form class="custom-form element" action="{% url 'custodian-edit' custodian.id %}" method="post">
