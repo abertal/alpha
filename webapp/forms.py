@@ -124,7 +124,7 @@ class MemberEdit(forms.ModelForm):
 class MembershipCreate(forms.ModelForm):
     class Meta:
         model = models.Membership
-        fields = 'type_of_membership', 'payment_status', 'membership_fee', 'membership_status',
+        fields = 'payment_status',
 
         widgets = {
             'payment_status': forms.HiddenInput(),
