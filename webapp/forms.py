@@ -174,7 +174,7 @@ class GroupEdit(forms.ModelForm):
 class ProjectCreate(forms.ModelForm):
     class Meta:
         model = models.Project
-        fields = ('project_name',)
+        fields = ('project_name', 'date_start', 'date_end',)
         widgets = {
             'project_name': forms.TextInput(),
             'date_start': forms.DateInput(),
