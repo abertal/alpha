@@ -80,8 +80,8 @@ class EventCreate(forms.ModelForm):
         fields = ('event_name', 'event_start', 'event_end')
         widgets = {
             'event_name': forms.TextInput(),
-            'event_start': forms.DateField(),
-            'event_end': forms.DateField(),
+            'event_start': forms.DateInput(),
+            'event_end': forms.DateInput(),
         }
 
 
@@ -91,8 +91,8 @@ class EventEdit(forms.ModelForm):
         fields = ('event_name', 'event_start', 'event_end', 'comment')
         widgets = {
             'event_name': forms.TextInput(),
-            'event_start': forms.DateField(),
-            'event_end': forms.DateField(),
+            'event_start': forms.DateInput(),
+            'event_end': forms.DateInput(),
         }
 
 
