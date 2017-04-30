@@ -305,6 +305,9 @@ class EventCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
     template_name = 'webapp/event/create.html'
     name = ugettext_lazy('Nueva actividad')
 
+    def get_success_url(self):
+        return reverse('event-edit', args=[self.object.id])
+
 
 class EventList(LoginRequiredMixin, MenuMixin, FilterView):
     template_name = 'webapp/event/list.html'
