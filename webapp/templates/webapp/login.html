@@ -16,7 +16,8 @@
           <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="Aceptar"value="{{ next }}" />
+    <input type="submit" value="Aceptar" />
+    <input type="hidden" name="next" value="{{ next }}" />
     {% if form.errors %}
     <p>{% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}</p>
     {% endif %}
