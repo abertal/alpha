@@ -64,7 +64,7 @@ class Login(LoginView):
     redirect_authenticated_user = 'home'
 
 
-class LogOut(LogoutView):
+class Logout(LogoutView):
     pass
 
 

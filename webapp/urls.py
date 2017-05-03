@@ -63,7 +63,7 @@ urlpatterns = [
     url(r'^missing_doc/$', views.missing_doc, name='missing_doc'),
 
     url(r'^login/$', views.Login.as_view(), name='login'),
-    url(r'^logout/$', views.LogOut.as_view(), name='logout'),
+    url(r'^logout/$', views.Logout.as_view(), name='logout'),
     url(r'^home/$', views.Home.as_view(), name='home'),
     url(r'^basicformnewperson/$', views.NewIndividualMember.as_view(), name='basicformnewperson'),
     url(r'^basicformnewfamily/$', views.NewFamilyMember.as_view(), name='basicformnewfamily'),
