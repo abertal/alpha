@@ -186,7 +186,7 @@ tests simplmente hay que ejecutar el comando `pytest`.
 Al igual que con la comprobación anterior, no se puede subir código que no pase
 los tests.
 
-Por último también es preciso ejecutar la utilidad `isort` para que las importaciones de
+También es preciso ejecutar la utilidad `isort` para que las importaciones de
 paquetes y librerías estén ordenados y agrupados de manera homogénea en toda la aplicación.
 
 .. code::
@@ -194,6 +194,13 @@ paquetes y librerías estén ordenados y agrupados de manera homogénea en toda 
     (.venv) PS > isort
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
+
+Por último no por ello menos importante, es necesario ejecutar este comando para habilitar el servidor
+del validador de html para ejecutar el pytest.
+
+.. code::
+
+    java -cp vnu.jar nu.validator.servlet.Main 8888
 
 
 Guía de estilo: HTML
