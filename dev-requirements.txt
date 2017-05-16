@@ -3,3 +3,4 @@ isort
 pytest>=3
 pytest-cov
 pytest-django
+django-html-validator
