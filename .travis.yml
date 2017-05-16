@@ -5,13 +5,13 @@
 language: python
 python:
   - "3.5"
-
--jdk:
-  - oraclejdk8
+addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
 
 # Hay que instalar las dependencias
 install:
-  - jdk_switcher use oraclejdk8
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
   - ./install-vnu.sh
