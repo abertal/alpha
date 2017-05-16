@@ -1,7 +1,7 @@
 from decimal import Decimal as D
 
 from django.contrib.auth.models import User
-from django.test import Client
+from htmlvalidator.client import ValidatingClient
 
 import pytest
 from django_filters import Filter
@@ -37,7 +37,7 @@ def member():
 
 @pytest.fixture
 def logged_client():
-    c = Client()
+    c = ValidatingClient()
     user = User.objects.create_user(
         'user00', 'first.last@example.com', 'secret')
     c.force_login(user)
