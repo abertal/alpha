@@ -6,6 +6,9 @@ language: python
 python:
   - "3.5"
 
+-jdk:
+  - oraclejdk8
+
 # Hay que instalar las dependencias
 install:
   - jdk_switcher use oraclejdk8
