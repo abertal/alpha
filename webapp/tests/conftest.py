@@ -1,10 +1,10 @@
 from decimal import Decimal as D
 
 from django.contrib.auth.models import User
-from htmlvalidator.client import ValidatingClient
 
 import pytest
 from django_filters import Filter
+from htmlvalidator.client import ValidatingClient
 
 from core import models
 
