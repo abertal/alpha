@@ -172,6 +172,9 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'login'
 
+# validating-html
+# https://github.com/peterbe/django-html-validator#validating-html-in-tests
+
 HTMLVALIDATOR_ENABLED = True
 HTMLVALIDATOR_FAILFAST = True
 HTMLVALIDATOR_OUTPUT = 'stdout'
