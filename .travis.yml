@@ -16,7 +16,7 @@ install:
   - ./install-vnu.sh
 
 before_script:
-  - java -cp ./vnu.jar nu.validator.servlet.Main 8888 &
+  - ./run-vnu.sh
 
 # Estos son los tests que se ejecutarán
 script:
