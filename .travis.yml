@@ -15,10 +15,10 @@ install:
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
   - ./install-vnu.sh
-  - sleep 10
 
 before_script:
   - ./run-vnu.sh
+  - sleep 10
 
 # Estos son los tests que se ejecutarán
 script:
