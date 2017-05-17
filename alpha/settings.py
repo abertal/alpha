@@ -181,5 +181,5 @@ HTMLVALIDATOR_OUTPUT = 'stdout'
 
 HTMLVALIDATOR_VNU_URL = os.getenv(
     'HTMLVALIDATOR_VNU_URL',
-    'http://localhost:8888/',
+    'https://validator.w3.org/nu/',
 )

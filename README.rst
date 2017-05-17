@@ -185,24 +185,8 @@ tests simplmente hay que ejecutar el comando `pytest`.
 
 .. attention::
 
-    Algunas pruebas necesitan usar el validador **Nu Html Checker**. Por defecto, la aplicación busca
-    el validador en la dirección local http://localhost:8888/, pero también es posible usar el
-    servicio gratuito https://validator.w3.org/nu/ que está disponible con una conexión a Internet.
-
-    Para user el servicio público en **Windows**:
-
-    .. code::
-
-        (.venv) PS > set-variable -name HTMLVALIDATOR_VNU_URL -value "https://validator.w3.org/nu/"
-        (.venv) PS > pytest
-
-
-    En **Linux**:
-
-    .. code::
-
-        (.venv) $ HTMLVALIDATOR_VNU_URL=https://validator.w3.org/nu/ pytest
-
+    Algunas pruebas necesitan usar el validador **Nu Html Checker**. Por defecto, la aplicación usa
+    el validador público y gratuito https://validator.w3.org/nu/.
 
 También es preciso ejecutar la utilidad `isort` para que las importaciones de
 paquetes y librerías estén ordenados y agrupados de manera homogénea en toda la aplicación.
@@ -220,7 +204,7 @@ El validador de HTML Nu Html Checker (v.Nu) está disponible como un servicio en
 https://html5.validator.nu o https://validator.w3.org/nu.
 
 El código fuente está disponible en https://github.com/validator/validator y se puede Instalar
-y ejecutar en tu propio ordenador.
+y ejecutar en tu propio ordenador. Es necesario tener instalado en el ordenador la versión de de Java 8.
 
 Para ejecutarlo en local, hay que bajar la última versión del archivo `vnu.jar` y ejecutar:
 
@@ -228,7 +212,25 @@ Para ejecutarlo en local, hay que bajar la última versión del archivo `vnu.jar
 
     java -cp vnu.jar nu.validator.servlet.Main 8888
 
-Es necesario tener instalado en el ordenador la versión de de Java 8.
+Este comando ejecuta el servidor en la dirección local http://localhost:8888/.
+
+Para que la validación HTML de los tests se haga contra nuestro servidor local es necesario indicar
+la dirección local usando una variable de entorno/..
+
+En **Windows**:
+
+.. code::
+
+    (.venv) PS > set-variable -name HTMLVALIDATOR_VNU_URL -value "http://localhost:8888/"
+    (.venv) PS > pytest
+
+
+En **Linux**:
+
+.. code::
+
+    (.venv) $ HTMLVALIDATOR_VNU_URL=http://localhost:8888/ pytest
+
 
 Guía de estilo: HTML
 --------------------
