@@ -183,8 +183,26 @@ tests simplmente hay que ejecutar el comando `pytest`.
 
     (.venv) PS > pytest
 
-Al igual que con la comprobación anterior, no se puede subir código que no pase
-los tests.
+.. attention::
+
+    Algunas pruebas necesitan usar el validador **Nu Html Checker**. Por defecto, la aplicación busca
+    el validador en la dirección local http://localhost:8888/, pero también es posible usar el
+    servicio gratuito https://validator.w3.org/nu/ que está disponible con una conexión a Internet.
+
+    Para user el servicio público en **Windows**:
+
+    .. code::
+
+        (.venv) PS > set-variable -name HTMLVALIDATOR_VNU_URL -value "https://validator.w3.org/nu/"
+        (.venv) PS > pytest
+
+
+    En **Linux**:
+
+    .. code::
+
+        (.venv) $ HTMLVALIDATOR_VNU_URL=https://validator.w3.org/nu/ pytest
+
 
 También es preciso ejecutar la utilidad `isort` para que las importaciones de
 paquetes y librerías estén ordenados y agrupados de manera homogénea en toda la aplicación.
@@ -195,13 +213,22 @@ paquetes y librerías estén ordenados y agrupados de manera homogénea en toda 
 
 .. _PEP8: https://www.python.org/dev/peps/pep-0008/
 
-Por último no por ello menos importante, es necesario ejecutar este comando para habilitar el servidor
-del validador de html para ejecutar el pytest.
+Instalación de Nu Html Checker en local
+---------------------------------------
+
+El validador de HTML Nu Html Checker (v.Nu) está disponible como un servicio en https://checker.html5.org,
+https://html5.validator.nu o https://validator.w3.org/nu.
+
+El código fuente está disponible en https://github.com/validator/validator y se puede Instalar
+y ejecutar en tu propio ordenador.
+
+Para ejecutarlo en local, hay que bajar la última versión del archivo `vnu.jar` y ejecutar:
 
 .. code::
 
     java -cp vnu.jar nu.validator.servlet.Main 8888
 
+Es necesario tener instalado en el ordenador la versión de de Java 8.
 
 Guía de estilo: HTML
 --------------------
