@@ -171,3 +171,12 @@ INTERNAL_IPS = '127.0.0.1'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'login'
+
+# validating-html
+# https://github.com/peterbe/django-html-validator#validating-html-in-tests
+
+HTMLVALIDATOR_ENABLED = True
+HTMLVALIDATOR_FAILFAST = True
+HTMLVALIDATOR_OUTPUT = 'stdout'
+
+HTMLVALIDATOR_VNU_URL = 'http://localhost:8888/'

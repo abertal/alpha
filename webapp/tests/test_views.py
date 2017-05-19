@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
-from django.test import Client
+from htmlvalidator.client import ValidatingClient
 
 import pytest
 
@@ -99,7 +99,7 @@ def test_create_from_person(logged_client, person, url, data):
     '/webapp/login/',
 ])
 def test_views_post_and_redirect(url):
-    c = Client()
+    c = ValidatingClient()
     User.objects.create_user('user00', 'first.last@example.com', 'secret')
     response = c.post(url, {'username': 'user00', 'password': 'secret'})
     assert response.status_code == 302
@@ -110,7 +110,7 @@ def test_views_post_and_redirect(url):
     '/webapp/login/',
 ])
 def test_login_incorrect(url):
-    c = Client()
+    c = ValidatingClient()
     response = c.post(url, {'user': 'user00', 'password': 'secret1'})
     assert response.status_code == 200
 

@@ -98,6 +98,7 @@ class FromPersonMixin:
 
 class Home(LoginRequiredMixin, MenuMixin, generic.TemplateView):
     template_name = 'webapp/home.html'
+    name = ugettext_lazy('Página principal')
 
 
 class NewIndividualMember(LoginRequiredMixin, MenuMixin, generic.FormView):
@@ -229,6 +230,7 @@ class VolunteerCreate(LoginRequiredMixin, SuccessMessageMixin,
     model = models.Volunteer
     form_class = forms.VolunteerCreate
     template_name = 'webapp/volunteer/create.html'
+    name = ugettext_lazy('Crear voluntario')
     success_message = ugettext_lazy('Voluntario creado correctamente')
 
     def get_success_url(self):
