@@ -1,0 +1,27 @@
+django
+
+# for development
+tox
+git+https://github.com/deschler/django-modeltranslation#egg=django-modeltranslation
+django-debug-toolbar
+virtualenvwrapper
+coverage
+sphinx
+sphinx_rtd_theme
+git+https://github.com/pashinin/fabric@6783d2f7ad7a449c97cd1ee0df9a2dbc29422fce#egg=fabric
+pytz
+ipython
+celery
+django-rq
+django-suit
+
+# dependencies
+lxml
+git+git://github.com/mtrgroup/django-mtr-utils#egg=django-mtr-utils
+openpyxl<=2.1
+xlwt-future
+unicodecsv
+xlrd
+ezodf
+djangorestframework
+pycrypto

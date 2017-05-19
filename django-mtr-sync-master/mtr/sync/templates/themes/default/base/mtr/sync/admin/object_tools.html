@@ -1,0 +1,18 @@
+{% load prefixed_i18n mtr_utils %}
+
+{% set_i18n_prefix 'mtr.sync' %}
+
+{% if admin.show_quick_settings_menu and False %}
+<select name="quick_settings">
+{% for st in mtr.sync.settings %}
+<option value="{{ st.id }}">{{ st }}</option>
+{% endfor %}
+</select>
+{% endif %}
+
+<li>
+    <a href="{% if version > '1.6' %}{% url 'admin:mtr_sync_settings_add' %}{% else %}{% url 'admin:sync_settings_add' %}{% endif %}?action=export&amp;model={{ opts.app_label }}.{{ opts.model_name }}{% if request.GET.keys %}&amp;filter={{ request.GET.urlencode|urlencode }}%26fields={{ cl.list_display|join:','|urlencode }}{% endif %}">{% trans 'Export' %}</a>
+</li>
+<li>
+    <a href="{% if version > '1.6' %}{% url 'admin:mtr_sync_settings_add' %}{% else %}{% url 'admin:sync_settings_add' %}{% endif %}?action=import&amp;model={{ opts.app_label }}.{{ opts.model_name }}{% if request.GET.keys %}&amp;filter={{ request.GET.urlencode|urlencode }}%26fields={{ cl.list_display|join:','|urlencode }}{% endif %}">{% trans 'Import' %}</a>
+</li>

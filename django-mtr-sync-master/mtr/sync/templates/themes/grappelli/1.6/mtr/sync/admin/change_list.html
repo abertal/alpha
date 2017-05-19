@@ -1,0 +1,8 @@
+{% extends 'admin/change_list.html' %}
+
+{% load prefixed_i18n %}
+
+{% block object-tools-items %}
+    {% include 'themes/grappelli/base/mtr/sync/admin/object_tools.html' with version='1.6' admin=cl.model_admin %}
+    {{ block.super }}
+{% endblock %}
