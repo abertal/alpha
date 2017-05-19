@@ -17,7 +17,7 @@
       <a href="{% url 'group-detail' pk=group.pk %}">{{ group.group_name|upper }}</a>
     </div>
     {% empty %}
-    <p>{% trans 'No hay grupos...' %}</p>
+    {% trans 'No hay grupos...' %}
     {% endfor %}
     {% include '../_pagination.html' %}
   {% endblock %}

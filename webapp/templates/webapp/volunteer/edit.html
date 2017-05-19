@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block body %}
-<h3>{{ person.name }} {{ person.surname|upper }}</h3>
 <form class="custom-form element" action="{% url 'volunteer-edit' volunteer.id %}" method="post">
 {% include '../_form_fields.html' %}
   <div class="form-group">
