@@ -9,7 +9,7 @@
     {% blocktrans %}
     <p>Está seguro de querer eliminar a {{ object }} de la lista?</p>
     {% endblocktrans %}
-    <input type="submit" class="btn btn-primary" value="{% trans 'Confirmar'%}" method="post"/>
+    <input type="submit" class="btn btn-primary" value="{% trans 'Confirmar'%}"/>
     <a href="{% url 'recipient-detail' recipient.id %}" class="btn btn-link">{% trans 'Volver sin eliminar' %}</a>
 </div>
 </form>

@@ -10,11 +10,11 @@
    <dt>Destinatarios de {{ group.group_name|upper }}:</dt>
  
     {% for enrolment in group.enrolment_set.all %}    
-     <p>
+     <dd>
        <a href="{% url 'person-detail' enrolment.person.id %}" class="card-link">{{ enrolment.person.name }}&thinsp;{{ enrolment.person.surname }}</a>
-     </p>      
+     </dd>      
      {% empty %}
-     <p>No hay usuarios asociados a este grupo</p>
+     <dd>No hay usuarios asociados a este grupo</dd>
     {% endfor %}
     
  </dl>

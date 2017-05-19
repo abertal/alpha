@@ -13,7 +13,7 @@
      <div>
       <a href="{% url 'volunteer-detail' pk=volunteer.pk %}">{{ volunteer.person.name }} {{ volunteer.person.surname|upper }}</a>
       <p>{{ volunteer.person.birthday|default:_("Sin fecha de nacimiento") }}
-      </br>
+      <br>
       Emisión certificado: {{ volunteer.lack_of_sexual_offenses_date_certificate|default:_("Sin certificado") }}</p>
      </div>
     {% empty %}
