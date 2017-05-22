@@ -13,7 +13,7 @@ from htmlvalidator.client import ValidatingClient
     'volunteer-list',
     'missing_doc',
 ])
-def test_list_views(logged_client, view_name):
+def test_list_views(multiverse, logged_client, view_name):
     url = reverse(view_name)
     response = logged_client.get(url)
     assert response.status_code == 200
@@ -27,7 +27,7 @@ def test_list_views(logged_client, view_name):
     '/webapp/basicformnewfamily/',
     '/webapp/person/',
 ])
-def test_views_exist(logged_client, url):
+def test_views_exist(multiverse, logged_client, url):
     response = logged_client.get(url)
     assert response.status_code == 200
 
@@ -67,8 +67,7 @@ def test_edit_person(logged_client, person, url):
     '/webapp/person/{}/delete/',
 ])
 def test_delete_person(logged_client, person, url):
-    data = {'name': 'Juan', 'surname': 'Bosco'}
-    response = logged_client.post(url.format(person.id), data=data)
+    response = logged_client.post(url.format(person.id))
     assert response.status_code == 302
 
 

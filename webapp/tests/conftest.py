@@ -8,6 +8,20 @@ from htmlvalidator.client import ValidatingClient
 
 from core import models
 
+from webapp.tests import factories
+
+
+
+@pytest.fixture
+def multiverse():
+    factories.PersonFactory.create_batch(3)
+    factories.GroupFactory.create_batch(3)
+    factories.RecipientFactory()
+    factories.VolunteerFactory()
+    factories.CustodianFactory()
+    factories.MembershipFactory()
+    factories.MemberFactory()
+
 
 @pytest.fixture
 def person():
