@@ -11,7 +11,6 @@ from core import models
 from webapp.tests import factories
 
 
-
 @pytest.fixture
 def multiverse():
     factories.PersonFactory.create_batch(3)

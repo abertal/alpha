@@ -7,6 +7,7 @@ from core import models
 LIST_NAME = ['Edgar', 'Estefania', 'Gvame', 'Ivan', 'Miguel', 'Xurxo', 'Yago']
 LIST_SURNAME = ['Alcántara', 'Benítez', 'Fernández', 'González', 'Nieto', 'Orge', 'Souto']
 
+
 class GroupFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Group
