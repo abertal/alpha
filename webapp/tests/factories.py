@@ -2,6 +2,7 @@ from decimal import Decimal as D
 
 import factory
 import factory.django
+
 from core import models
 
 LIST_NAME = ['Edgar', 'Estefania', 'Gvame', 'Ivan', 'Miguel', 'Xurxo', 'Yago']

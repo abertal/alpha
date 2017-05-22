@@ -7,7 +7,6 @@ from django_filters import Filter
 from htmlvalidator.client import ValidatingClient
 
 from core import models
-
 from webapp.tests import factories
 
 
