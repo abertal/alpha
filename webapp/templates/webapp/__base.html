@@ -16,6 +16,7 @@
   {% endblock %}
 </aside>
 <main class="col">
+  <h1>{{ view.name }}</h1>
   {% if messages %}
       {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
