@@ -176,7 +176,9 @@ LOGOUT_REDIRECT_URL = 'login'
 # https://github.com/peterbe/django-html-validator#validating-html-in-tests
 
 HTMLVALIDATOR_ENABLED = True
+
 HTMLVALIDATOR_FAILFAST = True
+
 HTMLVALIDATOR_OUTPUT = 'stdout'
 
 HTMLVALIDATOR_VNU_URL = os.getenv(
