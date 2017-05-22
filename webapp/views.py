@@ -143,6 +143,7 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
     form_class = forms.CreatePerson
     template_name = 'webapp/person/create.html'
     success_message = ugettext_lazy('Persona creada correctamente')
+    name = ugettext_lazy('Crear persona')
 
     def get_success_url(self):
         return reverse('person-detail', args=[self.object.id])
@@ -185,6 +186,7 @@ class RecipientCreate(LoginRequiredMixin, SuccessMessageMixin,
     form_class = forms.RecipientCreate
     template_name = 'webapp/recipient/create.html'
     success_message = ugettext_lazy('Destinatario creado correctamente')
+    name = ugettext_lazy('Crear destinatario')
 
     def get_success_url(self):
         return reverse('recipient-detail', args=[self.object.id])
@@ -232,6 +234,7 @@ class VolunteerCreate(LoginRequiredMixin, SuccessMessageMixin,
     template_name = 'webapp/volunteer/create.html'
     name = ugettext_lazy('Crear voluntario')
     success_message = ugettext_lazy('Voluntario creado correctamente')
+    name = ugettext_lazy('Crear voluntario')
 
     def get_success_url(self):
         return reverse('volunteer-detail', args=[self.object.id])
@@ -397,6 +400,7 @@ class MembershipCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, gener
     model = models.Membership
     form_class = forms.MembershipCreate
     template_name = 'webapp/membership/create.html'
+    name = ugettext_lazy('Creación de membresía')
 
     def get_person(self):
         id_ = self.kwargs['pk']

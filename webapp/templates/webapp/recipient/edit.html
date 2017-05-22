@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block body %}
-<h3>{{ person.name }} {{ person.surname|upper }}</h3>
+<h3>{{ recipient.person.name }} {{ recipient.person.surname|upper }}</h3>
 <form class="custom-form element" action="{% url 'recipient-edit' recipient.id %}" method="post">
 {% include '../_form_fields.html' %}
   <div class="form-group">
