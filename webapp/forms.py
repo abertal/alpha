@@ -159,9 +159,10 @@ class CustodianEdit(forms.ModelForm):
 class GroupCreate(forms.ModelForm):
     class Meta:
         model = models.Group
-        fields = ('group_name',)
+        fields = ('group_name', 'proyect')
         widgets = {
             'group_name': forms.TextInput(),
+            'proyect': forms.SelectMultiple()
         }
 
 
