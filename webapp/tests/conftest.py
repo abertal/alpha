@@ -34,9 +34,11 @@ def membership():
 def member():
     return models.Member.objects.create(person=person(), membership=membership())
 
+
 @pytest.fixture
 def project():
-    return models.Project.objects.create(project_name= 'Example Project', date_start ='2017-05-23',date_end='2017-05-27', comment = 'Comment')
+    return models.Project.objects.create(
+        project_name='Example Project', date_start='2017-05-23', date_end='2017-05-27', comment='Comment')
 
 
 @pytest.fixture
