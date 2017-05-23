@@ -92,7 +92,7 @@ def filter_person_name():
 
 @pytest.fixture
 def group_filter():
-    return models.Group.objects.create(group_name='Example Group', proyect=project())
+    return models.Group.objects.create(group_name='Example Group', project=project())
 
 
 @pytest.fixture

@@ -160,7 +160,7 @@ class Group(models.Model):
         verbose_name = _('Grupo')
 
     group_name = models.TextField(verbose_name=_('Nombre grupo'))
-    proyect = models.ForeignKey(Project, on_delete=models.CASCADE, default='')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default='', null=True)
 
     def __str__(self):
         return '{}'.format(self.id)
