@@ -34,6 +34,10 @@ def membership():
 def member():
     return models.Member.objects.create(person=person(), membership=membership())
 
+@pytest.fixture
+def project():
+    return models.Project.objects.create(project_name= 'Example Project', date_start ='2017-05-23',date_end='2017-05-27', comment = 'Comment')
+
 
 @pytest.fixture
 def logged_client():
@@ -86,7 +90,7 @@ def filter_person_name():
 
 @pytest.fixture
 def group_filter():
-    return models.Group.objects.create(group_name='Example Group')
+    return models.Group.objects.create(group_name='Example Group', proyect=project())
 
 
 @pytest.fixture
