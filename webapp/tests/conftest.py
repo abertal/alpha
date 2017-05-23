@@ -7,6 +7,7 @@ from django_filters import Filter
 from htmlvalidator.client import ValidatingClient
 
 from core import models
+from webapp import factory
 
 
 @pytest.fixture
@@ -99,3 +100,14 @@ def filter_group_name():
 def group_query_filter():
     group_filter()
     return models.Group.objects.all().order_by('id')
+
+
+@pytest.fixture
+def multiverse():
+    factory.PersonFactory.create_batch(10)
+    factory.GroupFactory.create_batch(10)
+    factory.EventFactory.create_batch(10)
+    factory.VolunteerFactory.create_batch(10)
+    factory.PersonFactory()
+    factory.VolunteerFactory()
+    factory.RecipientFactory()

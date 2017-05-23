@@ -13,7 +13,7 @@ from htmlvalidator.client import ValidatingClient
     'volunteer-list',
     'missing_doc',
 ])
-def test_list_views(logged_client, view_name):
+def test_list_views(multiverse, logged_client, view_name):
     url = reverse(view_name)
     response = logged_client.get(url)
     assert response.status_code == 200
@@ -46,7 +46,7 @@ def test_check_user(logged_client, url):
 @pytest.mark.parametrize('url', [
     '/webapp/person/new/',
 ])
-def test_create_person(logged_client, url):
+def test_create_person(multiverse, logged_client, url):
     data = {'name': 'Juan', 'surname': 'Bosco'}
     response = logged_client.post(url, data=data)
     assert response.status_code == 302
