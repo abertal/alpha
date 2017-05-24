@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal as D
 
 from django.contrib.auth.models import User
@@ -45,6 +46,13 @@ def membership():
 @pytest.fixture
 def member():
     return models.Member.objects.create(person=person(), membership=membership())
+
+
+@pytest.fixture
+def project():
+    return models.Project.objects.create(
+        project_name='Example Project', date_start=date(2017, 5, 23), date_end=date(2017, 5, 27),
+        comment='Comment')
 
 
 @pytest.fixture
@@ -98,7 +106,7 @@ def filter_person_name():
 
 @pytest.fixture
 def group_filter():
-    return models.Group.objects.create(group_name='Example Group')
+    return models.Group.objects.create(group_name='Example Group', project=project())
 
 
 @pytest.fixture

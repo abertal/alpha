@@ -58,7 +58,7 @@ class Project(admin.ModelAdmin):
 
 @admin.register(models.Group)
 class Group(admin.ModelAdmin):
-    search_fields = ['group_name']
+    search_fields = ['group_name', 'project']
 
     list_display = ('id', 'group_name')
 

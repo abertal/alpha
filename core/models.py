@@ -150,6 +150,9 @@ class Project(models.Model):
     comment = models.TextField(
         verbose_name=_('Observaciones'), blank=True, default='')
 
+    def __str__(self):
+        return '{}'.format(self.project_name)
+
 
 class Group(models.Model):
 
@@ -157,6 +160,8 @@ class Group(models.Model):
         verbose_name = _('Grupo')
 
     group_name = models.TextField(verbose_name=_('Nombre grupo'))
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, default=None, null=True, verbose_name=_('Proyecto'))
 
     def __str__(self):
         return '{}'.format(self.id)

@@ -159,9 +159,10 @@ class CustodianEdit(forms.ModelForm):
 class GroupCreate(forms.ModelForm):
     class Meta:
         model = models.Group
-        fields = ('group_name',)
+        fields = ('group_name', 'project')
         widgets = {
             'group_name': forms.TextInput(),
+            'project': forms.Select()
         }
 
 
@@ -174,11 +175,12 @@ class GroupEdit(forms.ModelForm):
 class ProjectCreate(forms.ModelForm):
     class Meta:
         model = models.Project
-        fields = ('project_name', 'date_start', 'date_end',)
+        fields = ('project_name', 'date_start', 'date_end', 'comment')
         widgets = {
             'project_name': forms.TextInput(),
             'date_start': forms.DateInput(),
             'date_end': forms.DateInput(),
+            'comment': forms.TextInput(),
         }
 
 
