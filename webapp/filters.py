@@ -52,7 +52,7 @@ class ProjectFilter(django_filters.FilterSet):
         fields = []
 
     def custom_filter(self, queryset, name, value):
-        return queryset.filter(Q(group_name__icontains=value))
+        return queryset.filter(Q(project_name__icontains=value))
 
 
 class EventFilter(django_filters.FilterSet):
