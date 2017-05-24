@@ -1,7 +1,7 @@
 from decimal import Decimal as D
 
 from django.contrib.auth.models import User
-
+from datetime import date
 import pytest
 from django_filters import Filter
 from htmlvalidator.client import ValidatingClient
@@ -38,7 +38,7 @@ def member():
 @pytest.fixture
 def project():
     return models.Project.objects.create(
-        project_name='Example Project', date_start='2017-05-23', date_end='2017-05-27', comment='Comment')
+        project_name='Example Project', date_start=date(2017, 5,23), date_end=date(2017,5,27), comment='Comment')
 
 
 @pytest.fixture
