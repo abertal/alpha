@@ -9,7 +9,7 @@
   <dt>Curso</dt>
   <dd>{{ recipient.get_courses_display|default:_('Sin especificar') }}</dd>
   <dt>{% trans 'Centro de estudios' %}</dt>
-  <dd>{{ recipient.college|default:_('Sin especificar') }}</dd>
+  <dd>{{ recipient.school|default:_('Sin especificar') }}</dd>
   <dt>{% trans 'Responsable'%}</dt>
    <dd>
     {% for custodian in recipient.custodian_set.all %}
