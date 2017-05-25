@@ -2,7 +2,11 @@
 {% load i18n %}
 
 {% block body %}
-<h3>{{ project.project_name }}</h3>
+<h3>{{ project.project_name }}</h3><br>
+<p>Grupos que lo integran:</p>
+{% for group in group_list %}
+<p>{{ group.group_name }}</p>
+{% endfor %}
 <a href="{% url 'project-edit' project.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
 <a href="{% url 'project-list' %}" class="btn btn-link">{% trans 'Volver' %}</a>
 {% endblock %}

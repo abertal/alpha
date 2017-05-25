@@ -471,6 +471,11 @@ class ProjectDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     template_name = 'webapp/project/detail.html'
     name = ugettext_lazy('Detalle proyecto')
 
+    def get_context_data(self, **kwargs):
+        kwargs['group_list'] = models.Group.objects.select_related('project').filter(
+            project_id__lte=self.object.id)
+        return super().get_context_data(**kwargs)
+
 
 class ProjectEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
     model = models.Project
