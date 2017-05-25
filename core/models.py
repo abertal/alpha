@@ -88,7 +88,7 @@ class Recipient(models.Model):
     ]
 
     courses = models.CharField(_('Estudios'), blank=True, default='', choices=COURSES, max_length=32)
-    college = models.CharField(
+    school = models.CharField(
         verbose_name=_('Centro de estudios'), blank=True, null=True, default=None, max_length=32)
     sibling = models.IntegerField(
         verbose_name=_('Hermanos'), blank=True, null=True, default=None)
