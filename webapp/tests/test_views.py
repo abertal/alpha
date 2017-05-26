@@ -87,6 +87,7 @@ def test_wrong_delete_person(logged_client, volunteer_filter, url):
     ('/webapp/person/{pk}/recipient/', {}),
 ])
 def test_create_from_person(logged_client, person, url, data):
+    response = logged_client.get(url.format(pk=person.id))
     # Inject person UID to POST data
     data['person'] = person.pk
     response = logged_client.post(url.format(pk=person.id), data=data)
@@ -98,6 +99,7 @@ def test_create_from_person(logged_client, person, url, data):
     ('/webapp/recipient/{pk}/custodian/', {'category': 'mother'}),
 ])
 def test_create_from_recipient(logged_client, recipient, person, url, data):
+    response = logged_client.get(url.format(pk=recipient.id))
     # Inject person UID to POST data
     data['minor'] = recipient.pk
     data['person'] = person.pk
