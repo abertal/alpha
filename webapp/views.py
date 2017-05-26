@@ -462,19 +462,13 @@ class ProjectList(LoginRequiredMixin, MenuMixin, FilterView):
     filterset_class = filters.ProjectFilter
     paginate_by = 5
 
-    def get_queryset(self):
-        return models.Project.objects.all()
-
 
 class ProjectDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
-    model = models.Project
     template_name = 'webapp/project/detail.html'
     name = ugettext_lazy('Detalle proyecto')
 
-    def get_context_data(self, **kwargs):
-        kwargs['group_list'] = models.Group.objects.select_related('project').filter(
-            project_id__lte=self.object.id)
-        return super().get_context_data(**kwargs)
+    def get_queryset(self):
+        return models.Project.objects.all()
 
 
 class ProjectEdit(LoginRequiredMixin, MenuMixin, generic.UpdateView):
