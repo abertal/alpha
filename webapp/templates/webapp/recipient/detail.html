@@ -21,5 +21,6 @@
 </dl>
 <a href="{% url 'recipient-delete' recipient.id %}" class="btn btn-danger">{% trans 'Eliminar' %}</a>
 <a href="{% url 'recipient-edit' recipient.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
+<a href="{% url 'custodian-create' recipient.id %}" class="btn btn-secondary">{% trans 'Vincular padre/madre/tutor' %}</a>
 <a href="{% url 'person-detail' recipient.person.id %}" class="btn btn-link">{% trans 'Ir a la ficha personal' %}</a>
 {% endblock %}
