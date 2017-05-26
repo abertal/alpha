@@ -94,6 +94,18 @@ def test_create_from_person(logged_client, person, url, data):
 
 
 @pytest.mark.django_db
+@pytest.mark.parametrize('url, data', [
+    ('/webapp/recipient/{pk}/custodian/', {'category': 'mother'}),
+])
+def test_create_from_recipient(logged_client, recipient, person, url, data):
+    # Inject person UID to POST data
+    data['minor'] = recipient.pk
+    data['person'] = person.pk
+    response = logged_client.post(url.format(pk=recipient.id), data=data)
+    assert response.status_code == 302
+
+
+@pytest.mark.django_db
 @pytest.mark.parametrize('url', [
     '/webapp/login/',
 ])

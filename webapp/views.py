@@ -278,6 +278,28 @@ class VolunteerDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
     success_url = reverse_lazy('volunteer-list')
 
 
+class CustodianCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
+    model = models.Custodian
+    form_class = forms.CreateCustodian
+    template_name = 'webapp/custodian/create.html'
+    name = ugettext_lazy('Crea padre, madre, tutor')
+
+    def get_recipient(self):
+        id_ = self.kwargs['pk']
+        return models.Recipient.objects.get(id=id_)
+
+    def get_initial(self):
+        recipient = self.get_recipient()
+        return {'minor': recipient.id}
+
+    def get_context_data(self, **kwargs):
+        kwargs['recipient'] = self.get_recipient()
+        return super().get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse('custodian-detail', args=[self.object.id])
+
+
 class CustodianDetail(LoginRequiredMixin, MenuMixin, generic.DetailView):
     model = models.Custodian
     template_name = 'webapp/custodian/detail.html'

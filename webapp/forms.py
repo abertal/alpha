@@ -267,4 +267,7 @@ class NewFamilyMember(forms.Form):
 class CreateCustodian(forms.ModelForm):
     class Meta:
         model = models.Custodian
-        fields = '__all__'
+        fields = 'category', 'minor', 'person'
+        widgets = {
+            'minor': forms.HiddenInput(),
+        }
