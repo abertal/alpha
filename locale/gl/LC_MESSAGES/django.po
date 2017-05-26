@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Abertal-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-27 10:46+0200\n"
-"PO-Revision-Date: 2017-04-27 10:53+0200\n"
+"POT-Creation-Date: 2017-05-26 21:59+0200\n"
+"PO-Revision-Date: 2017-05-26 21:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: Initios\n"
 "Language: gl\n"
@@ -32,13 +32,13 @@ msgid "Persona"
 msgstr "Persoa"
 
 #: core/models.py:15 webapp/filters.py:15 webapp/filters.py:26
-#: webapp/forms.py:144 webapp/forms.py:170 webapp/forms.py:176
-#: webapp/forms.py:182 webapp/forms.py:188
+#: webapp/forms.py:199 webapp/forms.py:225 webapp/forms.py:231
+#: webapp/forms.py:237 webapp/forms.py:243
 msgid "Nombre"
 msgstr "Nome"
 
-#: core/models.py:16 webapp/forms.py:145 webapp/forms.py:172
-#: webapp/forms.py:178 webapp/forms.py:184 webapp/forms.py:190
+#: core/models.py:16 webapp/forms.py:200 webapp/forms.py:227
+#: webapp/forms.py:233 webapp/forms.py:239 webapp/forms.py:245
 msgid "Apellidos"
 msgstr "Apelidos"
 
@@ -46,7 +46,7 @@ msgstr "Apelidos"
 msgid "Fecha de nacimiento"
 msgstr "Data de nacemento"
 
-#: core/models.py:20 core/models.py:229
+#: core/models.py:20 core/models.py:236
 msgid "DNI/NIE"
 msgstr "DNI/NIE"
 
@@ -54,8 +54,8 @@ msgstr "DNI/NIE"
 msgid "Fotocopia DNI/NIE"
 msgstr "Fotocopia DNI/NIE"
 
-#: core/models.py:24 core/models.py:230
-#: webapp/templates/webapp/membership/detail.html:39
+#: core/models.py:24 core/models.py:237
+#: webapp/templates/webapp/membership/detail.html:41
 #: webapp/templates/webapp/person/detail.html:13
 msgid "Tarjeta sanitaria"
 msgstr "Tarxeta sanitaria"
@@ -68,7 +68,7 @@ msgstr "Fotocopia Seguridade Social"
 msgid "Código postal"
 msgstr "Código postal"
 
-#: core/models.py:30 webapp/forms.py:147
+#: core/models.py:30 webapp/forms.py:202
 #: webapp/templates/webapp/person/detail.html:21
 msgid "Dirección"
 msgstr "Enderezo"
@@ -85,8 +85,8 @@ msgstr "Provincia"
 msgid "País"
 msgstr "País"
 
-#: core/models.py:38 webapp/forms.py:146 webapp/forms.py:171
-#: webapp/forms.py:177 webapp/forms.py:183 webapp/forms.py:189
+#: core/models.py:38 webapp/forms.py:201 webapp/forms.py:226
+#: webapp/forms.py:232 webapp/forms.py:238 webapp/forms.py:244
 msgid "Teléfono"
 msgstr "Teléfono"
 
@@ -94,23 +94,23 @@ msgstr "Teléfono"
 msgid "Teléfono móvil"
 msgstr "Teléfono móbil"
 
-#: core/models.py:42 webapp/forms.py:148 webapp/forms.py:174
-#: webapp/forms.py:180 webapp/forms.py:186 webapp/forms.py:192
-#: webapp/templates/webapp/membership/detail.html:30
+#: core/models.py:42 webapp/forms.py:203 webapp/forms.py:229
+#: webapp/forms.py:235 webapp/forms.py:241 webapp/forms.py:247
+#: webapp/templates/webapp/membership/detail.html:32
 #: webapp/templates/webapp/person/detail.html:19
 msgid "Correo electrónico"
 msgstr "Enderezo electrónico"
 
-#: core/models.py:43 core/models.py:232
+#: core/models.py:43 core/models.py:239
 msgid "LOPD"
 msgstr "LOPD"
 
-#: core/models.py:45 core/models.py:112 core/models.py:162 core/models.py:177
-#: webapp/templates/webapp/person/detail.html:28
+#: core/models.py:45 core/models.py:114 core/models.py:153 core/models.py:184
+#: webapp/templates/webapp/person/detail.html:29
 msgid "Observaciones"
 msgstr "Observacións"
 
-#: core/models.py:47 webapp/templates/webapp/person/detail.html:26
+#: core/models.py:47 webapp/templates/webapp/person/detail.html:27
 msgid "Observaciones médicas"
 msgstr "Observacións médicas"
 
@@ -118,11 +118,11 @@ msgstr "Observacións médicas"
 msgid "Destinatario"
 msgstr "Destinatario"
 
-#: core/models.py:67 core/models.py:220
+#: core/models.py:67 core/models.py:227
 msgid "Infantil"
 msgstr "Infantil"
 
-#: core/models.py:68 core/models.py:221
+#: core/models.py:68 core/models.py:228
 msgid "Juvenil"
 msgstr "Xuvenil"
 
@@ -198,144 +198,148 @@ msgstr "Carrera Universitaria"
 msgid "Estudios"
 msgstr "Estudos"
 
-#: core/models.py:92
+#: core/models.py:92 webapp/templates/webapp/recipient/detail.html:11
+msgid "Centro de estudios"
+msgstr "Centro de estudos"
+
+#: core/models.py:94
 msgid "Hermanos"
 msgstr "Irmáns"
 
-#: core/models.py:94
+#: core/models.py:96
 msgid "Autoriza foto"
 msgstr "Autoriza foto"
 
-#: core/models.py:95 core/models.py:131
+#: core/models.py:97 core/models.py:133
 #: webapp/templates/webapp/recipient/detail.html:7
 msgid "Tipo"
 msgstr "Tipo"
 
-#: core/models.py:105 core/models.py:222
+#: core/models.py:107 core/models.py:229
 msgid "Voluntario"
 msgstr "Voluntario"
 
-#: core/models.py:122
+#: core/models.py:124
 msgid "Padre, madre, tutor"
 msgstr "Pai, nai, titor"
 
-#: core/models.py:123
+#: core/models.py:125
 msgid "Firma autorización"
 msgstr "Sinatura autorización"
 
-#: core/models.py:124 webapp/templates/webapp/custodian/detail.html:7
+#: core/models.py:126 webapp/templates/webapp/custodian/detail.html:9
 msgid "Contacto de emergencia"
 msgstr "Contacto de emerxencia"
 
-#: core/models.py:126
+#: core/models.py:128
 msgid "Padre"
 msgstr "Pai"
 
-#: core/models.py:127
+#: core/models.py:129
 msgid "Madre"
 msgstr "Nai"
 
-#: core/models.py:128
+#: core/models.py:130
 msgid "Tutor"
 msgstr "Titor"
 
-#: core/models.py:142
-msgid "Grupo"
-msgstr "Grupo"
-
-#: core/models.py:144
-msgid "Nombre grupo"
-msgstr "Nome grupo"
-
-#: core/models.py:153
+#: core/models.py:144 core/models.py:166
 msgid "Proyecto"
 msgstr "Proxecto"
 
-#: core/models.py:156
+#: core/models.py:147
 msgid "Nombre proyecto"
 msgstr "Nome proxecto"
 
-#: core/models.py:158 core/models.py:173
+#: core/models.py:149 core/models.py:180
 msgid "Fecha inicio"
 msgstr "Data inicio"
 
-#: core/models.py:168
-msgid "Actividades"
-msgstr "Actividades"
+#: core/models.py:162
+msgid "Grupo"
+msgstr "Grupo"
 
-#: core/models.py:171
+#: core/models.py:164
+msgid "Nombre grupo"
+msgstr "Nome grupo"
+
+#: core/models.py:175
+msgid "Actividad"
+msgstr "Actividade"
+
+#: core/models.py:178
 msgid "Nombre actividad"
 msgstr "Nome actividade"
 
-#: core/models.py:175
+#: core/models.py:182
 msgid "Fecha fin"
 msgstr "Data fin"
 
-#: core/models.py:183
+#: core/models.py:190
 msgid "Inscripción"
 msgstr "Inscripción"
 
-#: core/models.py:184
+#: core/models.py:191
 msgid "Inscripciones"
 msgstr "Inscripcións"
 
-#: core/models.py:191
+#: core/models.py:198
 msgid "Fecha de inscripción"
 msgstr "Data de inscripción"
 
-#: core/models.py:197
+#: core/models.py:204
 msgid "Membresía"
 msgstr "Membresía"
 
-#: core/models.py:201
+#: core/models.py:208
 msgid "Modalidad"
 msgstr "Modalidade"
 
-#: core/models.py:203
+#: core/models.py:210
 msgid "Estado del pago"
 msgstr "Estado de pagamento"
 
-#: core/models.py:206
+#: core/models.py:213
 msgid "Cuota de membresia"
 msgstr "Cuota de membresía"
 
-#: core/models.py:211
+#: core/models.py:218
 msgid "Estado de socio"
 msgstr "Estado de socio"
 
-#: core/models.py:217 webapp/templates/webapp/membership/list.html:13
+#: core/models.py:224 webapp/templates/webapp/membership/list.html:13
 msgid "Socio"
 msgstr "Socio"
 
-#: core/models.py:223
+#: core/models.py:230
 msgid "Colaborador"
 msgstr "Colaborador"
 
-#: core/models.py:224
+#: core/models.py:231
 msgid "Familiar"
 msgstr "Familiar"
 
-#: core/models.py:226
+#: core/models.py:233
 msgid "Tipo de socio"
 msgstr "Tipo de socio"
 
-#: core/models.py:231 webapp/templates/webapp/member/detail.html:13
+#: core/models.py:238 webapp/templates/webapp/member/detail.html:21
 msgid "Foto"
 msgstr "Foto"
 
-#: core/models.py:233
+#: core/models.py:240
 msgid "Estado del carnet"
 msgstr "Estado do carné"
 
-#: core/models.py:234
+#: core/models.py:241
 msgid "Beca"
 msgstr "Beca"
 
-#: core/models.py:235
+#: core/models.py:242
 msgid "Fotografía"
 msgstr "Fotografía"
 
-#: webapp/forms.py:77
+#: webapp/forms.py:100
 msgid "Cuota de membresía"
 msgstr "Cuota de membresía"
 
@@ -362,7 +366,10 @@ msgstr "Gardar nova familia"
 
 #: webapp/templates/webapp/basicformnewfamily.html:10
 #: webapp/templates/webapp/basicformnewperson.html:10
-#: webapp/templates/webapp/custodian/edit.html:18
+#: webapp/templates/webapp/custodian/create.html:9
+#: webapp/templates/webapp/custodian/edit.html:20
+#: webapp/templates/webapp/event/create.html:9
+#: webapp/templates/webapp/event/edit.html:11
 #: webapp/templates/webapp/group/create.html:9
 #: webapp/templates/webapp/group/edit.html:11
 #: webapp/templates/webapp/member/create.html:9
@@ -371,6 +378,8 @@ msgstr "Gardar nova familia"
 #: webapp/templates/webapp/membership/edit.html:12
 #: webapp/templates/webapp/person/create.html:9
 #: webapp/templates/webapp/person/edit.html:14
+#: webapp/templates/webapp/project/create.html:9
+#: webapp/templates/webapp/project/edit.html:11
 #: webapp/templates/webapp/recipient/create.html:9
 #: webapp/templates/webapp/recipient/edit.html:10
 #: webapp/templates/webapp/volunteer/create.html:9
@@ -379,34 +388,43 @@ msgid "Volver sin guardar"
 msgstr "Voltar sen gardar"
 
 #: webapp/templates/webapp/basicformnewperson.html:9
-#: webapp/templates/webapp/custodian/edit.html:17
+#: webapp/templates/webapp/custodian/edit.html:19
+#: webapp/templates/webapp/event/edit.html:10
 #: webapp/templates/webapp/group/edit.html:10
 #: webapp/templates/webapp/member/edit.html:11
 #: webapp/templates/webapp/membership/edit.html:11
 #: webapp/templates/webapp/person/edit.html:13
+#: webapp/templates/webapp/project/edit.html:10
 #: webapp/templates/webapp/recipient/edit.html:9
 #: webapp/templates/webapp/volunteer/edit.html:9
 msgid "Guardar cambios"
 msgstr "Gardar modificacións"
 
-#: webapp/templates/webapp/custodian/detail.html:9
+#: webapp/templates/webapp/custodian/detail.html:7
+#: webapp/templates/webapp/custodian/edit.html:13
+msgid "Categoría"
+msgstr "Categoría"
+
+#: webapp/templates/webapp/custodian/detail.html:11
 #: webapp/templates/webapp/custodian/edit.html:9
 msgid "Autorización"
 msgstr "Autorización"
 
-#: webapp/templates/webapp/custodian/detail.html:12
+#: webapp/templates/webapp/custodian/detail.html:14
+#: webapp/templates/webapp/event/detail.html:6
 #: webapp/templates/webapp/group/detail.html:6
-#: webapp/templates/webapp/member/detail.html:16
-#: webapp/templates/webapp/person/detail.html:38
-#: webapp/templates/webapp/recipient/detail.html:16
-#: webapp/templates/webapp/volunteer/detail.html:10
+#: webapp/templates/webapp/member/detail.html:24
+#: webapp/templates/webapp/person/detail.html:39
+#: webapp/templates/webapp/project/detail.html:6
+#: webapp/templates/webapp/recipient/detail.html:23
+#: webapp/templates/webapp/volunteer/detail.html:13
 msgid "Editar"
 msgstr "Editar"
 
-#: webapp/templates/webapp/custodian/detail.html:13
-#: webapp/templates/webapp/member/detail.html:17
-#: webapp/templates/webapp/recipient/detail.html:17
-#: webapp/templates/webapp/volunteer/detail.html:11
+#: webapp/templates/webapp/custodian/detail.html:15
+#: webapp/templates/webapp/member/detail.html:25
+#: webapp/templates/webapp/recipient/detail.html:25
+#: webapp/templates/webapp/volunteer/detail.html:14
 msgid "Ir a la ficha personal"
 msgstr "Ir á ficha persoal"
 
@@ -419,9 +437,19 @@ msgstr "Código único"
 msgid "Contacto de Emergencia"
 msgstr "Contacto de Emerxencia"
 
+#: webapp/templates/webapp/event/detail.html:7
 #: webapp/templates/webapp/group/detail.html:7
+#: webapp/templates/webapp/project/detail.html:7
 msgid "Volver"
 msgstr "Voltar"
+
+#: webapp/templates/webapp/event/list.html:7
+msgid "Nueva actividad "
+msgstr "Nova actividade"
+
+#: webapp/templates/webapp/event/list.html:20
+msgid "No hay actividades..."
+msgstr "Non hai actividades..."
 
 #: webapp/templates/webapp/group/list.html:7
 msgid "Nuevo grupo "
@@ -431,7 +459,7 @@ msgstr "Novo grupo"
 msgid "No hay grupos..."
 msgstr "Non hai grupos"
 
-#: webapp/templates/webapp/login.html:21
+#: webapp/templates/webapp/login.html:22
 msgid "Usuario o contraseña incorrecta. Inténtalo de nuevo."
 msgstr "Usuario ou contrasinal incorrecta. Inténtao de novo."
 
@@ -440,20 +468,27 @@ msgid "Lista de grupos"
 msgstr "Lista de grupos"
 
 #: webapp/templates/webapp/main.html:23
-#: webapp/templates/webapp/person/list.html:21
 msgid "No hay grupos"
 msgstr "Non hai grupos"
 
 #: webapp/templates/webapp/member/detail.html:8
 #: webapp/templates/webapp/member/detail.html:10
 #: webapp/templates/webapp/member/detail.html:12
+#: webapp/templates/webapp/member/detail.html:14
+#: webapp/templates/webapp/member/detail.html:16
+#: webapp/templates/webapp/member/detail.html:18
+#: webapp/templates/webapp/member/detail.html:20
 #: webapp/templates/webapp/person/detail.html:10
 #: webapp/templates/webapp/recipient/detail.html:8
+#: webapp/templates/webapp/recipient/detail.html:10
+#: webapp/templates/webapp/recipient/detail.html:12
+#: webapp/templates/webapp/recipient/detail.html:20
 #: webapp/templates/webapp/volunteer/detail.html:8
+#: webapp/templates/webapp/volunteer/detail.html:10
 msgid "Sin especificar"
 msgstr "Sen especificar"
 
-#: webapp/templates/webapp/member/detail.html:11
+#: webapp/templates/webapp/member/detail.html:19
 msgid "Carnet"
 msgstr "Carné"
 
@@ -468,35 +503,37 @@ msgstr "Sen data de nacemento"
 msgid "No hay socios"
 msgstr "Non hai socios"
 
-#: webapp/templates/webapp/membership/detail.html:24
+#: webapp/templates/webapp/membership/detail.html:26
 msgid "Edad"
 msgstr "Idade"
 
-#: webapp/templates/webapp/membership/detail.html:46
+#: webapp/templates/webapp/membership/detail.html:48
 msgid "Falta por entregar la fotocopia de la tarjeta sanitaria"
 msgstr "Falta por entregar a fotocopia da tarxeta sanitaria"
 
-#: webapp/templates/webapp/membership/detail.html:51
+#: webapp/templates/webapp/membership/detail.html:53
 msgid "Falta por entregar la foto"
 msgstr "Falta por entregar a foto"
 
-#: webapp/templates/webapp/membership/detail.html:58
+#: webapp/templates/webapp/membership/detail.html:60
 msgid "Añadir observaciones"
 msgstr "Engadir observacións"
 
-#: webapp/templates/webapp/membership/detail.html:59
+#: webapp/templates/webapp/membership/detail.html:61
 msgid "Añadir observaciones Médicas"
 msgstr "Engadir observacións médicas"
 
-#: webapp/templates/webapp/membership/detail.html:71
+#: webapp/templates/webapp/membership/detail.html:73
 msgid "Guardar Cambios"
 msgstr "Gardar modificacións"
 
-#: webapp/templates/webapp/membership/detail.html:72
+#: webapp/templates/webapp/membership/detail.html:74
 msgid "Cancelar"
 msgstr "Cancelar"
 
 #: webapp/templates/webapp/person/delete.html:9
+#: webapp/templates/webapp/recipient/delete.html:9
+#: webapp/templates/webapp/volunteer/delete.html:9
 #, python-format
 msgid ""
 "\n"
@@ -508,46 +545,52 @@ msgstr ""
 "    "
 
 #: webapp/templates/webapp/person/delete.html:12
+#: webapp/templates/webapp/recipient/delete.html:12
+#: webapp/templates/webapp/volunteer/delete.html:12
 msgid "Confirmar"
 msgstr "Confirmar"
 
 #: webapp/templates/webapp/person/delete.html:13
+#: webapp/templates/webapp/recipient/delete.html:13
+#: webapp/templates/webapp/volunteer/delete.html:13
 msgid "Volver sin eliminar"
 msgstr "Voltar sen eliminar"
 
-#: webapp/templates/webapp/person/detail.html:30
+#: webapp/templates/webapp/person/detail.html:31
 msgid "Es responsable de"
 msgstr "É responsable de"
 
-#: webapp/templates/webapp/person/detail.html:37
+#: webapp/templates/webapp/person/detail.html:38
+#: webapp/templates/webapp/recipient/detail.html:22
+#: webapp/templates/webapp/volunteer/detail.html:12
 msgid "Eliminar"
 msgstr "Eliminar"
 
-#: webapp/templates/webapp/person/detail.html:40
+#: webapp/templates/webapp/person/detail.html:41
 msgid "Ficha de destinatario"
 msgstr "Ficha de destinatario"
 
-#: webapp/templates/webapp/person/detail.html:42
+#: webapp/templates/webapp/person/detail.html:43
 msgid "Dar de alta como destinatario"
 msgstr "Dar de alta como destinatario"
 
-#: webapp/templates/webapp/person/detail.html:45
+#: webapp/templates/webapp/person/detail.html:46
 msgid "Ficha de voluntario"
 msgstr "Ficha de voluntario"
 
-#: webapp/templates/webapp/person/detail.html:47
+#: webapp/templates/webapp/person/detail.html:48
 msgid "Dar de alta como voluntario"
 msgstr "Dar de alta como voluntario"
 
-#: webapp/templates/webapp/person/detail.html:50
+#: webapp/templates/webapp/person/detail.html:51
 msgid "Ficha de documentación"
 msgstr "Ficha de documentación"
 
-#: webapp/templates/webapp/person/detail.html:52
+#: webapp/templates/webapp/person/detail.html:53
 msgid "Dar de alta como socio"
 msgstr "Dar de alta como socio"
 
-#: webapp/templates/webapp/person/detail.html:55
+#: webapp/templates/webapp/person/detail.html:56
 msgid "Editar responsable"
 msgstr "Editar responsable"
 
@@ -559,9 +602,25 @@ msgstr "Código único"
 msgid "Nueva persona "
 msgstr "Nova persoa"
 
-#: webapp/templates/webapp/recipient/detail.html:9
+#: webapp/templates/webapp/person/list.html:21
+msgid "No hay personas"
+msgstr "Non hai persoas"
+
+#: webapp/templates/webapp/project/list.html:7
+msgid "Nuevo proyecto "
+msgstr "Novo proxecto"
+
+#: webapp/templates/webapp/project/list.html:20
+msgid "No hay proyectos..."
+msgstr "Non hai proxectos..."
+
+#: webapp/templates/webapp/recipient/detail.html:13
 msgid "Responsable"
 msgstr "Responsable"
+
+#: webapp/templates/webapp/recipient/detail.html:24
+msgid "Vincular padre/madre/tutor"
+msgstr "Vencellar pai/nai/tutor"
 
 #: webapp/templates/webapp/recipient/list.html:9
 #: webapp/templates/webapp/volunteer/list.html:9
@@ -584,119 +643,175 @@ msgstr "Sen certificado"
 msgid "No hay voluntarios..."
 msgstr "Non hai voluntarios..."
 
-#: webapp/views.py:35 webapp/views.py:120
+#: webapp/views.py:36 webapp/views.py:126
 msgid "Personas"
 msgstr "Persoas"
 
-#: webapp/views.py:36 webapp/views.py:132 webapp/views.py:149
+#: webapp/views.py:37 webapp/views.py:138 webapp/views.py:156
 msgid "Detalle persona"
 msgstr "Detalle persoa"
 
-#: webapp/views.py:37 webapp/views.py:213
+#: webapp/views.py:38 webapp/views.py:214
 msgid "Destinatarios"
 msgstr "Destinatarios"
 
-#: webapp/views.py:38 webapp/views.py:195 webapp/views.py:202
+#: webapp/views.py:39 webapp/views.py:198 webapp/views.py:205
 msgid "Detalle destinatario"
 msgstr "Detalle destinatario"
 
-#: webapp/views.py:39 webapp/views.py:257
+#: webapp/views.py:40 webapp/views.py:265
 msgid "Voluntarios"
 msgstr "Voluntarios"
 
-#: webapp/views.py:40 webapp/views.py:238 webapp/views.py:249
+#: webapp/views.py:41 webapp/views.py:247 webapp/views.py:257
 msgid "Detalle voluntario"
 msgstr "Detalle voluntario"
 
-#: webapp/views.py:41 webapp/views.py:325
+#: webapp/views.py:42 webapp/views.py:399
 msgid "Membresías"
 msgstr "Membresías"
 
-#: webapp/views.py:42 webapp/views.py:314
+#: webapp/views.py:43 webapp/views.py:388
 msgid "Socios"
 msgstr "Socios"
 
-#: webapp/views.py:43 webapp/views.py:297 webapp/views.py:304
-#: webapp/views.py:334 webapp/views.py:341
+#: webapp/views.py:44 webapp/views.py:372 webapp/views.py:379
+#: webapp/views.py:408 webapp/views.py:415
 msgid "Detalle socio"
 msgstr "Detalle socio"
 
-#: webapp/views.py:44 webapp/views.py:370
+#: webapp/views.py:45 webapp/views.py:445
 msgid "Grupos"
 msgstr "Grupos"
 
-#: webapp/views.py:45 webapp/views.py:381 webapp/views.py:388
+#: webapp/views.py:46 webapp/views.py:456 webapp/views.py:463
 msgid "Detalle grupo"
 msgstr "Detalle grupo"
 
-#: webapp/views.py:46 webapp/views.py:101
+#: webapp/views.py:47 webapp/views.py:483
+msgid "Proyectos"
+msgstr "Proxectos"
+
+#: webapp/views.py:48 webapp/views.py:494 webapp/views.py:501
+msgid "Detalle proyecto"
+msgstr "Detalle proxecto"
+
+#: webapp/views.py:49 webapp/views.py:341
+msgid "Actividades"
+msgstr "Actividades"
+
+#: webapp/views.py:50 webapp/views.py:323 webapp/views.py:352
+msgid "Detalle actividad"
+msgstr "Detalle actividade"
+
+#: webapp/views.py:51 webapp/views.py:107
 msgid "Nuevo socio individual"
 msgstr "Novo socio individual"
 
-#: webapp/views.py:47 webapp/views.py:111
+#: webapp/views.py:52 webapp/views.py:117
 msgid "Nueva familia"
 msgstr "Nova familia"
 
-#: webapp/views.py:139
+#: webapp/views.py:101
+msgid "Página principal"
+msgstr "Páxina principal"
+
+#: webapp/views.py:145
 msgid "Persona creada correctamente"
 msgstr "Persoa creada correctamente"
 
-#: webapp/views.py:150
+#: webapp/views.py:146
+msgid "Crear persona"
+msgstr "Nova persoa"
+
+#: webapp/views.py:157
 msgid "Persona editada correctamente"
 msgstr "Persoa editada correctamente"
 
-#: webapp/views.py:160
+#: webapp/views.py:166
 msgid "Eliminar persona"
 msgstr "Eliminar persoa"
 
-#: webapp/views.py:162
+#: webapp/views.py:168
 msgid "Persona eliminada correctamente"
 msgstr "Persoa eliminada correctamente"
 
-#: webapp/views.py:174
+#: webapp/views.py:177
 msgid "Persona no eliminada"
 msgstr "Persoa non eliminada"
 
-#: webapp/views.py:185
+#: webapp/views.py:188
 msgid "Destinatario creado correctamente"
 msgstr "Destinatario creado correctamente"
 
-#: webapp/views.py:204
+#: webapp/views.py:189
+msgid "Crear destinatario"
+msgstr "Novo destinatario"
+
+#: webapp/views.py:206
 msgid "Destinatario editado correctamente"
 msgstr "Destinatario editado correctamente"
 
-#: webapp/views.py:227
+#: webapp/views.py:226
+msgid "Eliminar destinatario"
+msgstr "Eliminar destinatario"
+
+#: webapp/views.py:235 webapp/views.py:237
+msgid "Crear voluntario"
+msgstr "Novo voluntario"
+
+#: webapp/views.py:236
 msgid "Voluntario creado correctamente"
 msgstr "Voluntario creado correctamente"
 
-#: webapp/views.py:239
+#: webapp/views.py:248
 msgid "Voluntario editado correctamente"
 msgstr "Voluntario editado correctamente"
 
-#: webapp/views.py:269 webapp/views.py:276
+#: webapp/views.py:277
+msgid "Eliminar voluntario"
+msgstr "Eliminar voluntario"
+
+#: webapp/views.py:285
+msgid "Crea padre, madre, tutor"
+msgstr "Novo pai, nai, titor"
+
+#: webapp/views.py:306 webapp/views.py:313
 msgid "Detalle custodian"
 msgstr "Detalle custodian"
 
-#: webapp/views.py:286
+#: webapp/views.py:333
+msgid "Nueva actividad"
+msgstr "Nova actividade"
+
+#: webapp/views.py:362
 msgid "Nuevo socio"
 msgstr "Novo socio"
 
-#: webapp/views.py:287
+#: webapp/views.py:363
 msgid "Socio creado correctamente"
 msgstr "Socio creado correctamente"
 
-#: webapp/views.py:305
+#: webapp/views.py:380
 msgid "Socio editado correctamente"
 msgstr "Socio editado correctamente"
 
-#: webapp/views.py:389
+#: webapp/views.py:425
+msgid "Creación de membresía"
+msgstr "Nova membresía"
+
+#: webapp/views.py:464
 msgid "Grupo editado correctamente"
 msgstr "Grupo editado correctamente"
 
-#: webapp/views.py:400
+#: webapp/views.py:474
 msgid "Nuevo grupo"
 msgstr "Novo grupo"
 
-#: webapp/views.py:401
+#: webapp/views.py:475
 msgid "Grupo creado correctamente"
 msgstr "Grupo creado correctamente"
+
+#: webapp/views.py:511
+msgid "Nuevo proyecto"
+msgstr "Novo proxecto"
