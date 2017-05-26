@@ -47,7 +47,7 @@ class MenuBar:
             Option(_('Proyectos'), 'project-list', menu=self),
             Option(_('Detalle proyecto'), None, menu=self),
             Option(_('Actividades'), 'event-list', menu=self),
-            Option(_('Detalle actividades'), None, menu=self),
+            Option(_('Detalle actividad'), None, menu=self),
             Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
             Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
         ]
