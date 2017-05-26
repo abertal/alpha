@@ -6,6 +6,7 @@
 <p>Grupos que lo integran:</p>
 {% for group in project.group_set.all %}
 <p>{{ group.group_name }}</p>
-{% endfor %}<a href="{% url 'project-edit' project.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
+{% endfor %}
+<a href="{% url 'project-edit' project.id %}" class="btn btn-secondary">{% trans 'Editar' %}</a>
 <a href="{% url 'project-list' %}" class="btn btn-link">{% trans 'Volver' %}</a>
 {% endblock %}
