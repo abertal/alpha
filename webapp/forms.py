@@ -262,3 +262,9 @@ class NewFamilyMember(forms.Form):
             models.Member.objects.create(person=person, membership=membership)
 
         return membership
+
+
+class CreateCustodian(forms.ModelForm):
+    class Meta:
+        model = models.Custodian
+        fields = '__all__'
