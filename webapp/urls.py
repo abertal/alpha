@@ -20,6 +20,7 @@ recipient = [
     url(r'^(?P<pk>\d+)/$', views.RecipientDetail.as_view(), name='recipient-detail'),
     url(r'^(?P<pk>\d+)/delete/$', views.RecipientDelete.as_view(), name='recipient-delete'),
     url(r'^(?P<pk>\d+)/edit/$', views.RecipientEdit.as_view(), name='recipient-edit'),
+    url(r'^(?P<pk>\d+)/custodian/$', views.CustodianCreate.as_view(), name='custodian-create'),
 ]
 
 volunteer = [
