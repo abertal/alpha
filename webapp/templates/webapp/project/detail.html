@@ -3,7 +3,7 @@
 
 {% block body %}
 <h3>{{ project.project_name }}</h3><br>
-<p>Grupos que lo integran:</p>
+<p>{% trans 'Lista de grupos:' %}</p>
 {% for group in project.group_set.all %}
 <p>{{ group.group_name }}</p>
 {% endfor %}
