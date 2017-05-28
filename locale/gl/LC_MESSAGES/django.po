@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Abertal-alpha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 21:59+0200\n"
-"PO-Revision-Date: 2017-05-26 21:59+0200\n"
+"POT-Creation-Date: 2017-05-28 19:12+0200\n"
+"PO-Revision-Date: 2017-05-28 19:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: Initios\n"
 "Language: gl\n"
@@ -415,7 +415,7 @@ msgstr "Autorización"
 #: webapp/templates/webapp/group/detail.html:6
 #: webapp/templates/webapp/member/detail.html:24
 #: webapp/templates/webapp/person/detail.html:39
-#: webapp/templates/webapp/project/detail.html:6
+#: webapp/templates/webapp/project/detail.html:10
 #: webapp/templates/webapp/recipient/detail.html:23
 #: webapp/templates/webapp/volunteer/detail.html:13
 msgid "Editar"
@@ -439,7 +439,7 @@ msgstr "Contacto de Emerxencia"
 
 #: webapp/templates/webapp/event/detail.html:7
 #: webapp/templates/webapp/group/detail.html:7
-#: webapp/templates/webapp/project/detail.html:7
+#: webapp/templates/webapp/project/detail.html:11
 msgid "Volver"
 msgstr "Voltar"
 
@@ -605,6 +605,10 @@ msgstr "Nova persoa"
 #: webapp/templates/webapp/person/list.html:21
 msgid "No hay personas"
 msgstr "Non hai persoas"
+
+#: webapp/templates/webapp/project/detail.html:6
+msgid "Lista de grupos:"
+msgstr "Lista de grupos:"
 
 #: webapp/templates/webapp/project/list.html:7
 msgid "Nuevo proyecto "
