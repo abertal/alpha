@@ -22,7 +22,7 @@ Cómo colaborar
 Pre requisitos
 --------------
 
-- Instalar python 3.5
+- Instalar python 3.6
 
 - Instalar y configurar git
 
