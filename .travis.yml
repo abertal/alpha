@@ -5,12 +5,18 @@
 language: python
 python:
   - "3.6"
+
 addons:
   apt:
     packages:
       - oracle-java8-set-default
+
 env:
   - HTMLVALIDATOR_VNU_URL=http://localhost:8888/
+
+before_install:
+  - nvm install 6
+  - nvm use 6
 
 # Hay que instalar las dependencias
 install:
