@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp ./vnu.jar nu.validator.servlet.Main 8888 &
+java -Dnu.validator.servlet.filterfile=vnu-message-filters.txt -cp vnu.jar nu.validator.servlet.Main 8888 &
