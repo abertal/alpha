@@ -16,10 +16,10 @@ env:
 
 # Instala los pre requisitos
 before_install:
-  - nvm install 6
-  - nvm use 6
   - (cd html5validation && ./install.sh)
   - (cd html5validation && ./run.sh)
+  - nvm install 6
+  - nvm use 6
   - sleep 20
 
 # Hay que instalar las dependencias
