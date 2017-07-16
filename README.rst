@@ -200,22 +200,25 @@ paquetes y librerías estén ordenados y agrupados de manera homogénea en toda 
 Instalación de Nu Html Checker en local
 ---------------------------------------
 
-El validador de HTML Nu Html Checker (v.Nu) está disponible como un servicio en https://checker.html5.org,
-https://html5.validator.nu o https://validator.w3.org/nu.
+El validador de HTML Nu Html Checker (v.Nu) está disponible como un servicio
+en https://checker.html5.org, https://html5.validator.nu o
+https://validator.w3.org/nu.
 
-El código fuente está disponible en https://github.com/validator/validator y se puede Instalar
-y ejecutar en tu propio ordenador. Es necesario tener instalado en el ordenador la versión de de Java 8.
+El código fuente está disponible en https://github.com/validator/validator y
+se puede Instalar y ejecutar en tu propio ordenador. Es necesario tener
+instalado en el ordenador la versión dede Java 8.
 
-Para ejecutarlo en local, hay que bajar la última versión del archivo `vnu.jar` y ejecutar:
-
+Para ejecutarlo en local, hay que bajar la última versión del archivo
+`vnu.jar` y ejecutar:
 .. code::
 
     java -cp vnu.jar nu.validator.servlet.Main 8888
 
 Este comando ejecuta el servidor en la dirección local http://localhost:8888/.
 
-Para que la validación HTML de los tests se haga contra nuestro servidor local es necesario indicar
-la dirección local usando una variable de entorno/..
+Para que la validación HTML de los tests se haga contra nuestro servidor
+local es necesario indicar la dirección local usando una variable de
+entorno/..
 
 En **Windows**:
 
@@ -231,6 +234,10 @@ En **Linux**:
 
     (.venv) $ HTMLVALIDATOR_VNU_URL=http://localhost:8888/ pytest
 
+
+Hay más información en `html5validation`_.
+
+.. _html5validation: html5validation/README.rst
 
 Guía de estilo: HTML
 --------------------
