@@ -14,20 +14,19 @@ addons:
 env:
   - HTMLVALIDATOR_VNU_URL=http://localhost:8888/
 
+# Instala los pre requisitos
 before_install:
   - nvm install 6
   - nvm use 6
+  - (cd html5validation && ./install.sh)
+  - (cd html5validation && ./run.sh)
+  - sleep 10
 
 # Hay que instalar las dependencias
 install:
   - npm install
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
-  - (cd html5validation && ./install.sh)
-
-before_script:
-  - (cd html5validation && ./run.sh)
-  - sleep 10
 
 # Estos son los tests que se ejecutarán
 script:
