@@ -16,10 +16,10 @@ env:
 install:
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
-  - ./install-vnu.sh
+  - (cd html5validation && ./install.sh)
 
 before_script:
-  - ./run-vnu.sh
+  - (cd html5validation && ./run.sh)
   - sleep 10
 
 # Estos son los tests que se ejecutarán
