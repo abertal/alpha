@@ -9,11 +9,12 @@
   "scripts": {
     "browser-sync": "browser-sync start --files \"./**/*.css, ./**/*.js, ./**/*.py, ./**/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
     "compile-i18n": "python manage.py compilemessages",
+    "lint": "eslint --ext .js,.vue webapp/",
     "make-i18n": "python manage.py makemessages",
     "makecompile-i18n": "python manage.py makemessages && python manage.py compilemessages",
     "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run browser-sync\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
-},
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/abertal/alpha/"
@@ -22,6 +23,12 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "browser-sync": "^2.18.7",
-    "concurrently": "^3.2.0"
+    "concurrently": "^3.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
