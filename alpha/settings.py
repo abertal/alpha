@@ -163,6 +163,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'rootfiles')
+
 # Debug-tools
 # https://django-debug-toolbar.readthedocs.io/en/stable/
 
