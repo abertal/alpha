@@ -1,7 +1,6 @@
-console.log('Aqui')
-
 var data = {
-  message: 'Greetings your majesty!'
+  username: '',
+  password: ''
 }
 
 /* eslint-disable no-new */
@@ -9,5 +8,12 @@ var data = {
 new Vue({
   el: '#app',
   data: data,
+  methods: {
+    setLoading: function (message) {
+      var el = message.target
+      el.disabled = true
+      el.setAttribute('value', el.getAttribute('data-loading-text'))
+    }
+  },
   delimiters: ['${', '}']
 })
