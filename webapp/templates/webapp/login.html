@@ -8,15 +8,15 @@
     {% csrf_token %}
     <table>
       <tr>
-          <td>{{ form.username.label_tag }}</td>
-          <td>{{ form.username }}</td>
+        <td><label for="id_username">Nombre de usuario:</label></td>
+        <td><input v-model="username" name="username" autofocus="autofocus" maxlength="254" required="required" id="id_username" type="text"></td>
       </tr>
       <tr>
-          <td>{{ form.password.label_tag }}</td>
-          <td>{{ form.password }}</td>
+        <td><label for="id_password">Contraseña:</label></td>
+        <td><input v-model="password" name="password" required="required" id="id_password" type="password"></td>
       </tr>
     </table>
-    <input type="submit" value="Aceptar" :disabled="true"/>
+    <input type="submit" value="Aceptar" :disabled="!(username && password)" data-loading-text="Cargando" v-on:click="setLoading"/>
     <input type="hidden" name="next" value="{{ next }}" />
     {% if form.errors %}
     <p>{% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}</p>
