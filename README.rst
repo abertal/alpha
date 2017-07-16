@@ -24,6 +24,8 @@ Pre requisitos
 
 - Instalar python 3.6
 
+- Instalar nodejs
+
 - Instalar y configurar git
 
 Instrucciones instalación en Mac/Linux
@@ -38,6 +40,7 @@ Instrucciones instalación en Mac/Linux
     (.venv) $ pip install --upgrade pip setuptools wheel
     (.venv) $ pip install --requirement requirements.txt
     (.venv) $ pip install --requirement dev-requirements.txt
+    (.venv) $ npm install
 
 Instrucciones instalación en Windows
 ------------------------------------
@@ -50,6 +53,7 @@ Instrucciones instalación en Windows
     (.venv) PS > pip install --upgrade pip setuptools wheel
     (.venv) PS > pip install --requirement requirements.txt
     (.venv) PS > pip install --requirement dev-requirements.txt
+    (.venv) PS > npm install
 
 Clonación del repositorio y subida de repositorios
 --------------------------------------------------
@@ -175,6 +179,13 @@ recomendaciones de estilo del estándar PEP8_ ejecutando el comando `flake8`.
     (.venv) PS > flake8
 
 Si hay algún error debe corregirse antes.
+
+Lo mismo con el código escrito en Javascript. En este caso se utiliza la
+herramienta `eslint`.
+
+.. code::
+
+    (.venv) PS > npm run lint
 
 También hay que comprobar que no hay errores en los tests. Para ejecutar los
 tests simplmente hay que ejecutar el comando `pytest`.
