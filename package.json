@@ -7,12 +7,12 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "browser-sync": "browser-sync start --files \"./**/*.css, ./**/*.js, ./**/*.py, ./**/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
-    "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run browser-sync\" ",
-    "make-i18n": "python manage.py makemessages",
     "compile-i18n": "python manage.py compilemessages",
-    "makecompile-i18n": "python manage.py makemessages && python manage.py compilemessages"
+    "make-i18n": "python manage.py makemessages",
+    "makecompile-i18n": "python manage.py makemessages && python manage.py compilemessages",
+    "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run browser-sync\" ",
+    "test": "echo \"Error: no test specified\" && exit 1"
 },
   "repository": {
     "type": "git",
