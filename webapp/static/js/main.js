@@ -11,7 +11,9 @@ new Vue({
   methods: {
     setLoading: function (message) {
       var el = message.target
-      el.disabled = true
+      setTimeout(function () {
+        el.disabled = true
+      }, 0)
       el.setAttribute('value', el.getAttribute('data-loading-text'))
     }
   },
