@@ -203,3 +203,11 @@ def test_detail_volunteer(logged_client, volunteer_filter, url):
 def test_delete_volunteer(logged_client, volunteer_filter, url):
     response = logged_client.post(url.format(pk=volunteer_filter.id))
     assert response.status_code == 302
+
+
+@pytest.mark.django_db
+def test_ajax_person_list(logged_client):
+    response = logged_client.get('/webapp/ajax/person/')
+    assert response.status_code == 200
+    assert response['Content-Type'] == 'application/json'
+    assert False, 'Finish'

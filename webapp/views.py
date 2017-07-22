@@ -512,3 +512,11 @@ class ProjectCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('project-detail', args=[self.object.id])
+
+
+from django.http import JsonResponse
+
+
+class AjaxPersonList(LoginRequiredMixin, generic.View):
+    def get(self, request, *args, **kwargs):
+        return JsonResponse({'data': []})
