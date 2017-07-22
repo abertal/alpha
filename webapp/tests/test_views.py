@@ -210,4 +210,3 @@ def test_ajax_person_list(logged_client):
     response = logged_client.get('/webapp/ajax/person/')
     assert response.status_code == 200
     assert response['Content-Type'] == 'application/json'
-    assert False, 'Finish'

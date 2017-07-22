@@ -2,8 +2,9 @@
 var data = {
   loading: false,
   response: null,
-  person: null,
-  results: null
+  personId: null,
+  results: null,
+  searchString: null
 }
 
 /* eslint-disable no-new */
@@ -15,16 +16,19 @@ var vm = new Vue({
     clickSearch: function (message) {
       var el = message.target
       el.setAttribute('value', 'Buscando...')
+      vm.personId = null
       vm.results = []
       vm.loading = true
       axios.get('/webapp/ajax/person/')
       .then(function (response) {
         vm.response = response
-        console.dir(response)
-        vm.results = [{name: 'A'}, {name: 'B'}]
+        vm.results = response.data.data
         el.setAttribute('value', 'Buscar')
         vm.loading = false
       })
+    },
+    selectPerson: function (personId) {
+      vm.personId = personId
     }
   },
   delimiters: ['${', '}']

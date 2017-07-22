@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import ProtectedError
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render, reverse
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
@@ -514,9 +514,7 @@ class ProjectCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
         return reverse('project-detail', args=[self.object.id])
 
 
-from django.http import JsonResponse
-
-
 class AjaxPersonList(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
-        return JsonResponse({'data': []})
+        people = models.Person.objects.all()[:10].values('id', 'name')
+        return JsonResponse({'data': list(people)})
