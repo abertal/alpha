@@ -1,5 +1,6 @@
 {% extends './__simple.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block main %}
 <div class="col-3 offset-3 align-self-center">
@@ -24,3 +25,7 @@
   </form>
 </div>
 {% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock extra_js %}
