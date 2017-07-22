@@ -10,3 +10,4 @@ def test_main(selenium, live_server, admin_user):
         .login('admin', 'password')
         .logout()
     )
+    selenium.quit()
