@@ -10,7 +10,7 @@ addons:
   apt:
     packages:
       - oracle-java8-set-default
-  firefox: latest
+  firefox: latest-beta
 
 env:
   - HTMLVALIDATOR_VNU_URL=http://localhost:8888/
