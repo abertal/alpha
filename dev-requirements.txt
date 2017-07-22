@@ -3,5 +3,6 @@ isort
 pytest>=3
 pytest-cov
 pytest-django
+pytest-selenium
 django-html-validator
 factory_boy
