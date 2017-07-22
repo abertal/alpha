@@ -1,4 +1,22 @@
 {% extends './__base.html' %}
+{% load static %}
+
 {% block body %}
 <h2>hola {{ user.username }}</h2>
+<div>
+  <input id="id_person" type="text" v-model="person">
+  <input type="submit" value="Buscar" v-on:click="clickSearch">
+  <div id="results">
+    <div class="sk-rotating-plane" v-if="loading"></div>
+    <ul class="list-group">
+      <li v-for="result in results" class="list-group-item">${ result.name }</li>
+      <li v-if="!results" class="list-group-item">No hay coincidencias</li>
+    </ul>
+  </div>
+</div>
 {% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock extra_js %}
