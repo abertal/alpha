@@ -9,14 +9,14 @@
     <table>
       <tr>
         <td><label for="id_username">Nombre de usuario:</label></td>
-        <td><input v-model="username" name="username" autofocus="autofocus" maxlength="254" required="required" id="id_username" type="text"></td>
+        <td><input id="id_username" v-model="username" name="username" autofocus="autofocus" maxlength="254" required="required" type="text"></td>
       </tr>
       <tr>
         <td><label for="id_password">Contraseña:</label></td>
-        <td><input v-model="password" name="password" required="required" id="id_password" type="password"></td>
+        <td><input id="id_password" v-model="password" name="password" required="required" type="password"></td>
       </tr>
     </table>
-    <input type="submit" value="Aceptar" :disabled="!(username && password)" data-loading-text="Cargando" v-on:click="setLoading"/>
+    <input id="id_submit" type="submit" value="Aceptar" :disabled="!(username && password)" data-loading-text="Cargando" v-on:click="setLoading"/>
     <input type="hidden" name="next" value="{{ next }}" />
     {% if form.errors %}
     <p>{% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}</p>
