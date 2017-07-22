@@ -37,7 +37,7 @@ script:
     - npm run lint
     - isort --check-only
     - flake8
-    - pytest --cov=./ --cov-report=xml
+    - pytest --driver Firefox --cov=./ --cov-report=xml
 
 # Lanza página para medir cobertura
 # Se puede ver en https://codecov.io/gh/abertal/alpha
