@@ -4,12 +4,16 @@
 {% block body %}
 <h2>hola {{ user.username }}</h2>
 <div>
-  <input id="id_person" type="text" v-model="person">
+  <input id="id_person" type="hidden" v-model="personId">
+  <input id="id_search_string" name="q" type="text" v-model="searchString">
   <input type="submit" value="Buscar" v-on:click="clickSearch">
   <div id="results">
     <div class="sk-rotating-plane" v-if="loading"></div>
     <ul class="list-group">
-      <li v-for="result in results" class="list-group-item">${ result.name }</li>
+      <li v-for="result in results" class="list-group-item">
+        ${ result.name }
+        <button v-on:click="selectPerson(result.id)">Seleccionar</button>
+      </li>
       <li v-if="!results" class="list-group-item">No hay coincidencias</li>
     </ul>
   </div>
