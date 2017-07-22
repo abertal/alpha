@@ -10,7 +10,7 @@ addons:
   apt:
     packages:
       - oracle-java8-set-default
-  firefox: latest-beta
+#   firefox: latest-beta
 
 env:
   - HTMLVALIDATOR_VNU_URL=http://localhost:8888/
@@ -19,14 +19,15 @@ env:
 before_install:
   - (cd html5validation && ./install.sh)
   - (cd html5validation && ./run.sh)
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
   - nvm install 6
   - nvm use 6
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
-  - mkdir geckodriver
-  - tar -xzf geckodriver-v0.18.0-linux64.tar.gz -C geckodriver/
-  - export PATH=$PATH:$PWD/geckodriver
+# Firefox and geckodirver
+#   - "export DISPLAY=:99.0"
+#   - "sh -e /etc/init.d/xvfb start"
+#   - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
+#   - mkdir geckodriver
+#   - tar -xzf geckodriver-v0.18.0-linux64.tar.gz -C geckodriver/
+#   - export PATH=$PATH:$PWD/geckodriver
   - sleep 20
 
 # Hay que instalar las dependencias
@@ -40,7 +41,7 @@ script:
     - npm run lint
     - isort --check-only
     - flake8
-    - pytest --driver Firefox --cov=./ --cov-report=xml
+    - pytest --driver PhantomJS --cov=./ --cov-report=xml
 
 # Lanza página para medir cobertura
 # Se puede ver en https://codecov.io/gh/abertal/alpha
