@@ -18,8 +18,12 @@ env:
 before_install:
   - (cd html5validation && ./install.sh)
   - (cd html5validation && ./run.sh)
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
   - nvm install 6
   - nvm use 6
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
+  - tar -xzf geckodriver-v0.18.0-linux64.tar.gz
   - sleep 20
 
 # Hay que instalar las dependencias
