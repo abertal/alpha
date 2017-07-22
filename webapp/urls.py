@@ -67,7 +67,12 @@ event = [
     url(r'^new/$', views.EventCreate.as_view(), name='event-create'),
 ]
 
+ajax = [
+    url(r'^person/', views.AjaxPersonList.as_view()),
+]
+
 urlpatterns = [
+    url(r'^ajax/', include(ajax)),
     url(r'^person/', include(person)),
     url(r'^recipient/', include(recipient)),
     url(r'^volunteer/', include(volunteer)),

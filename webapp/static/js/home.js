@@ -17,7 +17,7 @@ var vm = new Vue({
       el.setAttribute('value', 'Buscando...')
       vm.results = []
       vm.loading = true
-      axios.get('//httpbin.org/delay/3')
+      axios.get('/webapp/ajax/person/')
       .then(function (response) {
         vm.response = response
         console.dir(response)
