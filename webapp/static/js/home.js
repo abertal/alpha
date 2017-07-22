@@ -4,7 +4,7 @@ var data = {
   response: null,
   personId: null,
   results: null,
-  searchString: null
+  searchString: ''
 }
 
 /* eslint-disable no-new */
@@ -19,7 +19,7 @@ var vm = new Vue({
       vm.personId = null
       vm.results = []
       vm.loading = true
-      axios.get('/webapp/ajax/person/')
+      axios.get('/webapp/ajax/person/?q=' + vm.searchString)
       .then(function (response) {
         vm.response = response
         vm.results = response.data.data

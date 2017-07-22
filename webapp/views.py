@@ -516,5 +516,7 @@ class ProjectCreate(LoginRequiredMixin, MenuMixin, generic.CreateView):
 
 class AjaxPersonList(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
-        people = models.Person.objects.all()[:10].values('id', 'name')
+        qs = models.Person.objects.all()
+        f = filters.PersonFilter(request.GET, qs)
+        people = f.qs[:10].values('id', 'name', 'surname')
         return JsonResponse({'data': list(people)})
