@@ -1,0 +1,60 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+def w(driver, locator):
+    wait = WebDriverWait(driver, 10)
+    element = wait.until(EC.presence_of_element_located(locator))
+    return element
+
+
+class Element:
+    def __init__(self, value, by=By.ID):
+        self.locator = (by, value)
+
+    def __get__(self, obj, obj_type=None):
+        return w(obj.drv, self.locator)
+
+
+class BasePage:
+    title = None
+
+    def __init__(self, drv):
+        self.drv = drv
+        if self.title:
+            # Check we are on the right page
+            assert self.title == self.drv.title
+
+    def send_keys(self, locator, keys):
+        elt = w(self.drv, locator)
+        elt.send_keys(keys)
+
+    def send_enter(self, locator):
+        elt = w(self.drv, locator)
+        elt.send_keys(Keys.ENTER)
+
+    def click(self, locator):
+        elt = w(self.drv, locator)
+        elt.click()
+
+
+class Login(BasePage):
+    user = Element('id_username')
+    password = Element('id_password')
+    submit = Element('id_submit')
+
+    def login(self, username, password) -> BasePage:
+        self.user.send_keys(username)
+        self.password.send_keys(password)
+        self.submit.click()
+        return Logged(self.drv)
+
+
+class Logged(BasePage):
+    logout_link = Element('id_logout')
+
+    def logout(self) -> BasePage:
+        self.logout_link.click()
+        return Login(self.drv)
