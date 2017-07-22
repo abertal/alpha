@@ -19,25 +19,13 @@ class Element:
 
 
 class BasePage:
-    title = None
+    title = 'Abertal'
 
     def __init__(self, drv):
         self.drv = drv
         if self.title:
             # Check we are on the right page
             assert self.title == self.drv.title
-
-    def send_keys(self, locator, keys):
-        elt = w(self.drv, locator)
-        elt.send_keys(keys)
-
-    def send_enter(self, locator):
-        elt = w(self.drv, locator)
-        elt.send_keys(Keys.ENTER)
-
-    def click(self, locator):
-        elt = w(self.drv, locator)
-        elt.click()
 
 
 class Login(BasePage):
