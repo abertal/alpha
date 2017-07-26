@@ -3,7 +3,7 @@ var path = require('path')
 module.exports = {
   entry: {
     'home': './webapp/assets/js/home.js',
-    'main': './webapp/assets/js/main.js'
+    'login': './webapp/assets/js/login.js'
   },
   output: {
     filename: '[name].bundle.js',
