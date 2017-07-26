@@ -26,12 +26,14 @@
   "devDependencies": {
     "browser-sync": "^2.18.7",
     "concurrently": "^3.2.0",
+    "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "vue-loader": "^13.0.2",
     "webpack": "^3.4.1"
   },
   "dependencies": {
