@@ -8,6 +8,7 @@
   },
   "scripts": {
     "browser-sync": "browser-sync start --files \"./**/*.css, ./**/*.js, ./**/*.py, ./**/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
+    "build": "webpack",
     "compile-i18n": "python manage.py compilemessages",
     "lint": "eslint --ext .js,.vue webapp/",
     "make-i18n": "python manage.py makemessages",
