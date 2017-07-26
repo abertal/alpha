@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 var data = {
   username: '',
   password: ''

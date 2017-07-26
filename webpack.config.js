@@ -1,9 +1,12 @@
 var path = require('path')
 
 module.exports = {
-  entry: './webapp/assets/js/home.js',
+  entry: {
+    'home': './webapp/assets/js/home.js',
+    'main': './webapp/assets/js/main.js'
+  },
   output: {
-    filename: 'home.bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'webapp/static/js/')
   },
   resolve: {
