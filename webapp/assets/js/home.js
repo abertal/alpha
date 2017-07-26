@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
+import PersonCard from './components/PersonCard.vue'
 
 var data = {
   loading: false,
@@ -14,6 +15,9 @@ var data = {
 var vm = new Vue({
   el: '#app',
   data: data,
+  components: {
+    'person-card': PersonCard
+  },
   methods: {
     clickSearch: function (message) {
       var el = message.target

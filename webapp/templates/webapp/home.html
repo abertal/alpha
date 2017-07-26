@@ -10,9 +10,11 @@
   <div id="results">
     <div class="sk-rotating-plane" v-if="loading"></div>
     <ul class="list-group">
-      <li v-for="result in results" class="list-group-item">
-        ${ result.name } ${ result.surname }
-        <button v-on:click="selectPerson(result.id)">Seleccionar</button>
+      <li is="person-card"
+         v-for="result in results"
+         v-bind:key="result.id"
+         v-bind:person="result"
+         v-on:selected="selectPerson">
       </li>
       <li v-if="!results" class="list-group-item">No hay coincidencias</li>
     </ul>
