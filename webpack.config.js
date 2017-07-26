@@ -13,5 +13,13 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js' // Use ES Module build
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
+    ]
   }
 }
