@@ -5,5 +5,10 @@ module.exports = {
   output: {
     filename: 'home.bundle.js',
     path: path.resolve(__dirname, 'webapp/static/js/')
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // Use ES Module build
+    }
   }
 }

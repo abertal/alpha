@@ -1,5 +1,5 @@
-// noinspection JSAnnotator
 import axios from 'axios'
+import Vue from 'vue'
 
 var data = {
   loading: false,
