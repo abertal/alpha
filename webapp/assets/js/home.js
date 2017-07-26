@@ -1,3 +1,5 @@
+// noinspection JSAnnotator
+import axios from 'axios'
 
 var data = {
   loading: false,
