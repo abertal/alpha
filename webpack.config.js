@@ -1,4 +1,4 @@
-var path = require('path');
+var path = require('path')
 
 module.exports = {
   entry: './webapp/assets/js/home.js',
@@ -6,5 +6,4 @@ module.exports = {
     filename: 'home.bundle.js',
     path: path.resolve(__dirname, 'webapp/static/js/')
   }
-};
-
+}
