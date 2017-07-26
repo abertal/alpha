@@ -13,8 +13,9 @@
     "lint": "eslint --ext .js,.vue webapp/",
     "make-i18n": "python manage.py makemessages",
     "makecompile-i18n": "python manage.py makemessages && python manage.py compilemessages",
-    "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run browser-sync\" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently --kill-others \"python manage.py runserver\" \"npm run watch\" \"npm run browser-sync\" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
