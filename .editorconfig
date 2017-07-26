@@ -14,18 +14,7 @@ charset = utf-8
 [*.py]
 max_line_length = 110
 
-# Use 2 spaces for the HTML files
-[*.html]
+# Use 2 spaces for HTML and friends
+[*.{css,html,js,json,vue}]
 indent_size = 2
 
-# Use 2 spaces for the CSS files
-[*.css]
-indent_size = 2
-
-# Use 2 spaces for the JS files
-[*.js]
-indent_size = 2
-
-# Use 2 spaces for the JSON files
-[*.json]
-indent_size = 2
