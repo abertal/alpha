@@ -5,26 +5,32 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 95vh;
-  min-height: calc(76vh);
+  min-height: calc(100vh - 24px);
 }
+
 main {
   flex: 1;
 }
+
 footer {
   text-align: center;
   padding-top: 30px;
   font-size: 0.8em;
 }
+
 /* --------------------- */
 /* Resets                */
 /* --------------------- */
-.fluid-container,
-.row {
+
+.fluid-container, .row {
   max-width: 100%;
 }
+
+
 /* --------------------- */
 /* Spinner               */
 /* --------------------- */
+
 /* The MIT License (MIT)
  *
  * Copyright (c) 2015 Tobias Ahlin
@@ -40,33 +46,26 @@ footer {
   background-color: #333;
   margin: 40px auto;
   -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
-  animation: sk-rotatePlane 1.2s infinite ease-in-out;
-}
+          animation: sk-rotatePlane 1.2s infinite ease-in-out; }
+
 @-webkit-keyframes sk-rotatePlane {
   0% {
     -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-  }
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
   50% {
     -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-  }
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
   100% {
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
-}
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }
+
 @keyframes sk-rotatePlane {
   0% {
     -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-  }
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
   50% {
     -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-  }
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
   100% {
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
-}
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }

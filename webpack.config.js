@@ -1,7 +1,11 @@
 var path = require('path')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+let extractLESS = new ExtractTextPlugin('../css/[name].css')
 
 module.exports = {
   entry: {
+    'alpha': './webapp/assets/js/alpha.js',
     'home': './webapp/assets/js/home.js',
     'login': './webapp/assets/js/login.js'
   },
@@ -17,9 +21,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.less$/,
+        loader: extractLESS.extract(['css-loader', 'less-loader'])
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    extractLESS
+  ]
 }
