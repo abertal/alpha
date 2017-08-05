@@ -1,3 +1,191 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.form-group {
+  margin-bottom: 30px;
+}
+.card {
+  border: 0;
+}
+.card .card-header {
+  border: 0;
+  background: none;
+  border-top: 1px solid #979797;
+  color: #f26a44;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+fieldset.form-group {
+  position: relative;
+  border: 0;
+}
+fieldset.form-group .card-header {
+  border: 0;
+  background: none;
+  border-top: 1px solid #979797;
+  color: #f26a44;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+fieldset.form-group legend {
+  border: 0;
+  background: none;
+  border-top: 1px solid #979797;
+  color: #f26a44;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+fieldset.form-group .fieldset-content {
+  padding-left: 80px;
+}
+fieldset.form-group .fieldset-index {
+  position: absolute;
+  left: 0;
+  color: #cdcdd0;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1em;
+}
+.control-label {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  color: #6b5e62;
+}
+.form-control {
+  line-height: 23px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #979797;
+}
+.form-control:focus {
+  -moz-box-shadow: 0 0 0 0;
+  -webkit-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  border: 1px solid #979797;
+}
+.input-group .input-group-addon {
+  background: #fff;
+  border-color: #979797;
+  color: #9b9b9b;
+}
+.input-group .form-control {
+  border-left: 0;
+  border-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.custom-control .custom-control-input:checked ~ .custom-control-indicator {
+  background-color: #f26a44;
+}
+.custom-control .custom-control-indicator {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.custom-control .custom-control-description {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  color: #6b5e62;
+}
+.navbar {
+  background: #f6903d;
+  min-height: 155px;
+  padding: 0;
+  text-transform: uppercase;
+}
+.navbar .navbar-brand {
+  background: #6b5e62;
+  display: block;
+  height: 155px;
+  line-height: 95px;
+  width: 30%;
+  padding: 30px;
+  font-size: 23px;
+  text-align: right;
+}
+.navbar .navbar-brand span {
+  text-transform: none;
+}
+.navbar .navbar-nav .nav-item a {
+  color: #fff;
+}
+.navbar .navbar-nav .nav-item a:hover {
+  padding-bottom: 3px;
+  position: relative;
+  display: inline-block;
+}
+.navbar .navbar-nav .nav-item a:hover:after {
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  content: '';
+  height: 1px;
+  position: absolute;
+  background: #fff;
+  width: 0;
+  bottom: 0;
+}
+.navbar .navbar-nav .nav-item a:hover:after {
+  left: 50%;
+}
+.navbar .navbar-nav .nav-item a:hover:hover:after {
+  width: 100%;
+  left: 0;
+}
+.btn {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border: 0;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 30px;
+  margin: 0 10px 10px 0;
+}
+.btn.btn-primary {
+  background: #f26a44;
+}
+.btn.btn-primary:hover {
+  background: #6b5e62;
+}
+.btn.btn-secondary {
+  border: 1px solid #f26a44;
+  color: #f26a44;
+  background: transparent;
+}
+.btn.btn-secondary:hover {
+  background: #f26a44;
+  color: #fff;
+}
+.btn.btn-lg {
+  min-width: 300px;
+  padding: 22px;
+  letter-spacing: 1.52px;
+  font-size: 21px;
+}
 /* -------------------- */
 /* Main styles          */
 /* -------------------- */
