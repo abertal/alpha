@@ -72,7 +72,15 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_alpha_less__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_alpha_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_alpha_less__);
+// This file is used to gather all assets. They will
+// be included in all HTML pages as globals
 
+
+// Following CSS area included explicitly in all HTML pages
+// using version from dist/ folder.
+//
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
 /***/ }),
