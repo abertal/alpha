@@ -5,9 +5,9 @@ let extractLESS = new ExtractTextPlugin('../css/[name].css')
 
 module.exports = {
   entry: {
-    'alpha': './webapp/assets/js/alpha.js',
-    'home': './webapp/assets/js/home.js',
-    'login': './webapp/assets/js/login.js'
+    'alpha': './webapp/src/alpha.js',
+    'home': './webapp/src/home.js',
+    'login': './webapp/src/login.js'
   },
   output: {
     filename: '[name].bundle.js',
