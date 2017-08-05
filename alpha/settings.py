@@ -161,7 +161,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'vendor', 'bootstrap-4.0.0-alpha.6'),
+    os.path.join(BASE_DIR, 'node_modules', 'bootstrap' , 'dist'),
     os.path.join(BASE_DIR, 'vendor', 'jquery-3.2.1'),
     os.path.join(BASE_DIR, 'vendor', 'tether-1.3.3'),
 ]
