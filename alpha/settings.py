@@ -164,7 +164,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vendor', 'bootstrap-4.0.0-alpha.6'),
     os.path.join(BASE_DIR, 'vendor', 'jquery-3.2.1'),
     os.path.join(BASE_DIR, 'vendor', 'tether-1.3.3'),
-    os.path.join(BASE_DIR, 'vendor', 'vue'),
 ]
 
 MEDIA_URL = '/media/'
