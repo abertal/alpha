@@ -27,18 +27,25 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav">
         {% block menu %}
-          {% for option in menu %}
-            <li class="nav-item {% if option.is_current %}active{% endif %}">
-              <a href="{{ option.url }}" class="nav-link">
-                {{ option.name }}
-              </a>
-            </li>
+        {% for menu in menu_bar %}
+        <li class="nav-item dropdown {% if option.is_current %}active{% endif %}">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ menu.name }}
+          </a>
+          <div class="dropdown-menu">
+          {% for option in menu.options %}
+            <a href="{{ option.url }}" class="dropdown-item">
+              {{ option.name }}
+            </a>
           {% endfor %}
+          </div>
+        </li>
+        {% endfor %}
         {% endblock %}
       </ul>
       <ul class="ml-auto nav navbar-nav">
         <li class="nav-item dropdown">
-          <a href="#" id="langdropdown" class="nav-link dropdown-toggle">
+          <a href="#" id="langdropdown" class="nav-link dropdown-toggle" data-toggle="dropdown">
             Lang
           </a>
           <div class="dropdown-menu" aria-labelledby="langdropdown">
@@ -48,7 +55,7 @@
         </li>
         {% if request.user.is_authenticated %}
           <li class="nav-item dropdown">
-            <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+            <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" data-toggle="dropdown">
               Hola <strong>{{ request.user.username }}</strong>
             </a>
             <div aria-labelledby="userdropdown" class="dropdown-menu">
