@@ -169,20 +169,23 @@
   padding-bottom: 3px;
   position: relative;
   display: inline-block;
+
   &:after {
     .transition(all, .2s);
-    content: '';
+    content: ' ';
     height: 1px;
-    position: absolute;
-    background: @color;
-    width: 0;
     bottom: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    background: @color;
   }
 
   &:after when (@effect = 'center') {
     left: 50%;
   }
   &:after when (@effect = 'left') {
+
     left: 0
   }
   &:after when (@effect = 'right') {

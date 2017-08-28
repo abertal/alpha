@@ -2,26 +2,47 @@
 {% load i18n %}
 {% load static %}
 
+
+{% block page_class %}page-login{% endblock %}
+
 {% block main %}
-<div class="col-3 offset-3 align-self-center">
-  <h1 class="element">Acceso</h1>
+<div id="login" class="col-6 offset-2 align-self-center">
+
+  {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      {% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}
+    </div>
+  {% endif %}
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <table>
-      <tr>
-        <td><label for="id_username">Nombre de usuario:</label></td>
-        <td><input id="id_username" v-model="username" name="username" autofocus="autofocus" maxlength="254" required="required" type="text"></td>
-      </tr>
-      <tr>
-        <td><label for="id_password">Contraseña:</label></td>
-        <td><input id="id_password" v-model="password" name="password" required="required" type="password"></td>
-      </tr>
-    </table>
-    <input id="id_submit" type="submit" value="Aceptar" :disabled="!(username && password)" data-loading-text="Cargando" v-on:click="setLoading"/>
+    <div class="form-group">
+      <input class="form-control"
+             id="id_username"
+             v-model="username"
+             name="username"
+             autofocus="autofocus"
+             maxlength="254"
+             required="required"
+             type="text"
+             placeholder="{% trans 'Nombre de usuario' %}"
+      >
+    </div>
+    <div class="form-group">
+      <input class="form-control"
+             id="id_password"
+             v-model="password"
+             name="password"
+             required="required"
+             type="password"
+             placeholder="{% trans 'Contraseña' %}"
+      >
+    </div>
+
+    <div class="actions actions-center">
+      <input class="btn btn-primary btn-lg" id="id_submit" type="submit" value="Aceptar" :disabled="!(username && password)" data-loading-text="Cargando" v-on:click="setLoading"/>
+    </div>
     <input type="hidden" name="next" value="{{ next }}" />
-    {% if form.errors %}
-    <p>{% trans 'Usuario o contraseña incorrecta. Inténtalo de nuevo.' %}</p>
-    {% endif %}
+
   </form>
 </div>
 {% endblock %}

@@ -161,6 +161,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'node_modules', 'popper.js', 'dist'),
     os.path.join(BASE_DIR, 'node_modules', 'bootstrap', 'dist'),
     os.path.join(BASE_DIR, 'node_modules', 'bootstrap-vue', 'dist'),
     os.path.join(BASE_DIR, 'vendor', 'jquery-3.2.1'),

@@ -4,17 +4,26 @@
 
 
 
+.container-fluid-alpha {
+  max-width: 100%;
+  padding: 0 17%;
+}
+
+.col {
+  &.no-gutters {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 // Form
 
 .form-group {
   margin-bottom: 30px;
 }
-
-
 .card() {
   border: 0;
 }
-
 .card-header() {
   border: 0;
   background: none;
@@ -25,8 +34,6 @@
   text-transform: uppercase;
   padding: 15px 0;
 }
-
-
 .card {
   .card();
   .card-header {
@@ -41,7 +48,6 @@ fieldset.form-group {
     .card-header();
   }
 
-
   .fieldset-content {
     padding-left: 80px;
   }
@@ -55,7 +61,6 @@ fieldset.form-group {
     line-height: 1em;
   }
 }
-
 .control-label {
   font-size: 14px;
   font-weight: 400;
@@ -63,7 +68,6 @@ fieldset.form-group {
   padding: 5px 15px;
   color: @text-color;
 }
-
 .form-control {
   line-height: 23px;
   .border-radius(4px);
@@ -71,11 +75,10 @@ fieldset.form-group {
   border: 1px solid @gray97;
 
   &:focus {
-    .box-shadow(0,0,0,0);
+    .box-shadow(0, 0, 0, 0);
     border: 1px solid @gray97;
   }
 }
-
 .input-group {
 
   .input-group-addon {
@@ -91,7 +94,15 @@ fieldset.form-group {
     padding-right: 0;
   }
 }
+form {
+  .actions {
+    padding: 30px 15px;
 
+    &.actions-center {
+      text-align: center;
+    }
+  }
+}
 .custom-control {
   .custom-control-input:checked ~ .custom-control-indicator {
     background-color: @primary-color;
@@ -106,10 +117,6 @@ fieldset.form-group {
     .control-label
   }
 }
-
-
-
-
 //NAVBAR
 
 .navbar {
@@ -121,13 +128,18 @@ fieldset.form-group {
   .navbar-brand {
     background: @text-color;
     display: block;
+    color: @white-color;
     height: @navbar-height;
     line-height: (@navbar-height - 60px);
-    width: 30%;
+    width: 18.9%;
     padding: 30px;
     font-size: 23px;
     text-align: right;
-
+    .transition(all, .2s);
+    &:hover {
+      color: @white-color;
+      background: darken(@text-color, 10%);
+    }
     span {
       text-transform: none;
     }
@@ -135,18 +147,25 @@ fieldset.form-group {
 
   .navbar-nav {
     .nav-item {
-      a {
+      a.nav-link {
         color: @white-color;
-
-
-        &:hover {
+        .transition(all, .2s);
+        position: relative;
+        &:not(.dropdown-toggle) {
           .underline-effect(@white-color);
         }
       }
     }
   }
+  .dropdown-menu {
+    background: @gray6B;
+    li {
+      a {
+        color: @white-color;
+      }
+    }
+  }
 }
-
 // BTN
 .btn {
   .border-radius(3px);
@@ -167,7 +186,6 @@ fieldset.form-group {
     }
   }
 
-
   &.btn-secondary {
     border: 1px solid @primary-color;
     color: @primary-color;
@@ -178,12 +196,24 @@ fieldset.form-group {
     }
   }
 
-
   &.btn-lg {
     min-width: 300px;
     padding: 22px;
     letter-spacing: 1.52px;
     font-size: 21px;
+  }
+
+}
+// ALERTS
+.alert {
+  .border-radius(0);
+  border: 0;
+  padding: 2px 10px;
+  text-align: center;
+
+  &.alert-danger {
+    background: @danger;
+    color: @white-color;
   }
 
 }

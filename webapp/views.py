@@ -34,22 +34,22 @@ class MenuBar:
     def get_options(self):
         return [
             Option(_('Personas'), 'person-list', menu=self),
-            Option(_('Detalle persona'), None, menu=self),
+            [Option(_('Detalle persona'), None, menu='person-list')],
             Option(_('Destinatarios'), 'recipient-list', menu=self),
-            Option(_('Detalle destinatario'), None, menu=self),
+            [Option(_('Detalle destinatario'), None, menu=self)],
             Option(_('Voluntarios'), 'volunteer-list', menu=self),
-            Option(_('Detalle voluntario'), None, menu=self),
+            [Option(_('Detalle voluntario'), None, menu=self)],
             Option(_('Membresías'), 'membership-list', menu=self),
             Option(_('Socios'), 'member-list', menu=self),
-            Option(_('Detalle socio'), None, menu=self),
+            [Option(_('Detalle socio'), None, menu=self)],
             Option(_('Grupos'), 'group-list', menu=self),
-            Option(_('Detalle grupo'), None, menu=self),
+            [Option(_('Detalle grupo'), None, menu=self)],
             Option(_('Proyectos'), 'project-list', menu=self),
-            Option(_('Detalle proyecto'), None, menu=self),
+            [Option(_('Detalle proyecto'), None, menu=self)],
             Option(_('Actividades'), 'event-list', menu=self),
-            Option(_('Detalle actividad'), None, menu=self),
-            Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
-            Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
+            [Option(_('Detalle actividad'), None, menu=self)],
+            [Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self)],
+            [Option(_('Nueva familia'), 'basicformnewfamily', menu=self)],
         ]
 
     def __iter__(self):

@@ -1,0 +1,33 @@
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+body {
+  background: rgba(242, 106, 68, 0.4);
+  /*
+  background: url(assets/bg.jpg) no-repeat;
+  background-size: cover;
+  */
+}
+.login-wrapper {
+  max-width: 400px;
+  widtH: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .login-wrapper {
+    top: 50%;
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+#app > div {
+  padding: 50px;
+}
