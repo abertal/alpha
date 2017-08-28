@@ -17,6 +17,12 @@ from core import models
 from . import filters, forms
 
 
+class Menu:
+    def __init__(self, name, *options):
+        self.name = name
+        self.options = options
+
+
 class Option:
     def __init__(self, name, viewname, args=None, kwargs=None, menu=None):
         self.name = name
@@ -33,23 +39,47 @@ class MenuBar:
 
     def get_options(self):
         return [
-            Option(_('Personas'), 'person-list', menu=self),
-            [Option(_('Detalle persona'), None, menu='person-list')],
-            Option(_('Destinatarios'), 'recipient-list', menu=self),
-            [Option(_('Detalle destinatario'), None, menu=self)],
-            Option(_('Voluntarios'), 'volunteer-list', menu=self),
-            [Option(_('Detalle voluntario'), None, menu=self)],
-            Option(_('Membresías'), 'membership-list', menu=self),
-            Option(_('Socios'), 'member-list', menu=self),
-            [Option(_('Detalle socio'), None, menu=self)],
-            Option(_('Grupos'), 'group-list', menu=self),
-            [Option(_('Detalle grupo'), None, menu=self)],
-            Option(_('Proyectos'), 'project-list', menu=self),
-            [Option(_('Detalle proyecto'), None, menu=self)],
-            Option(_('Actividades'), 'event-list', menu=self),
-            [Option(_('Detalle actividad'), None, menu=self)],
-            [Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self)],
-            [Option(_('Nueva familia'), 'basicformnewfamily', menu=self)],
+            Menu(
+                'Persona',
+                Option(_('Personas'), 'person-list', menu=self),
+                Option(_('Detalle persona'), None, menu='person-list'),
+            ),
+            Menu(
+                'Destinatarios',
+                Option(_('Destinatarios'), 'recipient-list', menu=self),
+                Option(_('Detalle destinatario'), None, menu=self),
+            ),
+            Menu(
+                'Voluntarios',
+                Option(_('Voluntarios'), 'volunteer-list', menu=self),
+                Option(_('Detalle voluntario'), None, menu=self),
+            ),
+            Menu(
+                'Socios',
+                Option(_('Membresías'), 'membership-list', menu=self),
+                Option(_('Socios'), 'member-list', menu=self),
+                Option(_('Detalle socio'), None, menu=self),
+            ),
+            Menu(
+                'Grupos',
+                Option(_('Grupos'), 'group-list', menu=self),
+                Option(_('Detalle grupo'), None, menu=self),
+            ),
+            Menu(
+                'Proyectos',
+                Option(_('Proyectos'), 'project-list', menu=self),
+                Option(_('Detalle proyecto'), None, menu=self),
+            ),
+            Menu(
+                'Actividades',
+                Option(_('Actividades'), 'event-list', menu=self),
+                Option(_('Detalle actividad'), None, menu=self),
+            ),
+            Menu(
+                'Otros',
+                Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
+                Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
+            ),
         ]
 
     def __iter__(self):
@@ -78,7 +108,7 @@ class MenuMixin:
 
     def get_context_data(self, **kwargs):
         if 'menu' not in kwargs:
-            kwargs['menu'] = MenuBar(self.name)
+            kwargs['menu_bar'] = MenuBar(self.name)
         return super().get_context_data(**kwargs)
 
 
