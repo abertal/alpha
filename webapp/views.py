@@ -40,36 +40,37 @@ class MenuBar:
     def get_options(self):
         return [
             Menu(
-                'Persona',
-                Option(_('Personas'), 'person-list', menu=self),
-                Option(_('Detalle persona'), None, menu='person-list'),
+                'Personas',
+                Option(_('Añadir persona'), 'person-create', menu=self),
+                Option(_('Listado personas'), 'person-list', menu='person-list'),
             ),
-            Menu(
-                'Destinatarios',
-                Option(_('Destinatarios'), 'recipient-list', menu=self),
-                Option(_('Detalle destinatario'), None, menu=self),
-            ),
-            Menu(
-                'Voluntarios',
-                Option(_('Voluntarios'), 'volunteer-list', menu=self),
-                Option(_('Detalle voluntario'), None, menu=self),
-            ),
-            Menu(
-                'Socios',
-                Option(_('Membresías'), 'membership-list', menu=self),
-                Option(_('Socios'), 'member-list', menu=self),
-                Option(_('Detalle socio'), None, menu=self),
-            ),
-            Menu(
-                'Grupos',
-                Option(_('Grupos'), 'group-list', menu=self),
-                Option(_('Detalle grupo'), None, menu=self),
-            ),
-            Menu(
-                'Proyectos',
-                Option(_('Proyectos'), 'project-list', menu=self),
-                Option(_('Detalle proyecto'), None, menu=self),
-            ),
+            #Menu(
+            #    'Destinatarios',
+            #    Option(_('Destinatarios'), 'recipient-list', menu=self),
+            #    Option(_('Detalle destinatario'), None, menu=self),
+            #),
+            #Menu(
+            #    'Voluntarios',
+            #    Option(_('Voluntarios'), 'volunteer-list', menu=self),
+            #    Option(_('Detalle voluntario'), None, menu=self),
+            #),
+            #Menu(
+            #    'Socios',
+            #    Option(_('Membresías'), 'membership-list', menu=self),
+            #    Option(_('Socios'), 'member-list', menu=self),
+            #    Option(_('Detalle socio'), None, menu=self),
+            #),
+            #“””
+            #Menu(
+            #    'Grupos',
+            #    Option(_('Grupos'), 'group-list', menu=self),
+            #    Option(_('Detalle grupo'), None, menu=self),
+            #),
+            #Menu(
+            #    'Proyectos',
+            #    Option(_('Proyectos'), 'project-list', menu=self),
+            #    Option(_('Detalle proyecto'), None, menu=self),
+            #),
             Menu(
                 'Actividades',
                 Option(_('Actividades'), 'event-list', menu=self),

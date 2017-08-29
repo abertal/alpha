@@ -169,8 +169,9 @@
   padding-bottom: 3px;
   position: relative;
   display: inline-block;
+  text-decoration: none;
 
-  &:after {
+  &:before {
     .transition(all, .2s);
     content: ' ';
     height: 1px;
@@ -181,26 +182,27 @@
     background: @color;
   }
 
-  &:after when (@effect = 'center') {
+  &:before when (@effect = 'center') {
     left: 50%;
   }
-  &:after when (@effect = 'left') {
+  &:before when (@effect = 'left') {
 
     left: 0
   }
-  &:after when (@effect = 'right') {
+  &:before when (@effect = 'right') {
     right: 0
   }
 
   &:hover {
-    &:after when (@effect = 'center') {
+    text-decoration: none;
+    &:before when (@effect = 'center') {
       width: 100%;
       left: 0;
     }
-    &:after when (@effect = 'left') {
+    &:before when (@effect = 'left') {
       width: 100%;
     }
-    &:after when (@effect = 'right') {
+    &:before when (@effect = 'right') {
       width: 100%;
     }
   }

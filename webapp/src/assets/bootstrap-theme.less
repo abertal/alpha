@@ -96,7 +96,7 @@ fieldset.form-group {
 }
 form {
   .actions {
-    padding: 30px 15px;
+    padding: 30px 0;
 
     &.actions-center {
       text-align: center;
@@ -147,21 +147,21 @@ form {
 
   .navbar-nav {
     .nav-item {
+      padding: 0 10px;
       a.nav-link {
         color: @white-color;
         .transition(all, .2s);
         position: relative;
-        &:not(.dropdown-toggle) {
-          .underline-effect(@white-color);
-        }
+        .underline-effect(@white-color, 'left');
       }
     }
   }
   .dropdown-menu {
     background: @gray6B;
-    li {
-      a {
-        color: @white-color;
+    a.dropdown-item {
+      color: @white-color;
+      &:hover {
+        color: @text-color;
       }
     }
   }
@@ -201,6 +201,10 @@ form {
     padding: 22px;
     letter-spacing: 1.52px;
     font-size: 21px;
+  }
+
+  &.btn-link {
+    color: @text-color;
   }
 
 }

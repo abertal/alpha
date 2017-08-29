@@ -4,37 +4,57 @@
 /* Main styles          */
 /* -------------------- */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 95vh;
-    min-height: calc(100vh - 24px);
-
-    font-family: @primary-font;
-
-    background: url(../i/bg.jpg) no-repeat;
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+  min-height: calc(100vh - 24px);
+  font-family: @primary-font;
+  background: url(../i/bg.jpg) no-repeat;
+  background-size: cover;
 }
-
-
-
 main {
-    flex: 1;
+  flex: 1;
 }
-
 // Login themes
 #login {
-    margin: auto;
-    padding-top: 150px;
+  margin: auto;
+  padding-top: 150px;
 }
-
-
-
 body:not(.page-login) {
   header.page-heading {
-    padding-left: 150px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    .heading-action {
+      width: 130px;
+
+      a {
+        &, .icon {
+          height: 100%;
+        }
+        color: @primary-color;
+        text-align: center;
+        display: block;
+        height: 100%;
+        font-size: 80px;
+        .transition(all, .2s);
+
+        &:hover {
+          text-decoration: none;
+          color: @text-color;
+        }
+
+        .icon {
+          &:before {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
     h1 {
-      padding: 50px;
+      flex: 1;
+      padding: 50px 50px;
+      height: 150px;
+      align-items: baseline;
       background: @primary-color;
       color: @white-color;
       font-family: @primary-font;
@@ -44,36 +64,43 @@ body:not(.page-login) {
   }
 
   .main-container {
+
     .main-heading-row,
     .main-row {
       background: @white-color;
     }
 
     .main-row {
-      padding-bottom: 80px;
+      padding: 80px 120px;
+    }
+  }
+}
+
+.lang-switcher {
+  a {
+    &:after {
+      display: none !important;
     }
   }
 }
 
 footer {
-    text-align: center;
-    padding-top: 30px;
-    font-size: 0.8em;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    righT: 0;
+  background: @gray6B;
+  color: @white-color;
+  padding: 15px 0;
+  font-size: 0.8em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  righT: 0;
 }
-
 /* --------------------- */
 /* Resets                */
 /* --------------------- */
 
 .fluid-container, .row {
-    max-width: 100%;
+  max-width: 100%;
 }
-
-
 /* --------------------- */
 /* Spinner               */
 /* --------------------- */
@@ -88,31 +115,31 @@ footer {
  *
  */
 .sk-rotating-plane {
-    width: 40px;
-    height: 40px;
-    background-color: #333;
-    margin: 40px auto;
-    -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
-    animation: sk-rotatePlane 1.2s infinite ease-in-out; }
-
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  margin: 40px auto;
+  -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  animation: sk-rotatePlane 1.2s infinite ease-in-out; }
 @-webkit-keyframes sk-rotatePlane {
-    0% {
-        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-        transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
-    50% {
-        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
-    100% {
-        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }
-
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); }
+}
 @keyframes sk-rotatePlane {
-    0% {
-        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-        transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
-    50% {
-        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
-    100% {
-        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); }
+}

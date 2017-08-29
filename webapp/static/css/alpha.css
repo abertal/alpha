@@ -99,7 +99,7 @@ fieldset.form-group .fieldset-index {
   padding-right: 0;
 }
 form .actions {
-  padding: 30px 15px;
+  padding: 30px 0;
 }
 form .actions.actions-center {
   text-align: center;
@@ -146,20 +146,21 @@ form .actions.actions-center {
 .navbar .navbar-brand span {
   text-transform: none;
 }
+.navbar .navbar-nav .nav-item {
+  padding: 0 10px;
+}
 .navbar .navbar-nav .nav-item a.nav-link {
   color: #fff;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  position: relative;
-}
-.navbar .navbar-nav .nav-item a.nav-link:not(.dropdown-toggle) {
   padding-bottom: 3px;
   position: relative;
   display: inline-block;
+  text-decoration: none;
 }
-.navbar .navbar-nav .nav-item a.nav-link:not(.dropdown-toggle):after {
+.navbar .navbar-nav .nav-item a.nav-link:before {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
@@ -172,18 +173,23 @@ form .actions.actions-center {
   display: block;
   background: #fff;
 }
-.navbar .navbar-nav .nav-item a.nav-link:not(.dropdown-toggle):after {
-  left: 50%;
-}
-.navbar .navbar-nav .nav-item a.nav-link:not(.dropdown-toggle):hover:after {
-  width: 100%;
+.navbar .navbar-nav .nav-item a.nav-link:before {
   left: 0;
+}
+.navbar .navbar-nav .nav-item a.nav-link:hover {
+  text-decoration: none;
+}
+.navbar .navbar-nav .nav-item a.nav-link:hover:before {
+  width: 100%;
 }
 .navbar .dropdown-menu {
   background: #6b5e62;
 }
-.navbar .dropdown-menu li a {
+.navbar .dropdown-menu a.dropdown-item {
   color: #fff;
+}
+.navbar .dropdown-menu a.dropdown-item:hover {
+  color: #6b5e62;
 }
 .btn {
   border-radius: 3px;
@@ -223,6 +229,9 @@ form .actions.actions-center {
   letter-spacing: 1.52px;
   font-size: 21px;
 }
+.btn.btn-link {
+  color: #6b5e62;
+}
 .alert {
   border-radius: 0;
   -moz-border-radius: 0;
@@ -255,11 +264,39 @@ main {
   padding-top: 150px;
 }
 body:not(.page-login) header.page-heading {
-  padding-left: 150px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
+  display: flex;
+}
+body:not(.page-login) header.page-heading .heading-action {
+  width: 130px;
+}
+body:not(.page-login) header.page-heading .heading-action a {
+  color: #f26a44;
+  text-align: center;
+  display: block;
+  height: 100%;
+  font-size: 80px;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+body:not(.page-login) header.page-heading .heading-action a,
+body:not(.page-login) header.page-heading .heading-action a .icon {
+  height: 100%;
+}
+body:not(.page-login) header.page-heading .heading-action a:hover {
+  text-decoration: none;
+  color: #6b5e62;
+}
+body:not(.page-login) header.page-heading .heading-action a .icon:before {
+  vertical-align: middle;
 }
 body:not(.page-login) header.page-heading h1 {
-  padding: 50px;
+  flex: 1;
+  padding: 50px 50px;
+  height: 150px;
+  align-items: baseline;
   background: #f26a44;
   color: #fff;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -271,11 +308,15 @@ body:not(.page-login) .main-container .main-row {
   background: #fff;
 }
 body:not(.page-login) .main-container .main-row {
-  padding-bottom: 80px;
+  padding: 80px 120px;
+}
+.lang-switcher a:after {
+  display: none !important;
 }
 footer {
-  text-align: center;
-  padding-top: 30px;
+  background: #6b5e62;
+  color: #fff;
+  padding: 15px 0;
   font-size: 0.8em;
   position: fixed;
   bottom: 0;
