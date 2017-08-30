@@ -57,6 +57,7 @@ class CreatePerson(forms.ModelForm):
             for field_name in fields:
                 field = self[field_name]
                 if not field.is_hidden:
+                    field.wrapper_class = 'col-6'
                     fieldset.fields.append(field)
             rv.append(fieldset)
         return rv

@@ -6,7 +6,7 @@
   <div class="fieldset-content">
     <div class="row">
       {% for field in fieldset.fields %}
-      <div class="col-12">
+      <div class="{{ field.wrapper_class|default:'col-12' }}">
         {% include './_form_field.html' %}
       </div>
       {% endfor %}
