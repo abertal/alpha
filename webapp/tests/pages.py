@@ -41,7 +41,9 @@ class Login(BasePage):
 
 class Logged(BasePage):
     logout_link = Element('id_logout')
+    user_dropdown = Element('userdropdown')
 
     def logout(self) -> BasePage:
+        self.user_dropdown.click()
         self.logout_link.click()
         return Login(self.drv)
