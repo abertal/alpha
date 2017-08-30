@@ -1,135 +1,21 @@
 {% load widget_tweaks %}
-
-
-
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item dropdown">
-    <label class="custom-control custom-checkbox">
-      <input name="target" :value="target" type="checkbox" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-    </label>
-    <a class="nav-link active" data-toggle="tab" href="#target" role="tab">
-      Destinatario
-    </a>
-  </li>
-  <li class="nav-item">
-    <label class="custom-control custom-checkbox">
-      <input name="voluntary" :value="voluntary" type="checkbox" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-    </label>
-    <a class="nav-link" data-toggle="tab" href="#voluntary" role="tab">
-      Voluntario
-    </a>
-  </li>
-  <li class="nav-item">
-    <label class="custom-control custom-checkbox">
-      <input name="tutor" :value="tutor" type="checkbox" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-    </label>
-    <a class="nav-link" data-toggle="tab" href="#tutor" role="tab">
-      Tutor
-    </a>
-  </li>
-  <li class="nav-item">
-    <label class="custom-control custom-checkbox">
-      <input name="collaborato" :value="collaborato" type="checkbox" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-    </label>
-    <a class="nav-link" data-toggle="tab" href="#collaborator" role="tab">
-      Colaborador
-    </a>
-  </li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="target" role="tabpanel" v-show="target">
-    adsfasdfasdfasdfasdfasdf
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-    asdfadsfasdfasdf<br/>
-  </div>
-  <div class="tab-pane" id="voluntary" role="tabpanel" v-show="voluntary">
-    asdfasdf
-    Voluntary<br />
-    Voluntary<br />
-    Voluntary<br />
-    Voluntary<br />
-    Voluntary<br />Voluntary<br />Voluntary<br />
-    Voluntary<br />
-    Voluntary<br />
-
-  </div>
-  <div class="tab-pane" id="tutor" role="tabpanel" v-show="tutor">
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-    Tutor<br />
-  </div>
-  <div class="tab-pane" id="collaborator" role="tabpanel" v-show="collaborator">
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-    Collaborator<br />
-
-  </div>
-</div>
-
 {% csrf_token %}
 {{ form.non_field_errors }}
+
 {# Include the hidden fields #}
 {% for hidden in form.hidden_fields %}
   {{ hidden }}
 {% endfor %}
+
 {# Include the visible fields not in fieldsets #}
 {% for field in form.visible_fields %}
-  <div class="form-group">
-    <label for="{{ field.id_for_label }}" class="control-label">
-      {{ field.label }}
-    </label>
-    {{ field|add_class:"form-control" }}
-    <div class="form-control-feedback">{{ field.errors }}</div>
-  </div>
+  {% include './_form_field.html' %}
 {% endfor %}
+
+
 {# Include the fields in fieldset #}
 {% for fieldset in form.fieldsets %}
-  <fieldset class="form-group">
-    <legend>{{ fieldset.name }}</legend>
-    {% if fieldset.index %}
-      <span class="fieldset-index">{{ fieldset.index }}</span>
-    {% endif %}
-    <div class="fieldset-content">
-      <div class="row">
-        {% for field in fieldset.fields %}
-          <div class="col-12">
-            <label for="{{ field.id_for_label }}" class="control-label">
-              {{ field.label }}
-            </label>
-            {{ field|add_class:"form-control" }}
-            <div class="form-control-feedback">{{ field.errors }}</div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </fieldset>
+  {% include './_form_fieldset.html' %}
 {% endfor %}
 
 

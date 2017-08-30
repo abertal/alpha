@@ -1,0 +1,15 @@
+<fieldset class="form-group">
+  <legend>{{ fieldset.name }}</legend>
+  {% if fieldset.index %}
+    <span class="fieldset-index">{{ fieldset.index }}</span>
+  {% endif %}
+  <div class="fieldset-content">
+    <div class="row">
+      {% for field in fieldset.fields %}
+      <div class="col-12">
+        {% include './_form_field.html' %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</fieldset>

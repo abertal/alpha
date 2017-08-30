@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from core import models
 
 
+
+
 class Fieldset:
     def __init__(self, name, index):
         self.name = name
@@ -38,8 +40,9 @@ class CreatePerson(forms.ModelForm):
             'email': forms.TextInput()
         }
 
+        # 'name', 'surname'
         fieldsets = [
-            ('Datos personales', 1, ['name', 'surname', 'birthday', 'id_number', 'ss_number']),
+            ('Datos personales', 1, ['birthday', 'id_number', 'ss_number']),
             ('Dirección', 2, ['address_street', 'address_locality', 'address_region']),
             ('Datos de contacto', 3, ['phone_number', 'mobile_number', 'email']),
             ('Rol/es persona', 4, []),
@@ -47,6 +50,7 @@ class CreatePerson(forms.ModelForm):
         ]
 
     def fieldsets(self):
+        rv = []
         for item in self.Meta.fieldsets:
             label, index, fields = item
             fieldset = Fieldset(label, index)
@@ -54,7 +58,8 @@ class CreatePerson(forms.ModelForm):
                 field = self[field_name]
                 if not field.is_hidden:
                     fieldset.fields.append(field)
-            yield fieldset
+            rv.append(fieldset)
+        return rv
 
     def visible_fields(self):
         attached_fields = set()

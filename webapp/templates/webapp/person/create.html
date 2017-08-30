@@ -10,7 +10,95 @@
 {% block body %}
 
 <form class="custom-form element" action="{% url 'person-create' %}" method="post">
-  {% include '../_form_fields.html' %}
+
+  {# Include the visible fields not in fieldsets #}
+  {% for field in form.visible_fields %}
+    {% include '../_form_field.html' %}
+  {% endfor %}
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item dropdown">
+      <a class="nav-link active" data-toggle="tab" href="#common" role="tab">
+        Datos personales
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="tab" href="#target" role="tab">
+        Destinatario
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#voluntary" role="tab">
+        Voluntario
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tutor" role="tab">
+        Tutor
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#collaborator" role="tab">
+        Colaborador
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="common" role="tabpanel">
+      {% with form.fieldsets.0 as fieldset %}
+        {% include '../_form_fieldset.html' %}
+      {% endwith %}
+    </div>
+    <div class="tab-pane" id="target" role="tabpanel">
+      adsfasdfasdfasdfasdfasdf
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+      asdfadsfasdfasdf<br/>
+    </div>
+    <div class="tab-pane" id="voluntary" role="tabpanel">
+      asdfasdf
+      Voluntary<br />
+      Voluntary<br />
+      Voluntary<br />
+      Voluntary<br />
+      Voluntary<br />Voluntary<br />Voluntary<br />
+      Voluntary<br />
+      Voluntary<br />
+
+    </div>
+    <div class="tab-pane" id="tutor" role="tabpanel">
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+      Tutor<br />
+    </div>
+    <div class="tab-pane" id="collaborator" role="tabpanel">
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+      Collaborator<br />
+
+    </div>
+  </div>
+
   <div class="actions">
     <input type="submit" class="btn btn-primary btn-lg" value=" {% trans 'Crear' %}">
     <a href="{% url 'person-list' %}" class="btn btn-link btn-lg">
