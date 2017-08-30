@@ -10,6 +10,13 @@
 {% block body %}
 
 <form class="custom-form element" action="{% url 'person-create' %}" method="post">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+
+  {# Include the hidden fields #}
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
 
   {# Include the visible fields not in fieldsets #}
   {% for field in form.visible_fields %}
