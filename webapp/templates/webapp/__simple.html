@@ -97,9 +97,11 @@
             <div class="heading-action">
               {% block heading_action %}{% endblock %}
             </div>
+            {% if view.name %}
             <h1>
               {{ view.name }}
             </h1>
+            {% endif %}
           </header>
         </div>
       </div>
