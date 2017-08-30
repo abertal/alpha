@@ -22,7 +22,7 @@
       Abertal <span>α</span>
     </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-navbar"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -59,8 +59,8 @@
             <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" data-toggle="dropdown">
               Hola <strong>{{ request.user.username }}</strong>
             </a>
-            <div aria-labelledby="userdropdown" class="dropdown-menu">
-              <a href="#/new#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
+            <div aria-labelledby="userdropdown" class="dropdown-menu" role="menu">
+              <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
               <a id="id_logout" href="{% url 'logout' %}" class="dropdown-item" aria-disabled="false" role="menuitem">Signout</a>
             </div>
           </li>
