@@ -244,6 +244,37 @@ form .actions.actions-center {
   background: #f05054;
   color: #fff;
 }
+.nav.nav-tabs {
+  border-bottom: 1px solid #979797;
+}
+.nav.nav-tabs li {
+  border-top: 1px solid #979797;
+  border-right: 1px solid #979797;
+  display: flex;
+}
+.nav.nav-tabs li .custom-control {
+  text-align: center;
+  margin: 4px 10px;
+}
+.nav.nav-tabs li:first-child {
+  border-left: 1px solid #979797;
+}
+.nav.nav-tabs a.nav-link {
+  bordeR: 0;
+  flex: 1;
+  text-transform: uppercase;
+  color: #6b5e62;
+}
+.nav.nav-tabs a.nav-link.active {
+  background: #f26a44;
+  color: #fff;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}
+.tab-content {
+  padding: 30px;
+}
 /* -------------------- */
 /* Main styles          */
 /* -------------------- */

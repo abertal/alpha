@@ -221,3 +221,40 @@ form {
   }
 
 }
+
+
+// Tabs
+.nav {
+  &.nav-tabs {
+    border-bottom: 1px solid @gray97;
+    li {
+      border-top: 1px solid @gray97;
+      border-right: 1px solid @gray97;
+      display: flex;
+      .custom-control {
+        text-align: center;
+        margin: 4px 10px;
+      }
+
+      &:first-child {
+        border-left: 1px solid @gray97;
+      }
+    }
+
+    a.nav-link {
+      bordeR: 0;
+      flex:1;
+      text-transform: uppercase;
+      color: @text-color;
+      &.active {
+        background: @primary-color;
+        color: @white-color;
+        .border-radius(0);
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 30px;
+}

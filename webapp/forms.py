@@ -7,8 +7,9 @@ from core import models
 
 
 class Fieldset:
-    def __init__(self, name):
+    def __init__(self, name, index):
         self.name = name
+        self.index = index
         self.fields = []
 
 
@@ -16,31 +17,39 @@ class CreatePerson(forms.ModelForm):
     class Meta:
         model = models.Person
         fields = (
-            'name',
-            'surname',
-            'address_street',
-            'address_locality',
-            'address_region',
+            'name', 'surname', 'birthday', 'id_number', 'ss_number',
+            'address_street', 'address_locality', 'address_region', 'address_region',
+            'phone_number', 'mobile_number', 'email',
             'comment',
         )
 
         widgets = {
             'name': forms.TextInput(),
             'surname': forms.TextInput(),
+            'birthday': forms.DateInput(),
+            'id_number': forms.TextInput(),
+            'ss_number': forms.TextInput(),
             'address_street': forms.TextInput(),
             'address_locality': forms.TextInput(),
             'address_region': forms.TextInput(),
+            'address_country': forms.TextInput(),
+            'phone_number': forms.TextInput(),
+            'mobile_number': forms.TextInput(),
+            'email': forms.TextInput()
         }
 
         fieldsets = [
-            ('Datos personales', ['name', 'surname']),
-            ('Dirección', ['address_street', 'address_locality', 'address_region']),
+            ('Datos personales', 1, ['name', 'surname', 'birthday', 'id_number', 'ss_number']),
+            ('Dirección', 2, ['address_street', 'address_locality', 'address_region']),
+            ('Datos de contacto', 3, ['phone_number', 'mobile_number', 'email']),
+            ('Rol/es persona', 4, []),
+            ('Observaciones', 5, ['comment'])
         ]
 
     def fieldsets(self):
         for item in self.Meta.fieldsets:
-            label, fields = item
-            fieldset = Fieldset(label)
+            label, index, fields = item
+            fieldset = Fieldset(label, index)
             for field_name in fields:
                 field = self[field_name]
                 if not field.is_hidden:
@@ -50,7 +59,7 @@ class CreatePerson(forms.ModelForm):
     def visible_fields(self):
         attached_fields = set()
         for item in self.Meta.fieldsets:
-            _, fields = item
+            _, index, fields = item
             attached_fields.update(fields)
         return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
