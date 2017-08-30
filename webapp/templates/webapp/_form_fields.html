@@ -6,7 +6,7 @@
 {% for hidden in form.hidden_fields %}
   {{ hidden }}
 {% endfor %}
-{# Include the visible fields #}
+{# Include the visible fields not in fieldsets #}
 {% for field in form.visible_fields %}
   <div class="form-group">
     <label for="{{ field.id_for_label }}" class="control-label">
@@ -15,4 +15,17 @@
     {{ field|add_class:"form-control" }}
     <div class="form-control-feedback">{{ field.errors }}</div>
   </div>
+{% endfor %}
+{# Include the fields in fieldset #}
+{% for fieldset in form.fieldsets %}
+  <fieldset class="form-group">
+    <legend>{{ fieldset.name }}</legend>
+{% for field in fieldset.fields %}
+    <label for="{{ field.id_for_label }}" class="control-label">
+      {{ field.label }}
+    </label>
+    {{ field|add_class:"form-control" }}
+    <div class="form-control-feedback">{{ field.errors }}</div>
+{% endfor %}
+  </fieldset>
 {% endfor %}

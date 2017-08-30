@@ -6,15 +6,53 @@ from django.utils.translation import ugettext_lazy as _
 from core import models
 
 
+class Fieldset:
+    def __init__(self, name):
+        self.name = name
+        self.fields = []
+
+
 class CreatePerson(forms.ModelForm):
     class Meta:
         model = models.Person
-        fields = ('name', 'surname',)
+        fields = (
+            'name',
+            'surname',
+            'address_street',
+            'address_locality',
+            'address_region',
+            'comment',
+        )
 
         widgets = {
             'name': forms.TextInput(),
             'surname': forms.TextInput(),
+            'address_street': forms.TextInput(),
+            'address_locality': forms.TextInput(),
+            'address_region': forms.TextInput(),
         }
+
+        fieldsets = [
+            ('Datos personales', ['name', 'surname']),
+            ('Dirección', ['address_street', 'address_locality', 'address_region']),
+        ]
+
+    def fieldsets(self):
+        for item in self.Meta.fieldsets:
+            label, fields = item
+            fieldset = Fieldset(label)
+            for field_name in fields:
+                field = self[field_name]
+                if not field.is_hidden:
+                    fieldset.fields.append(field)
+            yield fieldset
+
+    def visible_fields(self):
+        attached_fields = set()
+        for item in self.Meta.fieldsets:
+            _, fields = item
+            attached_fields.update(fields)
+        return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
 
 class EditPerson(forms.ModelForm):
