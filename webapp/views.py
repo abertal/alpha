@@ -44,33 +44,33 @@ class MenuBar:
                 Option(_('Añadir persona'), 'person-create', menu=self),
                 Option(_('Listado personas'), 'person-list', menu='person-list'),
             ),
-            #Menu(
+            # Menu(
             #    'Destinatarios',
             #    Option(_('Destinatarios'), 'recipient-list', menu=self),
             #    Option(_('Detalle destinatario'), None, menu=self),
-            #),
-            #Menu(
+            # ),
+            # Menu(
             #    'Voluntarios',
             #    Option(_('Voluntarios'), 'volunteer-list', menu=self),
             #    Option(_('Detalle voluntario'), None, menu=self),
-            #),
-            #Menu(
+            # ),
+            # Menu(
             #    'Socios',
             #    Option(_('Membresías'), 'membership-list', menu=self),
             #    Option(_('Socios'), 'member-list', menu=self),
             #    Option(_('Detalle socio'), None, menu=self),
-            #),
-            #“””
-            #Menu(
+            # ),
+            # “””
+            # Menu(
             #    'Grupos',
             #    Option(_('Grupos'), 'group-list', menu=self),
             #    Option(_('Detalle grupo'), None, menu=self),
-            #),
-            #Menu(
+            # ),
+            # Menu(
             #    'Proyectos',
             #    Option(_('Proyectos'), 'project-list', menu=self),
             #    Option(_('Detalle proyecto'), None, menu=self),
-            #),
+            # ),
             Menu(
                 'Actividades',
                 Option(_('Actividades'), 'event-list', menu=self),

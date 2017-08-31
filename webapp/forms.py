@@ -6,8 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 from core import models
 
 
-
-
 class Fieldset:
     def __init__(self, name, index):
         self.name = name
