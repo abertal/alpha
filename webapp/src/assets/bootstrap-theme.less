@@ -203,6 +203,10 @@ form {
     font-size: 21px;
   }
 
+  &.btn-xs {
+    padding: 3px 5px;
+  }
+
   &.btn-link {
     color: @text-color;
   }
@@ -275,6 +279,24 @@ form {
   tbody {
     .empty {
       text-align: center;
+    }
+
+    tr {
+      .row-actions {
+        text-align: right;
+        .btn {
+          visibility: hidden;
+        }
+      }
+
+      &:hover {
+        .row-actions {
+          .btn {
+            visibility: visible;
+          }
+        }
+      }
+
     }
   }
 }

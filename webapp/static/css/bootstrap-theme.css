@@ -228,6 +228,9 @@ form .actions.actions-center {
   letter-spacing: 1.52px;
   font-size: 21px;
 }
+.btn.btn-xs {
+  padding: 3px 5px;
+}
 .btn.btn-link {
   color: #6b5e62;
 }
@@ -282,4 +285,13 @@ form .actions.actions-center {
 }
 .table tbody .empty {
   text-align: center;
+}
+.table tbody tr .row-actions {
+  text-align: right;
+}
+.table tbody tr .row-actions .btn {
+  visibility: hidden;
+}
+.table tbody tr:hover .row-actions .btn {
+  visibility: visible;
 }
