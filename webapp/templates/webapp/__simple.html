@@ -22,7 +22,7 @@
       Abertal <span>α</span>
     </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-navbar"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -49,9 +49,9 @@
           <a href="#" id="langdropdown" class="nav-link dropdown-toggle" data-toggle="dropdown">
             <div class="icon dripicons-flag"></div>
           </a>
-          <div class="dropdown-menu" aria-labelledby="langdropdown">
-            <a href="#/new#" class="dropdown-item" aria-disabled="false" role="menuitem">GL</a>
-            <a href="#/new#" class="dropdown-item" aria-disabled="false" role="menuitem">ES</a>
+          <div class="dropdown-menu" aria-labelledby="langdropdown" role="menu">
+            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">GL</a>
+            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">ES</a>
           </div>
         </li>
         {% if request.user.is_authenticated %}
@@ -59,9 +59,9 @@
             <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" data-toggle="dropdown">
               Hola <strong>{{ request.user.username }}</strong>
             </a>
-            <div aria-labelledby="userdropdown" class="dropdown-menu">
-              <a href="#/new#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
-              <a href="{% url 'logout' %}" class="dropdown-item" aria-disabled="false" role="menuitem">Signout</a>
+            <div aria-labelledby="userdropdown" class="dropdown-menu" role="menu">
+              <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
+              <a id="id_logout" href="{% url 'logout' %}" class="dropdown-item" aria-disabled="false" role="menuitem">Signout</a>
             </div>
           </li>
         {% endif %}
@@ -97,17 +97,19 @@
             <div class="heading-action">
               {% block heading_action %}{% endblock %}
             </div>
+            {% if view.name %}
             <h1>
               {{ view.name }}
             </h1>
+            {% endif %}
           </header>
         </div>
       </div>
       <div class="row main-row">
           {% block main %}{% endblock %}
       </div>
-    </div>
   </div>
+
   <footer>
     <div class="container-fluid-alpha">
       Copyright © 2016-2017, C.X. Abertal
