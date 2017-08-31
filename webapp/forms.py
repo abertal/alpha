@@ -20,7 +20,7 @@ class CreatePerson(forms.ModelForm):
         model = models.Person
         fields = (
             'name', 'surname', 'birthday', 'id_number', 'ss_number',
-            'address_street', 'address_locality', 'address_region', 'address_region',
+            'address_street', 'address_locality', 'address_region', 'address_country',
             'phone_number', 'mobile_number', 'email',
             'comment',
         )
@@ -41,16 +41,22 @@ class CreatePerson(forms.ModelForm):
         }
 
         wrapper_class = {
-            'birthday': 'col-6',
+            'birthday': 'col-xs-12 col-sm-4',
+            'id_number': 'col-xs-12 col-sm-4',
+            'ss_number': 'col-xs-12 col-sm-4',
+            'address_locality': 'col-xs-12 col-sm-4',
+            'address_region': 'col-xs-12 col-sm-4',
+            'address_country': 'col-xs-12 col-sm-4',
+            'phone_number':  'col-xs-12 col-sm-6',
+            'mobile_number': 'col-xs-12 col-sm-6',
         }
 
         # 'name', 'surname'
         fieldsets = [
             ('Datos personales', 1, ['birthday', 'id_number', 'ss_number']),
-            ('Dirección', 2, ['address_street', 'address_locality', 'address_region']),
+            ('Dirección', 2, ['address_street', 'address_locality', 'address_region', 'address_country']),
             ('Datos de contacto', 3, ['phone_number', 'mobile_number', 'email']),
-            ('Rol/es persona', 4, []),
-            ('Observaciones', 5, ['comment'])
+            ('Observaciones', 4, ['comment'])
         ]
 
     def fieldsets(self):

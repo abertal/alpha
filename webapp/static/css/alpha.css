@@ -206,7 +206,6 @@ form .actions.actions-center {
   font-size: 16px;
   font-weight: 400;
   padding: 10px 30px;
-  margin: 0 10px 10px 0;
 }
 .btn.btn-primary {
   background: #f26a44;
@@ -275,6 +274,15 @@ form .actions.actions-center {
 .tab-content {
   padding: 30px;
 }
+.table thead.thead-inverse {
+  text-transform: uppercase;
+}
+.table thead.thead-inverse th {
+  background: #f26a44;
+}
+.table tbody .empty {
+  text-align: center;
+}
 /* -------------------- */
 /* Main styles          */
 /* -------------------- */
@@ -306,22 +314,26 @@ body:not(.page-login) header.page-heading .heading-action a {
   text-align: center;
   display: block;
   height: 100%;
-  font-size: 80px;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-body:not(.page-login) header.page-heading .heading-action a,
-body:not(.page-login) header.page-heading .heading-action a .icon {
-  height: 100%;
-}
 body:not(.page-login) header.page-heading .heading-action a:hover {
   text-decoration: none;
   color: #6b5e62;
 }
+body:not(.page-login) header.page-heading .heading-action a .icon {
+  font-size: 70px;
+}
 body:not(.page-login) header.page-heading .heading-action a .icon:before {
   vertical-align: middle;
+}
+body:not(.page-login) header.page-heading .heading-action a span {
+  text-transform: uppercase;
+  color: #6b5e62;
+  line-height: 1em;
+  display: block;
 }
 body:not(.page-login) header.page-heading h1 {
   flex: 1;
@@ -343,6 +355,9 @@ body:not(.page-login) .main-container .main-row {
 }
 .lang-switcher a:after {
   display: none !important;
+}
+.search-form {
+  margin-bottom: 40px;
 }
 footer {
   background: #6b5e62;
