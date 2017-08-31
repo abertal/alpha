@@ -40,6 +40,10 @@ class CreatePerson(forms.ModelForm):
             'email': forms.TextInput()
         }
 
+        wrapper_class = {
+            'birthday': 'col-6',
+        }
+
         # 'name', 'surname'
         fieldsets = [
             ('Datos personales', 1, ['birthday', 'id_number', 'ss_number']),
@@ -57,6 +61,7 @@ class CreatePerson(forms.ModelForm):
             for field_name in fields:
                 field = self[field_name]
                 if not field.is_hidden:
+                    field.wrapper_class = self.Meta.wrapper_class.get(field_name)
                     fieldset.fields.append(field)
             rv.append(fieldset)
         return rv
