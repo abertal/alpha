@@ -1,5 +1,6 @@
 {% extends '../__base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
 
 
 {% block heading_action %}
@@ -15,10 +16,7 @@
   {% block content %}
 
     <form class="form-inline search-form" method="get">
-      {# filter.form.as_p #}
-
-      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{% trans 'Nombre de usuario'%}">
-
+      {{ filter.form.q | add_class:"form-control" }}
       <button class="btn btn-primary" type="submit">
         <div class="icon dripicons-search"></div>
       </button>
