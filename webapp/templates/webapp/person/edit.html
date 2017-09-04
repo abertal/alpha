@@ -1,14 +1,59 @@
 {% extends '../__base.html' %}
 {% load i18n %}
 
+{% block heading_action %}
+<a href="{% url 'person-list' %}" title="{% trans 'Volver sin guardar' %}" data-toggle="tooltip" data-placement="bottom">
+  <div class="icon dripicons-cross"></div>
+</a>
+{% endblock %}
+
 {% block body %}
-<h3>{{ person.name }} {{ person.surname|upper }}</h3>
-<dl>
-  <dt>{% trans 'Código único '%}</dt>
-  <dd>{{ person.id }}</dd>
-</dl>
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
-{% include '../_form_fields.html' %}
+  {% csrf_token %}
+  {% for form in forms %}
+    {{ form.non_field_errors }}
+  {% endfor %}
+  {# Include the hidden fields #}
+  {% for form in forms %}
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+  {% endfor %}
+  {# Include the visible fields not in fieldsets form first form #}
+  {% for field in forms.0.visible_fields %}
+    {% include '../_form_field.html' %}
+  {% endfor %}
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item dropdown">
+      <a class="nav-link active" data-toggle="tab" href="#common" role="tab">
+        Datos
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="tab" href="#recipient" role="tab">
+        Destinatario
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="common" role="tabpanel">
+      {% with forms.0.fieldsets as fieldsets %}
+        {% for fieldset in fieldsets %}
+        {% include '../_form_fieldset.html' with fieldset=fieldset %}
+        {% endfor %}
+      {% endwith %}
+    </div>
+    <div class="tab-pane" id="recipient" role="tabpanel">
+      {% for field in forms.1.visible_fields %}
+        {% include '../_form_field.html' %}
+      {% endfor %}
+      {% with forms.1.fieldsets as fieldsets %}
+        {% for fieldset in fieldsets %}
+        {% include '../_form_fieldset.html' with fieldset=fieldset %}
+        {% endfor %}
+      {% endwith %}
+    </div>
+  </div>
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
     <a href="{% url 'person-detail' person.id %}" class="btn btn-link">{% trans 'Volver sin guardar' %}</a>
