@@ -102,6 +102,20 @@ class EditPerson(forms.ModelForm):
         }
 
 
+EditPerson = CreatePerson
+
+
+class CreateRecipientFromPerson(forms.Form):
+    create = forms.BooleanField(label='Crear ficha de destinatario')
+
+    def __init__(self, person, *args, **kwargs):
+        self.person = person
+        super().__init__(*args, **kwargs)
+
+    def save(self):
+        return models.Recipient.objects.create(person=self.person)
+
+
 class RecipientCreate(forms.ModelForm):
     class Meta:
         model = models.Recipient

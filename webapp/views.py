@@ -180,15 +180,55 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
         return reverse('person-detail', args=[self.object.id])
 
 
-class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
+class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
     model = models.Person
     form_class = forms.EditPerson
     template_name = 'webapp/person/edit.html'
     name = ugettext_lazy('Detalle persona')
     success_message = ugettext_lazy('Persona editada correctamente')
 
+    def get_context_data(self, **kwargs):
+        if 'forms' not in kwargs:
+            kwargs['forms'] = self.get_forms()
+        return super().get_context_data(**kwargs)
+
+    def get_forms(self):
+        kwargs = {}
+        if self.request.method in ('POST', 'PUT'):
+            kwargs.update({
+                'data': self.request.POST,
+                'files': self.request.FILES,
+            })
+        forms_ = [
+            forms.EditPerson(instance=self.object, prefix='person', **kwargs),
+        ]
+        recipient = self.object.recipient_set.first()
+        if recipient:
+            forms_.append(
+                forms.RecipientEdit(instance=recipient, prefix='recipient', **kwargs)
+            )
+        else:
+            forms_.append(
+                forms.CreateRecipientFromPerson(person=self.object, prefix='recipient',**kwargs)
+            )
+        return forms_
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        forms_ = self.get_forms()
+        all_valid = True
+        for form in forms_:
+            if not form.is_valid():
+                all_valid = False
+        if all_valid:
+            for form in forms_:
+                form.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(forms=forms_))
+
     def get_success_url(self):
-        return reverse('person-detail', args=[self.object.id])
+        return reverse('person-edit', args=[self.object.id])
 
 
 class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):
