@@ -6,15 +6,76 @@ from django.utils.translation import ugettext_lazy as _
 from core import models
 
 
+class Fieldset:
+    def __init__(self, name, index):
+        self.name = name
+        self.index = index
+        self.fields = []
+
+
 class CreatePerson(forms.ModelForm):
     class Meta:
         model = models.Person
-        fields = ('name', 'surname',)
+        fields = (
+            'name', 'surname', 'birthday', 'id_number', 'ss_number',
+            'address_street', 'address_locality', 'address_region', 'address_country',
+            'phone_number', 'mobile_number', 'email',
+            'comment',
+        )
 
         widgets = {
             'name': forms.TextInput(),
             'surname': forms.TextInput(),
+            'birthday': forms.DateInput(),
+            'id_number': forms.TextInput(),
+            'ss_number': forms.TextInput(),
+            'address_street': forms.TextInput(),
+            'address_locality': forms.TextInput(),
+            'address_region': forms.TextInput(),
+            'address_country': forms.TextInput(),
+            'phone_number': forms.TextInput(),
+            'mobile_number': forms.TextInput(),
+            'email': forms.TextInput()
         }
+
+        wrapper_class = {
+            'birthday': 'col-xs-12 col-sm-4',
+            'id_number': 'col-xs-12 col-sm-4',
+            'ss_number': 'col-xs-12 col-sm-4',
+            'address_locality': 'col-xs-12 col-sm-4',
+            'address_region': 'col-xs-12 col-sm-4',
+            'address_country': 'col-xs-12 col-sm-4',
+            'phone_number':  'col-xs-12 col-sm-6',
+            'mobile_number': 'col-xs-12 col-sm-6',
+        }
+
+        # 'name', 'surname'
+        fieldsets = [
+            ('Datos personales', 1, ['birthday', 'id_number', 'ss_number']),
+            ('Dirección', 2, ['address_street', 'address_locality', 'address_region', 'address_country']),
+            ('Datos de contacto', 3, ['phone_number', 'mobile_number', 'email']),
+            ('Observaciones', 4, ['comment'])
+        ]
+
+    def fieldsets(self):
+        rv = []
+        for item in self.Meta.fieldsets:
+            label, index, fields = item
+            fieldset = Fieldset(label, index)
+            for field_name in fields:
+                field = self[field_name]
+                if not field.is_hidden:
+                    field.wrapper_class = self.Meta.wrapper_class.get(field_name)
+                    fieldset.fields.append(field)
+            rv.append(fieldset)
+        return rv
+
+    def visible_fields(self):
+        attached_fields = set()
+        for item in self.Meta.fieldsets:
+            _, index, fields = item
+            attached_fields.update(fields)
+        return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
 
 class EditPerson(forms.ModelForm):
@@ -39,6 +100,20 @@ class EditPerson(forms.ModelForm):
             'address_region': forms.TextInput(),
             'address_country': forms.TextInput(),
         }
+
+
+EditPerson = CreatePerson
+
+
+class CreateRecipientFromPerson(forms.Form):
+    create = forms.BooleanField(label='Crear ficha de destinatario')
+
+    def __init__(self, person, *args, **kwargs):
+        self.person = person
+        super().__init__(*args, **kwargs)
+
+    def save(self):
+        return models.Recipient.objects.create(person=self.person)
 
 
 class RecipientCreate(forms.ModelForm):

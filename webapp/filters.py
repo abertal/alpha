@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.db.models import Value as V
 from django.db.models import Q
@@ -12,7 +13,11 @@ from core.models import Event, Group, Project
 class PersonFilter(django_filters.FilterSet):
 
     q = django_filters.CharFilter(
-        label=_('Nombre'), name='name', method='custom_filter')
+        label=_('Nombre'),
+        name='name',
+        method='custom_filter',
+        widget=forms.TextInput(attrs={'placeholder': _('Nombre')}),
+    )
 
     def custom_filter(self, queryset, name, value):
         return queryset.annotate(

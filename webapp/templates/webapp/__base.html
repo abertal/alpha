@@ -2,21 +2,7 @@
 {% load static %}
 
 {% block main %}
-<aside class="col-2">
-  {% block menu %}
-  <div class="list-group">
-  {% for option in menu %}
-    {% if option.url %}
-    <a href="{{ option.url }}" class="list-group-item {% if option.is_current %}active{% endif %}">{{ option.name }}</a>
-    {% else %}
-    <a href="#" class="list-group-item {% if option.is_current %}active{% endif %} disabled">{{ option.name }}</a>
-    {% endif %}
-  {% endfor %}
-  </div>
-  {% endblock %}
-</aside>
 <main class="col">
-  <h1>{{ view.name }}</h1>
   {% if messages %}
       {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}

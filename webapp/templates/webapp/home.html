@@ -1,8 +1,9 @@
 {% extends './__base.html' %}
 {% load static %}
 
+
+{% block page_title %}{% endblock %}
 {% block body %}
-<h2>hola {{ user.username }}</h2>
 <div>
   <input id="id_person" name="person" type="hidden" v-model="personId">
   <input id="id_search_string" name="q" type="text" v-model="searchString">

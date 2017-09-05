@@ -17,6 +17,12 @@ from core import models
 from . import filters, forms
 
 
+class Menu:
+    def __init__(self, name, *options):
+        self.name = name
+        self.options = options
+
+
 class Option:
     def __init__(self, name, viewname, args=None, kwargs=None, menu=None):
         self.name = name
@@ -33,23 +39,48 @@ class MenuBar:
 
     def get_options(self):
         return [
-            Option(_('Personas'), 'person-list', menu=self),
-            Option(_('Detalle persona'), None, menu=self),
-            Option(_('Destinatarios'), 'recipient-list', menu=self),
-            Option(_('Detalle destinatario'), None, menu=self),
-            Option(_('Voluntarios'), 'volunteer-list', menu=self),
-            Option(_('Detalle voluntario'), None, menu=self),
-            Option(_('Membresías'), 'membership-list', menu=self),
-            Option(_('Socios'), 'member-list', menu=self),
-            Option(_('Detalle socio'), None, menu=self),
-            Option(_('Grupos'), 'group-list', menu=self),
-            Option(_('Detalle grupo'), None, menu=self),
-            Option(_('Proyectos'), 'project-list', menu=self),
-            Option(_('Detalle proyecto'), None, menu=self),
-            Option(_('Actividades'), 'event-list', menu=self),
-            Option(_('Detalle actividad'), None, menu=self),
-            Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
-            Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
+            Menu(
+                'Personas',
+                Option(_('Añadir persona'), 'person-create', menu=self),
+                Option(_('Listado personas'), 'person-list', menu='person-list'),
+            ),
+            # Menu(
+            #    'Destinatarios',
+            #    Option(_('Destinatarios'), 'recipient-list', menu=self),
+            #    Option(_('Detalle destinatario'), None, menu=self),
+            # ),
+            # Menu(
+            #    'Voluntarios',
+            #    Option(_('Voluntarios'), 'volunteer-list', menu=self),
+            #    Option(_('Detalle voluntario'), None, menu=self),
+            # ),
+            # Menu(
+            #    'Socios',
+            #    Option(_('Membresías'), 'membership-list', menu=self),
+            #    Option(_('Socios'), 'member-list', menu=self),
+            #    Option(_('Detalle socio'), None, menu=self),
+            # ),
+            # “””
+            # Menu(
+            #    'Grupos',
+            #    Option(_('Grupos'), 'group-list', menu=self),
+            #    Option(_('Detalle grupo'), None, menu=self),
+            # ),
+            # Menu(
+            #    'Proyectos',
+            #    Option(_('Proyectos'), 'project-list', menu=self),
+            #    Option(_('Detalle proyecto'), None, menu=self),
+            # ),
+            Menu(
+                'Actividades',
+                Option(_('Actividades'), 'event-list', menu=self),
+                Option(_('Detalle actividad'), None, menu=self),
+            ),
+            Menu(
+                'Otros',
+                Option(_('Nuevo socio individual'), 'basicformnewperson', menu=self),
+                Option(_('Nueva familia'), 'basicformnewfamily', menu=self),
+            ),
         ]
 
     def __iter__(self):
@@ -78,7 +109,7 @@ class MenuMixin:
 
     def get_context_data(self, **kwargs):
         if 'menu' not in kwargs:
-            kwargs['menu'] = MenuBar(self.name)
+            kwargs['menu_bar'] = MenuBar(self.name)
         return super().get_context_data(**kwargs)
 
 
@@ -149,15 +180,55 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
         return reverse('person-detail', args=[self.object.id])
 
 
-class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.UpdateView):
+class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
     model = models.Person
     form_class = forms.EditPerson
     template_name = 'webapp/person/edit.html'
     name = ugettext_lazy('Detalle persona')
     success_message = ugettext_lazy('Persona editada correctamente')
 
+    def get_context_data(self, **kwargs):
+        if 'forms' not in kwargs:
+            kwargs['forms'] = self.get_forms()
+        return super().get_context_data(**kwargs)
+
+    def get_forms(self):
+        kwargs = {}
+        if self.request.method in ('POST', 'PUT'):
+            kwargs.update({
+                'data': self.request.POST,
+                'files': self.request.FILES,
+            })
+        forms_ = [
+            forms.EditPerson(instance=self.object, prefix='person', **kwargs),
+        ]
+        recipient = self.object.recipient_set.first()
+        if recipient:
+            forms_.append(
+                forms.RecipientEdit(instance=recipient, prefix='recipient', **kwargs)
+            )
+        else:
+            forms_.append(
+                forms.CreateRecipientFromPerson(person=self.object, prefix='recipient',**kwargs)
+            )
+        return forms_
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        forms_ = self.get_forms()
+        all_valid = True
+        for form in forms_:
+            if not form.is_valid():
+                all_valid = False
+        if all_valid:
+            for form in forms_:
+                form.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(forms=forms_))
+
     def get_success_url(self):
-        return reverse('person-detail', args=[self.object.id])
+        return reverse('person-edit', args=[self.object.id])
 
 
 class PersonDelete(LoginRequiredMixin, MenuMixin, generic.DeleteView):

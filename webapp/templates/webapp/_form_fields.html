@@ -1,17 +1,22 @@
 {% load widget_tweaks %}
-
 {% csrf_token %}
 {{ form.non_field_errors }}
+
 {# Include the hidden fields #}
 {% for hidden in form.hidden_fields %}
-{{ hidden }}
+  {{ hidden }}
 {% endfor %}
-{# Include the visible fields #}
+
+{# Include the visible fields not in fieldsets #}
 {% for field in form.visible_fields %}
-<div class="form-group">
-  <label for="{{ field.id_for_label }}" class="form-control-label">{{ field.label }}
-  {{ field|add_class:"form-control" }}
-  </label>
-  <div class="form-control-feedback">{{ field.errors }}</div>
-</div>
+  {% include './_form_field.html' %}
 {% endfor %}
+
+
+{# Include the fields in fieldset #}
+{% for fieldset in form.fieldsets %}
+  {% include './_form_fieldset.html' %}
+{% endfor %}
+
+
+

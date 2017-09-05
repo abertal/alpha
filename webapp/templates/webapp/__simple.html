@@ -7,51 +7,119 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Abertal</title>
-  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'bootstrap-vue.css' %}">
+  <link rel="stylesheet" href="{% static 'webfont.css' %}">
   <link rel="stylesheet" href="{% static 'css/alpha.css' %}">
 </head>
 
-<body>
-  <div id="app">
-  <header>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <a class="navbar-brand" href="{% url 'home' %}">Abertal alpha</a>
-      <div class="collapse navbar-collapse">
-        <div class="navbar-nav">
-          {% if request.user.is_authenticated %}
-          <a class="nav-item nav-link" href="javascript:void(0);">{% blocktrans %}Hola{% endblocktrans %} {{ request.user.username }}</a>
-          <a id="id_logout" class="nav-item nav-link justify-content-end" href="{% url 'logout' %}">{% blocktrans %}Salir{% endblocktrans %}</a>
-          {% endif %}
-        </div>
-      </div>
-      <form action="{% url 'set_language' %}" method="post" class="nav-item">
-        {% csrf_token %}
-        <select name="language" class="form-control" onchange="this.form.submit()" style="text-transform: capitalize; width: auto !important;">
+<body class="{% block page_class %}{% endblock %}">
+<div id="app">
+  <nav class="navbar navbar-toggleable navbar-expand-md navbar-light bg-faded">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      Abertal <span>α</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-navbar"
+            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="navbar-nav">
+        {% block menu %}
+        {% for menu in menu_bar %}
+        <li class="nav-item dropdown {% if option.is_current %}active{% endif %}">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ menu.name }}
+          </a>
+          <div class="dropdown-menu">
+          {% for option in menu.options %}
+            <a href="{{ option.url }}" class="dropdown-item">
+              {{ option.name }}
+            </a>
+          {% endfor %}
+          </div>
+        </li>
+        {% endfor %}
+        {% endblock %}
+      </ul>
+      <ul class="ml-auto nav navbar-nav">
+        <li class="nav-item dropdown lang-switcher">
+          <a href="#" id="langdropdown" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <div class="icon dripicons-flag"></div>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="langdropdown" role="menu">
+            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">GL</a>
+            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">ES</a>
+          </div>
+        </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              Hola <strong>{{ request.user.username }}</strong>
+            </a>
+            <div aria-labelledby="userdropdown" class="dropdown-menu" role="menu">
+              <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
+              <a id="id_logout" href="{% url 'logout' %}" class="dropdown-item" aria-disabled="false" role="menuitem">Signout</a>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+
+
+    </div>
+
+    {% comment %}
+    <form action="{% url 'set_language' %}" method="post" class="nav-item">
+      {% csrf_token %}
+      <div class="form-group">
+        <select name="language" class="form-control" onchange="this.form.submit()">
           {% get_current_language as LANGUAGE_CODE %}
           {% get_available_languages as LANGUAGES %}
           {% get_language_info_list for LANGUAGES as languages %}
           {% for language in languages %}
-              <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                  {{ language.name_local }}
-              </option>
+          <option value="{{ language.code }}" {% if language.code== LANGUAGE_CODE %} selected="selected" {% endif %}>
+            {{ language.name_local }}
+          </option>
           {% endfor %}
         </select>
-      </form>
-    </nav>
-  </header>
-  <div class="fluid-container">
-    <div class="row">
-      {% block main %}{% endblock %}
+      </div>
+    </form>
+    {% endcomment %}
+  </nav>
+
+
+  <div class="container-fluid-alpha main-container">
+      <div class="row main-heading-row">
+        <div class="col no-gutters">
+          <header class="page-heading">
+            <div class="heading-action">
+              {% block heading_action %}{% endblock %}
+            </div>
+            {% if view.name %}
+            <h1>
+              {{ view.name }}
+            </h1>
+            {% endif %}
+          </header>
+        </div>
+      </div>
+      <div class="row main-row">
+          {% block main %}{% endblock %}
+      </div>
+  </div>
+
+  <footer>
+    <div class="container-fluid-alpha">
+      Copyright © 2016-2017, C.X. Abertal
     </div>
-  </div>
-  <footer>Copyright © 2016-2017, C.X. Abertal</footer>
-  </div>
-  <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-  <script src="{% static 'js/tether.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  {% block extra_js %}
-  {% endblock extra_js %}
+  </footer>
+</div>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/tether.min.js' %}"></script>
+<script src="{% static 'umd/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block extra_js %}
+{% endblock extra_js %}
 </body>

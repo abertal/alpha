@@ -15,6 +15,6 @@ charset = utf-8
 max_line_length = 110
 
 # Use 2 spaces for HTML and friends
-[*.{css,html,js,json,vue}]
+[*.{css,html,js,json,vue,less}]
 indent_size = 2
 
