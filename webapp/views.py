@@ -209,7 +209,7 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             )
         else:
             forms_.append(
-                forms.CreateRecipientFromPerson(person=self.object, prefix='recipient',**kwargs)
+                forms.CreateRecipientFromPerson(person=self.object, prefix='recipient', **kwargs)
             )
         return forms_
 
