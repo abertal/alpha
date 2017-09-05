@@ -106,7 +106,7 @@ EditPerson = CreatePerson
 
 
 class CreateRecipientFromPerson(forms.Form):
-    create = forms.BooleanField(label='Crear ficha de destinatario')
+    create = forms.BooleanField(label='Crear ficha de destinatario', required=False)
 
     def __init__(self, person, *args, **kwargs):
         self.person = person

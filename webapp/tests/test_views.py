@@ -57,7 +57,7 @@ def test_create_person(logged_client, url):
     '/webapp/person/{}/edit/',
 ])
 def test_edit_person(logged_client, person, url):
-    data = {'name': 'Juan', 'surname': 'Bosco'}
+    data = {'person-name': 'Juan', 'person-surname': 'Bosco'}
     response = logged_client.post(url.format(person.id), data=data)
     assert response.status_code == 302
 
