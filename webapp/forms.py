@@ -78,30 +78,6 @@ class CreatePerson(forms.ModelForm):
         return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
 
-class EditPerson(forms.ModelForm):
-    class Meta:
-        model = models.Person
-        fields = (
-            'name', 'surname', 'birthday',
-            'id_number', 'ss_number',
-            'phone_number', 'mobile_number', 'email',
-            'address_street', 'address_locality', 'postal_code', 'address_region', 'address_country',
-            'health_warnings', 'comment',
-        )
-        widgets = {
-            'name': forms.TextInput(),
-            'surname': forms.TextInput(),
-            'id_number': forms.TextInput(),
-            'ss_number': forms.TextInput(),
-            'phone_number': forms.TextInput(),
-            'mobile_number': forms.TextInput(),
-            'address_locality': forms.TextInput(),
-            'postal_code': forms.TextInput(),
-            'address_region': forms.TextInput(),
-            'address_country': forms.TextInput(),
-        }
-
-
 EditPerson = CreatePerson
 
 
