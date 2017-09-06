@@ -205,7 +205,7 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
 
     def get_subform(self, model, instance, form_class, **kwargs):
         label = model._meta.verbose_name
-        prefix = slugify(model.__class__)
+        prefix = slugify(model._meta.model_name)
 
         if instance is None:
             form_class = forms.create_from_person_factory(model)
@@ -231,6 +231,13 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             models.Recipient,
             recipient,
             forms.RecipientEdit,
+            **kwargs,
+        ))
+        volunteer = self.object.volunteer_set.first()
+        subforms.append(self.get_subform(
+            models.Volunteer,
+            volunteer,
+            forms.VolunteerEdit,
             **kwargs,
         ))
         return subforms
