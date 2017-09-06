@@ -28,6 +28,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
           {{ subform.name }}
+          {{ subform.form.errors|yesno:'(ERROR),'}}
         </a>
       </li>
     {% endfor %}
