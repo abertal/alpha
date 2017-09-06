@@ -10,17 +10,17 @@
 {% block body %}
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
   {% csrf_token %}
-  {% for form in forms %}
-    {{ form.non_field_errors }}
+  {% for subform in subforms %}
+    {{ subform.form.non_field_errors }}
   {% endfor %}
   {# Include the hidden fields #}
-  {% for form in forms %}
-    {% for hidden in form.hidden_fields %}
+  {% for subform in subforms %}
+    {% for hidden in subform.form.hidden_fields %}
       {{ hidden }}
     {% endfor %}
   {% endfor %}
   {# Include the visible fields not in fieldsets form first form #}
-  {% for field in forms.0.visible_fields %}
+  {% for field in subforms.0.form.visible_fields %}
     {% include '../_form_field.html' %}
   {% endfor %}
   <ul class="nav nav-tabs" role="tablist">
@@ -37,17 +37,17 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="common" role="tabpanel">
-      {% with forms.0.fieldsets as fieldsets %}
+      {% with subforms.0.form.fieldsets as fieldsets %}
         {% for fieldset in fieldsets %}
         {% include '../_form_fieldset.html' with fieldset=fieldset %}
         {% endfor %}
       {% endwith %}
     </div>
     <div class="tab-pane" id="recipient" role="tabpanel">
-      {% for field in forms.1.visible_fields %}
+      {% for field in subforms.1.form.visible_fields %}
         {% include '../_form_field.html' %}
       {% endfor %}
-      {% with forms.1.fieldsets as fieldsets %}
+      {% with subforms.1.form.fieldsets as fieldsets %}
         {% for fieldset in fieldsets %}
         {% include '../_form_fieldset.html' with fieldset=fieldset %}
         {% endfor %}
