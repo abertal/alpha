@@ -103,7 +103,7 @@ def create_from_person_factory(model):
 
         def save(self):
             if self.cleaned_data['create']:
-                return models.Recipient.objects.create(person=self.person)
+                return model.objects.create(person=self.person)
 
     return CreateFrom
 
