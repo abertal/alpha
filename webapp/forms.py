@@ -16,6 +16,17 @@ class Fieldset:
 class CreatePerson(forms.ModelForm):
     class Meta:
         model = models.Person
+        fields = 'name', 'surname'
+
+        widgets = {
+            'name': forms.TextInput(),
+            'surname': forms.TextInput(),
+        }
+
+
+class EditPerson(forms.ModelForm):
+    class Meta:
+        model = models.Person
         fields = (
             'name', 'surname', 'birthday', 'id_number', 'ss_number',
             'address_street', 'address_locality', 'address_region', 'address_country',
@@ -76,9 +87,6 @@ class CreatePerson(forms.ModelForm):
             _, index, fields = item
             attached_fields.update(fields)
         return [field for field in self if not field.is_hidden and field.name not in attached_fields]
-
-
-EditPerson = CreatePerson
 
 
 class CreateRecipientFromPerson(forms.Form):
