@@ -177,7 +177,7 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
     name = ugettext_lazy('Crear persona')
 
     def get_success_url(self):
-        return reverse('person-detail', args=[self.object.id])
+        return reverse('person-edit', args=[self.object.id])
 
 
 class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
