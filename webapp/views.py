@@ -203,6 +203,18 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             kwargs['subforms'] = self.get_subforms()
         return super().get_context_data(**kwargs)
 
+    def get_subform(self, model, instance, form_class, **kwargs):
+        label = model._meta.verbose_name
+        prefix = slugify(model.__class__)
+
+        if instance is None:
+            form_class = forms.create_from_person_factory(model)
+            form = form_class(self.object, prefix=prefix, **kwargs)
+        else:
+            form = form_class(instance=instance, prefix=prefix, **kwargs)
+
+        return Subform(label, form)
+
     def get_subforms(self):
         kwargs = {}
         if self.request.method in ('POST', 'PUT'):
@@ -211,19 +223,16 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
                 'files': self.request.FILES,
             })
         subforms = [Subform(
-                'Datos',
-                forms.EditPerson(instance=self.object, prefix='person', **kwargs),
+            'Datos',
+            forms.EditPerson(instance=self.object, prefix='person', **kwargs),
         )]
         recipient = self.object.recipient_set.first()
-        if recipient:
-            subforms.append(Subform(
-                'Destinatario',
-                forms.RecipientEdit(instance=recipient, prefix='recipient', **kwargs)
-            ))
-        else:
-            form_class = forms.create_from_person_factory(models.Recipient)
-            form = form_class(person=self.object, prefix='recipient', **kwargs)
-            subforms.append(Subform('Destinatario', form))
+        subforms.append(self.get_subform(
+            models.Recipient,
+            recipient,
+            forms.RecipientEdit,
+            **kwargs,
+        ))
         return subforms
 
     def post(self, request, *args, **kwargs):
