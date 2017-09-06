@@ -32,6 +32,16 @@
         </a>
       </li>
     {% endfor %}
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="tab" href="#tutores" role="tab">
+          Tutores
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="tab" href="#tutelandos" role="tab">
+          Tutelandos
+        </a>
+      </li>
   </ul>
   <div class="tab-content">
     {% for subform in subforms %}
@@ -49,6 +59,33 @@
       {% endwith %}
     </div>
     {% endfor %}
+    <div class="tab-pane" id="tutores" role="tabpanel">
+      {% for recipient in person.recipient_set.all %}
+      {% for custodian in recipient.custodian_set.all %}
+      <p>
+        {{ custodian.person.name }}
+        {{ custodian.person.surname }}
+        ({{ custodian.get_category_display }})
+        <a href="{% url 'person-edit' custodian.person.id %}#tutelandos">Editar</a>
+      </p>
+      {% empty %}
+      No hay tutores
+      {% endfor %}
+      {% empty %}
+      No es destintario
+      {% endfor %}
+    </div>
+    <div class="tab-pane" id="tutelandos" role="tabpanel">
+      {% for custodian in person.custodian_set.all %}
+      <p>
+        {{ custodian.get_category_display }} de {{ custodian.minor.person.name }} {{ custodian.minor.person.surname }}
+        <a href="{% url 'person-edit' custodian.minor.person.id %}#tutores">Editar</a>
+      </p>
+      {% empty %}
+      No hay tutelandos
+      {% endfor %}
+
+    </div>
   </div>
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
