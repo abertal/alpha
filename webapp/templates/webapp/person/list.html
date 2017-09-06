@@ -40,15 +40,8 @@
             <td>{{ person.birthday|default:'-' }}</td>
             <td>Roles</td>
             <td class="row-actions">
-
-              <a href="#" class="btn btn-xs btn-link">
-                <div class="icon dripicons-preview"></div>
-              </a>
-              <a href="#" class="btn btn-xs btn-link">
+              <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
                 <div class="icon dripicons-pencil"></div>
-              </a>
-              <a href="#" class="btn btn-xs btn-link btn-danger">
-                <div class="icon dripicons-trash"></div>
               </a>
             </td>
           </tr>
