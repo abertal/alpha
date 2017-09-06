@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.db.models import ProtectedError
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render, reverse
+from django.utils.text import slugify
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy
 from django.views import generic
@@ -184,6 +185,10 @@ class Subform:
     def __init__(self, name, form):
         self.name = name
         self. form = form
+
+    @property
+    def slug(self):
+        return slugify(self.name)
 
 
 class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):

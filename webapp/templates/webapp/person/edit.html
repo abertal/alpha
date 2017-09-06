@@ -24,35 +24,30 @@
     {% include '../_form_field.html' %}
   {% endfor %}
   <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item dropdown">
-      <a class="nav-link active" data-toggle="tab" href="#common" role="tab">
-        Datos
-      </a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="tab" href="#recipient" role="tab">
-        Destinatario
-      </a>
-    </li>
+    {% for subform in subforms %}
+      <li class="nav-item dropdown">
+        <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
+          {{ subform.name }}
+        </a>
+      </li>
+    {% endfor %}
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="common" role="tabpanel">
-      {% with subforms.0.form.fieldsets as fieldsets %}
-        {% for fieldset in fieldsets %}
-        {% include '../_form_fieldset.html' with fieldset=fieldset %}
-        {% endfor %}
-      {% endwith %}
-    </div>
-    <div class="tab-pane" id="recipient" role="tabpanel">
-      {% for field in subforms.1.form.visible_fields %}
+    {% for subform in subforms %}
+    <div class="tab-pane {{ forloop.first|yesno:'active,' }}" id="{{ subform.slug }}" role="tabpanel">
+      {# Visible fields for first subfrm were displayed before. #}
+      {% if not forloop.first %}
+      {% for field in subform.form.visible_fields %}
         {% include '../_form_field.html' %}
       {% endfor %}
-      {% with subforms.1.form.fieldsets as fieldsets %}
+      {% endif %}
+      {% with subform.form.fieldsets as fieldsets %}
         {% for fieldset in fieldsets %}
         {% include '../_form_fieldset.html' with fieldset=fieldset %}
         {% endfor %}
       {% endwith %}
     </div>
+    {% endfor %}
   </div>
   <div class="form-group">
     <input type="submit" class="btn btn-primary" value="{% trans 'Guardar cambios' %}">
