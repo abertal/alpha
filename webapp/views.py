@@ -180,6 +180,12 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
         return reverse('person-edit', args=[self.object.id])
 
 
+class Subform:
+    def __init__(self, name, form):
+        self.name = name
+        self. form = form
+
+
 class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.DetailView):
     model = models.Person
     form_class = forms.EditPerson
@@ -188,44 +194,46 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
     success_message = ugettext_lazy('Persona editada correctamente')
 
     def get_context_data(self, **kwargs):
-        if 'forms' not in kwargs:
-            kwargs['forms'] = self.get_forms()
+        if 'subforms' not in kwargs:
+            kwargs['subforms'] = self.get_subforms()
         return super().get_context_data(**kwargs)
 
-    def get_forms(self):
+    def get_subforms(self):
         kwargs = {}
         if self.request.method in ('POST', 'PUT'):
             kwargs.update({
                 'data': self.request.POST,
                 'files': self.request.FILES,
             })
-        forms_ = [
-            forms.EditPerson(instance=self.object, prefix='person', **kwargs),
-        ]
+        subforms = [Subform(
+                'Datos',
+                forms.EditPerson(instance=self.object, prefix='person', **kwargs),
+        )]
         recipient = self.object.recipient_set.first()
         if recipient:
-            forms_.append(
+            subforms.append(Subform(
+                'Destinatario',
                 forms.RecipientEdit(instance=recipient, prefix='recipient', **kwargs)
-            )
+            ))
         else:
             form_class = forms.create_from_person_factory(models.Recipient)
             form = form_class(person=self.object, prefix='recipient', **kwargs)
-            forms_.append(form)
-        return forms_
+            subforms.append(Subform('Destinatario', form))
+        return subforms
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        forms_ = self.get_forms()
+        subforms = self.get_subforms()
         all_valid = True
-        for form in forms_:
-            if not form.is_valid():
+        for subform in subforms:
+            if not subform.form.is_valid():
                 all_valid = False
         if all_valid:
-            for form in forms_:
-                form.save()
+            for subform in subforms:
+                subform.form.save()
             return HttpResponseRedirect(self.get_success_url())
         else:
-            return self.render_to_response(self.get_context_data(forms=forms_))
+            return self.render_to_response(self.get_context_data(subforms=subforms))
 
     def get_success_url(self):
         return reverse('person-edit', args=[self.object.id])
