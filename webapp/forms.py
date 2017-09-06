@@ -1,6 +1,7 @@
 from decimal import Decimal as D
 
 from django import forms
+from django.utils.text import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from core import models
@@ -89,15 +90,22 @@ class EditPerson(forms.ModelForm):
         return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
 
-class CreateRecipientFromPerson(forms.Form):
-    create = forms.BooleanField(label='Crear ficha de destinatario', required=False)
+def create_from_person_factory(model):
+    """Create a form class to create model depending on check."""
+    verbose_name = force_text(model._meta.verbose_name)
 
-    def __init__(self, person, *args, **kwargs):
-        self.person = person
-        super().__init__(*args, **kwargs)
+    class CreateFrom(forms.Form):
+        create = forms.BooleanField(label='Crear %s' % verbose_name, required=False)
 
-    def save(self):
-        return models.Recipient.objects.create(person=self.person)
+        def __init__(self, person, *args, **kwargs):
+            self.person = person
+            super().__init__(*args, **kwargs)
+
+        def save(self):
+            if self.cleaned_data['create']:
+                return models.Recipient.objects.create(person=self.person)
+
+    return CreateFrom
 
 
 class RecipientCreate(forms.ModelForm):

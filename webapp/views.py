@@ -208,9 +208,9 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
                 forms.RecipientEdit(instance=recipient, prefix='recipient', **kwargs)
             )
         else:
-            forms_.append(
-                forms.CreateRecipientFromPerson(person=self.object, prefix='recipient', **kwargs)
-            )
+            form_class = forms.create_from_person_factory(models.Recipient)
+            form = form_class(person=self.object, prefix='recipient', **kwargs)
+            forms_.append(form)
         return forms_
 
     def post(self, request, *args, **kwargs):
