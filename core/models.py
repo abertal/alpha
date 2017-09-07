@@ -130,7 +130,7 @@ class Custodian(models.Model):
         ('legal', _('Tutor')),
     ]
 
-    category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
+    category = models.CharField(_('Tipo'), blank=True, default='', choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
     minor = models.ForeignKey(Recipient, on_delete=models.CASCADE)
 
