@@ -345,7 +345,8 @@ class CreateCustodian(forms.ModelForm):
 
 
 class CreateCustodianFromPerson(forms.Form):
-    person = forms.UUIDField(label='Selecciona persona', required=False)
+    category = forms.ChoiceField(label=_('Tipo'), choices=models.Custodian.CATEGORIES, required=False)
+    person = forms.UUIDField(label=_('Selecciona persona'), required=False)
 
     def clean_person(self):
         person_uuid = self.cleaned_data['person']
@@ -363,9 +364,10 @@ class CreateCustodianFromPerson(forms.Form):
 
     def save(self):
         person = self.cleaned_data['person']
+        category = self.cleaned_data['category']
         if not person:
             return
 
-        kwargs = {'person': person, 'minor': self.minor}
+        kwargs = {'person': person, 'minor': self.minor, 'category': category}
         if not models.Custodian.objects.filter(**kwargs).exists():
-            return models.Custodian.create(**kwargs)
+            return models.Custodian.objects.create(**kwargs)
