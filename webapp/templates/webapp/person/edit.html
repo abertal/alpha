@@ -10,21 +10,24 @@
 {% block body %}
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
   {% csrf_token %}
-  {% for subform in subforms %}
-    {{ subform.form.non_field_errors }}
+  {% for subform in subforms.values %}
+    {{ subform.form.non_field_errors.as_ul }}
+      {% for err in subform.form.non_field_errors %}
+      <p class="form-error">{{ err }}.</p>
+    {% endfor %}
   {% endfor %}
   {# Include the hidden fields #}
-  {% for subform in subforms %}
+  {% for subform in subforms.values %}
     {% for hidden in subform.form.hidden_fields %}
       {{ hidden }}
     {% endfor %}
   {% endfor %}
   {# Include the visible fields not in fieldsets form first form #}
-  {% for field in subforms.0.form.visible_fields %}
+  {% for field in subforms.datos.form.visible_fields %}
     {% include '../_form_field.html' %}
   {% endfor %}
   <ul class="nav nav-tabs" role="tablist">
-    {% for subform in subforms %}
+    {% for subform in subforms.values %}
       <li class="nav-item dropdown">
         <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
           {{ subform.name }}
@@ -33,18 +36,14 @@
       </li>
     {% endfor %}
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="tab" href="#tutores" role="tab">
-          Tutores
-        </a>
-      </li>
-      <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="tab" href="#tutelandos" role="tab">
           Tutelandos
         </a>
       </li>
   </ul>
   <div class="tab-content">
-    {% for subform in subforms %}
+    {% for subform in subforms.values %}
+    {%  if not subform.skip %}
     <div class="tab-pane {{ forloop.first|yesno:'active,' }}" id="{{ subform.slug }}" role="tabpanel">
       {# Visible fields for first subfrm were displayed before. #}
       {% if not forloop.first %}
@@ -58,8 +57,12 @@
         {% endfor %}
       {% endwith %}
     </div>
+    {% endif %}
     {% endfor %}
     <div class="tab-pane" id="tutores" role="tabpanel">
+      {% if person.recipient_set.first %}
+        {% include '../_form_field.html' with field=subforms.tutores.form.person %}
+      {%  endif %}
       {% for recipient in person.recipient_set.all %}
       {% for custodian in recipient.custodian_set.all %}
       <p>
