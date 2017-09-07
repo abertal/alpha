@@ -61,8 +61,10 @@
     {% endfor %}
     <div class="tab-pane" id="tutores" role="tabpanel">
       {% if person.recipient_set.first %}
-        {% include '../_form_field.html' with field=subforms.tutores.form.person %}
-      {%  endif %}
+      {% for field in subforms.tutores.form.visible_fields %}
+        {% include '../_form_field.html' with field=field %}
+      {% endfor %}
+      {% endif %}
       {% for recipient in person.recipient_set.all %}
       {% for custodian in recipient.custodian_set.all %}
       <p>
