@@ -342,3 +342,30 @@ class CreateCustodian(forms.ModelForm):
         widgets = {
             'minor': forms.HiddenInput(),
         }
+
+
+class CreateCustodianFromPerson(forms.Form):
+    person = forms.UUIDField(label='Selecciona persona', required=False)
+
+    def clean_person(self):
+        person_uuid = self.cleaned_data['person']
+        if not person_uuid:
+            return
+        try:
+            person = models.Person.objects.get(pk=person_uuid)
+        except models.Person.DoesNotExist:
+            return
+        return person
+
+    def __init__(self, minor, *args, **kwargs):
+        self.minor = minor
+        super().__init__(*args, **kwargs)
+
+    def save(self):
+        person = self.cleaned_data['person']
+        if not person:
+            return
+
+        kwargs = {'person': person, 'minor': self.minor}
+        if not models.Custodian.objects.filter(**kwargs).exists():
+            return models.Custodian.create(**kwargs)
