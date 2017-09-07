@@ -140,6 +140,10 @@ class VolunteerEdit(forms.ModelForm):
         fields = 'lack_of_sexual_offenses_date_certificate', 'comment',
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['lack_of_sexual_offenses_date_certificate'].required = False
+
 
 class EventCreate(forms.ModelForm):
     class Meta:
