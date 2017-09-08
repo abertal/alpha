@@ -29,7 +29,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
           {{ subform.name }}
-          {{ subform.form.errors|yesno:'(ERROR),'}}
+          {% if subform.form.errors %}
+            <span class="error icon dripicons-warning"></span>
+          {% endif %}
         </a>
       </li>
     {% endfor %}
@@ -47,31 +49,37 @@
   <div class="tab-content">
     {% for subform in subforms %}
     <div class="tab-pane {{ forloop.first|yesno:'active,' }}" id="{{ subform.slug }}" role="tabpanel">
-      {# Visible fields for first subfrm were displayed before. #}
-      {% if not forloop.first %}
-      {% for field in subform.form.visible_fields %}
-        {% include '../_form_field.html' %}
-      {% endfor %}
-      {% endif %}
-      {% with subform.form.fieldsets as fieldsets %}
-        {% for fieldset in fieldsets %}
-        {% include '../_form_fieldset.html' with fieldset=fieldset %}
+
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Es destinatario</span>
+      </label>
+        {# Visible fields for first subfrm were displayed before. #}
+        {% if not forloop.first %}
+        {% for field in subform.form.visible_fields %}
+          {% include '../_form_field.html' %}
         {% endfor %}
-      {% endwith %}
+        {% endif %}
+        {% with subform.form.fieldsets as fieldsets %}
+          {% for fieldset in fieldsets %}
+          {% include '../_form_fieldset.html' with fieldset=fieldset %}
+          {% endfor %}
+        {% endwith %}
     </div>
     {% endfor %}
     <div class="tab-pane" id="tutores" role="tabpanel">
 
       <search-person
-        placeholder="{% trans 'Buscar persona' %}"
+        placeholder="{% trans 'Añadir tutor' %}"
         no-results="{% trans 'No hay coincidencias' %}"
-        @select-person="onSelectPerson"
+        @select-person="onSelectCustodian"
       ></search-person>
 
 
 
-      <input type="hidden" name="newCustodians[]" v-model="newCustodians"/>
-      <input type="hidden" name="removedCustodians[]" v-model="removedCustodians"/>
+      <input type="hidden" name="newCustodians[]" v-model="newCustodiansIds"/>
+      <input type="hidden" name="removedCustodians[]" v-model="removedCustodiansIds"/>
 
 
       <table class="table table-striped table-responsive">
@@ -80,43 +88,60 @@
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>F. Nacimiento</th>
+          <th>Tipo</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
         {% for recipient in person.recipient_set.all %}
           {% for custodian in recipient.custodian_set.all %}
-            <tr>
+            <tr ref="custodian-{{ person.id }}" v-show="isVisible()">
               <td>{{ person.name }}</td>
               <td>{{ person.surname }}</td>
               <td>{{ person.birthday|default:'-' }}</td>
+              <td>{{ custodian.type }}</td>
               <td class="row-actions">
                 <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
                   <div class="icon dripicons-pencil"></div>
+                </a>
+                <a href="#" @click="removeCustodian('{{ person.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ person.id }}">
+                  <div class="icon dripicons-trash"></div>
                 </a>
               </td>
             </tr>
           {% empty %}
             <tr v-show="newCustodians.length == 0">
-              <td colspan="4" class="empty">
+              <td colspan="5" class="empty">
                 {% trans 'No hay tutores' %}
               </td>
             </tr>
           {% endfor %}
 
-          <tr v-for="custodian in newCustodians">
-            <td>{{ custodian.name }}</td>
-            <td>{{ custodian.surname }}</td>
-            <td>{{ custodian.birthday }}</td>
+          <tr v-for="custodian in newCustodians" :ref="'custodian-' + custodian.id" v-if="isVisible(custodian.id)">
+            <td>${ custodian.name }</td>
+            <td>${ custodian.surname }</td>
+            <td>${ custodian.birthday }</td>
+            <td>
+              <select :name="'newCustodian[' + custodian.id+ ']'" class="form-control">
+                <option>------</option>
+                <option>Padre</option>
+                <option>Madre</option>
+                <option>Tutor</option>
+                <option>Otro</option>
+              </select>
+            </td>
             <td class="row-actions">
-              <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
+              <a href="{% url 'person-edit' '[ID]' %}" class="btn btn-xs btn-link">
                 <div class="icon dripicons-pencil"></div>
+              </a>
+              <a href="#" @click="removeCustodian(custodian.id, $event)" class="btn btn-xs btn-link">
+                <div class="icon dripicons-trash"></div>
               </a>
             </td>
           </tr>
         {% empty %}
             <tr>
-              <td colspan="4" class="empty">
+              <td colspan="5" class="empty">
                 {% trans 'No es destinatario' %}
               </td>
             </tr>

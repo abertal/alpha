@@ -3,7 +3,7 @@
     <span class="btn btn-primary btn-add">
       <div class="icon dripicons-plus"></div>
     </span>
-      [[[[[[DNI]]]]]] - {{ person.name }} {{ person.surname }}
+      {{ person.name }} {{ person.surname }} {{ person.birthday }}
   </div>
 </template>
 <script>
