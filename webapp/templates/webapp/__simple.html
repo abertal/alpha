@@ -50,18 +50,40 @@
             <div class="icon dripicons-flag"></div>
           </a>
           <div class="dropdown-menu" aria-labelledby="langdropdown" role="menu">
-            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">GL</a>
-            <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">ES</a>
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <a href="#{{ language.code }}"
+                 class="dropdown-item {% if language.code == LANGUAGE_CODE %}{% endif %}"
+                 aria-disabled="false" role="menuitem" >
+                {{ language.name_local }}
+              </a>
+            {% endfor %}
           </div>
+
+          <form id="lang-form" action="{% url 'set_language' %}" method="post" class="hidden">
+            {% csrf_token %}
+            <input name="language" />
+          </form>
         </li>
         {% if request.user.is_authenticated %}
           <li class="nav-item dropdown">
-            <a href="#" id="userdropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <a href="#" id="userdropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+               class="nav-link dropdown-toggle"
+               data-toggle="dropdown"
+            >
               Hola <strong>{{ request.user.username }}</strong>
             </a>
             <div aria-labelledby="userdropdown" class="dropdown-menu" role="menu">
               <a href="#" class="dropdown-item" aria-disabled="false" role="menuitem">Profile</a>
-              <a id="id_logout" href="{% url 'logout' %}" class="dropdown-item" aria-disabled="false" role="menuitem">Signout</a>
+              <a id="id_logout" href="{% url 'logout' %}"
+                 class="dropdown-item" aria-disabled="false"
+                 role="menuitem">
+                Signout
+              </a>
             </div>
           </li>
         {% endif %}
@@ -120,6 +142,7 @@
 <script src="{% static 'js/tether.min.js' %}"></script>
 <script src="{% static 'umd/popper.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/global.bundle.js' %}"></script>
 {% block extra_js %}
 {% endblock extra_js %}
 </body>

@@ -2,9 +2,6 @@
   <div class="search-person">
     <div class="form-inline">
       <input :disabled="loading" autocomplete="off" class="form-control" @input="search" name="q" type="text" v-model="searchString" :placeholder="placeholder">
-      <button v-show="!loading"  class="btn btn-primary btn-search" @click="search">
-        <div class="icon dripicons-search"></div>
-      </button>
       <div class="loading" v-show="loading">
         <div class="icon dripicons-loading"></div>
       </div>
@@ -51,6 +48,10 @@
     },
     methods: {
       search: debounce(function (message) {
+        if (message) {
+          message.preventDefault()
+        }
+
         this.personId = null
         this.results = []
         this.loading = true
@@ -82,6 +83,7 @@
 
   .search-person {
     position: relative;
+    margin-bottom: 30px;
   }
   .btn-search {
     font-size: 17px;

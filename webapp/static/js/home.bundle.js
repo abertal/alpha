@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11458,7 +11458,7 @@ module.exports = Cancel;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_SearchPerson_vue__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0d76d6f0_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_SearchPerson_vue__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0d76d6f0_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_SearchPerson_vue__ = __webpack_require__(44);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -11540,7 +11540,7 @@ exports = module.exports = __webpack_require__(5)(undefined);
 
 
 // module
-exports.push([module.i, "\n.search-person[data-v-0d76d6f0] {\n  position: relative;\n}\n.btn-search[data-v-0d76d6f0] {\n  font-size: 17px;\n}\n.loading[data-v-0d76d6f0] {\n  padding: 10px 15px;\n  font-size: 17px;\n}\n.results[data-v-0d76d6f0] {\n  position: absolute;\n  max-width: 500px;\n  width: 100%;\n  top: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.search-person[data-v-0d76d6f0] {\n  position: relative;\n  margin-bottom: 30px;\n}\n.btn-search[data-v-0d76d6f0] {\n  font-size: 17px;\n}\n.loading[data-v-0d76d6f0] {\n  padding: 10px 15px;\n  font-size: 17px;\n}\n.results[data-v-0d76d6f0] {\n  position: absolute;\n  max-width: 500px;\n  width: 100%;\n  top: 40px;\n}\n", ""]);
 
 // exports
 
@@ -11588,11 +11588,8 @@ module.exports = function listToStyles (parentId, list) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_click_outside__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_click_outside___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_click_outside__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_debounce__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_debounce__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_debounce__);
-//
-//
-//
 //
 //
 //
@@ -11643,6 +11640,10 @@ module.exports = function listToStyles (parentId, list) {
   },
   methods: {
     search: __WEBPACK_IMPORTED_MODULE_3_debounce___default()(function (message) {
+      if (message) {
+        message.preventDefault()
+      }
+
       this.personId = null
       this.results = []
       this.loading = true
@@ -11680,7 +11681,7 @@ module.exports = function listToStyles (parentId, list) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(51)
+  __webpack_require__(19)
 }
 var normalizeComponent = __webpack_require__(7)
 /* script */
@@ -11724,8 +11725,46 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 19 */,
-/* 20 */,
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(20);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("7a4dadaf", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e47e230\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/less-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonCard.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e47e230\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/less-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonCard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.person-card[data-v-4e47e230] {\n  cursor: pointer;\n}\n.person-card .btn-add[data-v-4e47e230] {\n  margin-right: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11760,7 +11799,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.select
     }
-  }, [_vm._m(0), _vm._v("\n    [[[[[[DNI]]]]]] - " + _vm._s(_vm.person.name) + " " + _vm._s(_vm.person.surname) + "\n")])
+  }, [_vm._m(0), _vm._v("\n    " + _vm._s(_vm.person.name) + " " + _vm._s(_vm.person.surname) + " " + _vm._s(_vm.person.birthday) + "\n")])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
@@ -12729,131 +12768,6 @@ exports = module.exports = {
 
 /***/ }),
 /* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "search-person"
-  }, [_c('div', {
-    staticClass: "form-inline"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.searchString),
-      expression: "searchString"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "disabled": _vm.loading,
-      "autocomplete": "off",
-      "name": "q",
-      "type": "text",
-      "placeholder": _vm.placeholder
-    },
-    domProps: {
-      "value": (_vm.searchString)
-    },
-    on: {
-      "input": [function($event) {
-        if ($event.target.composing) { return; }
-        _vm.searchString = $event.target.value
-      }, _vm.search]
-    }
-  }), _vm._v(" "), _c('button', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.loading),
-      expression: "!loading"
-    }],
-    staticClass: "btn btn-primary btn-search",
-    on: {
-      "click": _vm.search
-    }
-  }, [_c('div', {
-    staticClass: "icon dripicons-search"
-  })]), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.loading),
-      expression: "loading"
-    }],
-    staticClass: "loading"
-  }, [_c('div', {
-    staticClass: "icon dripicons-loading"
-  })])]), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "click-outside",
-      rawName: "v-click-outside",
-      value: (_vm.hideResults),
-      expression: "hideResults"
-    }],
-    staticClass: "results"
-  }, [_c('ul', {
-    staticClass: "list-group"
-  }, [_vm._l((_vm.results), function(person) {
-    return _c('li', {
-      staticClass: "list-group-item list-group-item-action"
-    }, [_c('person-card', {
-      attrs: {
-        "person": person
-      },
-      on: {
-        "selectPerson": _vm.onSelectPerson
-      }
-    })], 1)
-  }), _vm._v(" "), (!_vm.results) ? _c('li', {
-    staticClass: "list-group-item list-group-item-warning"
-  }, [_vm._v("\n        " + _vm._s(_vm.noResults) + "\n      ")]) : _vm._e()], 2)])])
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0d76d6f0", esExports)
-  }
-}
-
-/***/ }),
-/* 44 */,
-/* 45 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SearchPerson_vue__ = __webpack_require__(13);
-
-
-
-/* eslint-disable no-new */
-/* eslint-disable no-undef */
-new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-  el: '#app',
-  components: {
-    'search-person': __WEBPACK_IMPORTED_MODULE_1__components_SearchPerson_vue__["a" /* default */]
-  },
-  delimiters: ['${', '}'],
-  methods: {
-    onSelectPerson: function (person) {
-      alert(person.id)
-    }
-  }
-})
-
-
-/***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -12915,43 +12829,112 @@ module.exports = function debounce(func, wait, immediate){
 
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(52);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(6)("7a4dadaf", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e47e230\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/less-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonCard.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e47e230\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/less-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonCard.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "search-person"
+  }, [_c('div', {
+    staticClass: "form-inline"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.searchString),
+      expression: "searchString"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "disabled": _vm.loading,
+      "autocomplete": "off",
+      "name": "q",
+      "type": "text",
+      "placeholder": _vm.placeholder
+    },
+    domProps: {
+      "value": (_vm.searchString)
+    },
+    on: {
+      "input": [function($event) {
+        if ($event.target.composing) { return; }
+        _vm.searchString = $event.target.value
+      }, _vm.search]
+    }
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.loading),
+      expression: "loading"
+    }],
+    staticClass: "loading"
+  }, [_c('div', {
+    staticClass: "icon dripicons-loading"
+  })])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "click-outside",
+      rawName: "v-click-outside",
+      value: (_vm.hideResults),
+      expression: "hideResults"
+    }],
+    staticClass: "results"
+  }, [_c('ul', {
+    staticClass: "list-group"
+  }, [_vm._l((_vm.results), function(person) {
+    return _c('li', {
+      staticClass: "list-group-item list-group-item-action"
+    }, [_c('person-card', {
+      attrs: {
+        "person": person
+      },
+      on: {
+        "selectPerson": _vm.onSelectPerson
+      }
+    })], 1)
+  }), _vm._v(" "), (!_vm.results) ? _c('li', {
+    staticClass: "list-group-item list-group-item-warning"
+  }, [_vm._v("\n        " + _vm._s(_vm.noResults) + "\n      ")]) : _vm._e()], 2)])])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0d76d6f0", esExports)
+  }
 }
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 45 */,
+/* 46 */,
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(undefined);
-// imports
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SearchPerson_vue__ = __webpack_require__(13);
 
 
-// module
-exports.push([module.i, "\n.person-card[data-v-4e47e230] {\n  cursor: pointer;\n}\n.person-card .btn-add[data-v-4e47e230] {\n  margin-right: 10px;\n}\n", ""]);
 
-// exports
+/* eslint-disable no-new */
+/* eslint-disable no-undef */
+new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+  el: '#app',
+  components: {
+    'search-person': __WEBPACK_IMPORTED_MODULE_1__components_SearchPerson_vue__["a" /* default */]
+  },
+  delimiters: ['${', '}'],
+  methods: {
+    onSelectPerson: function (person) {
+      alert(person.id)
+    }
+  }
+})
 
 
 /***/ })

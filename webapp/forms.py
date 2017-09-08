@@ -146,6 +146,13 @@ class RecipientEdit(forms.ModelForm):
             rv.append(fieldset)
         return rv
 
+    def visible_fields(self):
+            attached_fields = set()
+            for item in self.Meta.fieldsets:
+                _, index, fields = item
+                attached_fields.update(fields)
+            return [field for field in self if not field.is_hidden and field.name not in attached_fields]
+
 
 class VolunteerCreate(forms.ModelForm):
     class Meta:
