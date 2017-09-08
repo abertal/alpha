@@ -1,27 +1,19 @@
 {% extends './__base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block page_title %}{% endblock %}
 {% block body %}
-<div>
-  <input id="id_person" name="person" type="hidden" v-model="personId">
-  <input id="id_search_string" name="q" type="text" v-model="searchString">
-  <input type="submit" value="Buscar" v-on:click="clickSearch">
-  <div id="results">
-    <div class="sk-rotating-plane" v-if="loading"></div>
-    <ul class="list-group">
-      <li is="person-card"
-         v-for="result in results"
-         v-bind:key="result.id"
-         v-bind:person="result"
-         v-bind:selected-id="personId"
-         v-on:selected="selectPerson">
-      </li>
-      <li v-if="!results" class="list-group-item">No hay coincidencias</li>
-    </ul>
-  </div>
-</div>
+
+
+<search-person
+  placeholder="{% trans 'Buscar persona' %}"
+  no-results="{% trans 'No hay coincidencias' %}"
+  @select-person="onSelectPerson"
+></search-person>
+
+
 {% endblock %}
 
 {% block extra_js %}
