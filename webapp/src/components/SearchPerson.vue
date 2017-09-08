@@ -1,7 +1,7 @@
 <template>
   <div class="search-person">
     <div class="form-inline">
-      <input :disabled="loading" autocomplete="off" class="form-control" name="q" type="text" v-model="searchString" :placeholder="placeholder">
+      <input :disabled="loading" autocomplete="off" class="form-control" @input="search" name="q" type="text" v-model="searchString" :placeholder="placeholder">
       <button v-show="!loading"  class="btn btn-primary btn-search" @click="search">
         <div class="icon dripicons-search"></div>
       </button>
@@ -29,6 +29,7 @@
   import PersonCard from './PersonCard.vue'
   import axios from 'axios'
   import ClickOutside from 'vue-click-outside'
+  import debounce from 'debounce'
 
   export default {
     components: {
@@ -49,7 +50,7 @@
       }
     },
     methods: {
-      search: function (message) {
+      search: debounce(function (message) {
         this.personId = null
         this.results = []
         this.loading = true
@@ -62,7 +63,7 @@
               that.loading = false
             }
           )
-      },
+      }, 500),
       onSelectPerson: function (person) {
         this.$emit('select-person', person)
         this.results = []
