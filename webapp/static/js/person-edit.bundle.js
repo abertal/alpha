@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -12848,7 +12848,11 @@ if (false) {
 
 /***/ }),
 /* 44 */,
-/* 45 */
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12866,9 +12870,13 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     'search-person': __WEBPACK_IMPORTED_MODULE_1__components_SearchPerson_vue__["a" /* default */]
   },
   delimiters: ['${', '}'],
+  data: {
+    newCustodians: [],
+    removedCustodians: []
+  },
   methods: {
     onSelectPerson: function (person) {
-      alert(person.id)
+      this.newCustodians.push(person)
     }
   }
 })

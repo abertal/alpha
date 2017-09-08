@@ -8,7 +8,7 @@
     props: ['person'],
     methods: {
       select: function () {
-        this.$emit('selectPerson', this.person.id)
+        this.$emit('selectPerson', this.person)
       }
     }
   }

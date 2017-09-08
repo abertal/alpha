@@ -122,6 +122,29 @@ class RecipientEdit(forms.ModelForm):
     class Meta:
         model = models.Recipient
         fields = 'category', 'courses', 'school', 'sibling',
+        wrapper_class = {
+            'category': 'col-xs-12 col-sm-6',
+            'courses': 'col-xs-12 col-sm-6',
+            'school': 'col-xs-12 col-sm-6',
+            'sibling': 'col-xs-12 col-sm-6',
+        }
+
+        fieldsets = [
+            ('Destinatario', '', ['category', 'courses', 'school', 'sibling']),
+        ]
+
+    def fieldsets(self):
+        rv = []
+        for item in self.Meta.fieldsets:
+            label, index, fields = item
+            fieldset = Fieldset(label, index)
+            for field_name in fields:
+                field = self[field_name]
+                if not field.is_hidden:
+                    field.wrapper_class = self.Meta.wrapper_class.get(field_name)
+                    fieldset.fields.append(field)
+            rv.append(fieldset)
+        return rv
 
 
 class VolunteerCreate(forms.ModelForm):

@@ -9,9 +9,13 @@ new Vue({
     'search-person': SearchPerson
   },
   delimiters: ['${', '}'],
+  data: {
+    newCustodians: [],
+    removedCustodians: []
+  },
   methods: {
     onSelectPerson: function (person) {
-      alert(person.id)
+      this.newCustodians.push(person)
     }
   }
 })
