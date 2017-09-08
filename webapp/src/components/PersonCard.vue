@@ -1,18 +1,21 @@
 <template>
-  <li class="list-group-item">
-    <span v-bind:class="{ 'text-primary': selectedId == person.id }">
-      {{ person.name }} {{ person.surname }}
-    </span>
-    <button v-on:click="select(person)">Seleccionar</button>
-  </li>
+  <div class="person-card" @click="select">
+    [[[[[[DNI]]]]]] - {{ person.name }} {{ person.surname }}
+  </div>
 </template>
 <script>
   export default {
-    props: ['person', 'selectedId'],
+    props: ['person'],
     methods: {
-      select: function (person) {
-        this.$emit('selected', person.id)
+      select: function () {
+        this.$emit('selectPerson', this.person.id)
       }
     }
   }
 </script>
+
+<style scoped>
+  .person-card {
+
+  }
+</style>

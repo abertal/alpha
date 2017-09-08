@@ -48,6 +48,7 @@
     "dripicons": "^2.0.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.3",
-    "vue": "^2.4.2"
+    "vue": "^2.4.2",
+    "vue-click-outside": "^1.0.6"
   }
 }

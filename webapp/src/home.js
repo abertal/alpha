@@ -1,41 +1,17 @@
-import axios from 'axios'
 import Vue from 'vue'
-import PersonCard from './components/PersonCard.vue'
-
-var data = {
-  loading: false,
-  response: null,
-  personId: null,
-  results: null,
-  searchString: ''
-}
+import SearchPerson from './components/SearchPerson.vue'
 
 /* eslint-disable no-new */
 /* eslint-disable no-undef */
-var vm = new Vue({
+new Vue({
   el: '#app',
-  data: data,
   components: {
-    'person-card': PersonCard
+    'search-person': SearchPerson
   },
+  delimiters: ['${', '}'],
   methods: {
-    clickSearch: function (message) {
-      var el = message.target
-      el.setAttribute('value', 'Buscando...')
-      vm.personId = null
-      vm.results = []
-      vm.loading = true
-      axios.get('/webapp/ajax/person/?q=' + vm.searchString)
-      .then(function (response) {
-        vm.response = response
-        vm.results = response.data.data
-        el.setAttribute('value', 'Buscar')
-        vm.loading = false
-      })
-    },
-    selectPerson: function (personId) {
-      vm.personId = personId
+    onSelectPerson: function (personId) {
+      alert(personId)
     }
-  },
-  delimiters: ['${', '}']
+  }
 })

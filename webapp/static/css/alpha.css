@@ -295,6 +295,9 @@ form .actions.actions-center {
 .table tbody tr:hover .row-actions .btn {
   visibility: visible;
 }
+.list-group-item-action:hover {
+  background: #fcdcd3;
+}
 /* -------------------- */
 /* Main styles          */
 /* -------------------- */
