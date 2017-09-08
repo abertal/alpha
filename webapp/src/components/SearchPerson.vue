@@ -63,8 +63,8 @@
             }
           )
       },
-      onSelectPerson: function (personId) {
-        this.$emit('select-person', personId)
+      onSelectPerson: function (person) {
+        this.$emit('select-person', person)
         this.results = []
       },
       hideResults: function () {
@@ -78,8 +78,10 @@
 </script>
 
 <style scoped lang="less">
-  @import "../assets/settings.less";
 
+  .search-person {
+    position: relative;
+  }
   .btn-search {
     font-size: 17px;
   }
