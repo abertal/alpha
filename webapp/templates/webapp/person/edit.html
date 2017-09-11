@@ -29,6 +29,7 @@
   {% endfor %}
   <ul class="nav nav-tabs" role="tablist">
     {% for subform in subforms.values %}
+    {% if subform.name != None %}
       <li class="nav-item dropdown">
         <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
           {{ subform.name }}
@@ -37,6 +38,7 @@
           {% endif %}
         </a>
       </li>
+    {% endif %}
     {% endfor %}
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="tab" href="#tutelandos" role="tab">
