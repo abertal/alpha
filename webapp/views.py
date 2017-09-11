@@ -1,3 +1,5 @@
+from collections import OrderedDict as odict
+
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
@@ -182,9 +184,10 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
 
 
 class Subform:
-    def __init__(self, name, form):
+    def __init__(self, name, form, *, skip=False):
         self.name = name
-        self. form = form
+        self.form = form
+        self.skip = skip
 
     @property
     def slug(self):
@@ -240,17 +243,24 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             forms.VolunteerEdit,
             **kwargs,
         ))
-        return subforms
+        if recipient:
+            subforms.append(Subform(
+                'Tutores',
+                forms.CreateCustodianFromPerson(minor=recipient, prefix='addcustodian', **kwargs),
+                skip=True,
+            ))
+        return odict([(subform.slug, subform) for subform in subforms])
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         subforms = self.get_subforms()
         all_valid = True
-        for subform in subforms:
+        for subform in subforms.values():
             if not subform.form.is_valid():
+                print('#### Error en', subform.form)
                 all_valid = False
         if all_valid:
-            for subform in subforms:
+            for subform in subforms.values():
                 subform.form.save()
             return HttpResponseRedirect(self.get_success_url())
         else:
