@@ -15,7 +15,7 @@ new Vue({
     removedCustodiansIds: []
   },
   computed: {
-    newCustodiansIds: function() {
+    newCustodiansIds: function () {
       return this.newCustodians.map((item) => {
         return item.id
       })
@@ -35,7 +35,7 @@ new Vue({
       event.preventDefault()
       this.removedCustodiansIds.push(personId)
     },
-    isVisible: function(personId) {
+    isVisible: function (personId) {
       return this.removedCustodiansIds.indexOf(personId)
     }
   },
