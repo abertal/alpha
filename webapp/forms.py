@@ -401,3 +401,39 @@ class CreateCustodianFromPerson(forms.Form):
         kwargs = {'person': person, 'minor': self.minor, 'category': category}
         if not models.Custodian.objects.filter(**kwargs).exists():
             return models.Custodian.objects.create(**kwargs)
+
+
+class CreateCustodianFromPerson2(forms.Form):
+    category = forms.ChoiceField(label=_('Tipo'), choices=models.Custodian.CATEGORIES, required=False)
+    person = forms.UUIDField(label=_('Selecciona persona'), required=False)
+    # newCustodians = forms.CharField(required=False)
+    # removedCustodians = forms.CharField(required=False)
+
+    def __init__(self, minor, *args, **kwargs):
+        self.minor = minor
+        super().__init__(*args, **kwargs)
+
+    def clean_person(self):
+        person_uuid = self.cleaned_data['person']
+        if not person_uuid:
+            return
+        try:
+            person = models.Person.objects.get(pk=person_uuid)
+        except models.Person.DoesNotExist:
+            return
+        return person
+
+    def save(self):
+        # DEBUG
+        print('>>>>>>>>>>>>>>')
+        print(self.cleaned_data)
+        print('<<<<<<<<<<<<<<')
+
+        person = self.cleaned_data['person']
+        category = self.cleaned_data['category']
+        if not person:
+            return
+
+        kwargs = {'person': person, 'minor': self.minor, 'category': category}
+        if not models.Custodian.objects.filter(**kwargs).exists():
+            return models.Custodian.objects.create(**kwargs)
