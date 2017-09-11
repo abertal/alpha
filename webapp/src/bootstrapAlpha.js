@@ -7,7 +7,7 @@ export default {
       window.location.hash = $(e.target).attr('href').substr(1)
     })
   },
-  langToogle: function($) {
+  langToogle: function ($) {
     $('.dropdown-menu .dropdown-item', $('#langdropdown').parent())
       .click((e) => {
         $('#lang-form input[name=language]').val($(e.target).attr('href').substr(1))

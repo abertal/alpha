@@ -1,7 +1,10 @@
 module.exports = {
+    "env": {
+        "jquery": true
+    },
     "extends": "standard",
     "plugins": [
-	"html",
+        "html",
         "standard",
         "promise"
     ]
