@@ -100,7 +100,7 @@
               <td>{{ custodian.person.birthday|default:'-' }}</td>
               <td>{{ custodian.get_category_display }}</td>
               <td class="row-actions">
-                <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
+                <a href="{% url 'person-edit' custodian.person.id %}#tutelandos" class="btn btn-xs btn-link">
                   <div class="icon dripicons-pencil"></div>
                 </a>
                 <a href="#" @click="removeCustodian('{{ custodian.person.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ custodian.person.id }}">
