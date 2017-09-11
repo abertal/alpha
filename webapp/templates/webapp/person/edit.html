@@ -96,15 +96,15 @@
         {% for recipient in person.recipient_set.all %}
           {% for custodian in recipient.custodian_set.all %}
             <tr ref="custodian-{{ person.id }}" v-show="isVisible()">
-              <td>{{ person.name }}</td>
-              <td>{{ person.surname }}</td>
-              <td>{{ person.birthday|default:'-' }}</td>
-              <td>{{ custodian.type }}</td>
+              <td>{{ custodian.person.name }}</td>
+              <td>{{ custodian.person.surname }}</td>
+              <td>{{ custodian.person.birthday|default:'-' }}</td>
+              <td>{{ custodian.get_category_display }}</td>
               <td class="row-actions">
                 <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
                   <div class="icon dripicons-pencil"></div>
                 </a>
-                <a href="#" @click="removeCustodian('{{ person.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ person.id }}">
+                <a href="#" @click="removeCustodian('{{ custodian.person.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ custodian.person.id }}">
                   <div class="icon dripicons-trash"></div>
                 </a>
               </td>
