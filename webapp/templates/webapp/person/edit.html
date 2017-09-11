@@ -11,21 +11,25 @@
 {% block body %}
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
   {% csrf_token %}
-  {% for subform in subforms %}
-    {{ subform.form.non_field_errors }}
+  {% for subform in subforms.values %}
+    {{ subform.form.non_field_errors.as_ul }}
+      {% for err in subform.form.non_field_errors %}
+      <p class="form-error">{{ err }}.</p>
+    {% endfor %}
   {% endfor %}
   {# Include the hidden fields #}
-  {% for subform in subforms %}
+  {% for subform in subforms.values %}
     {% for hidden in subform.form.hidden_fields %}
       {{ hidden }}
     {% endfor %}
   {% endfor %}
   {# Include the visible fields not in fieldsets form first form #}
-  {% for field in subforms.0.form.visible_fields %}
+  {% for field in subforms.datos.form.visible_fields %}
     {% include '../_form_field.html' %}
   {% endfor %}
   <ul class="nav nav-tabs" role="tablist">
-    {% for subform in subforms %}
+    {% for subform in subforms.values %}
+    {% if subform.name != None %}
       <li class="nav-item dropdown">
         <a class="nav-link {{ forloop.first|yesno:'active,' }}" data-toggle="tab" href="#{{ subform.slug }}" role="tab">
           {{ subform.name }}
@@ -34,12 +38,8 @@
           {% endif %}
         </a>
       </li>
+    {% endif %}
     {% endfor %}
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="tab" href="#tutores" role="tab">
-          Tutores
-        </a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="tab" href="#tutelandos" role="tab">
           Tutelandos
@@ -47,7 +47,8 @@
       </li>
   </ul>
   <div class="tab-content">
-    {% for subform in subforms %}
+    {% for subform in subforms.values %}
+    {%  if not subform.skip %}
     <div class="tab-pane {{ forloop.first|yesno:'active,' }}" id="{{ subform.slug }}" role="tabpanel">
 
       <label class="custom-control custom-checkbox">
@@ -67,6 +68,7 @@
           {% endfor %}
         {% endwith %}
     </div>
+    {% endif %}
     {% endfor %}
     <div class="tab-pane" id="tutores" role="tabpanel">
 
@@ -76,11 +78,8 @@
         @select-person="onSelectCustodian"
       ></search-person>
 
-
-
-      <input type="hidden" name="newCustodians[]" v-model="newCustodiansIds"/>
-      <input type="hidden" name="removedCustodians[]" v-model="removedCustodiansIds"/>
-
+      <input type="hidden" name="custodians2-person" v-model="newCustodiansIds"/>
+      <input type="hidden" name="custodians2-removedCustodians" v-model="removedCustodiansIds"/>
 
       <table class="table table-striped table-responsive">
         <thead class="thead-inverse">
@@ -96,15 +95,15 @@
         {% for recipient in person.recipient_set.all %}
           {% for custodian in recipient.custodian_set.all %}
             <tr ref="custodian-{{ person.id }}" v-show="isVisible()">
-              <td>{{ person.name }}</td>
-              <td>{{ person.surname }}</td>
-              <td>{{ person.birthday|default:'-' }}</td>
-              <td>{{ custodian.type }}</td>
+              <td>{{ custodian.person.name }}</td>
+              <td>{{ custodian.person.surname }}</td>
+              <td>{{ custodian.person.birthday|default:'-' }}</td>
+              <td>{{ custodian.get_category_display }}</td>
               <td class="row-actions">
-                <a href="{% url 'person-edit' person.id %}" class="btn btn-xs btn-link">
+                <a href="{% url 'person-edit' custodian.person.id %}#tutelandos" class="btn btn-xs btn-link">
                   <div class="icon dripicons-pencil"></div>
                 </a>
-                <a href="#" @click="removeCustodian('{{ person.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ person.id }}">
+                <a href="#" @click="removeCustodian('{{ custodian.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ custodian.id }}">
                   <div class="icon dripicons-trash"></div>
                 </a>
               </td>
@@ -122,7 +121,7 @@
             <td>${ custodian.surname }</td>
             <td>${ custodian.birthday }</td>
             <td>
-              <select :name="'newCustodian[' + custodian.id+ ']'" class="form-control">
+              <select :name="'custodians3-newCustodian[' + custodian.id+ ']'" class="form-control">
                 <option>------</option>
                 <option>Padre</option>
                 <option>Madre</option>
@@ -148,6 +147,25 @@
         {% endfor %}
         </tbody>
       </table>
+      {% if person.recipient_set.first %}
+      {% for field in subforms.tutores.form.visible_fields %}
+        {% include '../_form_field.html' with field=field %}
+      {% endfor %}
+      {% endif %}
+      {% for recipient in person.recipient_set.all %}
+      {% for custodian in recipient.custodian_set.all %}
+      <p>
+        {{ custodian.person.name }}
+        {{ custodian.person.surname }}
+        ({{ custodian.get_category_display }})
+        <a href="{% url 'person-edit' custodian.person.id %}#tutelandos">Editar</a>
+      </p>
+      {% empty %}
+      No hay tutores
+      {% endfor %}
+      {% empty %}
+      No es destintario
+      {% endfor %}
     </div>
     <div class="tab-pane" id="tutelandos" role="tabpanel">
       {% for custodian in person.custodian_set.all %}

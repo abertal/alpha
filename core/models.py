@@ -94,7 +94,7 @@ class Recipient(models.Model):
         verbose_name=_('Hermanos'), blank=True, null=True, default=None)
     authorize_photo = models.TextField(
         verbose_name=_('Autoriza foto'), blank=True, default='')
-    category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
+    category = models.CharField(_('Tipo'), blank=True, default='', choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -130,7 +130,7 @@ class Custodian(models.Model):
         ('legal', _('Tutor')),
     ]
 
-    category = models.CharField(_('Tipo'), choices=CATEGORIES, max_length=32)
+    category = models.CharField(_('Tipo'), blank=True, default='', choices=CATEGORIES, max_length=32)
     person = models.ForeignKey(Person, on_delete=models.PROTECT)
     minor = models.ForeignKey(Recipient, on_delete=models.CASCADE)
 

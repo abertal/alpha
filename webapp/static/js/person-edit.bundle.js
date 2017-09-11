@@ -12740,7 +12740,7 @@ exports = module.exports = {
       // some components may have related popup item, on which we shall prevent the click outside event handler.
       var elements = e.path || (e.composedPath && e.composedPath())
       elements && elements.length > 0 && elements.unshift(e.target)
-
+      
       if (el.contains(e.target) || isPopup(vNode.context.popupItem, elements)) return
 
       el.__vueClickOutside__.callback(e)
@@ -12757,7 +12757,7 @@ exports = module.exports = {
   update: function (el, binding) {
     if (validate(binding)) el.__vueClickOutside__.callback = binding.value
   },
-
+  
   unbind: function (el, binding, vNode) {
     // Remove Event Listeners
     !isServer(vNode) && document.removeEventListener('click', el.__vueClickOutside__.handler)
@@ -12922,7 +12922,7 @@ if (false) {
       window.location.hash = $(e.target).attr('href').substr(1)
     })
   },
-  langToogle: function($) {
+  langToogle: function ($) {
     $('.dropdown-menu .dropdown-item', $('#langdropdown').parent())
       .click((e) => {
         $('#lang-form input[name=language]').val($(e.target).attr('href').substr(1))
@@ -12963,7 +12963,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     removedCustodiansIds: []
   },
   computed: {
-    newCustodiansIds: function() {
+    newCustodiansIds: function () {
       return this.newCustodians.map((item) => {
         return item.id
       })
@@ -12983,7 +12983,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
       event.preventDefault()
       this.removedCustodiansIds.push(personId)
     },
-    isVisible: function(personId) {
+    isVisible: function (personId) {
       return this.removedCustodiansIds.indexOf(personId)
     }
   },
