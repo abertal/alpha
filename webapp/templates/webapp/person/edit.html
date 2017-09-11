@@ -78,11 +78,8 @@
         @select-person="onSelectCustodian"
       ></search-person>
 
-
-
-      <input type="hidden" name="newCustodians[]" v-model="newCustodiansIds"/>
-      <input type="hidden" name="removedCustodians[]" v-model="removedCustodiansIds"/>
-
+      <input type="hidden" name="custodians2-person" v-model="newCustodiansIds"/>
+      <input type="hidden" name="custodians2-removedCustodians" v-model="removedCustodiansIds"/>
 
       <table class="table table-striped table-responsive">
         <thead class="thead-inverse">
@@ -124,7 +121,7 @@
             <td>${ custodian.surname }</td>
             <td>${ custodian.birthday }</td>
             <td>
-              <select :name="'newCustodian[' + custodian.id+ ']'" class="form-control">
+              <select :name="'custodians3-newCustodian[' + custodian.id+ ']'" class="form-control">
                 <option>------</option>
                 <option>Padre</option>
                 <option>Madre</option>
