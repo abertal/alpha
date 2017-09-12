@@ -1,18 +1,27 @@
 <template>
-  <li class="list-group-item">
-    <span v-bind:class="{ 'text-primary': selectedId == person.id }">
-      {{ person.name }} {{ person.surname }}
+  <div class="person-card" @click="select">
+    <span class="btn btn-primary btn-add">
+      <div class="icon dripicons-plus"></div>
     </span>
-    <button v-on:click="select(person)">Seleccionar</button>
-  </li>
+      {{ person.name }} {{ person.surname }} {{ person.birthday }}
+  </div>
 </template>
 <script>
   export default {
-    props: ['person', 'selectedId'],
+    props: ['person'],
     methods: {
-      select: function (person) {
-        this.$emit('selected', person.id)
+      select: function () {
+        this.$emit('selectPerson', this.person)
       }
     }
   }
 </script>
+
+<style scoped lang="less">
+  .person-card {
+    cursor: pointer;
+    .btn-add {
+      margin-right: 10px;
+    }
+  }
+</style>

@@ -7,7 +7,9 @@ module.exports = {
   entry: {
     'alpha': './webapp/src/alpha.js',
     'home': './webapp/src/home.js',
-    'login': './webapp/src/login.js'
+    'login': './webapp/src/login.js',
+    'person-edit': './webapp/src/person-edit.js',
+    'global': './webapp/src/global.js'
   },
   output: {
     filename: '[name].bundle.js',

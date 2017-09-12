@@ -60,23 +60,47 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 46:
-/***/ (function(module, exports) {
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// This file is used to gather all assets. They will
-// be included in all HTML pages as globals
-// import './assets/alpha.less'
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  navtabs: function ($) {
+    let hash = window.location.hash
+    $("a[href='" + hash + "']").click()
 
-// Following CSS area included explicitly in all HTML pages
-// using version from dist/ folder.
-//
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
+    $('.nav-tabs .nav-link').click((e) => {
+      window.location.hash = $(e.target).attr('href').substr(1)
+    })
+  },
+  langToogle: function ($) {
+    $('.dropdown-menu .dropdown-item', $('#langdropdown').parent())
+      .click((e) => {
+        $('#lang-form input[name=language]').val($(e.target).attr('href').substr(1))
+        $('#lang-form').submit()
+      })
+  }
+});
+
+
+/***/ }),
+
+/***/ 52:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__ = __webpack_require__(45);
+
+
+$(document).ready(() => {
+  __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].langToogle($)
+})
 
 
 /***/ })

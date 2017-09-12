@@ -45,9 +45,11 @@
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
     "bootstrap-vue": "^0.18.0",
+    "debounce": "^1.0.2",
     "dripicons": "^2.0.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.3",
-    "vue": "^2.4.2"
+    "vue": "^2.4.2",
+    "vue-click-outside": "^1.0.6"
   }
 }

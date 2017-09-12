@@ -122,6 +122,36 @@ class RecipientEdit(forms.ModelForm):
     class Meta:
         model = models.Recipient
         fields = 'category', 'courses', 'school', 'sibling',
+        wrapper_class = {
+            'category': 'col-xs-12 col-sm-6',
+            'courses': 'col-xs-12 col-sm-6',
+            'school': 'col-xs-12 col-sm-6',
+            'sibling': 'col-xs-12 col-sm-6',
+        }
+
+        fieldsets = [
+            ('Destinatario', '', ['category', 'courses', 'school', 'sibling']),
+        ]
+
+    def fieldsets(self):
+        rv = []
+        for item in self.Meta.fieldsets:
+            label, index, fields = item
+            fieldset = Fieldset(label, index)
+            for field_name in fields:
+                field = self[field_name]
+                if not field.is_hidden:
+                    field.wrapper_class = self.Meta.wrapper_class.get(field_name)
+                    fieldset.fields.append(field)
+            rv.append(fieldset)
+        return rv
+
+    def visible_fields(self):
+            attached_fields = set()
+            for item in self.Meta.fieldsets:
+                _, index, fields = item
+                attached_fields.update(fields)
+            return [field for field in self if not field.is_hidden and field.name not in attached_fields]
 
 
 class VolunteerCreate(forms.ModelForm):
@@ -139,6 +169,10 @@ class VolunteerEdit(forms.ModelForm):
         model = models.Volunteer
         fields = 'lack_of_sexual_offenses_date_certificate', 'comment',
         widgets = {'lack_of_sexual_offenses_date_certificate': forms.DateInput(), }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['lack_of_sexual_offenses_date_certificate'].required = False
 
 
 class EventCreate(forms.ModelForm):
@@ -338,3 +372,68 @@ class CreateCustodian(forms.ModelForm):
         widgets = {
             'minor': forms.HiddenInput(),
         }
+
+
+class CreateCustodianFromPerson(forms.Form):
+    category = forms.ChoiceField(label=_('Tipo'), choices=models.Custodian.CATEGORIES, required=False)
+    person = forms.UUIDField(label=_('Selecciona persona'), required=False)
+
+    def clean_person(self):
+        person_uuid = self.cleaned_data['person']
+        if not person_uuid:
+            return
+        try:
+            person = models.Person.objects.get(pk=person_uuid)
+        except models.Person.DoesNotExist:
+            return
+        return person
+
+    def __init__(self, minor, *args, **kwargs):
+        self.minor = minor
+        super().__init__(*args, **kwargs)
+
+    def save(self):
+        person = self.cleaned_data['person']
+        category = self.cleaned_data['category']
+        if not person:
+            return
+
+        kwargs = {'person': person, 'minor': self.minor, 'category': category}
+        if not models.Custodian.objects.filter(**kwargs).exists():
+            return models.Custodian.objects.create(**kwargs)
+
+
+class CreateCustodianFromPerson2(forms.Form):
+    category = forms.ChoiceField(label=_('Tipo'), choices=models.Custodian.CATEGORIES, required=False)
+    person = forms.UUIDField(label=_('Selecciona persona'), required=False)
+    # newCustodians = forms.CharField(required=False)
+    # removedCustodians = forms.CharField(required=False)
+
+    def __init__(self, minor, *args, **kwargs):
+        self.minor = minor
+        super().__init__(*args, **kwargs)
+
+    def clean_person(self):
+        person_uuid = self.cleaned_data['person']
+        if not person_uuid:
+            return
+        try:
+            person = models.Person.objects.get(pk=person_uuid)
+        except models.Person.DoesNotExist:
+            return
+        return person
+
+    def save(self):
+        # DEBUG
+        print('>>>>>>>>>>>>>>')
+        print(self.cleaned_data)
+        print('<<<<<<<<<<<<<<')
+
+        person = self.cleaned_data['person']
+        category = self.cleaned_data['category']
+        if not person:
+            return
+
+        kwargs = {'person': person, 'minor': self.minor, 'category': category}
+        if not models.Custodian.objects.filter(**kwargs).exists():
+            return models.Custodian.objects.create(**kwargs)

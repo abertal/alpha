@@ -104,6 +104,12 @@ form .actions {
 form .actions.actions-center {
   text-align: center;
 }
+.form-control-feedback .errorlist {
+  margin: 0;
+  padding: 3px 0 3px 15px;
+  color: #f05054;
+  list-style: none;
+}
 .custom-control .custom-control-input:checked ~ .custom-control-indicator {
   background-color: #f26a44;
 }
@@ -274,6 +280,10 @@ form .actions.actions-center {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
 }
+.nav.nav-tabs a.nav-link.active .icon.error {
+  background: #fff;
+  color: #f05054;
+}
 .tab-content {
   padding: 30px;
 }
@@ -294,6 +304,20 @@ form .actions.actions-center {
 }
 .table tbody tr:hover .row-actions .btn {
   visibility: visible;
+}
+.list-group-item-action:hover {
+  background: #fcdcd3;
+}
+.icon.error {
+  background: #f00;
+  color: #fff;
+  border-radius: 99px;
+  -moz-border-radius: 99px;
+  -webkit-border-radius: 99px;
+  padding: 4px 5px;
+}
+.hidden {
+  display: none;
 }
 /* -------------------- */
 /* Main styles          */

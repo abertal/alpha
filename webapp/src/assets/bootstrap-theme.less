@@ -103,6 +103,17 @@ form {
     }
   }
 }
+
+.form-control-feedback {
+  .errorlist {
+    margin: 0;
+    padding: 3px 0 3px 15px;
+    color: @danger;
+    list-style: none;
+
+  }
+}
+
 .custom-control {
   .custom-control-input:checked ~ .custom-control-indicator {
     background-color: @primary-color;
@@ -254,8 +265,17 @@ form {
         background: @primary-color;
         color: @white-color;
         .border-radius(0);
+
+        .icon {
+          &.error {
+            background: @white-color;
+            color: @danger;
+          }
+        }
       }
     }
+
+
   }
 }
 
@@ -299,5 +319,29 @@ form {
 
     }
   }
+}
+
+
+
+
+//Lists
+.list-group-item-action {
+  &:hover {
+    background: lighten(@primary-color, 30%);
+  }
+}
+
+
+.icon {
+  &.error {
+    background: #f00;
+    color: @white-color;
+    .border-radius(99px);
+    padding: 4px 5px;
+  }
+}
+
+.hidden {
+  display: none;
 }
 
