@@ -199,7 +199,9 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
     form_class = forms.EditPerson
     template_name = 'webapp/person/edit.html'
     name = ugettext_lazy('Detalle persona')
+
     success_message = ugettext_lazy('Persona editada correctamente')
+    error_message = ugettext_lazy('Hay errores que hay que corregir')
 
     def get_context_data(self, **kwargs):
         if 'subforms' not in kwargs:
@@ -269,8 +271,10 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
         if all_valid:
             for subform in subforms.values():
                 subform.form.save()
+            messages.success(self.request, self.success_message)
             return HttpResponseRedirect(self.get_success_url())
         else:
+            messages.error(self.request, self.error_message)
             return self.render_to_response(self.get_context_data(subforms=subforms))
 
     def get_success_url(self):
