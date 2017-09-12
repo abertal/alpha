@@ -1,8 +1,15 @@
+import os
 import uuid
 
 from django.db import models
 from django.template.defaultfilters import timesince
 from django.utils.translation import ugettext_lazy as _
+
+
+def _get_file_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('uploads', filename)
 
 
 class Person(models.Model):
@@ -46,7 +53,7 @@ class Person(models.Model):
     health_warnings = models.TextField(
         verbose_name=_('Observaciones médicas'), blank=True, default='')
 
-    photo = models.ImageField(verbose_name=_('Fotografía'), blank=True, null=True)
+    photo = models.ImageField(verbose_name=_('Fotografía'), upload_to=_get_file_path, blank=True, null=True)
 
     @property
     def age(self):
