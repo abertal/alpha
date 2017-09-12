@@ -9,6 +9,10 @@
 {% endblock %}
 
 {% block body %}
+{% if person.photo %}
+<img src="{{ person.photo.url }}" alt="{% trans 'Fotografía de la persona' %}">
+{% else %}
+{% endif %}
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {% for subform in subforms.values %}
