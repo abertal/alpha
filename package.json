@@ -50,6 +50,6 @@
     "jquery": "^3.2.1",
     "popper.js": "^1.12.3",
     "vue": "^2.4.2",
-    "vue-click-outside": "^1.0.6"
+    "vue-click-outside": "git+https://github.com/vue-bulma/click-outside.git#727a3ff302f2b9647167aa58503d34cccee2c2af"
   }
 }
