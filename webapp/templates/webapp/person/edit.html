@@ -147,6 +147,25 @@
         {% endfor %}
         </tbody>
       </table>
+      {% if person.recipient_set.first %}
+      {% for field in subforms.tutores.form.visible_fields %}
+        {% include '../_form_field.html' with field=field %}
+      {% endfor %}
+      {% endif %}
+      {% for recipient in person.recipient_set.all %}
+      {% for custodian in recipient.custodian_set.all %}
+      <p>
+        {{ custodian.person.name }}
+        {{ custodian.person.surname }}
+        ({{ custodian.get_category_display }})
+        <a href="{% url 'person-edit' custodian.person.id %}#tutelandos">Editar</a>
+      </p>
+      {% empty %}
+      No hay tutores
+      {% endfor %}
+      {% empty %}
+      No es destintario
+      {% endfor %}
     </div>
     <div class="tab-pane" id="tutelandos" role="tabpanel">
       {% for custodian in person.custodian_set.all %}
