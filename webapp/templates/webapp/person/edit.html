@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-<form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post">
+<form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {% for subform in subforms.values %}
     {{ subform.form.non_field_errors.as_ul }}

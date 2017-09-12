@@ -32,6 +32,7 @@ class EditPerson(forms.ModelForm):
             'name', 'surname', 'birthday', 'id_number', 'ss_number',
             'address_street', 'address_locality', 'address_region', 'address_country',
             'phone_number', 'mobile_number', 'email',
+            'photo',
             'comment',
         )
 
@@ -66,7 +67,8 @@ class EditPerson(forms.ModelForm):
             ('Datos personales', 1, ['birthday', 'id_number', 'ss_number']),
             ('Dirección', 2, ['address_street', 'address_locality', 'address_region', 'address_country']),
             ('Datos de contacto', 3, ['phone_number', 'mobile_number', 'email']),
-            ('Observaciones', 4, ['comment'])
+            ('Foto', 4, ['photo']),
+            ('Observaciones', 5, ['comment']),
         ]
 
     def fieldsets(self):
