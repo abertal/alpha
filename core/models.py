@@ -46,6 +46,8 @@ class Person(models.Model):
     health_warnings = models.TextField(
         verbose_name=_('Observaciones médicas'), blank=True, default='')
 
+    photo = models.ImageField(verbose_name=_('Fotografía'), blank=True, null=True)
+
     @property
     def age(self):
         return timesince(self.birthday) if self.birthday else None
