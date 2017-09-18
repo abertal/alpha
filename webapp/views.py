@@ -655,5 +655,5 @@ class AjaxPersonList(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         qs = models.Person.objects.all()
         f = filters.PersonFilter(request.GET, qs)
-        people = f.qs[:10].values('id', 'name', 'surname')
+        people = f.qs[:10].values('id', 'name', 'surname', 'birthday')
         return JsonResponse({'data': list(people)})
