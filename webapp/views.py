@@ -271,9 +271,7 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             None,
             forms.CreateCustodianFromPerson2(minor=recipient, prefix='custodians2', **kwargs),
             skip=True,
-        )
-
-        )
+        ))
         return odict([(subform.slug, subform) for subform in subforms])
 
     def post(self, request, *args, **kwargs):
