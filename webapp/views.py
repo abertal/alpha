@@ -280,7 +280,7 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
 
     def get(self, request, *args, **kwargs):
         self.custodians = []
-        return super().get(request,*args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         self.custodians = []
