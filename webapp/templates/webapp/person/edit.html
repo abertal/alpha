@@ -96,59 +96,52 @@
         </tr>
         </thead>
         <tbody>
-        {% for recipient in person.recipient_set.all %}
-          {% for custodian in recipient.custodian_set.all %}
-            <tr ref="custodian-{{ person.id }}" v-show="isVisible()">
-              <td>{{ custodian.person.name }}</td>
-              <td>{{ custodian.person.surname }}</td>
-              <td>{{ custodian.person.birthday|default:'-' }}</td>
-              <td>{{ custodian.get_category_display }}</td>
-              <td class="row-actions">
-                <a href="{% url 'person-edit' custodian.person.id %}#tutelandos" class="btn btn-xs btn-link">
-                  <div class="icon dripicons-pencil"></div>
-                </a>
-                <a href="#" @click="removeCustodian('{{ custodian.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ custodian.id }}">
-                  <div class="icon dripicons-trash"></div>
-                </a>
-              </td>
-            </tr>
-          {% empty %}
-            <tr v-show="newCustodians.length == 0">
-              <td colspan="5" class="empty">
-                {% trans 'No hay tutores' %}
-              </td>
-            </tr>
-          {% endfor %}
-
-          <tr v-for="custodian in newCustodians" :ref="'custodian-' + custodian.id" v-if="isVisible(custodian.id)">
-            <td>${ custodian.name }</td>
-            <td>${ custodian.surname }</td>
-            <td>${ custodian.birthday }</td>
-            <td>
-              <select :name="'custodians3-newCustodian[' + custodian.id+ ']'" class="form-control">
-                <option>------</option>
-                <option>Padre</option>
-                <option>Madre</option>
-                <option>Tutor</option>
-                <option>Otro</option>
-              </select>
-            </td>
+        {% for custodian_form in view.custodians %}
+        {% with custodian=custodian_form.instance %}
+          <tr ref="custodian-{{ person.id }}" v-show="isVisible()">
+            <td>{{ custodian.person.name }}</td>
+            <td>{{ custodian.person.surname }}</td>
+            <td>{{ custodian.person.birthday|default:'-' }}</td>
+            <td>{{ custodian_form.category }}</td>
             <td class="row-actions">
-              <a href="{% url 'person-edit' '[ID]' %}" class="btn btn-xs btn-link">
+              <a href="{% url 'person-edit' custodian.person.id %}#tutelandos" class="btn btn-xs btn-link">
                 <div class="icon dripicons-pencil"></div>
               </a>
-              <a href="#" @click="removeCustodian(custodian.id, $event)" class="btn btn-xs btn-link">
+              <a href="#" @click="removeCustodian('{{ custodian.id }}', $event)" class="btn btn-xs btn-link" data-id="{{ custodian.id }}">
                 <div class="icon dripicons-trash"></div>
               </a>
             </td>
           </tr>
+        {% endwith %}
         {% empty %}
-            <tr>
-              <td colspan="5" class="empty">
-                {% trans 'No es destinatario' %}
-              </td>
-            </tr>
+          <tr v-show="newCustodians.length == 0">
+            <td colspan="5" class="empty">
+              {% trans 'No hay tutores' %}
+            </td>
+          </tr>
         {% endfor %}
+        <tr v-for="custodian in newCustodians" :ref="'custodian-' + custodian.id" v-if="isVisible(custodian.id)">
+          <td>${ custodian.name }</td>
+          <td>${ custodian.surname }</td>
+          <td>${ custodian.birthday }</td>
+          <td>
+            <select :name="'custodians3-newCustodian[' + custodian.id+ ']'" class="form-control">
+              <option>------</option>
+              <option>Padre</option>
+              <option>Madre</option>
+              <option>Tutor</option>
+              <option>Otro</option>
+            </select>
+          </td>
+          <td class="row-actions">
+            <a href="{% url 'person-edit' '[ID]' %}" class="btn btn-xs btn-link">
+              <div class="icon dripicons-pencil"></div>
+            </a>
+            <a href="#" @click="removeCustodian(custodian.id, $event)" class="btn btn-xs btn-link">
+              <div class="icon dripicons-trash"></div>
+            </a>
+          </td>
+        </tr>
         </tbody>
       </table>
       {% if person.recipient_set.first %}
@@ -156,20 +149,6 @@
         {% include '../_form_field.html' with field=field %}
       {% endfor %}
       {% endif %}
-      {% for recipient in person.recipient_set.all %}
-      {% for custodian in recipient.custodian_set.all %}
-      <p>
-        {{ custodian.person.name }}
-        {{ custodian.person.surname }}
-        ({{ custodian.get_category_display }})
-        <a href="{% url 'person-edit' custodian.person.id %}#tutelandos">Editar</a>
-      </p>
-      {% empty %}
-      No hay tutores
-      {% endfor %}
-      {% empty %}
-      No es destintario
-      {% endfor %}
     </div>
     <div class="tab-pane" id="tutelandos" role="tabpanel">
       {% for custodian in person.custodian_set.all %}

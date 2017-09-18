@@ -262,19 +262,28 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
             **kwargs,
         ))
         if recipient:
-            subforms.append(Subform(
-                'Tutores',
-                forms.CreateCustodianFromPerson(minor=recipient, prefix='addcustodian', **kwargs),
-                skip=True,
-            ))
+            for custodian in recipient.custodian_set.all():
+                slug = f'custodian-{custodian.pk}'
+                form = forms.CustodianEdit(instance=custodian, prefix=slug, **kwargs)
+                self.custodians.append(form)
+                subforms.append(Subform(
+                    None,
+                    form,
+                    skip=True,
+                ))
         subforms.append(Subform(
-            None,
-            forms.CreateCustodianFromPerson2(minor=recipient, prefix='custodians2', **kwargs),
+            'Tutores',
+            forms.CreateCustodianFromPerson(minor=recipient, prefix='addcustodian', **kwargs),
             skip=True,
         ))
         return odict([(subform.slug, subform) for subform in subforms])
 
+    def get(self, request, *args, **kwargs):
+        self.custodians = []
+        return super().get(request,*args, **kwargs)
+
     def post(self, request, *args, **kwargs):
+        self.custodians = []
         self.object = self.get_object()
         subforms = self.get_subforms()
         all_valid = True
