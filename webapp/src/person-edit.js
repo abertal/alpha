@@ -11,25 +11,17 @@ new Vue({
   },
   delimiters: ['${', '}'],
   data: {
-    newCustodians: [],
+    newCustodian: null,
     removedCustodiansIds: []
   },
   computed: {
-    newCustodiansIds: function () {
-      return this.newCustodians.map((item) => {
-        return item.id
-      })
+    newCustodianId: function () {
+      return this.newCustodian ? this.newCustodian.id : ''
     }
   },
   methods: {
     onSelectCustodian: function (person) {
-      if (this.newCustodiansIds.indexOf(person.id) === -1) {
-        this.newCustodians.push(person)
-      }
-      let index = this.removedCustodiansIds.indexOf(person.id)
-      if (index > -1) {
-        this.removedCustodiansIds.splice(index, 1)
-      }
+      this.newCustodian = person
     },
     removeCustodian: function (personId, event) {
       event.preventDefault()
