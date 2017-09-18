@@ -182,6 +182,22 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
     def get_success_url(self):
         return reverse('person-edit', args=[self.object.id])
 
+    def search(self, request, *args, **kwargs):
+        """Search for coincidences."""
+        self.object = None
+        form = self.get_form()
+        if not form.is_valid():
+            return self.form_invalid(form)
+        name, surname = (form.cleaned_data[field] for field in ['name', 'surname'])
+        people = models.Person.objects.filter(name=name, surname=surname)
+        return self.render_to_response(self.get_context_data(form=form, results=people))
+
+    def post(self, request, *args, **kwargs):
+        is_search_mode = 'search-mode' in request.POST
+        if is_search_mode:
+            return self.search(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
+
 
 class Subform:
     def __init__(self, name, form, *, skip=False):

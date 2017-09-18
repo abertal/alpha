@@ -15,20 +15,38 @@
 
   {# Include the hidden fields #}
   {% for hidden in form.hidden_fields %}
-    {{ hidden }}
+  {{ hidden }}
   {% endfor %}
 
   {# Include the visible fields not in fieldsets #}
   {% for field in form.visible_fields %}
-    {% include '../_form_field.html' %}
+  {% include '../_form_field.html' %}
   {% endfor %}
 
   {% for fieldset in fieldsets %}
-    {% include '../_form_fieldset.html' with fieldset=fieldset %}
+  {% include '../_form_fieldset.html' with fieldset=fieldset %}
   {% endfor %}
 
+  {% if results is not none %}
+  <ul>
+  {% for person in results %}
+    <li>
+      {{ person.name }}
+      {{ person.surname }}
+      {% if person.birthday %}
+      ({{ person.birthday|date:"d/m/Y" }})
+      {% endif %}
+      <a href="{% url 'person-edit' person.pk %}">Editar</a>
+    </li>
+  {% empty %}
+    <li>{% trans 'No hay coincidencias' %}</li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+
   <div class="actions">
-    <input type="submit" class="btn btn-primary btn-lg" value=" {% trans 'Crear y continuar' %}">
+    <input type="submit" class="btn btn-secondary btn-lg" name="search-mode" value="{% trans 'Buscar coincidencias' %}">
+    <input type="submit" class="btn btn-primary btn-lg" name="create-mode" value="{% trans 'Crear nueva persona y continuar' %}">
     <a href="{% url 'person-list' %}" class="btn btn-link btn-lg">
       {% trans 'Volver sin guardar' %}
     </a>
