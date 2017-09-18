@@ -132,10 +132,7 @@
             </select>
           </td>
           <td class="row-actions">
-            <a href="{% url 'person-edit' '[ID]' %}" class="btn btn-xs btn-link">
-              <div class="icon dripicons-pencil"></div>
-            </a>
-            <a href="#" @click="removeCustodian(custodian.id, $event)" class="btn btn-xs btn-link">
+            <a href="#" @click="removeCustodian(newCustodian.id, $event)" class="btn btn-xs btn-link">
               <div class="icon dripicons-trash"></div>
             </a>
           </td>

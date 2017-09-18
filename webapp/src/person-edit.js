@@ -25,6 +25,9 @@ new Vue({
     },
     removeCustodian: function (personId, event) {
       event.preventDefault()
+      if (this.newCustodian && (personId === this.newCustodian.id)) {
+        this.newCustodian = null
+      }
       this.removedCustodiansIds.push(personId)
     },
     isVisible: function (personId) {

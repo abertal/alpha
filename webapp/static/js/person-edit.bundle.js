@@ -12973,6 +12973,9 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     },
     removeCustodian: function (personId, event) {
       event.preventDefault()
+      if (this.newCustodian && (personId === this.newCustodian.id)) {
+        this.newCustodian = null
+      }
       this.removedCustodiansIds.push(personId)
     },
     isVisible: function (personId) {
