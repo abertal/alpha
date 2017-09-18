@@ -401,7 +401,7 @@ class CreateCustodianFromPerson(forms.Form):
             return
         custodian, __ = models.Custodian.objects.update_or_create(
             person=person,
-            minor=minor,
+            minor=self.minor,
             defaults={'category': category}
         )
         return custodian
