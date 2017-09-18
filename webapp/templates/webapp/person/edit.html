@@ -144,11 +144,6 @@
         </tr>
         </tbody>
       </table>
-      {% if person.recipient_set.first %}
-      {% for field in subforms.tutores.form.visible_fields %}
-        {% include '../_form_field.html' with field=field %}
-      {% endfor %}
-      {% endif %}
     </div>
     <div class="tab-pane" id="tutelandos" role="tabpanel">
       {% for custodian in person.custodian_set.all %}
