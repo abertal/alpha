@@ -82,8 +82,6 @@
         @select-person="onSelectCustodian"
       ></search-person>
 
-      <input type="hidden" name="custodians2-person" v-model="newCustodiansIds"/>
-      <input type="hidden" name="custodians2-removedCustodians" v-model="removedCustodiansIds"/>
 
       <table class="table table-striped table-responsive">
         <thead class="thead-inverse">
@@ -114,23 +112,23 @@
           </tr>
         {% endwith %}
         {% empty %}
-          <tr v-show="newCustodians.length == 0">
+          <tr v-show="!newCustodian">
             <td colspan="5" class="empty">
               {% trans 'No hay tutores' %}
             </td>
           </tr>
         {% endfor %}
-        <tr v-for="custodian in newCustodians" :ref="'custodian-' + custodian.id" v-if="isVisible(custodian.id)">
-          <td>${ custodian.name }</td>
-          <td>${ custodian.surname }</td>
-          <td>${ custodian.birthday }</td>
+        <tr v-if="newCustodian">
+          <td>${ newCustodian.name }</td>
+          <td>${ newCustodian.surname }</td>
+          <td>${ newCustodian.birthday }</td>
           <td>
-            <select :name="'custodians3-newCustodian[' + custodian.id+ ']'" class="form-control">
-              <option>------</option>
-              <option>Padre</option>
-              <option>Madre</option>
-              <option>Tutor</option>
-              <option>Otro</option>
+            <input type="hidden" name="addcustodian-person" v-model="newCustodianId"/>
+            <select name="addcustodian-category" class="form-control">
+              <option value="">------</option>
+              <option value="father">Padre</option>
+              <option value="mother">Madre</option>
+              <option value="legal">Tutor</option>
             </select>
           </td>
           <td class="row-actions">
