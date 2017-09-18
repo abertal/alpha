@@ -1,5 +1,6 @@
 Attribute “:disabled” is not serializable as XML 1.0.
 Attribute “:disabled” not allowed on element “input” at this point.
+Attribute “@click” not allowed on element “a” at this point.
 Attribute “@.*” is not serializable as XML 1.0.
 Attribute “v-.*” is not serializable as XML 1.0.
 Attribute “v-.*” not allowed on element “.*” at this point.
