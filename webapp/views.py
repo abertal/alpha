@@ -200,10 +200,11 @@ class PersonCreate(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.C
 
 
 class Subform:
-    def __init__(self, name, form, *, skip=False):
+    def __init__(self, name, form, *, skip=False, tab=True):
         self.name = name
         self.form = form
         self.skip = skip
+        self.tab = tab
 
     @property
     def slug(self):
@@ -267,9 +268,10 @@ class PersonEdit(LoginRequiredMixin, SuccessMessageMixin, MenuMixin, generic.Det
                 form = forms.CustodianEdit(instance=custodian, prefix=slug, **kwargs)
                 self.custodians.append(form)
                 subforms.append(Subform(
-                    None,
+                    slug,
                     form,
                     skip=True,
+                    tab=False,
                 ))
         subforms.append(Subform(
             'Tutores',
