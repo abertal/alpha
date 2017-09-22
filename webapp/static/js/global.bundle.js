@@ -84,6 +84,15 @@
         $('#lang-form input[name=language]').val($(e.target).attr('href').substr(1))
         $('#lang-form').submit()
       })
+  },
+  logoSize: function ($) {
+    if ($ === undefined) {
+      $ = jQuery
+    }
+    let w = $('.main-container > div').offset().left
+    console.log($('.main-container > div').offset())
+    console.log(w)
+    $('.navbar-brand').innerWidth(w)
   }
 });
 
@@ -100,6 +109,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 $(document).ready(() => {
   __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].langToogle($)
+  __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].logoSize($)
+
+  $(window).resize(function() {
+    __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].logoSize()
+  })
 })
 
 

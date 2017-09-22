@@ -5,8 +5,9 @@
 
 
 .container-fluid-alpha {
-  max-width: 100%;
-  padding: 0 17%;
+  padding: 0 50px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .col {
@@ -137,13 +138,14 @@ form {
   text-transform: uppercase;
 
   .navbar-brand {
+    box-sizing: border-box;
     background: @text-color;
-    display: block;
+    display: block !important;
     color: @white-color;
     height: @navbar-height;
     line-height: (@navbar-height - 60px);
-    width: 18.9%;
     padding: 30px;
+    overflow: hidden;
     font-size: 23px;
     text-align: right;
     .transition(all, .2s);
@@ -154,6 +156,10 @@ form {
     span {
       text-transform: none;
     }
+  }
+
+  .navbar-collapse {
+   flex-basis: auto;
   }
 
   .navbar-nav {
@@ -171,6 +177,10 @@ form {
     background: @gray6B;
     a.dropdown-item {
       color: @white-color;
+      &:active {
+        color: @white-color !important;
+        background: @primary-color;
+      }
       &:hover {
         color: @text-color;
       }
@@ -229,22 +239,40 @@ form {
   border: 0;
   padding: 2px 10px;
   text-align: center;
+  font-size: 18px;
 
   &.alert-danger {
     background: @danger;
     color: @white-color;
   }
+}
 
+.alerts {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  z-index: 9999;
+  .alert {
+    padding: 10px 20px;
+    margin-bottom: 3px;
+
+    .close {
+      padding-left: 20px;
+      font-size: 26px;
+      cursor: pointer;
+    }
+  }
 }
 
 
 // Tabs
 .nav {
   &.nav-tabs {
+    margin-top: 50px;
     border-bottom: 1px solid @gray97;
     li {
-      border-top: 1px solid @gray97;
-      border-right: 1px solid @gray97;
+      border-top: 1px solid @grayCD;
+      border-right: 1px solid @grayCD;
       display: flex;
       .custom-control {
         text-align: center;
@@ -252,15 +280,16 @@ form {
       }
 
       &:first-child {
-        border-left: 1px solid @gray97;
+        border-left: 1px solid @grayCD;
       }
     }
 
     a.nav-link {
-      bordeR: 0;
+      border: 0;
       flex:1;
       text-transform: uppercase;
-      color: @text-color;
+      color: @gray97;
+      font-weight: bold;
       &.active {
         background: @primary-color;
         color: @white-color;
@@ -325,9 +354,26 @@ form {
 
 
 //Lists
+.list-group-item {
+  &.list-group-item-header {
+    background: @primary-color;
+    color: @white-color;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+
 .list-group-item-action {
   &:hover {
     background: lighten(@primary-color, 30%);
+  }
+
+  span.icon-badge {
+    position: absolute;
+    right: 15px;
+    top: 15px;
   }
 }
 

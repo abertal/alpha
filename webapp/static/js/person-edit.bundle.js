@@ -12928,6 +12928,15 @@ if (false) {
         $('#lang-form input[name=language]').val($(e.target).attr('href').substr(1))
         $('#lang-form').submit()
       })
+  },
+  logoSize: function ($) {
+    if ($ === undefined) {
+      $ = jQuery
+    }
+    let w = $('.main-container > div').offset().left
+    console.log($('.main-container > div').offset())
+    console.log(w)
+    $('.navbar-brand').innerWidth(w)
   }
 });
 
