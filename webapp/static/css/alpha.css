@@ -8,8 +8,9 @@
   bottom: 0;
 }
 .container-fluid-alpha {
-  max-width: 100%;
-  padding: 0 17%;
+  padding: 0 50px;
+  max-width: 1440px;
+  margin: auto;
 }
 .col.no-gutters {
   padding-left: 0;
@@ -131,13 +132,14 @@ form .actions.actions-center {
   text-transform: uppercase;
 }
 .navbar .navbar-brand {
+  box-sizing: border-box;
   background: #6b5e62;
-  display: block;
+  display: block !important;
   color: #fff;
   height: 155px;
   line-height: 95px;
-  width: 18.9%;
   padding: 30px;
+  overflow: hidden;
   font-size: 23px;
   text-align: right;
   -moz-transition: all 0.2s ease-in-out;
@@ -151,6 +153,9 @@ form .actions.actions-center {
 }
 .navbar .navbar-brand span {
   text-transform: none;
+}
+.navbar .navbar-collapse {
+  flex-basis: auto;
 }
 .navbar .navbar-nav .nav-item {
   padding: 0 10px;
@@ -193,6 +198,10 @@ form .actions.actions-center {
 }
 .navbar .dropdown-menu a.dropdown-item {
   color: #fff;
+}
+.navbar .dropdown-menu a.dropdown-item:active {
+  color: #fff !important;
+  background: #f26a44;
 }
 .navbar .dropdown-menu a.dropdown-item:hover {
   color: #6b5e62;
@@ -247,17 +256,34 @@ form .actions.actions-center {
   border: 0;
   padding: 2px 10px;
   text-align: center;
+  font-size: 18px;
 }
 .alert.alert-danger {
   background: #f05054;
   color: #fff;
 }
+.alerts {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  z-index: 9999;
+}
+.alerts .alert {
+  padding: 10px 20px;
+  margin-bottom: 3px;
+}
+.alerts .alert .close {
+  padding-left: 20px;
+  font-size: 26px;
+  cursor: pointer;
+}
 .nav.nav-tabs {
+  margin-top: 50px;
   border-bottom: 1px solid #979797;
 }
 .nav.nav-tabs li {
-  border-top: 1px solid #979797;
-  border-right: 1px solid #979797;
+  border-top: 1px solid #cdcdd0;
+  border-right: 1px solid #cdcdd0;
   display: flex;
 }
 .nav.nav-tabs li .custom-control {
@@ -265,13 +291,14 @@ form .actions.actions-center {
   margin: 4px 10px;
 }
 .nav.nav-tabs li:first-child {
-  border-left: 1px solid #979797;
+  border-left: 1px solid #cdcdd0;
 }
 .nav.nav-tabs a.nav-link {
-  bordeR: 0;
+  border: 0;
   flex: 1;
   text-transform: uppercase;
-  color: #6b5e62;
+  color: #979797;
+  font-weight: bold;
 }
 .nav.nav-tabs a.nav-link.active {
   background: #f26a44;
@@ -305,8 +332,20 @@ form .actions.actions-center {
 .table tbody tr:hover .row-actions .btn {
   visibility: visible;
 }
+.list-group-item.list-group-item-header {
+  background: #f26a44;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 .list-group-item-action:hover {
   background: #fcdcd3;
+}
+.list-group-item-action span.icon-badge {
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 .icon.error {
   background: #f00;

@@ -9,10 +9,7 @@
 {% endblock %}
 
 {% block body %}
-{% if person.photo %}
-<img src="{{ person.photo.url }}" alt="{% trans 'Fotografía de la persona' %}">
-{% else %}
-{% endif %}
+
 <form class="custom-form element" action="{% url 'person-edit' person.id %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {% for subform in subforms.values %}
@@ -28,9 +25,24 @@
     {% endfor %}
   {% endfor %}
   {# Include the visible fields not in fieldsets form first form #}
-  {% for field in subforms.datos.form.visible_fields %}
-    {% include '../_form_field.html' %}
-  {% endfor %}
+  <div class="row">
+    <div class="col-3">
+      {% if person.photo %}
+        <img src="{{ person.photo.url }}" alt="{% trans 'Fotografía de la persona' %}">
+      {% else %}
+        <img src="{% static 'i/default-avatar.jpg' %}" class="img-fluid" alt="{% trans 'Fotografía de la persona' %}">
+      {% endif %}
+    </div>
+    <div class="col-9">
+      <div class="row">
+        {% for field in subforms.datos.form.visible_fields %}
+          <div class="col-xs-12 col-sm-6">
+            {% include '../_form_field.html' %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
   <ul class="nav nav-tabs" role="tablist">
     {% for subform in subforms.values %}
     {% if subform.tab %}

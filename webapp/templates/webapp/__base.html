@@ -4,13 +4,20 @@
 {% block main %}
 <main class="col">
   {% if messages %}
+    <div class="alerts">
       {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <p><span class="alert alert-danger" role="alert">{{ message }}</span></p>
-        {% else %}
-        <p><span class="alert alert-success" role="alert">{{ message }}</span></p>
+        <div class="alert alert-danger" role="alert">
+          {% else %}
+        <div class="alert alert-success" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         {% endif %}
       {% endfor %}
+    </div>
   {% endif %}
   {% block body %}
   {% endblock %}
