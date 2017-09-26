@@ -4,7 +4,7 @@ $(document).ready(() => {
   BootstrapAlpha.langToogle($)
   BootstrapAlpha.logoSize($)
 
-  $(window).resize(function() {
+  $(window).resize(function () {
     BootstrapAlpha.logoSize()
   })
 })
