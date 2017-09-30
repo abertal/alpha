@@ -12,6 +12,11 @@
   max-width: 1440px;
   margin: auto;
 }
+@media (max-width: 767px) {
+  .container-fluid-alpha {
+    padding: 0 0 0 30px;
+  }
+}
 .col.no-gutters {
   padding-left: 0;
   padding-right: 0;
@@ -32,6 +37,11 @@
   text-transform: uppercase;
   padding: 15px 0;
 }
+@media (max-width: 767px) {
+  .card .card-header {
+    padding-left: 60px;
+  }
+}
 fieldset.form-group {
   position: relative;
   border: 0;
@@ -46,6 +56,11 @@ fieldset.form-group .card-header {
   text-transform: uppercase;
   padding: 15px 0;
 }
+@media (max-width: 767px) {
+  fieldset.form-group .card-header {
+    padding-left: 60px;
+  }
+}
 fieldset.form-group legend {
   border: 0;
   background: none;
@@ -56,8 +71,18 @@ fieldset.form-group legend {
   text-transform: uppercase;
   padding: 15px 0;
 }
+@media (max-width: 767px) {
+  fieldset.form-group legend {
+    padding-left: 60px;
+  }
+}
 fieldset.form-group .fieldset-content {
   padding-left: 80px;
+}
+@media (max-width: 767px) {
+  fieldset.form-group .fieldset-content {
+    padding-left: 0;
+  }
 }
 fieldset.form-group .fieldset-index {
   position: absolute;
@@ -66,6 +91,11 @@ fieldset.form-group .fieldset-index {
   font-size: 72px;
   font-weight: 300;
   line-height: 1em;
+}
+@media (max-width: 767px) {
+  fieldset.form-group .fieldset-index {
+    top: 0;
+  }
 }
 .control-label {
   font-size: 14px;
@@ -131,6 +161,23 @@ form .actions.actions-center {
   padding: 0;
   text-transform: uppercase;
 }
+@media (max-width: 767px) {
+  .navbar {
+    min-height: 0;
+  }
+}
+.navbar .navbar-toggler {
+  border: 0;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 10px;
+}
+.navbar .navbar-toggler.navbar-toggler-right {
+  margin-right: 30px;
+}
 .navbar .navbar-brand {
   box-sizing: border-box;
   background: #6b5e62;
@@ -146,6 +193,12 @@ form .actions.actions-center {
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+@media (max-width: 767px) {
+  .navbar .navbar-brand {
+    height: auto;
+    line-height: 1em;
+  }
 }
 .navbar .navbar-brand:hover {
   color: #fff;
@@ -281,10 +334,20 @@ form .actions.actions-center {
   margin-top: 50px;
   border-bottom: 1px solid #979797;
 }
+@media (max-width: 767px) {
+  .nav.nav-tabs {
+    border-left: 1px solid #cdcdd0;
+  }
+}
 .nav.nav-tabs li {
   border-top: 1px solid #cdcdd0;
   border-right: 1px solid #cdcdd0;
   display: flex;
+}
+@media (max-width: 767px) {
+  .nav.nav-tabs li {
+    flex: 2;
+  }
 }
 .nav.nav-tabs li .custom-control {
   text-align: center;
@@ -313,6 +376,11 @@ form .actions.actions-center {
 }
 .tab-content {
   padding: 30px;
+}
+@media (max-width: 767px) {
+  .tab-content {
+    padding: 25px 0;
+  }
 }
 .table thead.thead-inverse {
   text-transform: uppercase;
@@ -357,4 +425,15 @@ form .actions.actions-center {
 }
 .hidden {
   display: none;
+}
+.pagination a {
+  color: #f26a44;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.pagination a:hover {
+  background: #f26a44;
+  color: #fff;
 }

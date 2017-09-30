@@ -41,6 +41,9 @@ body:not(.page-login) {
 
         .icon {
           font-size: 70px;
+          @media @xs {
+            font-size: 40px;
+          }
           &:before {
             vertical-align: middle;
           }
@@ -51,6 +54,9 @@ body:not(.page-login) {
           color: @text-color;
           line-height: 1em;
           display: block;
+          @media @xs {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -64,6 +70,11 @@ body:not(.page-login) {
       font-family: @primary-font;
       font-weight: 300;
       text-transform: uppercase;
+      @media @xs {
+        padding: 30px 30px;
+        height: auto;
+        font-size: 22px;
+      }
     }
   }
 
@@ -76,6 +87,9 @@ body:not(.page-login) {
 
     .main-row {
       padding: 80px 120px;
+      @media @xs {
+        padding: 30px 10px 60px 10px;
+      }
     }
   }
 }
@@ -88,6 +102,10 @@ body:not(.page-login) {
   }
 }
 
+
+.picture {
+  margin-bottom: 40px;
+}
 
 
 .search-form {

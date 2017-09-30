@@ -89,9 +89,11 @@
     if ($ === undefined) {
       $ = jQuery
     }
+
     let w = $('.main-container > div').offset().left
-    console.log($('.main-container > div').offset())
-    console.log(w)
+
+    w = Math.Max(w, 160);
+
     $('.navbar-brand').innerWidth(w)
   }
 });
@@ -111,7 +113,7 @@ $(document).ready(() => {
   __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].langToogle($)
   __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].logoSize($)
 
-  $(window).resize(function() {
+  $(window).resize(function () {
     __WEBPACK_IMPORTED_MODULE_0__bootstrapAlpha_js__["a" /* default */].logoSize()
   })
 })

@@ -26,14 +26,14 @@
   {% endfor %}
   {# Include the visible fields not in fieldsets form first form #}
   <div class="row">
-    <div class="col-3">
+    <div class="col-xs-12 col-sm-3 picture">
       {% if person.photo %}
-        <img src="{{ person.photo.url }}" alt="{% trans 'Fotografía de la persona' %}">
+        <img src="{{ person.photo.url }}" class="img-fluid" alt="{% trans 'Fotografía de la persona' %}">
       {% else %}
         <img src="{% static 'i/default-avatar.jpg' %}" class="img-fluid" alt="{% trans 'Fotografía de la persona' %}">
       {% endif %}
     </div>
-    <div class="col-9">
+    <div class="col-xs-12 col-sm-9">
       <div class="row">
         {% for field in subforms.datos.form.visible_fields %}
           <div class="col-xs-12 col-sm-6">
