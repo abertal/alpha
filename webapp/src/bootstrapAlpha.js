@@ -18,9 +18,11 @@ export default {
     if ($ === undefined) {
       $ = jQuery
     }
+
     let w = $('.main-container > div').offset().left
-    console.log($('.main-container > div').offset())
-    console.log(w)
+
+    w = Math.Max(w, 160);
+
     $('.navbar-brand').innerWidth(w)
   }
 }

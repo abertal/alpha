@@ -8,12 +8,16 @@
   padding: 0 50px;
   max-width: 1440px;
   margin: auto;
+  @media @xs {
+    padding: 0 0 0 30px;
+  }
 }
 
 .col {
   &.no-gutters {
     padding-left: 0;
     padding-right: 0;
+
   }
 }
 
@@ -34,6 +38,9 @@
   font-weight: 700;
   text-transform: uppercase;
   padding: 15px 0;
+  @media @xs {
+    padding-left: 60px;
+  }
 }
 .card {
   .card();
@@ -47,10 +54,15 @@ fieldset.form-group {
 
   legend {
     .card-header();
+
   }
 
   .fieldset-content {
     padding-left: 80px;
+
+    @media @xs {
+      padding-left: 0;
+    }
   }
 
   .fieldset-index {
@@ -60,6 +72,10 @@ fieldset.form-group {
     font-size: 72px;
     font-weight: 300;
     line-height: 1em;
+
+    @media @xs {
+      top: 0;
+    }
   }
 }
 .control-label {
@@ -134,8 +150,23 @@ form {
 .navbar {
   background: @primary-color-light;
   min-height: @navbar-height;
+  @media @xs {
+    min-height: 0;
+  }
   padding: 0;
   text-transform: uppercase;
+
+  .navbar-toggler {
+    border:0;
+    color: @white-color;
+    background: fade(@white-color, 50%);
+    .border-radius(3px);
+    padding: 10px;
+
+    &.navbar-toggler-right {
+      margin-right: 30px;
+    }
+  }
 
   .navbar-brand {
     box-sizing: border-box;
@@ -144,6 +175,10 @@ form {
     color: @white-color;
     height: @navbar-height;
     line-height: (@navbar-height - 60px);
+    @media @xs {
+      height: auto;
+      line-height: 1em;
+    }
     padding: 30px;
     overflow: hidden;
     font-size: 23px;
@@ -270,10 +305,16 @@ form {
   &.nav-tabs {
     margin-top: 50px;
     border-bottom: 1px solid @gray97;
+    @media @xs {
+      border-left: 1px solid @grayCD;
+    }
     li {
       border-top: 1px solid @grayCD;
       border-right: 1px solid @grayCD;
       display: flex;
+      @media @xs {
+       flex:2;
+      }
       .custom-control {
         text-align: center;
         margin: 4px 10px;
@@ -310,6 +351,9 @@ form {
 
 .tab-content {
   padding: 30px;
+  @media @xs {
+    padding: 25px 0;
+  }
 }
 
 
@@ -391,3 +435,14 @@ form {
   display: none;
 }
 
+// Pagination
+.pagination {
+  a {
+    color: @primary-color;
+    .transition(all, .2s);
+    &:hover {
+      background: @primary-color;
+      color: @white-color;
+    }
+  }
+}
