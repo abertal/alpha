@@ -21,7 +21,7 @@ export default {
 
     let w = $('.main-container > div').offset().left
 
-    w = Math.Max(w, 160);
+    w = Math.Max(w, 160)
 
     $('.navbar-brand').innerWidth(w)
   }
