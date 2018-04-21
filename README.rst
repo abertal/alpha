@@ -24,7 +24,7 @@ Pre requisitos
 
 - Instalar python 3.6
 
-- Instalar nodejs
+- Instalar nodejs y yarn
 
 - Instalar y configurar git
 
@@ -40,7 +40,7 @@ Instrucciones instalación en Mac/Linux
     (.venv) $ pip install --upgrade pip setuptools wheel
     (.venv) $ pip install --requirement requirements.txt
     (.venv) $ pip install --requirement dev-requirements.txt
-    (.venv) $ npm install
+    (.venv) $ yarn install
 
 Instrucciones instalación en Windows
 ------------------------------------
@@ -53,7 +53,7 @@ Instrucciones instalación en Windows
     (.venv) PS > pip install --upgrade pip setuptools wheel
     (.venv) PS > pip install --requirement requirements.txt
     (.venv) PS > pip install --requirement dev-requirements.txt
-    (.venv) PS > npm install
+    (.venv) PS > yarn install
 
 Clonación del repositorio y subida de repositorios
 --------------------------------------------------
@@ -185,7 +185,7 @@ herramienta `eslint`.
 
 .. code::
 
-    (.venv) PS > npm run lint
+    (.venv) PS > yarn run lint
 
 También hay que comprobar que no hay errores en los tests. Para ejecutar los
 tests simplmente hay que ejecutar el comando `pytest`.
