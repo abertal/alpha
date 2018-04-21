@@ -32,13 +32,13 @@ before_install:
 
 # Hay que instalar las dependencias
 install:
-  - npm install
+  - yarn install
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
 
 # Estos son los tests que se ejecutarán
 script:
-    - npm run lint
+    - yarn run lint
     - isort --check-only
     - flake8
     - pytest --driver PhantomJS --cov=./ --cov-report=xml -k 'not selenium'
