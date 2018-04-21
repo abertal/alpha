@@ -1,7 +1,7 @@
 from django import forms
 from django.db import models
-from django.db.models import Value as V
 from django.db.models import Q
+from django.db.models import Value as V
 from django.db.models.functions import Concat
 from django.utils.translation import ugettext_lazy as _
 
